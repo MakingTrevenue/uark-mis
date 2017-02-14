@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UARK Master of Information Systems</title>
+    <link rel="icon" href="./img/favicon.png">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Font Awesome JavaScript -->
+    <script src="https://use.fontawesome.com/2fe8cd2f19.js"></script>
+
+
+</head>
+<body>
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title text-info text-center" id="loginModalHeaderLabel">Login</h3>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                    <input id="loginUsername" type="text" class="form-control" name="loginUsername" placeholder="Username">
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                    <input id="loginPassword" type="password" class="form-control" name="loginPassword" placeholder="Password">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-block">Login</button><br>
+                <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sign Up Modal -->
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title text-info text-center" id="signUpModalHeaderLabel">Sign Up</h3>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                    <input id="signUpName" type="text" class="form-control" name="signUpName" placeholder="Full Name">
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+                    <input id="signUpEmail" type="email" class="form-control" name="signUpEmail" placeholder="Email Address">
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user-plus fa-fw"></i></span>
+                    <input id="signUpUsername" type="text" class="form-control" name="signUpUsername" placeholder="Username">
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                    <input id="signUpPassword" type="password" class="form-control" name="signUpPassword" placeholder="Password">
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                    <input id="signUpPasswordConfirm" type="password" class="form-control" name="signUpPasswordConfirm" placeholder="Confirm Password">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-block">Sign Up</button><br>
+                <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="./index.html">UARK MIS</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="./application.html">Application</a></li>
+                <li><a href="./advising.html">Advising</a></li>
+                <li><a href="./enrollment.html">Enrollment</a></li>
+                <li><a href="./graduation.html">Graduation</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#signUpModal" data-toggle="modal"><span class="fa fa-user-plus"></span>&nbsp; Sign Up</a></li>
+                <li><a href="#loginModal" data-toggle="modal"><span class="fa fa-sign-in"></span>&nbsp; Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Content -->
+
+<div class="container-fluid">
+
+    <!-- Personal & Contact Information -->
+    <div class="row">
+
+        <form>
+
+            <div class="col-md-12 col-sm-12">
+
+                <div class="panel panel-primary">
+
+                    <div class="panel-heading">
+                        <h2 class="panel-title">Personal & Contact Information</h2>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div class="col-md-6 col-sm-6">
+
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" id="firstName" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="middleName">Middle Name (optional)</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" id="middleName" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" id="lastName" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="preferredName">Preferred Name (optional)</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" id="preferredName" placeholder="">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6 col-sm-6">
+
+                            <div class="form-group">
+                                <label for="primaryEmail">Primary Email</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                    <input type="email" class="form-control" id="primaryEmail" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="secondaryEmail">Secondary Email (optional)</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+                                    <input type="email" class="form-control" id="secondaryEmail" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="primaryPhone">Primary Phone</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                    <input type="tel" class="form-control" id="primaryPhone" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="secondaryPhone">Secondary Phone (optional)</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                                    <input type="tel" class="form-control" id="secondaryPhone" placeholder="">
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <!-- Address Information -->
+    <div class="row">
+
+        <form>
+
+            <div class="col-md-12 col-sm-12">
+
+                <div class="panel panel-primary">
+
+                    <div class="panel-heading">
+                        <h2 class="panel-title">Address Information</h2>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div class="col-md-6 col-sm-6">
+
+                            <h4 class="text-info">Permanent Address</h4>
+
+                            <div class="form-group">
+                                <label for="streetAddress">Street Address</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                    <input type="text" class="form-control" id="streetAddress" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="streetAddress2">Street Address 2 (optional)</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                    <input type="text" class="form-control" id="streetAddress2" placeholder="Apartment, suite, unit, building, floor, etc.">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                    <input type="text" class="form-control" id="city" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="state">State</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                    <input type="text" class="form-control" id="state" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="zipCode">ZIP Code</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                    <input type="number" class="form-control" id="zipCode" placeholder="">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6 col-sm-6">
+
+                            <h4 class="text-info">Mailing Address</h4>
+
+                            <div class="form-group">
+                                <label for="streetAddress-M">Street Address</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                    <input type="text" class="form-control" id="streetAddress-M" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="streetAddress2-M">Street Address 2 (optional)</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                    <input type="text" class="form-control" id="streetAddress2-M" placeholder="Apartment, suite, unit, building, floor, etc.">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="city-M">City</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                    <input type="text" class="form-control" id="city-M" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="state-M">State</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                    <input type="text" class="form-control" id="state-M" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="zipCode-M">ZIP Code</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                    <input type="number" class="form-control" id="zipCode-M" placeholder="">
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <!-- Additional Personal Information -->
+    <div class="row">
+
+        <form>
+
+            <div class="col-md-12 col-sm-12">
+
+                <div class="panel panel-primary">
+
+                    <div class="panel-heading">
+                        <h2 class="panel-title">Additional Personal Information</h2>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div class="col-md-6 col-sm-6">
+
+                            <div class="form-group">
+                                <label for="socialSecurityNumber">Social Security Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                                    <input type="number" class="form-control" id="socialSecurityNumber" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dateOfBirth">Date of Birth</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <input type="date" class="form-control" id="dateOfBirth" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="studentID">Student ID (optional)</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-id-card"></i></span>
+                                    <input type="number" class="form-control" id="studentID" placeholder="">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6 col-sm-6">
+
+                            <div class="form-group">
+                                <label for="ethnicity">Race / Ethnicity</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-group"></i></span>
+                                    <select id="ethnicity" class="selectpicker form-control" data-live-search="true">
+                                        <option></option>
+                                        <option>Alaskan Native or American Indian</option>
+                                        <option>Asian or Pacific Islander</option>
+                                        <option>Black, Non-Hispanic</option>
+                                        <option>Hispanic</option>
+                                        <option>White, Non-Hispanic</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-venus-mars"></i></span>
+                                    <select id="gender" class="selectpicker form-control" data-live-search="true">
+                                        <option></option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="citizenship">Citizenship</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+                                    <select id="citizenship" class="selectpicker form-control" data-live-search="true">
+                                        <option></option>
+                                        <option>U.S. Citizen</option>
+                                        <option>Resident Alien</option>
+                                        <option>Non-Resident Alien</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <!-- Admission Request -->
+    <div class="row">
+
+        <form>
+
+            <div class="col-md-12 col-sm-12">
+
+                <div class="panel panel-primary">
+
+                    <div class="panel-heading">
+                        <h2 class="panel-title">Admission Request</h2>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div class="col-md-6 col-sm-6">
+
+                            <div class="form-group">
+                                <label for="term">Term</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
+                                    <select id="term" class="selectpicker show-tick form-control" data-live-search="true">
+                                        <option></option>
+                                        <option>Fall</option>
+                                        <option>Spring</option>
+                                        <option>Summer</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="year">Year</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
+                                    <select id="year" class="selectpicker show-tick form-control" data-live-search="true">
+                                        <option></option>
+                                        <option>2017</option>
+                                        <option>2018</option>
+                                        <option>2019</option>
+                                        <option>2020</option>
+                                        <option>2021</option>
+                                        <option>2022</option>
+                                        <option>2023</option>
+                                        <option>2024</option>
+                                        <option>2025</option>
+                                    </select>
+                                </div>
+                            </div><br>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Requested Scholarship or Assistantship?</span>
+                                    <select id="requestScholarship" class="selectpicker show-tick form-control" data-live-search="true">
+                                        <option></option>
+                                        <option>No</option>
+                                        <option>Yes</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6 col-sm-6">
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Applied to UARK before?</span>
+                                    <select id="previousUARKApp" class="selectpicker form-control" data-live-search="true">
+                                        <option></option>
+                                        <option>No</option>
+                                        <option>Yes</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">When?</span>
+                                    <input type="date" class="form-control" id="previousUARKAppDate" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Enrolled at UARK?</span>
+                                    <select id="enrolledUARK" class="selectpicker form-control" data-live-search="true">
+                                        <option></option>
+                                        <option>No</option>
+                                        <option>Yes</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">When?</span>
+                                    <input type="date" class="form-control" id="enrolledUARKDate" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">If enrolled:</span>
+                                    <select id="enrolledUARKStatus" class="selectpicker show-tick form-control" data-live-search="true" title="">
+                                        <option></option>
+                                        <option>Undergraduate</option>
+                                        <option>Graduate</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-info">Credentials & Documents</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="text-info">Testing Information</h3>
+            <div class="input-group">
+                <span class="input-group-addon">GMAT</span>
+                <input id="" type="text" class="form-control" name="" placeholder="Test Date">
+                <span class="input-group-addon">V</span>
+                <input id="" type="text" class="form-control" name="" placeholder="Verbal Score">
+                <span class="input-group-addon">Q</span>
+                <input id="" type="text" class="form-control" name="" placeholder="Quantitative Score">
+                <span class="input-group-addon">T</span>
+                <input id="" type="text" class="form-control" name="" placeholder="Total Score">
+            </div><br>
+            <div class="input-group">
+                <span class="input-group-addon">GRE</span>
+                <input id="" type="text" class="form-control" name="" placeholder="Test Date">
+                <span class="input-group-addon">V</span>
+                <input id="" type="text" class="form-control" name="" placeholder="Verbal Score">
+                <span class="input-group-addon">Q</span>
+                <input id="" type="text" class="form-control" name="" placeholder="Quantitative Score">
+                <span class="input-group-addon">T</span>
+                <input id="" type="text" class="form-control" name="" placeholder="Total Score">
+            </div><br>
+            <div class="input-group">
+                <span class="input-group-addon">TOEFL</span>
+                <input id="" type="text" class="form-control" name="" placeholder="Test Date">
+                <span class="input-group-addon">T</span>
+                <input id="" type="text" class="form-control" name="" placeholder="Total Score">
+            </div><br>
+            <div class="input-group">
+                <span class="input-group-addon">TSE</span>
+                <input id="" type="text" class="form-control" name="" placeholder="Test Date">
+                <span class="input-group-addon">T</span>
+                <input id="" type="text" class="form-control" name="" placeholder="Total Score">
+            </div><br>
+        </div>
+        <div class="col-md-6">
+            <h3 class="text-info">Education Information</h3>
+            <div class="input-group">
+                <span class="input-group-addon">Undergraduate GPA</span>
+                <input id="" type="text" class="form-control" name="" placeholder="GPA">
+            </div><br>
+            <div class="input-group">
+                <span class="input-group-addon">GPA in JR/SR Years</span>
+                <input id="" type="text" class="form-control" name="" placeholder="GPA">
+            </div><br>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-info">Application Final Checklist</h1>
+            <div class="col-md-3">
+                <h3 class="text-info">All Applications</h3>
+                <ul class="list-group">
+                    <li class="checkbox"><label><input type="checkbox">Application Fee</label></li>
+                    <li class="checkbox"><label><input type="checkbox">Resume</label></li>
+                    <li class="checkbox"><label><input type="checkbox">Essay Questions</label></li>
+                    <li class="checkbox"><label><input type="checkbox">Walton College Application Form</label></li>
+                    <li class="checkbox"><label><input type="checkbox">Three Letters of Recommendation</label></li>
+                    <li class="checkbox"><label><input type="checkbox">Official Transcripts</label></li>
+                    <li class="checkbox"><label><input type="checkbox">GMAT Score</label></li>
+                    <li class="checkbox"><label><input type="checkbox">GRE Score</label></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h3 class="text-info">International Students Only</h3>
+                <ul class="list-group">
+                    <li class="checkbox"><label><input type="checkbox">Summary of Educational Experience</label></li>
+                    <li class="checkbox"><label><input type="checkbox">Supplemental & Financial Information Form</label></li>
+                    <li class="checkbox"><label><input type="checkbox">TOEFL</label></li>
+                    <li class="checkbox"><label><input type="checkbox">TSE</label></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-info">Student Status</h1>
+            <br><br><br><br>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
