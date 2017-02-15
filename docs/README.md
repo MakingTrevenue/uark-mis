@@ -1,5 +1,7 @@
 ![entity relationship diagram][10]
 
+ERD made with [lucidchart][11]
+
 ## Notes
 
 * Always hash passwords with at least [`password_hash`][1] or even better with the [`script` algorithm][2].
@@ -24,3 +26,4 @@
 [8]:https://github.com/creationix/nvm
 [9]:https://yarnpkg.com/en/
 [10]:./images/erd.png
+[11]:https://www.lucidchart.com/
