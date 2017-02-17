@@ -8,6 +8,7 @@ Web application for University of Arkansas Master of Information Systems end-to-
 ### [Lucid Chart ERD](https://www.lucidchart.com/documents/edit/96ca7a6d-3023-42ea-927e-7d43fdfb416c)
 ### [phpMyAdmin](https://www.uark.us/phpmyadmin/)
 ### [UARK MIS Website](https://www.uark.us/)
+### [GitHub Student Pack](https://education.github.com/pack/offers)
 
 ---
 
