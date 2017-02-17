@@ -1,39 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>UARK MIS | Application</title>
     <link rel="icon" href="./img/favicon.png">
 
-    <!-- Latest compiled and minified CSS -->
+    <!-- Latest Bootstrap compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    <!-- Latest compiled and minified JavaScript -->
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+
+    <!-- Latest Bootstrap & jQuery compiled and minified JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Font Awesome JavaScript -->
-    <script src="https://use.fontawesome.com/2fe8cd2f19.js"></script>
-	
-    <!-- Custom Styles & Scripts -->
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script src="https://use.fontawesome.com/2fe8cd2f19.js"></script> 
+
+    <!-- Custom JavaScript -->
     <script type="text/javascript" src="./js/scripts.js"></script>
     <script type="text/javascript" src="./js/bootstrap-filestyle.min.js"></script>
 
 </head>
+
 <body>
 
+<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="./index.html"><img src="./img/ualogowhite.png"></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="myNavbar">
+
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="./application.html">Application</a></li>
+                <li><a href="./advising.html">Advising</a></li>
+                <li><a href="./enrollment.html">Enrollment</a></li>
+                <li><a href="./graduation.html">Graduation</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#signUpModal" data-toggle="modal"><span class="fa fa-user-plus"></span>&nbsp; Sign Up</a></li>
+                <li><a href="#loginModal" data-toggle="modal"><span class="fa fa-sign-in"></span>&nbsp; Login</a></li>
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
+
 <!-- Login Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+
+            <!-- Login Modal Header -->
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
                 </button>
                 <h3 class="modal-title text-info text-center" id="loginModalHeaderLabel">Login</h3>
             </div>
+
+            <!-- Login Modal Body -->
             <div class="modal-body">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
@@ -44,24 +86,31 @@
                     <input id="loginPassword" type="password" class="form-control" name="loginPassword" placeholder="Password">
                 </div>
             </div>
+
+            <!-- Login Modal Footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary btn-block">Login</button><br>
                 <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Close</button>
             </div>
+
         </div>
     </div>
 </div>
 
 <!-- Sign Up Modal -->
-<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
+
+            <!-- Sign Up Modal Header -->
             <div class="modal-header text-center">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
                 </button>
                 <h3 class="modal-title text-info text-center" id="signUpModalHeaderLabel">Sign Up</h3>
             </div>
+
+            <!-- Sign Up Modal Body -->
             <div class="modal-body">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
@@ -84,42 +133,18 @@
                     <input id="signUpPasswordConfirm" type="password" class="form-control" name="signUpPasswordConfirm" placeholder="Confirm Password">
                 </div>
             </div>
+
+            <!-- Sign Up Modal Footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary btn-block">Sign Up</button><br>
                 <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Close</button>
             </div>
+
         </div>
     </div>
 </div>
 
-<!-- Navigation Bar -->
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="./index.html"><img src="./img/ualogowhite.png"></a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="./application.html">Application</a></li>
-                <li><a href="./advising.html">Advising</a></li>
-                <li><a href="./enrollment.html">Enrollment</a></li>
-                <li><a href="./graduation.html">Graduation</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#signUpModal" data-toggle="modal"><span class="fa fa-user-plus"></span>&nbsp; Sign Up</a></li>
-                <li><a href="#loginModal" data-toggle="modal"><span class="fa fa-sign-in"></span>&nbsp; Login</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<!-- Content -->
-
+<!-- Page Content Container -->
 <div class="container-fluid">
     
     <form id="applicationform" action="/application.php" method="post">
@@ -137,6 +162,7 @@
 
                 <div class="panel-body">
 
+                    <!-- Personal & Contact Information Left Column -->
                     <div class="col-md-6 col-sm-6">
 
                         <div class="form-group">
@@ -173,6 +199,7 @@
 
                     </div>
 
+                    <!-- Personal & Contact Information Right Column -->
                     <div class="col-md-6 col-sm-6">
 
                         <div class="form-group">
@@ -230,6 +257,7 @@
 
                 <div class="panel-body">
 
+                    <!-- Address Information Left Column -->
                     <div class="col-md-6 col-sm-6">
 
                         <h4 class="text-info">Permanent Address</h4>
@@ -276,6 +304,7 @@
 
                     </div>
 
+                    <!-- Address Information Right Column -->
                     <div class="col-md-6 col-sm-6">
 
                         <h4 class="text-info">Mailing Address</h4>
@@ -343,6 +372,7 @@
 
                 <div class="panel-body">
 
+                    <!-- Additional Personal Information Left Column -->
                     <div class="col-md-6 col-sm-6">
 
                         <div class="form-group">
@@ -371,6 +401,7 @@
 
                     </div>
 
+                    <!-- Additional Personal Information Right Column -->
                     <div class="col-md-6 col-sm-6">
 
                         <div class="form-group">
@@ -437,6 +468,7 @@
 
                 <div class="panel-body">
 
+                    <!-- Admission Request Left Column-->
                     <div class="col-md-6 col-sm-6">
 
                         <div class="form-group">
@@ -488,12 +520,11 @@
                             <label>Requested Scholarship or Assistantship?
                                 <label class="checkbox-inline"><input name="firstName" type="checkbox" value="">Yes</label>
                             </label>
-                        </div>
-
-                        
+                        </div>                        
 
                     </div>
 
+                    <!-- Admission Request Right Column -->
                     <div class="col-md-6 col-sm-6">
                         
                         <div class="form-group">				
@@ -557,9 +588,11 @@
 
                 <div class="panel-body">
 
+                    <!-- Credentials Left Column-->
                     <div class="col-md-6 col-sm-6">
 
                         <h4 class="text-info">Testing Information</h4>
+
                         <label class="checkbox-inline"><input name="gmat" type="checkbox" value="">GMAT</label>
                         <label class="checkbox-inline"><input name="gre" type="checkbox" value="">GRE</label>
                         <p class="help-block">Check the exam(s) you have taken.</p>
@@ -631,9 +664,11 @@
                        
                     </div>
 
+                    <!-- Credentials Right Column -->
                     <div class="col-md-6 col-sm-6">
 
                         <h4 class="text-info">International Testing Information</h4>
+
                         <label class="checkbox-inline"><input name="toefliBT" type="checkbox" value="">TOEFL iBT</label>
                         <label class="checkbox-inline"><input name="toeflPBT" type="checkbox" value="">TOEFL PBT</label>
                         <label class="checkbox-inline"><input name="tse "type="checkbox" value="">TSE</label>
@@ -694,8 +729,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
                                 <input type="number" class="form-control" name="" id="undergradJRSRGPA" placeholder="Range: 0.00-4.00">
-                            </div>
-                            
+                            </div>                            
                         </div>  
 
                     </div>
@@ -721,6 +755,7 @@
 
                 <div class="panel-body">
 
+                    <!-- Documents Left Column -->
                     <div class="col-md-6 col-sm-6">
                         
                         <label for="resume">Résumé</label>
@@ -734,6 +769,7 @@
                                                 
                     </div>
 
+                    <!-- Documents Right Column -->
                     <div class="col-md-6 col-sm-6">
                         
                         <label for="recLetter1">Recommendation Letter #1</label>
@@ -768,6 +804,7 @@
 
                 <div class="panel-body">
 
+                    <!-- Application Final Checklist Left Column -->
                     <div class="col-md-6 col-sm-6">
 
                         <h4 class="text-info">Application Materials Checklist</h4>
@@ -783,6 +820,7 @@
 
                     </div>
 
+                    <!-- Application Final Checklist Right Column -->
                     <div class="col-md-6 col-sm-6">
 
                         <h4 class="text-info">International Applicants Only</h4>
@@ -803,8 +841,11 @@
 
     </div>
     
+    <!-- Terms & Services Agreement -->
     <div class="row">
+
         <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3 text-center">
+
             <label class="checkbox-inline">
                 <input type="checkbox" value="">
                 I hereby affirm that all information supplied is complete and accurate. It is my understanding that I shall not be considered for admission until I 
@@ -815,17 +856,22 @@
                 I certify that I will neither give nor receive inappropriate assistance on the work I do for my degree."</b>
             </label>
             <br><br>
+
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon">Electronic Signature:</span>
                     <input type="text" class="form-control" id="electronicSignature" placeholder="Type full name here">
                 </div>
             </div>
-        <div class="col-md-2 col-sm-4 col-md-offset-5 col-sm-offset-4 text-center">      
+
+        <div class="col-md-2 col-sm-4 col-md-offset-5 col-sm-offset-4 text-center">   
+
             <br>
             <input type="submit" class="btn btn-primary btn-lg" id="submitButton" value="Submit Application">
             <br><br>
+
         </div>
+
     </div>
         
     </form>
