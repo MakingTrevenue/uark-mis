@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UARK MIS | Application</title>
+    <link rel="icon" href="./img/favicon.png">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Font Awesome JavaScript -->
+    <script src="https://use.fontawesome.com/2fe8cd2f19.js"></script>
+	
+    <!-- Custom Styles & Scripts -->
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script src="./js/scripts.js"></script>
+    <script type="text/javascript" src="./js/bootstrap-filestyle.min.js"> </script>
+
+</head>
+<body>
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title text-info text-center" id="loginModalHeaderLabel">Login</h3>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                    <input id="loginUsername" type="text" class="form-control" name="loginUsername" placeholder="Username">
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                    <input id="loginPassword" type="password" class="form-control" name="loginPassword" placeholder="Password">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-block">Login</button><br>
+                <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sign Up Modal -->
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title text-info text-center" id="signUpModalHeaderLabel">Sign Up</h3>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                    <input id="signUpName" type="text" class="form-control" name="signUpName" placeholder="Full Name">
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+                    <input id="signUpEmail" type="email" class="form-control" name="signUpEmail" placeholder="Email Address">
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user-plus fa-fw"></i></span>
+                    <input id="signUpUsername" type="text" class="form-control" name="signUpUsername" placeholder="Username">
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                    <input id="signUpPassword" type="password" class="form-control" name="signUpPassword" placeholder="Password">
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                    <input id="signUpPasswordConfirm" type="password" class="form-control" name="signUpPasswordConfirm" placeholder="Confirm Password">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-block">Sign Up</button><br>
+                <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="./index.html"><img src="./img/ualogowhite.png"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="./application.html">Application</a></li>
+                <li><a href="./advising.html">Advising</a></li>
+                <li><a href="./enrollment.html">Enrollment</a></li>
+                <li><a href="./graduation.html">Graduation</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#signUpModal" data-toggle="modal"><span class="fa fa-user-plus"></span>&nbsp; Sign Up</a></li>
+                <li><a href="#loginModal" data-toggle="modal"><span class="fa fa-sign-in"></span>&nbsp; Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Content -->
+
+<div class="container-fluid">
+    <form id="applicationform" action="/applicationTEST.php" method="post">
+    <!-- Personal & Contact Information -->
+    <div class="row">
+
+        <div class="col-md-12 col-sm-12">
+
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h2 class="panel-title">Personal & Contact Information</h2>
+                </div>
+
+                <div class="panel-body">
+
+                    <div class="col-md-6 col-sm-6">
+
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input form="applicationform" type="text" class="form-control" name="firstName" id="firstName" placeholder="John">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="middleName">Middle Name (optional)</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input form="applicationform" type="text" class="form-control" id="middleName" placeholder="Edward">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input form="applicationform" type="text" class="form-control" id="lastName" placeholder="Doe">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferredName">Preferred Name (optional)</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input form="applicationform" type="text" class="form-control" id="preferredName" placeholder="John E. Doe">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+
+                        <div class="form-group">
+                            <label for="primaryEmail">Primary Email</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                <input form="applicationform" type="email" class="form-control" id="primaryEmail" placeholder="example@domain.com">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="secondaryEmail">Secondary Email (optional)</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+                                <input form="applicationform" type="email" class="form-control" id="secondaryEmail" placeholder="alternate@domain.com">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="primaryPhone">Primary Phone</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                <input form="applicationform" type="tel" class="form-control" id="primaryPhone" placeholder="(800) 555-1234">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="secondaryPhone">Secondary Phone (optional)</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                                <input form="applicationform" type="tel" class="form-control" id="secondaryPhone" placeholder="(800) 555-1234">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>       
+
+    </div>
+
+    <!-- Address Information -->
+    <div class="row">
+
+        <div class="col-md-12 col-sm-12">
+
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h2 class="panel-title">Address Information</h2>
+                </div>
+
+                <div class="panel-body">
+
+                    <div class="col-md-6 col-sm-6">
+
+                        <h4 class="text-info">Permanent Address</h4>
+
+                        <div class="form-group">
+                            <label for="streetAddress">Street Address</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                <input form="applicationform" type="text" class="form-control" id="streetAddress" placeholder="1234 Main Street">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="streetAddress2">Street Address 2 (optional)</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                <input form="applicationform" type="text" class="form-control" id="streetAddress2" placeholder="Apartment, suite, unit, building, floor, etc.">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                <input form="applicationform" type="text" class="form-control" id="city" placeholder="Chicago">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                <input form="applicationform" type="text" class="form-control" id="state" placeholder="Illinois">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="zipCode">ZIP Code</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                <input form="applicationform" type="number" class="form-control" id="zipCode" placeholder="60827">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+
+                        <h4 class="text-info">Mailing Address</h4>
+
+                        <div class="form-group">
+                            <label for="streetAddress-M">Street Address</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                <input form="applicationform" type="text" class="form-control" id="streetAddress-M" placeholder="567 Oak Avenue">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="streetAddress2-M">Street Address 2 (optional)</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                <input form="applicationform" type="text" class="form-control" id="streetAddress2-M" placeholder="Apartment, suite, unit, building, floor, etc.">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="city-M">City</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                <input form="applicationform" type="text" class="form-control" id="city-M" placeholder="Beverly Hills">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="state-M">State</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                <input form="applicationform" type="text" class="form-control" id="state-M" placeholder="California">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="zipCode-M">ZIP Code</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                <input form="applicationform" type="number" class="form-control" id="zipCode-M" placeholder="90210">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>    
+
+    </div>
+
+    <!-- Additional Personal Information -->
+    <div class="row">        
+
+        <div class="col-md-12 col-sm-12">
+
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h2 class="panel-title">Additional Personal Information</h2>
+                </div>
+
+                <div class="panel-body">
+
+                    <div class="col-md-6 col-sm-6">
+
+                        <div class="form-group">
+                            <label for="socialSecurityNumber">Social Security Number</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                                <input form="applicationform" type="number" class="form-control" id="socialSecurityNumber" placeholder="123-45-6789">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dateOfBirth">Date of Birth</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                <input form="applicationform" type="date" class="form-control" id="dateOfBirth" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentID">Student ID (optional)</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-id-card"></i></span>
+                                <input form="applicationform" type="number" class="form-control" id="studentID" placeholder="123456789">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+
+                        <div class="form-group">
+                            <label for="ethnicity">Race / Ethnicity</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-group"></i></span>
+                                <select form="applicationform" id="ethnicity" class="selectpicker form-control" data-live-search="true">
+                                    <option></option>
+                                    <option>Alaskan Native or American Indian</option>
+                                    <option>Asian or Pacific Islander</option>
+                                    <option>Black, Non-Hispanic</option>
+                                    <option>Hispanic</option>
+                                    <option>White, Non-Hispanic</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-venus-mars"></i></span>
+                                <select form="applicationform" id="gender" class="selectpicker form-control" data-live-search="true">
+                                    <option></option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="citizenship">Citizenship</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+                                <select form="applicationform" id="citizenship" class="selectpicker form-control" data-live-search="true">
+                                    <option></option>
+                                    <option>U.S. Citizen</option>
+                                    <option>Resident Alien</option>
+                                    <option>Non-Resident Alien</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>       
+
+    </div>
+
+    <!-- Admission Request -->
+    <div class="row">        
+
+        <div class="col-md-12 col-sm-12">
+
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h2 class="panel-title">Admission Request</h2>
+                </div>
+
+                <div class="panel-body">
+
+                    <div class="col-md-6 col-sm-6">
+
+                        <div class="form-group">
+                            <label for="term">Term</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
+                                <select form="applicationform" id="term" class="selectpicker show-tick form-control" data-live-search="true">
+                                    <option></option>
+                                    <option>Fall</option>
+                                    <option>Spring</option>
+                                    <option>Summer</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="year">Year</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
+                                <select form="applicationform" id="year" class="selectpicker show-tick form-control" data-live-search="true">
+                                    <option></option>
+                                    <option>2017</option>
+                                    <option>2018</option>
+                                    <option>2019</option>
+                                    <option>2020</option>
+                                    <option>2021</option>
+                                    <option>2022</option>
+                                    <option>2023</option>
+                                    <option>2024</option>
+                                    <option>2025</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="program">Program</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
+                                <select form="applicationform" id="program" class="selectpicker show-tick form-control" data-live-search="true">
+                                    <option></option>
+                                    <option>Full-Time MIS</option>
+                                    <option>Part-Time MIS</option>
+                                    <option>Professional MIS</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">				
+                            <label>Requested Scholarship or Assistantship?
+                                <label form="applicationform" class="checkbox-inline"><input type="checkbox" value="">Yes</label>
+                            </label>
+                        </div>
+
+                        
+
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        
+                        <div class="form-group">				
+                            <label>Have you ever applied to the University of Arkansas?
+                                <label class="checkbox-inline"><input type="checkbox" value="">Yes</label>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">When?</span>
+                                <input form="applicationform" type="text" class="form-control" id="previousUARKAppDate" placeholder="Semester / Year">
+                            </div>
+                        </div><br>
+
+                        <div class="form-group">				
+                            <label>Did you enroll?
+                                <label class="checkbox-inline"><input type="checkbox" value="">Yes</label>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">When?</span>
+                                <input form="applicationform" type="text" class="form-control" id="enrolledUARKDate" placeholder="Semester / Year">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">If you enrolled, were you:</span>
+                                <select form="applicationform" id="enrolledUARKStatus" class="selectpicker show-tick form-control" data-live-search="true" title="">
+                                    <option></option>
+                                    <option>Undergraduate</option>
+                                    <option>Graduate</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        
+    </div>
+	
+    <!-- Credentials -->
+    <div class="row">
+
+        <div class="col-md-12 col-sm-12">
+
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h2 class="panel-title">Credentials</h2>
+                </div>
+
+                <div class="panel-body">
+
+                    <div class="col-md-6 col-sm-6">
+
+                        <h4 class="text-info">Testing Information</h4>
+                        <label form="applicationform" class="checkbox-inline"><input type="checkbox" value="">GMAT</label>
+                        <label form="applicationform" class="checkbox-inline"><input type="checkbox" value="">GRE</label>
+                        <p class="help-block">Check the exam(s) you have taken.</p>
+                        
+                        <div class="form-group">
+                            <label form="applicationform" for="gmatTestDate">GMAT Test Date</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                <input form="applicationform" type="date" class="form-control" id="gmatTestDate" placeholder="">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="gmatQScore">GMAT Quantitative Score</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                <input form="applicationform" type="number" pattern="\d*" class="form-control" id="gmatQScore" placeholder="Scaled: 6-51">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="gmatVScore">GMAT Verbal Score</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                <input form="applicationform" type="number" pattern="\d*" class="form-control" id="gmatVScore" placeholder="Scaled: 6-51">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="gmatTScore">GMAT Total Score</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                <input form="applicationform" type="number" pattern="\d*" class="form-control" id="gmatTScore" placeholder="Range: 200-800">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="greTestDate">GRE Test Date</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                <input form="applicationform" type="date" class="form-control" id="greTestDate" placeholder="">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="greQScore">GRE Quantitative Score</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                <input form="applicationform" type="number" pattern="\d*" class="form-control" id="greQScore" placeholder="Range: 130-170">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="greVScore">GRE Verbal Score</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                <input form="applicationform" type="number" pattern="\d*" class="form-control" id="greVScore" placeholder="Range: 130-170">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="greTScore">GRE Total Score</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                <input form="applicationform" type="number" pattern="\d*" class="form-control" id="greTScore" placeholder="Range: 260-340">
+                            </div>
+                        </div>                        
+                       
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+
+                        <h4 class="text-info">International Testing Information</h4>
+                        <label form="applicationform" class="checkbox-inline"><input type="checkbox" value="">TOEFL iBT</label>
+                        <label form="applicationform" class="checkbox-inline"><input type="checkbox" value="">TOEFL PBT</label>
+                        <label form="applicationform" class="checkbox-inline"><input type="checkbox" value="">TSE</label>
+                        <p class="help-block">Check the exam(s) you have taken. At least one TOEFL exam is required.</p>
+                        
+                        <div class="form-group">
+                            <label for="toeflTestDate">TOEFL Test Date</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                <input form="applicationform" type="date" class="form-control" id="toeflTestDate" placeholder="">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="toefliBTScore">TOEFL iBT Score (Online Exam)</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                <input form="applicationform" type="number" pattern="\d*" class="form-control" id="toefliBTScore" placeholder="Range: 0-120">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="toeflPBTScore">TOEFL PBT Score (Written Exam)</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                <input form="applicationform" type="number" pattern="\d*" class="form-control" id="toeflPBTScore" placeholder="Range: 310-677">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="tseTestDate">TSE Test Date</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                <input form="applicationform" type="date" class="form-control" id="tseTestDate" placeholder="">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="tseScore">TSE Total Score</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                <input form="applicationform" type="number" pattern="\d*" class="form-control" id="tseScore" placeholder="Range: 20-60">
+                            </div>
+                        </div>
+
+                        <h4 class="text-info">Education Information</h4>
+                        
+                        <div class="form-group">
+                            <label for="undergradGPA">Undergraduate GPA</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                <input form="applicationform" type="number" class="form-control" id="undergradGPA" placeholder="Range: 0.00-4.00">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="undergradJRSRGPA">GPA in Junior/Senior Years</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                <input form="applicationform" type="number" class="form-control" id="undergradJRSRGPA" placeholder="Range: 0.00-4.00">
+                            </div>
+                            
+                        </div>  
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>        
+
+    </div>
+    
+    <!-- Documents -->
+    <div class="row">        
+
+        <div class="col-md-12 col-sm-12">
+
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h2 class="panel-title">Documents</h2>
+                </div>
+
+                <div class="panel-body">
+
+                    <div class="col-md-6 col-sm-6">
+                        
+                        <label for="resume">Résumé</label>
+                        <input type="file" class="filestyle" id="resume" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
+                                                
+                        <label for="essayQuestions">Essay Questions</label>
+                        <input type="file" class="filestyle" id="essayQuestions" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
+                        
+                        <label for="transcript">Official Transcript</label>
+                        <input type="file" class="filestyle" id="transcript" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
+                                                
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        
+                        <label for="recLetter1">Recommendation Letter #1</label>
+                        <input type="file" class="filestyle" id="recLetter1" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
+                                                
+                        <label for="recLetter2">Recommendation Letter #2</label>
+                        <input type="file" class="filestyle" id="recLetter2" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
+                        
+                        <label for="recLetter3">Recommendation Letter #3</label>
+                        <input type="file" class="filestyle" id="recLetter3" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
+                                                
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>       
+
+    </div>
+
+    <!-- Application Final Checklist -->
+    <div class="row">        
+
+        <div class="col-md-12 col-sm-12">
+
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h2 class="panel-title">Application Final Checklist</h2>
+                </div>
+
+                <div class="panel-body">
+
+                    <div class="col-md-6 col-sm-6">
+
+                        <h4 class="text-info">Application Materials Checklist</h4>
+                        <ul class="list-group">
+                                <li class="checkbox"><label><input form="applicationform" type="checkbox">Application fee</label></li>
+                                <li class="checkbox"><label><input form="applicationform" type="checkbox">Application form</label></li>
+                                <li class="checkbox"><label><input form="applicationform" type="checkbox">Essay questions</label></li>
+                                <li class="checkbox"><label><input form="applicationform" type="checkbox">GMAT/GRE score</label></li>
+                                <li class="checkbox"><label><input form="applicationform" type="checkbox">Official transcript from each university attended (do not send U of A transcripts)</label></li>
+                                <li class="checkbox"><label><input form="applicationform" type="checkbox">Resume</label></li>
+                                <li class="checkbox"><label><input form="applicationform" type="checkbox">Three letters of recommendation</label></li>
+                        </ul>
+
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+
+                        <h4 class="text-info">International Applicants Only</h4>
+                        <ul class="list-group">
+                                <li class="checkbox"><label><input form="applicationform" type="checkbox">Summary of Educational Experience</label></li>
+                                <li class="checkbox"><label><input form="applicationform" type="checkbox">Supplemental & Financial Information Form</label></li>
+                                <li class="checkbox"><label><input form="applicationform" type="checkbox">TOEFL</label></li>
+                                <li class="checkbox"><label><input form="applicationform" type="checkbox">TSE</label></li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>      
+
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3 text-center">
+            <label class="checkbox-inline">
+                <input type="checkbox" value="">
+                I hereby affirm that all information supplied is complete and accurate. It is my understanding that I shall not be considered for admission until I 
+                have submitted all necessary documents and paid the application fee. I further agree to inform the Graduate School of Business of any change in my plans 
+                to attend the University of Arkansas. I understand that withholding information requested or giving false information may make me ineligible for admission, 
+                enrollment, and may subject me to reclassification of residency status for tuition purposes and/or withdrawal from the University. 
+                <b>I further agree that my electronic signature on this application verifies that "on my honor as a graduate student at the University of Arkansas, 
+                I certify that I will neither give nor receive inappropriate assistance on the work I do for my degree."</b>
+            </label>
+            <br><br>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">Electronic Signature:</span>
+                    <input type="text" class="form-control" id="electronicSignature" placeholder="Type full name here">
+                </div>
+            </div>
+        <div class="col-md-2 col-sm-4 col-md-offset-5 col-sm-offset-4 text-center">      
+            <br>
+            <button type="button" form="formid" class="btn btn-primary btn-lg" id="submitButton">Submit Application</button>
+			<input form="applicationform" type="submit">
+            <br><br>
+        </div>
+    </div>
+        
+    </form>
+    
+</div>
+
+</body>
+</html>

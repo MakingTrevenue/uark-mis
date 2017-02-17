@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UARK Master of Information Systems</title>
+    <link rel="icon" href="./img/favicon.png">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Font Awesome JavaScript -->
+    <script src="https://use.fontawesome.com/2fe8cd2f19.js"></script>
+	
+	<!-- Custom Styles & Scripts -->
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<script src="./js/scripts.js"></script>
+
+
+</head>
+<body>
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title text-info text-center" id="loginModalHeaderLabel">Login</h3>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                    <input id="loginUsername" type="text" class="form-control" name="loginUsername" placeholder="Username">
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                    <input id="loginPassword" type="password" class="form-control" name="loginPassword" placeholder="Password">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-block">Login</button><br>
+                <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sign Up Modal -->
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title text-info text-center" id="signUpModalHeaderLabel">Sign Up</h3>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                    <input id="signUpName" type="text" class="form-control" name="signUpName" placeholder="Full Name">
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+                    <input id="signUpEmail" type="email" class="form-control" name="signUpEmail" placeholder="Email Address">
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user-plus fa-fw"></i></span>
+                    <input id="signUpUsername" type="text" class="form-control" name="signUpUsername" placeholder="Username">
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                    <input id="signUpPassword" type="password" class="form-control" name="signUpPassword" placeholder="Password">
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                    <input id="signUpPasswordConfirm" type="password" class="form-control" name="signUpPasswordConfirm" placeholder="Confirm Password">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-block">Sign Up</button><br>
+                <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="./index.html"><img src="./img/ualogowhite.png"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li><a href="./application.html">Application</a></li>
+                <li class="active"><a href="./advising.html">Advising</a></li>
+                <li><a href="./enrollment.html">Enrollment</a></li>
+                <li><a href="./graduation.html">Graduation</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#signUpModal" data-toggle="modal"><span class="fa fa-user-plus"></span>&nbsp; Sign Up</a></li>
+                <li><a href="#loginModal" data-toggle="modal"><span class="fa fa-sign-in"></span>&nbsp; Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Content -->
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-info text-center">Advising Portal is under construction!</h1>
+            <h3 class="text-info">Student Information</h3>
+
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input id="" type="text" class="form-control" name="" placeholder="Name">
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+                    <input id="" type="text" class="form-control" name="" placeholder="Student ID">
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
+                    <input id="" type="text" class="form-control" name="" placeholder="Major">
+                </div><br>
+            </div>
+
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon">Term</span>
+                    <select id="" class="selectpicker show-tick form-control" data-live-search="true" title="">
+                        <option>Fall</option>
+                        <option>Spring</option>
+                        <option>Summer</option>
+                    </select>
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon">Year</span>
+                    <select id="" class="selectpicker show-tick form-control" data-live-search="true" title="">
+                        <option>2017</option>
+                        <option>2018</option>
+                        <option>2019</option>
+                        <option>2020</option>
+                        <option>2021</option>
+                        <option>2022</option>
+                        <option>2023</option>
+                    </select>
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon">Program</span>
+                    <select id="" class="selectpicker show-tick form-control" data-live-search="true" title="">
+                        <option>Full-Time MIS</option>
+                        <option>Part-Time MIS</option>
+                        <option>Professional MIS</option>
+                    </select>
+                </div><br>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-info">Advising Form</h3>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3">Course #1:</span>
+                    <input type="text" class="form-control" id="" aria-describedby="basic-addon3">
+                </div><br>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3">Section:</span>
+                    <input type="text" class="form-control" id="" aria-describedby="basic-addon3">
+                </div><br>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3">Time:</span>
+                    <input type="text" class="form-control" id="" aria-describedby="basic-addon3">
+                </div><br>
+            </div>
+
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3">Course #2:</span>
+                    <input type="text" class="form-control" id="" aria-describedby="basic-addon3">
+                </div><br>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3">Section:</span>
+                    <input type="text" class="form-control" id="" aria-describedby="basic-addon3">
+                </div><br>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3">Time:</span>
+                    <input type="text" class="form-control" id="" aria-describedby="basic-addon3">
+                </div><br>
+            </div>
+
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3">Course #3:</span>
+                    <input type="text" class="form-control" id="" aria-describedby="basic-addon3">
+                </div><br>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3">Section:</span>
+                    <input type="text" class="form-control" id="" aria-describedby="basic-addon3">
+                </div><br>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3">Time:</span>
+                    <input type="text" class="form-control" id="" aria-describedby="basic-addon3">
+                </div><br>
+            </div>
+
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3">Course #4:</span>
+                    <input type="text" class="form-control" id="" aria-describedby="basic-addon3">
+                </div><br>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3">Section:</span>
+                    <input type="text" class="form-control" id="" aria-describedby="basic-addon3">
+                </div><br>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3">Time:</span>
+                    <input type="text" class="form-control" id="" aria-describedby="basic-addon3">
+                </div><br>
+            </div>
+
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3">Course #5:</span>
+                    <input type="text" class="form-control" id="" aria-describedby="basic-addon3">
+                </div><br>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3">Section:</span>
+                    <input type="text" class="form-control" id="" aria-describedby="basic-addon3">
+                </div><br>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3">Time:</span>
+                    <input type="text" class="form-control" id="" aria-describedby="basic-addon3">
+                </div><br>
+            </div>
+
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3">Course #6:</span>
+                    <input type="text" class="form-control" id="" aria-describedby="basic-addon3">
+                </div><br>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3">Section:</span>
+                    <input type="text" class="form-control" id="" aria-describedby="basic-addon3">
+                </div><br>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3">Time:</span>
+                    <input type="text" class="form-control" id="" aria-describedby="basic-addon3">
+                </div><br>
+            </div>
+
+            <div class="col-md-12">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    <input id="" type="email" class="form-control" name="" placeholder="Comments">
+                </div><br>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</div>
+
+</body>
+</html>
