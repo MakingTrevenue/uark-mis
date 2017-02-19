@@ -4,6 +4,7 @@ Web application for University of Arkansas Master of Information Systems end-to-
 ---
 ## Team Project Resources & Development
 ### [AWS Console](https://console.aws.amazon.com/console/home)
+### [Google Drive Folder](https://drive.google.com/drive/folders/0B2mY7ahqbIFuWmZuemhoX2ZtTEU?usp=sharing)
 ### [Kanban Board on Trello](https://trello.com/b/kZ0XonvQ/maintenance-project)
 ### [Lucid Chart ERD](https://www.lucidchart.com/documents/edit/96ca7a6d-3023-42ea-927e-7d43fdfb416c)
 ### [phpMyAdmin](https://www.uark.us/phpmyadmin/)
