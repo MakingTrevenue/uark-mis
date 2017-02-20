@@ -21,4 +21,5 @@ Web application for University of Arkansas Master of Information Systems end-to-
 ---
 ## Miscellaneous Resources
 ### [GitHub Student Pack](https://education.github.com/pack/offers)
+### [Mockaroo Fake Data Generation](https://mockaroo.com/projects/3067)
 ---
