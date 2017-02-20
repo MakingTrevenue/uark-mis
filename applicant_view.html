@@ -46,10 +46,11 @@
         <div class="collapse navbar-collapse" id="myNavbar">
 
             <ul class="nav navbar-nav">
-                <li class="active"><a href="./application.html">Application</a></li>
+                <li><a href="./application.html">Application</a></li>
                 <li><a href="./advising.html">Advising</a></li>
                 <li><a href="./enrollment.html">Enrollment</a></li>
                 <li><a href="./graduation.html">Graduation</a></li>
+                <li class="active"><a href="./applicant_view.html">Applicant</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -147,102 +148,91 @@
 <!-- Page Content Container -->
 <div class="container-fluid">
     
-    <form id="applicationform" action="/application.php" method="post">
+    <form id="" action="" method="">
         
     <!-- Personal & Contact Information -->
     <div class="row">
 
-        <div class="col-md-12 col-sm-12">
+        <h2 class="text-center text-danger">Trevor V. Darby</h2><br>
+
+        <div class="col-md-4 col-sm-12">
 
             <div class="panel panel-primary">
 
                 <div class="panel-heading">
-                    <h2 class="panel-title">Personal & Contact Information</h2>
+                    <p class="panel-title">Contact Information</p>
                 </div>
 
                 <div class="panel-body">
 
-                    <!-- Personal & Contact Information Left Column -->
-                    <div class="col-md-6 col-sm-6">
+                    <h4><b>Email: </b><br>
+                    tvdarby@email.uark.edu</h4>
 
-                        <div class="form-group">
-                            <label for="firstName">First Name</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" class="form-control" name="firstName" id="firstName" placeholder="John">
-                            </div>
-                        </div>
+                    <h4><b>Primary Phone: </b><br>
+                    (479) 555-5555</h4>
 
-                        <div class="form-group">
-                            <label for="middleName">Middle Name (optional)</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" class="form-control" name="middleName" id="middleName" placeholder="Edward">
-                            </div>
-                        </div>
+                    <h4><b>Secondary Phone: </b><br>
+                    (479) 555-1234</h4>
 
-                        <div class="form-group">
-                            <label for="lastName">Last Name</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Doe">
-                            </div>
-                        </div>
+                    <h4><b>Permanent Address: </b><br>
+                    123 Oak Street<br>
+                    Fayetteville, AR 72701</h4>
 
-                        <div class="form-group">
-                            <label for="preferredName">Preferred Name (optional)</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" class="form-control" name="preferredName"  id="preferredName" placeholder="John E. Doe">
-                            </div>
-                        </div>
+                    <h4><b>Mailing Address: </b><br>
+                    123 Oak Street<br>
+                    Fayetteville, AR 72701</h4> 
 
-                    </div>
+                </div>
 
-                    <!-- Personal & Contact Information Right Column -->
-                    <div class="col-md-6 col-sm-6">
+            </div>
 
-                        <div class="form-group">
-                            <label for="primaryEmail">Primary Email</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                <input type="email" class="form-control" name="primaryEmail"  id="primaryEmail" placeholder="example@domain.com">
-                            </div>
-                        </div>
+        </div>
 
-                        <div class="form-group">
-                            <label for="secondaryEmail">Secondary Email (optional)</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
-                                <input type="email" class="form-control" name="secondaryEmail"  id="secondaryEmail" placeholder="alternate@domain.com">
-                            </div>
-                        </div>
+        <div class="col-md-4 col-sm-12">
 
-                        <div class="form-group">
-                            <label for="primaryPhone">Primary Phone</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                <input type="tel" class="form-control" name="primaryPhone"  id="primaryPhone" placeholder="(800) 555-1234">
-                            </div>
-                        </div>
+            <div class="panel panel-primary">
 
-                        <div class="form-group">
-                            <label for="secondaryPhone">Secondary Phone (optional)</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
-                                <input type="tel" class="form-control" name="secondaryPhone"  id="secondaryPhone" placeholder="(800) 555-1234">
-                            </div>
-                        </div>
+                <div class="panel-heading">
+                    <h2 class="panel-title">Personal Information</h2>
+                </div>
 
-                    </div>
+                <div class="panel-body">
+
+                    <h4><b>Social Security Number: </b>123-45-6789</h4>
+                    <h4><b>Date of Birth: </b>09/22/1995 (Age 21)</h4>
+                    <h4><b>Race: </b>White, Non-Hispanic</h4>
+                    <h4><b>Gender: </b>Male</h4>
+                    <h4><b>Citizenship: </b>Non-Resident Alien</h4>
+                    <h4><b>Visa Type: </b>F-1 Student Visa</h4>
+                    <h4><b>Country of Citizenship: </b>Not USA</h4>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 col-sm-12">
+
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h2 class="panel-title">Application Info</h2>
+                </div>
+
+                <div class="panel-body">
+
+                    <h4><b>Application Term: </b>Fall 2017</h4>
+                    <h4><b>Application Program: </b>Professional MIS</h4>
+                    <h4><b>Requested Scholarship/Assistantship: </b>Yes</h4>
+                    <h4><b>Previous Application: </b>Yes, Fall 2016</h4>
+                    <h4><b>Previous Enrollment: </b>Yes, Fall 2016 as Undergraduate</h4>
 
                 </div>
 
             </div>
 
         </div>       
-
-    </div>
 
     </div>
         
