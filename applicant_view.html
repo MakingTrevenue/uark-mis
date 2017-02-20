@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>UARK MIS | Applicant View</title>
+    <link rel="icon" href="./img/favicon.png">
+
+    <!-- Latest Bootstrap compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+
+    <!-- Latest Bootstrap & jQuery compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Font Awesome JavaScript -->
+    <script src="https://use.fontawesome.com/2fe8cd2f19.js"></script> 
+
+    <!-- Custom JavaScript -->
+    <script type="text/javascript" src="./js/scripts.js"></script>
+    <script type="text/javascript" src="./js/bootstrap-filestyle.min.js"></script>
+
+</head>
+
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="./index.html"><img src="./img/ualogowhite.png"></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="myNavbar">
+
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="./application.html">Application</a></li>
+                <li><a href="./advising.html">Advising</a></li>
+                <li><a href="./enrollment.html">Enrollment</a></li>
+                <li><a href="./graduation.html">Graduation</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#signUpModal" data-toggle="modal"><span class="fa fa-user-plus"></span>&nbsp; Sign Up</a></li>
+                <li><a href="#loginModal" data-toggle="modal"><span class="fa fa-sign-in"></span>&nbsp; Login</a></li>
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <!-- Login Modal Header -->
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+                <h3 class="modal-title text-info text-center" id="loginModalHeaderLabel">Login</h3>
+            </div>
+
+            <!-- Login Modal Body -->
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                    <input id="loginUsername" type="text" class="form-control" name="loginUsername" placeholder="Username">
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                    <input id="loginPassword" type="password" class="form-control" name="loginPassword" placeholder="Password">
+                </div>
+            </div>
+
+            <!-- Login Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-block">Login</button><br>
+                <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Sign Up Modal -->
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <!-- Sign Up Modal Header -->
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+                <h3 class="modal-title text-info text-center" id="signUpModalHeaderLabel">Sign Up</h3>
+            </div>
+
+            <!-- Sign Up Modal Body -->
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                    <input id="signUpName" type="text" class="form-control" name="signUpName" placeholder="Full Name">
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+                    <input id="signUpEmail" type="email" class="form-control" name="signUpEmail" placeholder="Email Address">
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user-plus fa-fw"></i></span>
+                    <input id="signUpUsername" type="text" class="form-control" name="signUpUsername" placeholder="Username">
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                    <input id="signUpPassword" type="password" class="form-control" name="signUpPassword" placeholder="Password">
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                    <input id="signUpPasswordConfirm" type="password" class="form-control" name="signUpPasswordConfirm" placeholder="Confirm Password">
+                </div>
+            </div>
+
+            <!-- Sign Up Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-block">Sign Up</button><br>
+                <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Page Content Container -->
+<div class="container-fluid">
+    
+    <form id="applicationform" action="/application.php" method="post">
+        
+    <!-- Personal & Contact Information -->
+    <div class="row">
+
+        <div class="col-md-12 col-sm-12">
+
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h2 class="panel-title">Personal & Contact Information</h2>
+                </div>
+
+                <div class="panel-body">
+
+                    <!-- Personal & Contact Information Left Column -->
+                    <div class="col-md-6 col-sm-6">
+
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input type="text" class="form-control" name="firstName" id="firstName" placeholder="John">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="middleName">Middle Name (optional)</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input type="text" class="form-control" name="middleName" id="middleName" placeholder="Edward">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Doe">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferredName">Preferred Name (optional)</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input type="text" class="form-control" name="preferredName"  id="preferredName" placeholder="John E. Doe">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Personal & Contact Information Right Column -->
+                    <div class="col-md-6 col-sm-6">
+
+                        <div class="form-group">
+                            <label for="primaryEmail">Primary Email</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                <input type="email" class="form-control" name="primaryEmail"  id="primaryEmail" placeholder="example@domain.com">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="secondaryEmail">Secondary Email (optional)</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+                                <input type="email" class="form-control" name="secondaryEmail"  id="secondaryEmail" placeholder="alternate@domain.com">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="primaryPhone">Primary Phone</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                <input type="tel" class="form-control" name="primaryPhone"  id="primaryPhone" placeholder="(800) 555-1234">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="secondaryPhone">Secondary Phone (optional)</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                                <input type="tel" class="form-control" name="secondaryPhone"  id="secondaryPhone" placeholder="(800) 555-1234">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>       
+
+    </div>
+
+    </div>
+        
+    </form>
+    
+</div>
+
+</body>
+</html>
