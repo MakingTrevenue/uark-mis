@@ -8,3 +8,7 @@
 	height: 100%;
 	width: auto;
 }
+
+.panel-body {
+	background: #EFEFEF;
+}
