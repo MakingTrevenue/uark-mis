@@ -91,4 +91,6 @@
 			$uploadOk = 0;
 		}*/
 	}
+
+	phpinfo();
 ?>
