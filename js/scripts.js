@@ -15,4 +15,5 @@ function duplicate() {
     var clone = original.cloneNode(true); // "deep" clone
     clone.id = "collegeDuplicate" + ++i; // there can only be one element with an ID
     original.parentNode.appendChild(clone);
+    return false; //prevent form submission
 }

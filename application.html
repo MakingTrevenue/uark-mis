@@ -23,7 +23,7 @@
     <script src="https://use.fontawesome.com/2fe8cd2f19.js"></script> 
 
     <!-- Custom JavaScript -->
-    <script type="text/javascript" src="./js/scripts.js"></script>
+    
     <script type="text/javascript" src="./js/bootstrap-filestyle.min.js"></script>
 
 </head>
@@ -585,7 +585,7 @@
                     <h2 class="panel-title">Colleges Attended</h2>
                 </div>
 
-                <div class="panel-body">
+                <div class="panel-body" id="collegeDuplicate">
 
                     <!-- Colleges Attended Left Column-->
                     <div class="col-md-6 col-sm-6">
@@ -659,10 +659,14 @@
                             </div>
                         </div>
 
+                        <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3 text-center">
+                            <button id="duplicateButton" class="btn btn-success" onlick="duplicate()">Add another college</button>
+                        </div>
+
                     </div>
 
-                </div>
-
+                </div>                
+             
             </div>
 
         </div>
@@ -971,6 +975,8 @@
     </form>
     
 </div>
+
+<script type="text/javascript" src="./js/scripts.js"></script>
 
 </body>
 </html>
