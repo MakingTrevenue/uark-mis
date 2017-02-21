@@ -74,7 +74,8 @@
 		echo "</table>";	
 	}
 
-	$target_dir = "../private/uploads/";
+	//$target_dir = "../private/uploads/";
+	$target_dir="/";
 	$target_file = $target_dir . basename($_FILES["resumeFile"]["name"]);
 	$uploadOk = 1;
 	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
