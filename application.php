@@ -75,11 +75,11 @@
 	}
 
 	$target_dir = "../private/uploads/";
-	$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+	$target_file = $target_dir . basename($_FILES["resumeFile"]["name"]);
 	$uploadOk = 1;
 	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 	// Check if image file is a actual image or fake image
-	if(isset($_POST["resumeFile"])) {
+	if(isset($_POST["submit"])) {
 		$uploadOk=1;
 		/*
 		$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
