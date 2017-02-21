@@ -81,16 +81,16 @@
 	// Check if image file is a actual image or fake image
 	if(isset($_POST["submit"])) {
 		$uploadOk=1;
-		/*
+		
 		$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
 		if($check !== false) {
 			echo "File is an image - " . $check["mime"] . ".";
 			$uploadOk = 1;
 		} else {
 			echo "File is not an image.";
-			$uploadOk = 0;
-		}*/
+			$uploadOk = 1;
+		}
 	}
+	echo "file supposedly submitted lel";
 
-	phpinfo();
 ?>
