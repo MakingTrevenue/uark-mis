@@ -51,20 +51,26 @@
 		}
 		$conn = null;
 	}else{
+		echo "<table border=.5>";
 		foreach( $_POST as $stuff => $val ) {
+			echo "<tr>";
 			if( is_array( $stuff ) ) {
 				foreach( $stuff as $thing) {
 					echo $thing;
 				}
 			} else {
+				echo "<td>";
 				echo $stuff;
-				echo " => ";
+				echo "</td>";
+				echo "<td>";
 				if($stuff=="socialSecurityNumber")
 					echo password_hash($val,PASSWORD_DEFAULT);
 				else
 					echo $val;
-				echo "<br>";
+				echo "</td>";
 			}
-		}	
+			echo "</tr>";
+		}
+		echo "</table>";	
 	}
 ?>
