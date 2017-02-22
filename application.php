@@ -78,9 +78,7 @@
 		$file_size=$_FILES['resumeFile']['size'];
 		$file_tmp=$_FILES['resumeFile']['tmp_name'];
 		$file_type=$_FILES['resumeFile']['type'];
-		$name=$_POST['name'];
-		$codes=$_POST['code'];
-		move_uploaded_file($file_tmp,"../private".$file_name);
+		move_uploaded_file($file_tmp,"../docs/".$file_name);
 
 
 	}
