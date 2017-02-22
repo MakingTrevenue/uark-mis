@@ -109,7 +109,7 @@
                 </button>
                 <h3 class="modal-title text-info text-center" id="signUpModalHeaderLabel">Sign Up</h3>
             </div>
-
+            <form id="accountsignup" action="/signup.php" method="post" enctype="multipart/form-data">
             <!-- Sign Up Modal Body -->
             <div class="modal-body">
                 <div class="input-group">
@@ -137,10 +137,11 @@
             <!-- Sign Up Modal Footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary btn-block">Sign Up</button><br>
-                <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Close</button>
+                <input type="submit" value="Create Account" class="btn btn-danger btn-block" data-dismiss="modal">
             </div>
 
         </div>
+        </form>
     </div>
 </div>
 
