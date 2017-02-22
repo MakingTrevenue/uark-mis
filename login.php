@@ -17,7 +17,7 @@
             $row = $stmt->fetch();
 
 
-			$userpassword = $_POST['signUpPassword'];
+			$userpassword = $_POST['loginPassword'];
             $userpassword = password_hash($userpassword,PASSWORD_DEFAULT);            
 
             if($userpassword==$row)
