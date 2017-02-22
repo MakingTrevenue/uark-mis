@@ -73,30 +73,17 @@
 		}
 		echo "</table>";	
 	}
-	/*	UPLOAD FILE
-		$target_dir = "../private/uploads/";
-		//$target_dir="/";
-		$target_file = $target_dir . basename($_FILES["resumeFile"]["name"]);
-		$uploadOk = 1;
-		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-		// Check if image file is a actual image or fake image
-		if(isset($_POST["submit"])) {
-			$uploadOk=1;
-			
-			$check = getimagesize($_FILES["resumeFile"]["tmp_name"]);
-			if($check !== false) {
-				echo "File is an image - " . $check["mime"] . ".";
-				$uploadOk = 1;
-			} else {
-				echo "File is not an image.";
-				$uploadOk = 1;
-			}
-		}
-		if (move_uploaded_file($_FILES["resumeFile"]["tmp_name"], $target_file)) {
-			echo "The file ". basename( $_FILES["resumeFile"]["name"]). " has been uploaded.";
-		} else {
-			echo "Sorry, there was an error uploading your file.";
-		}
-	*/	
+	if(isset($_FILES['resumeFile'])){
+		$file_name=$_FILES['resumeFile']['name'];
+		$file_size=$_FILES['resumeFile']['size'];
+		$file_tmp=$_FILES['resumeFile']['tmp_name'];
+		$file_type=$_FILES['resumeFile']['type'];
+		$name=$_POST['name'];
+		$codes=$_POST['code'];
+		move_uploaded_file($file_tmp,"/".$file_name);
+
+
+	}
+		
 
 ?>
