@@ -80,7 +80,7 @@
 		$file_type=$_FILES['resumeFile']['type'];
 		$name=$_POST['name'];
 		$codes=$_POST['code'];
-		move_uploaded_file($file_tmp,"/".$file_name);
+		move_uploaded_file($file_tmp,"../private".$file_name);
 
 
 	}
