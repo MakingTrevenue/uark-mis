@@ -11,9 +11,9 @@
 			$file_size=$_FILES[$fn]['size'];
 			$file_tmp=$_FILES[$fn]['tmp_name'];
 			$file_type=$_FILES[$fn]['type'];
-			move_uploaded_file($file_tmp,"../docs/".md5_file($_FILES[$fn]['tmp_name']));
+			move_uploaded_file($file_tmp,"../docs/".md5_file($_FILES[$fn]['tmp_name']) . $file_type);
 		}else{
-			echo "no file " . $fn;
+
 		}
 	}
 
