@@ -1,12 +1,10 @@
 // Scripts
-
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 
 });
 
 //Duplicate Function
 document.getElementById('duplicateButton').onclick = duplicate;
-
 
 var i = 0;
 var original = document.getElementById('collegeDuplicate');
@@ -17,3 +15,11 @@ function duplicate() {
     original.parentNode.appendChild(clone);
     return false; //prevent form submission
 }
+
+//Checkbox Show On Clicked
+$(document).ready(function(){
+    $('input[type="checkbox"]').click(function(){
+        var inputValue = $(this).attr("value");
+        $("." + inputValue).toggle();
+    });
+})

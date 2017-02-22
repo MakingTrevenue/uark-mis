@@ -29,3 +29,9 @@
 .panel-body {
 	border-radius: 0;
 }
+
+/* Checkboxes Function */
+.box {
+
+    display: none;
+}

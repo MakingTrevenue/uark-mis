@@ -23,7 +23,6 @@
     <script src="https://use.fontawesome.com/2fe8cd2f19.js"></script> 
 
     <!-- Custom JavaScript -->
-    
     <script type="text/javascript" src="./js/bootstrap-filestyle.min.js"></script>
 
 </head>
@@ -528,40 +527,63 @@
                         
                         <div class="form-group">				
                             <label>Have you ever applied to the University of Arkansas?
-                                <label class="checkbox-inline"><input name="applied" type="checkbox" value="">Yes</label>
+                                <label class="checkbox-inline"><input name="applied" type="checkbox" value="appliedBefore">Yes</label>
                             </label>
                         </div>
 
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon">When?</span>
-                                <input type="text" class="form-control" name="appliedWhen" id="previousUARKAppDate" placeholder="Semester / Year">
-                            </div>
-                        </div><br>
+                        <div class="appliedBefore box">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">When?</span>
+                                    <input type="text" class="form-control" name="appliedWhen" id="previousUARKAppDate" placeholder="Semester / Year">
+                                </div>
+                            </div><br>
+                        </div>
 
                         <div class="form-group">				
                             <label>Did you enroll?
-                                <label class="checkbox-inline"><input name="enrolled" type="checkbox" value="">Yes</label>
+                                <label class="checkbox-inline"><input name="enrolled" type="checkbox" value="enrolledBefore">Yes</label>
                             </label>
                         </div>
 
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon">When?</span>
-                                <input type="text" class="form-control" name="enrolledWhen"vid="enrolledUARKDate" placeholder="Semester / Year">
+                        <div class="enrolledBefore box">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">When?</span>
+                                    <input type="text" class="form-control" name="enrolledWhen"vid="enrolledUARKDate" placeholder="Semester / Year">
+                                </div>
                             </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">If you enrolled, were you:</span>
+                                    <select name="enrolledUARKStatus" id="enrolledUARKStatus" class="selectpicker show-tick form-control" data-live-search="true" title="">
+                                        <option></option>
+                                        <option>Undergraduate</option>
+                                        <option>Graduate</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
                         </div>
 
+                        <h4 class="text-info">Education Information</h4>
+                        
                         <div class="form-group">
+                            <label for="undergradGPA">Undergraduate GPA</label>
                             <div class="input-group">
-                                <span class="input-group-addon">If you enrolled, were you:</span>
-                                <select name="enrolledUARKStatus" id="enrolledUARKStatus" class="selectpicker show-tick form-control" data-live-search="true" title="">
-                                    <option></option>
-                                    <option>Undergraduate</option>
-                                    <option>Graduate</option>
-                                    <option>Other</option>
-                                </select>
+                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                <input type="number" class="form-control" name="undergradGPA" id="undergradGPA" placeholder="Range: 0.00-4.00">
                             </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="undergradJRSRGPA">GPA in Junior/Senior Years</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                <input type="number" class="form-control" name="" id="undergradJRSRGPA" placeholder="Range: 0.00-4.00">
+                            </div>                            
                         </div>
 
                     </div>
@@ -575,6 +597,7 @@
     </div>
 
     <!-- Colleges Attended -->
+
     <div class="row">        
 
         <div class="col-md-12 col-sm-12">
@@ -585,9 +608,10 @@
                     <h2 class="panel-title">Colleges Attended</h2>
                 </div>
 
-                <div class="panel-body" id="collegeDuplicate">
+                <div class="panel-body">
 
                     <!-- Colleges Attended Left Column-->
+                    <div id="collegeDuplicate">
                     <div class="col-md-6 col-sm-6">
 
                         <div class="form-group">
@@ -658,14 +682,15 @@
                                 <input type="text" class="form-control" name="collegeMajor"  id="collegeMajor" placeholder="Information Systems">
                             </div>
                         </div>
-
-                        <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3 text-center">
-                            <button id="duplicateButton" class="btn btn-success" onlick="duplicate()">Add another college</button>
-                        </div>
-
+                        
+                    </div>
                     </div>
 
-                </div>                
+                    <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3 text-center">
+                        <button id="duplicateButton" class="btn btn-success" onlick="duplicate()">Add another college</button>
+                    </div>  
+
+                </div>                           
              
             </div>
 
@@ -691,72 +716,76 @@
 
                         <h4 class="text-info">Testing Information</h4>
 
-                        <label class="checkbox-inline"><input name="gmat" type="checkbox" value="">GMAT</label>
-                        <label class="checkbox-inline"><input name="gre" type="checkbox" value="">GRE</label>
+                        <label class="checkbox-inline"><input name="gmat" type="checkbox" value="gmat">GMAT</label>
+                        <label class="checkbox-inline"><input name="gre" type="checkbox" value="gre">GRE</label>
                         <p class="help-block">Check the exam(s) you have taken.</p>
                         
-                        <div class="form-group">
-                            <label for="gmatTestDate">GMAT Test Date</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                <input type="date" class="form-control" name="gmatTestDate" id="gmatTestDate" placeholder="">
+                        <div class="gmat box">
+                            <div class="form-group">
+                                <label for="gmatTestDate">GMAT Test Date</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <input type="date" class="form-control" name="gmatTestDate" id="gmatTestDate" placeholder="">
+                                </div>
+                            </div>
+                        
+                            <div class="form-group">
+                                <label for="gmatQScore">GMAT Quantitative Score</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                    <input type="number" pattern="\d*" class="form-control" name="gmatQScore" id="gmatQScore" placeholder="Scaled: 6-51">
+                                    <span class="input-group-addon" data-toggle="tooltip" data-placement="bottom" title="Your GMAT quantitative score is scaled on a range of 6 to 51 based on the scores of other candidates to indicate which percentile you belong in."><i class="fa fa-question-circle-o"></i></span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="gmatVScore">GMAT Verbal Score</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                    <input type="number" pattern="\d*" class="form-control" name="gmatVScore" id="gmatVScore" placeholder="Scaled: 6-51">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="gmatTScore">GMAT Total Score</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                    <input type="number" pattern="\d*" class="form-control" name="gmatTScore" id="gmatTScore" placeholder="Range: 200-800">
+                                </div>
                             </div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="gmatQScore">GMAT Quantitative Score</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
-                                <input type="number" pattern="\d*" class="form-control" name="gmatQScore" id="gmatQScore" placeholder="Scaled: 6-51">
-                                <span class="input-group-addon" data-toggle="tooltip" data-placement="bottom" title="Your GMAT quantitative score is scaled on a range of 6 to 51 based on the scores of other candidates to indicate which percentile you belong in."><i class="fa fa-question-circle-o"></i></span>
+
+                        <div class="gre box">
+                            <div class="form-group">
+                                <label for="greTestDate">GRE Test Date</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <input type="date" class="form-control" name="greTestDate" id="greTestDate" placeholder="">
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="gmatVScore">GMAT Verbal Score</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
-                                <input type="number" pattern="\d*" class="form-control" name="gmatVScore" id="gmatVScore" placeholder="Scaled: 6-51">
+                            
+                            <div class="form-group">
+                                <label for="greQScore">GRE Quantitative Score</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                    <input type="number" pattern="\d*" class="form-control" name="greQScore" id="greQScore" placeholder="Range: 130-170">
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="gmatTScore">GMAT Total Score</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
-                                <input type="number" pattern="\d*" class="form-control" name="gmatTScore" id="gmatTScore" placeholder="Range: 200-800">
+                            
+                            <div class="form-group">
+                                <label for="greVScore">GRE Verbal Score</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                    <input type="number" pattern="\d*" class="form-control" name="greVScore" id="greVScore" placeholder="Range: 130-170">
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="greTestDate">GRE Test Date</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                <input type="date" class="form-control" name="greTestDate" id="greTestDate" placeholder="">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="greQScore">GRE Quantitative Score</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
-                                <input type="number" pattern="\d*" class="form-control" name="greQScore" id="greQScore" placeholder="Range: 130-170">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="greVScore">GRE Verbal Score</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
-                                <input type="number" pattern="\d*" class="form-control" name="greVScore" id="greVScore" placeholder="Range: 130-170">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="greTScore">GRE Total Score</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
-                                <input type="number" pattern="\d*" class="form-control" name="greTScore" id="greTScore" placeholder="Range: 260-340">
+                            
+                            <div class="form-group">
+                                <label for="greTScore">GRE Total Score</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                    <input type="number" pattern="\d*" class="form-control" name="greTScore" id="greTScore" placeholder="Range: 260-340">
+                                </div>
                             </div>
                         </div>                        
                        
@@ -767,68 +796,64 @@
 
                         <h4 class="text-info">International Testing Information</h4>
 
-                        <label class="checkbox-inline"><input name="toefliBT" type="checkbox" value="">TOEFL iBT</label>
-                        <label class="checkbox-inline"><input name="toeflPBT" type="checkbox" value="">TOEFL PBT</label>
-                        <label class="checkbox-inline"><input name="tse "type="checkbox" value="">TSE</label>
-                        <p class="help-block">Check the exam(s) you have taken. At least one TOEFL exam is required.</p>
+                        <label class="checkbox-inline"><input name="toefliBT" type="checkbox" value="toefliBT">TOEFL iBT</label>
+                        <label class="checkbox-inline"><input name="toeflPBT" type="checkbox" value="toeflPBT">TOEFL PBT</label>
+                        <label class="checkbox-inline"><input name="tse" type="checkbox" value="tse">TSE</label>
+                        <p class="help-block">Check the exam(s) you have taken. At least one TOEFL exam is required if you are an international student.</p>
                         
-                        <div class="form-group">
-                            <label for="toeflTestDate">TOEFL Test Date</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                <input type="date" class="form-control" name="toeflTestDate" id="toeflTestDate" placeholder="">
+                        <div class="toefliBT box">
+                            <div class="form-group">
+                                <label for="toefliBTTestDate">TOEFL Test Date</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <input type="date" class="form-control" name="toefliBTTestDate" id="toefliBTTestDate" placeholder="">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="toefliBTScore">TOEFL iBT Score (Online Exam)</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                    <input type="number" pattern="\d*" class="form-control" name="toefliBTScore" id="toefliBTScore" placeholder="Range: 0-120">
+                                </div>
                             </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="toefliBTScore">TOEFL iBT Score (Online Exam)</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
-                                <input type="number" pattern="\d*" class="form-control" name="toefliBTScore" id="toefliBTScore" placeholder="Range: 0-120">
+                        <div class="toeflPBT box">
+                            <div class="form-group">
+                                <label for="toeflPBTTestDate">TOEFL Test Date</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <input type="date" class="form-control" name="toeflPBTTestDate" id="toeflPBTTestDate" placeholder="">
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="toeflPBTScore">TOEFL PBT Score (Written Exam)</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
-                                <input type="number" pattern="\d*" class="form-control" name="toeflPBTScore" id="toeflPBTScore" placeholder="Range: 310-677">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="tseTestDate">TSE Test Date</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                <input type="date" class="form-control" name="tseTestDate" id="tseTestDate" placeholder="">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="tseScore">TSE Total Score</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
-                                <input type="number" pattern="\d*" class="form-control" name="tseScore" id="tseScore" placeholder="Range: 20-60">
-                            </div>
-                        </div>
 
-                        <h4 class="text-info">Education Information</h4>
-                        
-                        <div class="form-group">
-                            <label for="undergradGPA">Undergraduate GPA</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
-                                <input type="number" class="form-control" name="undergradGPA" id="undergradGPA" placeholder="Range: 0.00-4.00">
+                            <div class="form-group">
+                                <label for="toeflPBTScore">TOEFL PBT Score (Written Exam)</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                    <input type="number" pattern="\d*" class="form-control" name="toeflPBTScore" id="toeflPBTScore" placeholder="Range: 310-677">
+                                </div>
                             </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="undergradJRSRGPA">GPA in Junior/Senior Years</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
-                                <input type="number" class="form-control" name="" id="undergradJRSRGPA" placeholder="Range: 0.00-4.00">
-                            </div>                            
-                        </div>  
+                        <div class="tse box">
+                            <div class="form-group">
+                                <label for="tseTestDate">TSE Test Date</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <input type="date" class="form-control" name="tseTestDate" id="tseTestDate" placeholder="">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="tseScore">TSE Total Score</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                    <input type="number" pattern="\d*" class="form-control" name="tseScore" id="tseScore" placeholder="Range: 20-60">
+                                </div>
+                            </div>
+                        </div>                          
 
                     </div>
 
@@ -976,7 +1001,9 @@
     
 </div>
 
-<script type="text/javascript" src="./js/scripts.js"></script>
-
 </body>
+
+    <!-- Custom Scripts -->
+    <script type="text/javascript" src="./js/scripts.js"></script>
+
 </html>
