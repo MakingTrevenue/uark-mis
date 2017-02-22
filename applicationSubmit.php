@@ -2,12 +2,12 @@
 	$fileFormName=array('resumeFile','essayQuestionsFile','transcriptFile','recLetter1','recLetter2','recLetter3');
 
 	foreach($fileFormName as $fn){
-		if(isset($_FILES[$fileFormName])){
-			$file_name=$_FILES[$fileFormName]['name'];
-			$file_size=$_FILES[$fileFormName]['size'];
-			$file_tmp=$_FILES[$fileFormName]['tmp_name'];
-			$file_type=$_FILES[$fileFormName]['type'];
-			move_uploaded_file($file_tmp,"../docs/".password_hash($file_name,PASSWORD_DEFAULT));
+		if(isset($_FILES[$fn])){
+			$file_name=$_FILES[$fn]['name'];
+			$file_size=$_FILES[$fn]['size'];
+			$file_tmp=$_FILES[$fn]['tmp_name'];
+			$file_type=$_FILES[$fn]['type'];
+			move_uploaded_file($file_tmp,"../docs/".md5_file($_FILES[$fn]['tmp_name']));
 		}
 	}
 
