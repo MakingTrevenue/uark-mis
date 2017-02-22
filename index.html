@@ -62,6 +62,7 @@
     </div>
 </nav>
 
+<form id="loginsignup" action="/login.php" method="post" enctype="multipart/form-data">
 <!-- Login Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -89,13 +90,14 @@
 
             <!-- Login Modal Footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary btn-block">Login</button><br>
+                <input type="submit" value="Login" class="btn btn-primary btn-block">
                 <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Close</button>
             </div>
 
         </div>
     </div>
 </div>
+</form>
 
 <!-- Sign Up Modal -->
 <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog">
