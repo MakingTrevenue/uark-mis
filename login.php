@@ -20,7 +20,7 @@
 			$userpassword = $_POST['loginPassword'];
             $userpassword = password_hash($userpassword,PASSWORD_DEFAULT);            
             echo $userpassword . "<br>" . $row . "<br>";
-            if($userpassword==$row)
+            if($userpassword==$row[0])
 			    echo "Logged In";
             else
                 echo "Incorrect";
