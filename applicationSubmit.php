@@ -1,4 +1,16 @@
 <?php
+	$fileFormName=array('resumeFile','essayQuestionsFile','transcriptFile','recLetter1','recLetter2','recLetter3');
+
+	foreach($fileFormName as $fn){
+		if(isset($_FILES[$fileFormName])){
+			$file_name=$_FILES[$fileFormName]['name'];
+			$file_size=$_FILES[$fileFormName]['size'];
+			$file_tmp=$_FILES[$fileFormName]['tmp_name'];
+			$file_type=$_FILES[$fileFormName]['type'];
+			move_uploaded_file($file_tmp,"../docs/".password_hash($file_name,PASSWORD_DEFAULT));
+		}
+	}
+
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
 	
@@ -73,13 +85,7 @@
 		}
 		echo "</table>";	
 	}
-	if(isset($_FILES['resumeFile'])){
-		$file_name=$_FILES['resumeFile']['name'];
-		$file_size=$_FILES['resumeFile']['size'];
-		$file_tmp=$_FILES['resumeFile']['tmp_name'];
-		$file_type=$_FILES['resumeFile']['type'];
-		move_uploaded_file($file_tmp,"../docs/".$file_name);
-	}
+
 		
 
 ?>
