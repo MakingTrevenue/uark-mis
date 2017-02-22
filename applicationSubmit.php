@@ -1,4 +1,8 @@
 <?php
+
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
+	
 	$fileFormName=array('resumeFile','essayQuestionsFile','transcriptFile','recLetter1','recLetter2','recLetter3');
 
 	foreach($fileFormName as $fn){
@@ -11,8 +15,7 @@
 		}
 	}
 
-	error_reporting(E_ALL);
-	ini_set('display_errors', 1);
+
 	
 	if(false){
 		$config = parse_ini_file('../private/credentials.ini');
