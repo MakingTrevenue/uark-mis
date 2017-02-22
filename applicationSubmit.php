@@ -79,8 +79,6 @@
 		$file_tmp=$_FILES['resumeFile']['tmp_name'];
 		$file_type=$_FILES['resumeFile']['type'];
 		move_uploaded_file($file_tmp,"../docs/".$file_name);
-
-
 	}
 		
 
