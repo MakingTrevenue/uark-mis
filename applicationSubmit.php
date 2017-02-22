@@ -2,7 +2,7 @@
 
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
-	
+
 	$fileFormName=array('resumeFile','essayQuestionsFile','transcriptFile','recLetter1','recLetter2','recLetter3');
 
 	foreach($fileFormName as $fn){
@@ -12,6 +12,8 @@
 			$file_tmp=$_FILES[$fn]['tmp_name'];
 			$file_type=$_FILES[$fn]['type'];
 			move_uploaded_file($file_tmp,"../docs/".md5_file($_FILES[$fn]['tmp_name']));
+		}else{
+			echo "no file " . $fn;
 		}
 	}
 
