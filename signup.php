@@ -18,10 +18,10 @@
 			$stmt->bindParam(':username', $un);
 			$stmt->bindParam(':password', $userpassword);	
             
-			$name = $_POST['name'];
-			$email = $_POST['email'];
-			$un = $_POST['username'];
-			$userpassword = $_POST['password'];
+			$name = $_POST['signUpName'];
+			$email = $_POST['signUpEmail'];
+			$un = $_POST['signUpUsername'];
+			$userpassword = $_POST['signUpPassword'];
             $userpassword = password_hash($userpassword,PASSWORD_DEFAULT);
 
 			$stmt->execute();
