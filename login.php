@@ -18,9 +18,9 @@
 
 
 			$userpassword = $_POST['loginPassword'];
-            $userpassword = password_hash($userpassword,PASSWORD_DEFAULT);            
-            echo $userpassword . "<br>" . $row[0] . "<br>";
-            if($userpassword==$row[0])
+            $check = password_verify($userpassword,$row[0]);
+            
+            if($check)
 			    echo "Logged In";
             else
                 echo "Incorrect";
