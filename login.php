@@ -19,7 +19,7 @@
 
 			$userpassword = $_POST['loginPassword'];
             $userpassword = password_hash($userpassword,PASSWORD_DEFAULT);            
-
+            echo $userpassword . "<br>" . $row . "<br>";
             if($userpassword==$row)
 			    echo "Logged In";
             else
