@@ -61,7 +61,7 @@ try {
 	$gender = $_POST['gender'];
 	$citizenship = $_POST['citizenship'];
 	$countryOfBirth = 'US';
-
+	echo $stmt->columnCount();
 	$stmt->execute();
 
 	echo "Student record created successfully";
