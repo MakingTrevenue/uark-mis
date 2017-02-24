@@ -29,7 +29,7 @@ try {
 	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$stmt = $conn->prepare("INSERT INTO REGISTRY (stateID, state) VALUES (:name, :value)");
+$stmt = $conn->prepare("INSERT INTO state (stateID, state) VALUES (:name, :value)");
 $stmt->bindParam(':name', $name);
 $stmt->bindParam(':value', $value);
 
