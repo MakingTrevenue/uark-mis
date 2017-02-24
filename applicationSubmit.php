@@ -61,8 +61,6 @@ try {
 	$gender = $_POST['gender'];
 	$citizenship = $_POST['citizenship'];
 	$countryOfBirth = 'US';
-	
-	echo "d" . $stmt;
 
 	$stmt->execute();
 
