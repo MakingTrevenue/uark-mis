@@ -59,45 +59,87 @@ try {
 	$gender = $_POST['gender'];
 	$citizenship = $_POST['citizenship'];
 	$citizenship = $_POST['US'];
+
 	$stmt->execute();
 
 	echo "Student record created successfully";
 
-	$stmt = $conn->prepare("INSERT INTO student (firstName,  middleName,  lastName,  preferredName,  primaryEmail,  secondaryEmail,  primaryPhone,  secondaryPhone,  socialSecurityNumber,  dateOfBirth,  ethnicity,  gender,  citizenship,  countryOfBirth) 
-										VALUES (:firstName, :middleName, :lastName, :preferredName, :primaryEmail, :secondaryEmail, :primaryPhone, :secondaryPhone, :socialSecurityNumber, :dateOfBirth, :ethnicity, :gender, :citizenship, :countryofBirth)");
+	$stmt = $conn->prepare("INSERT INTO application (studentID,  term,  year,  program, reqScholarship,  previousApp,  previousAppDate,  previousEnrollment,  previousEnrollmentDate,  previousEnrollmentStatus,  undergradGPA,  juniorseniorGPA,  
+													 currentEmployer,  timeAtCurrentEmployer, gmat, gmatTestDate,gmatQScore, gmatVScore, gmatTScore, gre, greTestDate, greQScore, greVScore, greTScore, toeflOnline, toeflPaper, toeflTestDate, toeflOnlineScore,
+													 toeflPaperScore, tse, tseTestDate, tseScore) 
+										VALUES (LAST_INSERT_ID(), :term,  :year,  :program, :reqScholarship,  :previousApp,  :previousAppDate,  :previousEnrollment,  :previousEnrollmentDate,  :previousEnrollmentStatus,  :undergradGPA,  :juniorseniorGPA,  
+													 :currentEmployer,  :timeAtCurrentEmployer, :gmat, :gmatTestDate, :gmatQScore, :gmatVScore, :gmatTScore, :gre, :greTestDate, :greQScore, :greVScore, :greTScore, :toeflOnline, :toeflPaper, :toeflTestDate, :toeflOnlineScore,
+													 :toeflPaperScore, :tse, :tseTestDate, :tseScore )");
 
-	$stmt->bindParam(':firstName', $firstName);
-	$stmt->bindParam(':middleName', $middleName);
-	$stmt->bindParam(':lastName', $lastName);
-	$stmt->bindParam(':preferredName', $preferredName);
-	$stmt->bindParam(':primaryEmail', $primaryEmail);
-	$stmt->bindParam(':secondaryEmail', $secondaryEmail);
-	$stmt->bindParam(':primaryPhone', $primaryPhone);
-	$stmt->bindParam(':secondaryPhone', $secondaryPhone);
-	$stmt->bindParam(':socialSecurityNumber', $socialSecurityNumber);
-	$stmt->bindParam(':dateOfBirth', $dateOfBirth);
-	$stmt->bindParam(':ethnicity', $ethnicity);	
-	$stmt->bindParam(':gender', $gender);
-	$stmt->bindParam(':citizenship', $citizenship);		
-	$stmt->bindParam(':countryOfBirth', $countryOfBirth);		
+	$stmt->bindParam(':studentID', $studentID);
+	$stmt->bindParam(':term', $term);
+	$stmt->bindParam(':year', $year);
+	$stmt->bindParam(':program', $program);
+	$stmt->bindParam(':reqScholarship', $reqScholarship);
+	$stmt->bindParam(':previousApp', $previousApp);
+	$stmt->bindParam(':previousAppDate', $previousAppDate);
+	$stmt->bindParam(':previousEnrollment', $previousEnrollment);
+	$stmt->bindParam(':previousEnrollmentDate', $previousEnrollmentDate);
+	$stmt->bindParam(':previousEnrollmentStatus', $previousEnrollmentStatus);
+	$stmt->bindParam(':undergradGPA', $undergradGPA);
+	$stmt->bindParam(':juniorseniorGPA', $juniorseniorGPA);
+	$stmt->bindParam(':currentEmployer', $currentEmployer);
+	$stmt->bindParam(':timeAtCurrentEmployer', $timeAtCurrentEmployer);
+	$stmt->bindParam(':gmat', $gmat);
+	$stmt->bindParam(':gmatTestDate', $gmatTestDate);
+	$stmt->bindParam(':gmatQScore', $gmatQScore);
+	$stmt->bindParam(':gmatVScore', $gmatVScore);
+	$stmt->bindParam(':gmatTScore', $gmatTScore);
+	$stmt->bindParam(':gre', $gre);
+	$stmt->bindParam(':greTestDate', $greTestDate);
+	$stmt->bindParam(':greQScore', $greQScore);
+	$stmt->bindParam(':greVScore', $greVScore);
+	$stmt->bindParam(':greTScore', $greTScore);
+	$stmt->bindParam(':toeflOnline', $toeflOnline);
+	$stmt->bindParam(':toeflPaper', $toeflPaper);
+	$stmt->bindParam(':toeflTestDate', $toeflTestDate);
+	$stmt->bindParam(':toeflOnlineScore', $toeflOnlineScore);
+	$stmt->bindParam(':toeflPaperScore', $toeflPaperScore);
+	$stmt->bindParam(':tse', $tse);
+	$stmt->bindParam(':tseTestDate', $tseTestDate);
+	$stmt->bindParam(':tseScore', $tseScore	);
 
-	$firstName = $_POST['firstName'];
-	$middleName = $_POST['middleName'];
-	$lastName = $_POST['lastName'];
-	$preferredName = $_POST['preferredName'];
-	$primaryEmail = $_POST['primaryEmail'];
-	$secondaryEmail = $_POST['secondaryEmail'];
-	$primaryPhone = $_POST['primaryPhone'];
-	$secondaryPhone = $_POST['secondaryPhone'];
-	$socialSecurityNumber = $_POST['socialSecurityNumber'];
-	$dateOfBirth = $_POST['dateOfBirth'];
-	$ethnicity = $_POST['ethnicity'];
-	$gender = $_POST['gender'];
-	$citizenship = $_POST['citizenship'];
-	$citizenship = $_POST['US'];
+	$studentID = $_POST['studentID'];
+	$term= $_POST['term'];
+	$year= $_POST['year'];
+	$program = $_POST['program'];
+	$reqScholarship = $_POST['reqScholarship'];
+	$previousApp = $_POST['previousApp'];
+	$previousAppDate = $_POST['previousAppDate'];
+	$previousEnrollment = $_POST['previousEnrollment'];
+	$previousEnrollmentDate = $_POST['previousEnrollmentDate'];
+	$previousEnrollmentStatus = $_POST['previousEnrollmentStatus'];
+	$undergradGPA = $_POST['undergradGPA'];
+	$juniorseniorGPA = $_POST['juniorseniorGPA'];
+	$currentEmployer = $_POST['currentEmployer'];
+	$timeAtCurrentEmployer = $_POST['timeAtCurrentEmployer'];
+	$gmat = $_POST['gmat'];
+	$gmatTestDate = $_POST['gmatTestDate'];
+	$gmatQScore = $_POST['gmatQScore'];
+	$gmatVScore = $_POST['gmatVScore'];
+	$gmatTScore = $_POST['gmatTScore'];
+	$gre = $_POST['gre'];
+	$greTestDate = $_POST['greTestDate'];
+	$greQScore = $_POST['greQScore'];
+	$greVScore = $_POST['greVScore'];
+	$greTScore = $_POST['greTScore'];
+	$toeflOnline = $_POST['toeflOnline'];
+	$toeflPaper = $_POST['toeflPaper'];
+	$toeflTestDate = $_POST['toeflTestDate'];
+	$toeflOnlineScore = $_POST['toeflOnlineScore'];
+	$toeflPaperScore = $_POST['toeflPaperScore'];
+	$tse = $_POST['tse'];
+	$tseTestDate = $_POST['tseTestDate'];
+	$tseScore = $_POST['tseScore'];
+
 	$stmt->execute();
 
-	echo "New records created successfully";	
+	echo "Application record created successfully";	
 }
 catch(Exception $e){
 	echo "Error: " . $e->getMessage();
