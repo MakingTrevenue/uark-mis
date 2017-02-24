@@ -29,17 +29,8 @@ try {
 	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$stmt = $conn->prepare("INSERT INTO state (stateID, state) VALUES (:name, :value)");
-$stmt->bindParam(':name', $name);
-$stmt->bindParam(':value', $value);
-
-// insert one row
-$name = 'XX';
-$value = 'XX';
-$stmt->execute();
-
-	$stmt = $conn->prepare("INSERT INTO student (firstName,  middleName,  lastName,  preferredName,  primaryEmail,  secondaryEmail,  primaryPhone,  secondaryPhone,  socialSecurityNumber,  dateOfBirth,  ethnicity,  gender,  citizenship,  countryOfBirth) 
-										VALUES (:firstName, :middleName, :lastName, :preferredName, :primaryEmail, :secondaryEmail, :primaryPhone, :secondaryPhone, :socialSecurityNumber, :dateOfBirth, :ethnicity, :gender, :citizenship, :countryofBirth);");
+	$stmt = $conn->prepare("INSERT INTO student (studentID, firstName,  middleName,  lastName,  preferredName,  primaryEmail,  secondaryEmail,  primaryPhone,  secondaryPhone,  socialSecurityNumber,  dateOfBirth,  countryOfBirth,  ethnicity,  gender,  citizenship)
+										VALUES  (99999,    :firstName, :middleName, :lastName, :preferredName, :primaryEmail, :secondaryEmail, :primaryPhone, :secondaryPhone, :socialSecurityNumber, :dateOfBirth, :countryofBirth, :ethnicity, :gender, :citizenship);");
 
 	$stmt->bindParam(':firstName', $firstName);
 	$stmt->bindParam(':middleName', $middleName);
