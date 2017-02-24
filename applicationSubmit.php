@@ -30,8 +30,9 @@ try {
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 	$stmt=$conn->prepare("INSERT INTO state (stateID,state) VALUES (:firstname, :middlename)");
-	$stmt->bindParam(':firstName', 'XX');
-	$stmt->bindParam(':middleName', 'XX');
+	$stmt->bindParam(':firstName', $f);
+	$stmt->bindParam(':middleName', $f);
+	$f='XX';
 	$stmt->execute();
 
 	$stmt = $conn->prepare("INSERT INTO student (firstName,  middleName,  lastName,  preferredName,  primaryEmail,  secondaryEmail,  primaryPhone,  secondaryPhone,  socialSecurityNumber,  dateOfBirth,  ethnicity,  gender,  citizenship,  countryOfBirth) 
