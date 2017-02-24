@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(E_ALL);
+error_reporting(E_ALL & ~E_WARNING);
 ini_set('display_errors', 1);
 
 $fileFormName=array('resumeFile','essayQuestionsFile','transcriptFile','recLetter1','recLetter2','recLetter3');
@@ -61,7 +61,7 @@ try {
 	$gender = $_POST['gender'];
 	$citizenship = $_POST['citizenship'];
 	$countryOfBirth = 'US';
-
+	echo $stmt->$queryString;
 	$stmt->execute();
 
 	echo "Student record created successfully";
