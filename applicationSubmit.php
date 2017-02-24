@@ -29,13 +29,13 @@ try {
 	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$stmt = $dbh->prepare("INSERT INTO REGISTRY (stateID, state) VALUES (:name, :value)");
+$stmt = $conn->prepare("INSERT INTO REGISTRY (stateID, state) VALUES (:name, :value)");
 $stmt->bindParam(':name', $name);
 $stmt->bindParam(':value', $value);
 
 // insert one row
-$name = 'one';
-$value = 1;
+$name = 'XX';
+$value = 'XX';
 $stmt->execute();
 
 	$stmt = $conn->prepare("INSERT INTO student (firstName,  middleName,  lastName,  preferredName,  primaryEmail,  secondaryEmail,  primaryPhone,  secondaryPhone,  socialSecurityNumber,  dateOfBirth,  ethnicity,  gender,  citizenship,  countryOfBirth) 
