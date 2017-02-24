@@ -48,20 +48,34 @@ try {
 	$stmt->bindParam(':countryOfBirth', $countryOfBirth);		
 
 	$firstName = $_POST['firstName'];
+	echo $firstName . "<br">;
 	$middleName = $_POST['middleName'];
+	echo $middleName . "<br">;
 	$lastName = $_POST['lastName'];
+	echo $lastName . "<br">;	
 	$preferredName = $_POST['preferredName'];
+	echo $preferredName . "<br">;
 	$primaryEmail = $_POST['primaryEmail'];
+	echo $primaryEmail . "<br">;
 	$secondaryEmail = $_POST['secondaryEmail'];
+	echo $secondaryEmail . "<br">;
 	$primaryPhone = $_POST['primaryPhone'];
+	echo $primaryPhone . "<br">;
 	$secondaryPhone = $_POST['secondaryPhone'];
+	echo $secondaryPhone . "<br">;
 	$socialSecurityNumber = $_POST['socialSecurityNumber'];
+	echo $socialSecurityNumber . "<br">;
 	$dateOfBirth = $_POST['dateOfBirth'];
+	echo $dateOfBirth . "<br">;
 	$ethnicity = $_POST['ethnicity'];
+	echo $ethnicity . "<br">;
 	$gender = $_POST['gender'];
+	echo $gender . "<br">;
 	$citizenship = $_POST['citizenship'];
+	echo $citizenship . "<br">;
 	$countryOfBirth = 'US';
-	echo $stmt->$queryString;
+	echo $countryOfBirth . "<br">;
+
 	$stmt->execute();
 
 	echo "Student record created successfully";
