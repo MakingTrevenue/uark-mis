@@ -72,7 +72,7 @@ try {
 	$gender = $_POST['gender'];
 	echo $gender . "<br>";
 	$citizenship = $_POST['citizenship'];
-	echo $citizenship . "<br>">;
+	echo $citizenship . "<br>";
 	$countryOfBirth = 'US';
 	echo $countryOfBirth . "<br>";
 
