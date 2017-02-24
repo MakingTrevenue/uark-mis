@@ -520,7 +520,7 @@
 
                         <div class="form-group">				
                             <label>Requested Scholarship or Assistantship?
-                                <label class="checkbox-inline"><input name="reqScholarship" type="checkbox" value="">Yes</label>
+                                <label class="checkbox-inline"><input name="reqScholarship" type="checkbox" value="reqScholarship">Yes</label>
                             </label>
                         </div>                        
 
@@ -531,11 +531,11 @@
                         
                         <div class="form-group">				
                             <label>Have you ever applied to the University of Arkansas?
-                                <label class="checkbox-inline"><input name="previousApp" type="checkbox" value="">Yes</label>
+                                <label class="checkbox-inline"><input name="previousApp" type="checkbox" value="previousApp">Yes</label>
                             </label>
                         </div>
 
-                        <div class="appliedBefore box">
+                        <div class="previousApp box">
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">When?</span>
@@ -546,22 +546,22 @@
 
                         <div class="form-group">				
                             <label>Did you enroll?
-                                <label class="checkbox-inline"><input name="previousEnrollment" type="checkbox" value="">Yes</label>
+                                <label class="checkbox-inline"><input name="previousEnrollment" type="checkbox" value="previousEnrollment">Yes</label>
                             </label>
                         </div>
 
-                        <div class="enrolledBefore box">
+                        <div class="previousEnrollment box">
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">When?</span>
-                                    <input type="text" class="form-control" name="previousEnrollmentDate" placeholder="Semester / Year">
+                                    <input type="text" class="form-control" name="previousEnrollmentDate" value="" placeholder="Semester / Year">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">If you enrolled, were you:</span>
-                                    <select name="previousEnrollmentStatus" class="selectpicker show-tick form-control" data-live-search="true" title="">
+                                    <select name="previousEnrollmentStatus" value="previousEnrollmentStatus" class="selectpicker show-tick form-control" data-live-search="true" title="">
                                         <option></option>
                                         <option>Undergraduate</option>
                                         <option>Graduate</option>
@@ -805,7 +805,7 @@
                         <label class="checkbox-inline"><input name="tse" type="checkbox" value="tse">TSE</label>
                         <p class="help-block">Check the exam(s) you have taken. At least one TOEFL exam is required if you are an international student.</p>
                         
-                        <div class="toefliBT box">
+                        <div class="toeflOnline box">
                             <div class="form-group">
                                 <label for="toeflTestDate">TOEFL Test Date</label>
                                 <div class="input-group">
@@ -823,7 +823,7 @@
                             </div>
                         </div>
                         
-                        <div class="toeflPBT box">
+                        <div class="toeflPaper box">
                             <div class="form-group">
                                 <label for="toeflTestDate">TOEFL Test Date</label>
                                 <div class="input-group">
