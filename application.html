@@ -394,14 +394,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="studentID">Student ID (optional)</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-id-card"></i></span>
-                                <input type="number" pattern="\d*" class="form-control" name="studentID" id="studentID" placeholder="123456789">
-                            </div>
-                        </div>
-
                     </div>
 
                     <!-- Additional Personal Information Right Column -->
@@ -518,16 +510,34 @@
                             </div>
                         </div>
 
-                        <div class="form-group">				
-                            <label>Requested Scholarship or Assistantship?
-                                <label class="checkbox-inline"><input name="reqScholarship" type="checkbox" value="reqScholarship">Yes</label>
-                            </label>
-                        </div>                        
+                        <h4 class="text-info">Employment Information</h4>
+
+                        <div class="form-group">
+                            <label for="currentEmployer">Current Employer</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
+                                <input type="text" class="form-control" name="currentEmployer"  id="currentEmployer" placeholder="Walmart">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="timeAtCurrentEmployer">Date Started at Current Employer</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                <input type="date" class="form-control" name="timeAtCurrentEmployer" id="timeAtCurrentEmployer" placeholder="">
+                            </div>
+                        </div>                                                
 
                     </div>
 
                     <!-- Admission Request Right Column -->
                     <div class="col-md-6 col-sm-6">
+
+                        <div class="form-group">                
+                            <label>Requested Scholarship or Assistantship?
+                                <label class="checkbox-inline"><input name="reqScholarship" type="checkbox" value="reqScholarship">Yes</label>
+                            </label>
+                        </div>
                         
                         <div class="form-group">				
                             <label>Have you ever applied to the University of Arkansas?
