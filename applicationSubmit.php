@@ -30,7 +30,7 @@ try {
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 	$stmt = $conn->prepare("INSERT INTO student (firstName,  middleName,  lastName,  preferredName,  primaryEmail,  secondaryEmail,  primaryPhone,  secondaryPhone,  socialSecurityNumber,  dateOfBirth,  ethnicity,  gender,  citizenship,  countryOfBirth) 
-										VALUES (:firstName, :middleName, :lastName, :preferredName, :primaryEmail, :secondaryEmail, :primaryPhone, :secondaryPhone, :socialSecurityNumber, :dateOfBirth, :ethnicity, :gender, :citizenship, :countryofBirth)");
+										VALUES (:firstName, :middleName, :lastName, :preferredName, :primaryEmail, :secondaryEmail, :primaryPhone, :secondaryPhone, :socialSecurityNumber, :dateOfBirth, :ethnicity, :gender, :citizenship, :countryofBirth);");
 
 	$stmt->bindParam(':firstName', $firstName);
 	$stmt->bindParam(':middleName', $middleName);
@@ -48,33 +48,21 @@ try {
 	$stmt->bindParam(':countryOfBirth', $countryOfBirth);		
 
 	$firstName = $_POST['firstName'];
-	echo $firstName . "<br>";
 	$middleName = $_POST['middleName'];
-	echo $middleName . "<br>";
 	$lastName = $_POST['lastName'];
-	echo $lastName . "<br>";	
 	$preferredName = $_POST['preferredName'];
-	echo $preferredName . "<br>";
 	$primaryEmail = $_POST['primaryEmail'];
-	echo $primaryEmail . "<br>";
 	$secondaryEmail = $_POST['secondaryEmail'];
-	echo $secondaryEmail . "<br>";
 	$primaryPhone = $_POST['primaryPhone'];
-	echo $primaryPhone . "<br>";
 	$secondaryPhone = $_POST['secondaryPhone'];
-	echo $secondaryPhone . "<br>";
 	$socialSecurityNumber = $_POST['socialSecurityNumber'];
-	echo $socialSecurityNumber . "<br>";
 	$dateOfBirth = $_POST['dateOfBirth'];
-	echo $dateOfBirth . "<br>";
 	$ethnicity = $_POST['ethnicity'];
-	echo $ethnicity . "<br>";
 	$gender = $_POST['gender'];
-	echo $gender . "<br>";
 	$citizenship = $_POST['citizenship'];
-	echo $citizenship . "<br>";
 	$countryOfBirth = 'US';
-	echo $countryOfBirth . "<br>";
+	
+	echo "d" . $stmt;
 
 	$stmt->execute();
 
