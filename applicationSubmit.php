@@ -29,6 +29,11 @@ try {
 	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+	$stmt=$conn->prepare("INSERT INTO state (stateID,state) VALUES (:firstname, :middlename)");
+	$stmt->bindParam(':firstName', 'XX');
+	$stmt->bindParam(':middleName', 'XX');
+	$stmt->execute();
+
 	$stmt = $conn->prepare("INSERT INTO student (firstName,  middleName,  lastName,  preferredName,  primaryEmail,  secondaryEmail,  primaryPhone,  secondaryPhone,  socialSecurityNumber,  dateOfBirth,  ethnicity,  gender,  citizenship,  countryOfBirth) 
 										VALUES (:firstName, :middleName, :lastName, :preferredName, :primaryEmail, :secondaryEmail, :primaryPhone, :secondaryPhone, :socialSecurityNumber, :dateOfBirth, :ethnicity, :gender, :citizenship, :countryofBirth);");
 
@@ -61,7 +66,6 @@ try {
 	$gender = $_POST['gender'];
 	$citizenship = $_POST['citizenship'];
 	$countryOfBirth = 'US';
-	echo $stmt->columnCount();
 	$stmt->execute();
 
 	echo "Student record created successfully";
