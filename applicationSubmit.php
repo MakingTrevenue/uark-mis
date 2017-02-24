@@ -16,7 +16,7 @@ try{
 
 		}
 	}
-catch(Exception $e){
+}catch(Exception $e){
 }
 
 try {
