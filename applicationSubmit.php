@@ -4,17 +4,19 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 $fileFormName=array('resumeFile','essayQuestionsFile','transcriptFile','recLetter1','recLetter2','recLetter3');
+try{
+	foreach($fileFormName as $fn){
+		if(isset($_FILES[$fn])){
+			$file_name=$_FILES[$fn]['name'];
+			$file_size=$_FILES[$fn]['size'];
+			$file_tmp=$_FILES[$fn]['tmp_name'];
+			$file_type=$_FILES[$fn]['type'];
+			move_uploaded_file($file_tmp,"../docs/".md5_file($_FILES[$fn]['tmp_name']));
+		}else{
 
-foreach($fileFormName as $fn){
-	if(isset($_FILES[$fn])){
-		$file_name=$_FILES[$fn]['name'];
-		$file_size=$_FILES[$fn]['size'];
-		$file_tmp=$_FILES[$fn]['tmp_name'];
-		$file_type=$_FILES[$fn]['type'];
-		move_uploaded_file($file_tmp,"../docs/".md5_file($_FILES[$fn]['tmp_name']));
-	}else{
-
+		}
 	}
+catch(Exception $e){
 }
 
 try {
@@ -58,7 +60,7 @@ try {
 	$ethnicity = $_POST['ethnicity'];
 	$gender = $_POST['gender'];
 	$citizenship = $_POST['citizenship'];
-	$citizenship = $_POST['US'];
+	$countryOfBirth = 'US';
 
 	$stmt->execute();
 
