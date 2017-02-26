@@ -217,23 +217,23 @@
                 <div class="panel-body">
 
                     <h4>
-                        <b>Social Security Number: </b>123-45-6789                        
+                        <b>Social Security Number: </b>123-45-6789
                     </h4>
 
                     <h4>
-                        <b>Date of Birth: </b>09/22/1995 (Age 21)                        
+                        <b>Date of Birth: </b>09/22/1995
                     </h4>
 
                     <h4>
-                        <b>Race: </b>White, Non-Hispanic                        
+                        <b>Race: </b>White, Non-Hispanic
                     </h4>
 
                     <h4>
-                        <b>Gender: </b>Male                        
+                        <b>Gender: </b>Male
                     </h4>
 
                     <h4>
-                        <b>Citizenship: </b>Non-Resident Alien                        
+                        <b>Citizenship: </b>Non-Resident Alien
                     </h4>
 
                     <h4>
@@ -257,11 +257,32 @@
                 <div class="panel-body">
 
                     <h4>
-                        <b>Offer Status: </b>Undecided, Accepted, Rejected, Waitlist
+                        <b>Offer Status: </b>
+                        <select name="offerStatus" id="offerStatus" class="selectpicker form-control" data-live-search="true">
+                            <option>Undecided</option>
+                            <option>Accepted</option>
+                            <option>Rejected</option>
+                            <option>Waitlist</option>
+                        </select>
                     </h4>
 
                     <h4>
-                        <b>Applicant Response: </b>Has Not Replied, Accept, Reject
+                        <b>Assistantship Status: </b>
+                        <select name="assistantshipStatus" id="assistantshipStatus" class="selectpicker form-control" data-live-search="true">
+                            <option></option>
+                            <option>Silver</option>
+                            <option>Gold</option>
+                        </select>
+                    </h4>
+
+                    <h4>
+                        <b>Applicant Response: </b>
+                        <select name="applicantResponse" id="applicantResponse" class="selectpicker form-control" data-live-search="true">
+                            <option></option>
+                            <option>Decision Pending</option>
+                            <option>Accept Offer</option>
+                            <option>Reject OFfer</option>
+                        </select>
                     </h4>                   
 
                 </div>
@@ -343,12 +364,8 @@
                     </h4>
 
                     <h4>
-                        <b>Degree(s): </b>Bachelor's Degree
-                    </h4>
-
-                    <h4>
-                        <b>Major(s): </b>Information Systems & Supply Chain Management
-                    </h4>                   
+                        <b>Degree & Major(s): </b>Bachelor's Degree in Information Systems
+                    </h4>                  
 
                 </div>
 
@@ -495,6 +512,43 @@
             </div>
 
         </div>
+    </div>
+
+    <!-- Comments -->
+    <div class="row">
+
+
+        <div class="col-md-12 col-sm-12">
+
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h2 class="panel-title">Comments</h2>
+                </div>
+
+                <div class="panel-body">
+               
+                <h4>
+                    <b>Christina Serrano said: </b>
+                    This is a comment about the person who applied to our program!
+                </h4>
+
+                <h4>
+                    <b>Paul Cronan said: </b>
+                    This is another comment about the person who applied to our program!
+                </h4>
+
+                <h4>
+                    <b>Jeff Mullins said: </b>
+                    This is a third comment about the person who applied to our program!
+                </h4>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
         
     </form>
