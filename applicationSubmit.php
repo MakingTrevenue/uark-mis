@@ -137,7 +137,10 @@ try {
 	$toeflTestDate = $_POST['toeflTestDate'];
 	$toeflOnlineScore = $_POST['toeflOnlineScore'];
 	$toeflPaperScore = $_POST['toeflPaperScore'];
-	$tse = $_POST['tse'];
+	if(isset($_POST['tse']))
+		$tse = $_POST['tse'];
+	else
+		$tse=0;
 	$tseTestDate = $_POST['tseTestDate'];
 	$tseScore = $_POST['tseScore'];
 	$stmt->execute();
