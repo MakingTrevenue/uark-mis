@@ -146,7 +146,7 @@ try {
 	$stmt->execute();
 	echo "<br>";
 	echo "Application record created successfully";	
-	/*
+	
 	$appid = $conn->lastInsertId();
 	$fileFormName=array('resumeFile','essayQuestionsFile','transcriptFile','recLetter1','recLetter2','recLetter3');
 	try{
@@ -174,7 +174,7 @@ try {
 		}
 	}catch(Exception $e){
 	}
-	*/
+	
 }
 catch(Exception $e){
 	echo "Error: " . $e->getMessage();
