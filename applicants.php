@@ -162,9 +162,7 @@
 
 <?php
 
-?>
-
-    if(isset($_GET(appID))){
+    if(!empty($_GET('appID'))){
 
 ?>
 <!-- Page Content Container -->
