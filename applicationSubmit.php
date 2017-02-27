@@ -3,22 +3,6 @@
 error_reporting(E_ALL & ~E_WARNING);
 ini_set('display_errors', 1);
 
-$fileFormName=array('resumeFile','essayQuestionsFile','transcriptFile','recLetter1','recLetter2','recLetter3');
-try{
-	foreach($fileFormName as $fn){
-		if(isset($_FILES[$fn])){
-			$file_name=$_FILES[$fn]['name'];
-			$file_size=$_FILES[$fn]['size'];
-			$file_tmp=$_FILES[$fn]['tmp_name'];
-			$file_type=$_FILES[$fn]['type'];
-			move_uploaded_file($file_tmp,"../docs/".md5_file($_FILES[$fn]['tmp_name']));
-		}else{
-
-		}
-	}
-}catch(Exception $e){
-}
-
 try {
 	$config = parse_ini_file('../private/credentials.ini');
 	$servername = $config["servername"];
@@ -136,9 +120,37 @@ try {
 	$tseTestDate = $_POST['tseTestDate'];
 	$tseScore = $_POST['tseScore'];
 
-	$stmt->execute();
-
+	$result=$stmt->execute();
+	echo "<br>";
 	echo "Application record created successfully";	
+	$appid = $conn->lastInsertId();
+	$fileFormName=array('resumeFile','essayQuestionsFile','transcriptFile','recLetter1','recLetter2','recLetter3');
+	try{
+		foreach($fileFormName as $fn){
+			if(isset($_FILES[$fn])){
+				$file_name=$_FILES[$fn]['name'];
+				$file_size=$_FILES[$fn]['size'];
+				$file_tmp=$_FILES[$fn]['tmp_name'];
+				$file_type=$_FILES[$fn]['type'];
+				$fn=md5_file($_FILES[$fn]['tmp_name']);	
+				move_uploaded_file($file_tmp,"../docs/".$fn);
+				$stmt = $conn->prepare("INSERT INTO attachment (applicationID,documentType,filename)
+					VALUES  (:appID,:docType,:filename);");
+
+				$stmt->bindParam(':appID', $appID);
+				$stmt->bindParam(':docType', $docType);
+				$stmt->bindParam(':filename', $filename);			
+				$documentType = $file_type;
+				$filename = $fn;				
+				$stmt->execute();
+
+			}else{
+
+			}
+		}
+	}catch(Exception $e){
+	}
+
 }
 catch(Exception $e){
 	echo "Error: " . $e->getMessage();
