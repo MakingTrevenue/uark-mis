@@ -173,6 +173,8 @@ try {
 			}
 		}
 	}catch(Exception $e){
+		echo "Error: " . $e->getMessage();
+		echo "<br> Stack trace: " . $e->getTraceAsString();		
 	}
 	
 }
