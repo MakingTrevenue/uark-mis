@@ -148,7 +148,6 @@ try {
 	echo "Application record created successfully";	
 	
 	$appid = $conn->lastInsertId();
-	echo "appid= " . $appid;
 	$fileFormName=array('resumeFile','essayQuestionsFile','transcriptFile','recLetter1','recLetter2','recLetter3');
 	try{
 		foreach($fileFormName as $fn){
