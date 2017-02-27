@@ -175,14 +175,12 @@
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-        $stmt = $conn->prepare("SELECT * FROM application WHERE applicationID=:appid");
+        $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID WHERE applicationID=:appid");
         $stmt->bindValue(':appid', $_GET['appID']);
         $stmt->execute();
 
         if ($stmt->rowCount() > 0){
             $check = $stmt->fetch(PDO::FETCH_ASSOC);
-            echo $check['studentID'] . "<br>";
-            // do something
         }
         }catch(Exception $e){
             echo "Error: " . $e->getMessage();
@@ -215,27 +213,27 @@
                 <div class="panel-body">
 
                     <h4>
-                        <b>Primary Email: </b>tvdarby@email.uark.edu                       
+                        <b>Primary Email: </b> <?php echo $check['studentID']; ?>
                     </h4>
 
                     <h4>
-                        <b>Secondary Email: </b>                
+                        <b>Secondary Email: </b> <?php echo $check['studentID']; ?>                
                     </h4>
 
                     <h4>
-                        <b>Primary Phone: </b>(479) 555-5555                        
+                        <b>Primary Phone: </b> <?php echo $check['studentID']; ?>                   
                     </h4>
 
                     <h4>
-                        <b>Secondary Phone: </b>(479) 555-1234
+                        <b>Secondary Phone: </b> <?php echo $check['studentID']; ?>
                     </h4>
 
                     <h4>
-                        <b>Permanent Address: </b>123 Oak Street, Fayetteville, AR 72701
+                        <b>Permanent Address: </b> <?php echo $check['studentID']; ?>
                     </h4>
 
                     <h4>
-                        <b>Mailing Address: </b>123 Oak Street, Fayetteville, AR 72701
+                        <b>Mailing Address: </b> <?php echo $check['studentID']; ?>
                     </h4> 
 
                 </div>
