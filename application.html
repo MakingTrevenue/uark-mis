@@ -46,6 +46,7 @@
 
             <ul class="nav navbar-nav">
                 <li class="active"><a href="./application.html">Application</a></li>
+				<li><a href="./applicants.html">Applicants</a></li>
                 <li><a href="./advising.html">Advising</a></li>
                 <li><a href="./enrollment.html">Enrollment</a></li>
                 <li><a href="./graduation.html">Graduation</a></li>
@@ -305,6 +306,14 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+                                <input type="text" class="form-control" name="country" id="country" placeholder="US">
+                            </div>
+                        </div>
+
                     </div>
 
                     <!-- Address Information Right Column -->
@@ -352,6 +361,14 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="country-M">Country</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+                                <input type="text" class="form-control" name="country-M" id="country-M" placeholder="US">
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
@@ -391,14 +408,6 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                 <input type="date" class="form-control" name="dateOfBirth" id="dateOfBirth" placeholder="">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="studentID">Student ID (optional)</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-id-card"></i></span>
-                                <input type="number" pattern="\d*" class="form-control" name="studentID" id="studentID" placeholder="123456789">
                             </div>
                         </div>
 
@@ -518,50 +527,68 @@
                             </div>
                         </div>
 
-                        <div class="form-group">				
-                            <label>Requested Scholarship or Assistantship?
-                                <label class="checkbox-inline"><input name="firstName" type="checkbox" value="">Yes</label>
-                            </label>
-                        </div>                        
+                        <h4 class="text-info">Employment Information</h4>
+
+                        <div class="form-group">
+                            <label for="currentEmployer">Current Employer</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
+                                <input type="text" class="form-control" name="currentEmployer"  id="currentEmployer" placeholder="Walmart">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="timeAtCurrentEmployer">Date Started at Current Employer</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                <input type="date" class="form-control" name="timeAtCurrentEmployer" id="timeAtCurrentEmployer" placeholder="">
+                            </div>
+                        </div>                                                
 
                     </div>
 
                     <!-- Admission Request Right Column -->
                     <div class="col-md-6 col-sm-6">
+
+                        <div class="form-group">                
+                            <label>Requested Scholarship or Assistantship?
+                                <label class="checkbox-inline"><input name="reqScholarship" type="checkbox" value="reqScholarship">Yes</label>
+                            </label>
+                        </div>
                         
                         <div class="form-group">				
                             <label>Have you ever applied to the University of Arkansas?
-                                <label class="checkbox-inline"><input name="applied" type="checkbox" value="appliedBefore">Yes</label>
+                                <label class="checkbox-inline"><input name="previousApp" type="checkbox" value="previousApp">Yes</label>
                             </label>
                         </div>
 
-                        <div class="appliedBefore box">
+                        <div class="previousApp box">
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">When?</span>
-                                    <input type="text" class="form-control" name="appliedWhen" id="previousUARKAppDate" placeholder="Semester / Year">
+                                    <input type="text" class="form-control" name="previousAppDate" value ="" placeholder="Semester / Year">
                                 </div>
                             </div><br>
                         </div>
 
                         <div class="form-group">				
                             <label>Did you enroll?
-                                <label class="checkbox-inline"><input name="enrolled" type="checkbox" value="enrolledBefore">Yes</label>
+                                <label class="checkbox-inline"><input name="previousEnrollment" type="checkbox" value="previousEnrollment">Yes</label>
                             </label>
                         </div>
 
-                        <div class="enrolledBefore box">
+                        <div class="previousEnrollment box">
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">When?</span>
-                                    <input type="text" class="form-control" name="enrolledWhen"vid="enrolledUARKDate" placeholder="Semester / Year">
+                                    <input type="text" class="form-control" name="previousEnrollmentDate" value="" placeholder="Semester / Year">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">If you enrolled, were you:</span>
-                                    <select name="enrolledUARKStatus" id="enrolledUARKStatus" class="selectpicker show-tick form-control" data-live-search="true" title="">
+                                    <select name="previousEnrollmentStatus" value="previousEnrollmentStatus" class="selectpicker show-tick form-control" data-live-search="true" title="">
                                         <option></option>
                                         <option>Undergraduate</option>
                                         <option>Graduate</option>
@@ -586,7 +613,7 @@
                             <label for="undergradJRSRGPA">GPA in Junior/Senior Years</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
-                                <input type="number" class="form-control" name="" id="undergradJRSRGPA" placeholder="Range: 0.00-4.00">
+                                <input type="number" class="form-control" name="juniorseniorGPA" id="undergradJRSRGPA" placeholder="Range: 0.00-4.00">
                             </div>                            
                         </div>
 
@@ -800,43 +827,43 @@
 
                         <h4 class="text-info">International Testing Information</h4>
 
-                        <label class="checkbox-inline"><input name="toefliBT" type="checkbox" value="toefliBT">TOEFL iBT</label>
-                        <label class="checkbox-inline"><input name="toeflPBT" type="checkbox" value="toeflPBT">TOEFL PBT</label>
+                        <label class="checkbox-inline"><input name="toeflOnline" type="checkbox" value="toeflOnline">TOEFL iBT</label>
+                        <label class="checkbox-inline"><input name="toeflPaper" type="checkbox" value="toeflPaper">TOEFL PBT</label>
                         <label class="checkbox-inline"><input name="tse" type="checkbox" value="tse">TSE</label>
                         <p class="help-block">Check the exam(s) you have taken. At least one TOEFL exam is required if you are an international student.</p>
                         
-                        <div class="toefliBT box">
+                        <div class="toeflOnline box">
                             <div class="form-group">
-                                <label for="toefliBTTestDate">TOEFL Test Date</label>
+                                <label for="toeflTestDate">TOEFL Test Date</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                    <input type="date" class="form-control" name="toefliBTTestDate" id="toefliBTTestDate" placeholder="">
+                                    <input type="date" class="form-control" name="toeflTestDate" id="toeflTestDate" placeholder="">
                                 </div>
                             </div>
                             
                             <div class="form-group">
-                                <label for="toefliBTScore">TOEFL iBT Score (Online Exam)</label>
+                                <label for="toeflOnlineScore">TOEFL iBT Score (Online Exam)</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
-                                    <input type="number" pattern="\d*" class="form-control" name="toefliBTScore" id="toefliBTScore" placeholder="Range: 0-120">
+                                    <input type="number" pattern="\d*" class="form-control" name="toeflOnlineScore" id="toeflOnlineScore" placeholder="Range: 0-120">
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="toeflPBT box">
+                        <div class="toeflPaper box">
                             <div class="form-group">
-                                <label for="toeflPBTTestDate">TOEFL Test Date</label>
+                                <label for="toeflTestDate">TOEFL Test Date</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                    <input type="date" class="form-control" name="toeflPBTTestDate" id="toeflPBTTestDate" placeholder="">
+                                    <input type="date" class="form-control" name="toeflTestDate" id="toeflTestDate" placeholder="">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="toeflPBTScore">TOEFL PBT Score (Written Exam)</label>
+                                <label for="toeflPaperScore">TOEFL PBT Score (Written Exam)</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
-                                    <input type="number" pattern="\d*" class="form-control" name="toeflPBTScore" id="toeflPBTScore" placeholder="Range: 310-677">
+                                    <input type="number" pattern="\d*" class="form-control" name="toeflPaperScore" id="toeflPaperScore" placeholder="Range: 310-677">
                                 </div>
                             </div>
                         </div>
