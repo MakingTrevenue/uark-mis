@@ -200,7 +200,7 @@
     <!-- Contact, Personal, & Application Information -->
     <div class="row">
 
-        <h2 class="text-center text-danger">Trevor V. Darby</h2><br>
+        <h2 class="text-center text-danger"> <?php echo $check['firstName'] . " " . $check['middleName'] . " " . $check['lastName'];?></h2><br>
 
         <div class="col-md-4 col-sm-12">
 
@@ -273,7 +273,7 @@
                     </h4>
 
                     <h4>
-                        <b>Employer: </b><?php echo $check['currentEmployer'] . " since " . $check['timeAtCurrentEmployers']; ?>
+                        <b>Employer: </b><?php echo $check['currentEmployer'] . " since " . $check['timeAtCurrentEmployer']; ?>
                     </h4>
 
                 </div>
