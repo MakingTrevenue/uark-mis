@@ -213,27 +213,27 @@
                 <div class="panel-body">
 
                     <h4>
-                        <b>Primary Email: </b> <?php echo $check['studentID']; ?>
+                        <b>Primary Email: </b> <?php echo $check['primaryEmail']; ?>
                     </h4>
 
                     <h4>
-                        <b>Secondary Email: </b> <?php echo $check['studentID']; ?>                
+                        <b>Secondary Email: </b> <?php echo $check['secondaryEmail']; ?>                
                     </h4>
 
                     <h4>
-                        <b>Primary Phone: </b> <?php echo $check['studentID']; ?>                   
+                        <b>Primary Phone: </b> <?php echo $check['primaryPhone']; ?>                   
                     </h4>
 
                     <h4>
-                        <b>Secondary Phone: </b> <?php echo $check['studentID']; ?>
+                        <b>Secondary Phone: </b> <?php echo $check['secondaryPhone']; ?>
                     </h4>
 
                     <h4>
-                        <b>Permanent Address: </b> <?php echo $check['studentID']; ?>
+                        <b>Permanent Address: </b>
                     </h4>
 
                     <h4>
-                        <b>Mailing Address: </b> <?php echo $check['studentID']; ?>
+                        <b>Mailing Address: </b>
                     </h4> 
 
                 </div>
@@ -253,27 +253,27 @@
                 <div class="panel-body">
 
                     <h4>
-                        <b>Social Security Number: </b>123-45-6789
+                        <b>Social Security Number: </b> <?php echo $check['socialSecurityNumber']; ?>
                     </h4>
 
                     <h4>
-                        <b>Date of Birth: </b>09/22/1995
+                        <b>Date of Birth: </b><?php echo $check['dateOfBirth']; ?>
                     </h4>
 
                     <h4>
-                        <b>Race: </b>White, Non-Hispanic
+                        <b>Race: </b><?php echo $check['ethnicity']; ?>
                     </h4>
 
                     <h4>
-                        <b>Gender: </b>Male
+                        <b>Gender: </b><?php echo $check['gender']; ?>
                     </h4>
 
                     <h4>
-                        <b>Citizenship: </b>Non-Resident Alien
+                        <b>Citizenship: </b><?php echo $check['citizenship']; ?>
                     </h4>
 
                     <h4>
-                        <b>Employer: </b>Allied Technologies since 09/2014
+                        <b>Employer: </b><?php echo $check['currentEmployer'] . " since " . $check['timeAtCurrentEmployers']; ?>
                     </h4>
 
                 </div>
@@ -344,23 +344,23 @@
                 <div class="panel-body">
 
                     <h4>
-                        <b>Term: </b>Fall 2017
+                        <b>Term: </b> <?php echo $check['term']; ?>
                     </h4>
 
                     <h4>
-                        <b>Program: </b>Professional MIS
+                        <b>Program: </b> <?php echo $check['program']; ?>
                     </h4>
 
                     <h4>
-                        <b>Requested Assistantship: </b>Yes
+                        <b>Requested Assistantship: </b>
                     </h4>
 
                     <h4>
-                        <b>Previous Application: </b>Yes, Fall 2016
+                        <b>Previous Application: </b> <?php echo $check['previousAppDate']; ?>
                     </h4>
 
                     <h4>
-                        <b>Previous Enrollment: </b>Yes, Fall 2016 as Undergraduate
+                        <b>Previous Enrollment: </b> <?php echo $check['previousEnrollmentDate']; ?>
                     </h4>                    
 
                 </div>
