@@ -162,11 +162,12 @@ try {
 				$stmt = $conn->prepare("INSERT INTO attachment (applicationID,documentType,filename)
 					VALUES  (:appID,:docType,:filename);");
 
-				$stmt->bindParam(':appID', $appID);
+				$stmt->bindParam(':appID', $applicationID);
 				$stmt->bindParam(':docType', $docType);
 				$stmt->bindParam(':filename', $filename);			
 				$documentType = $file_type;
-				$filename = $fn;				
+				$filename = $fn;	
+				$applicationID=$appid;			
 				$stmt->execute();
 
 			}else{
