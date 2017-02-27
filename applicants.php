@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -157,6 +161,8 @@
 </div>
 
 <?php
+
+?>
 
     if(isset($_GET(appID))){
 
@@ -560,6 +566,8 @@
     
 </div>
 <?php
+
+
 
     }
 
