@@ -176,10 +176,10 @@
 
 
         $stmt = $conn->prepare("SELECT * FROM application WHERE applicationID=:appid");
-        $stmt -> bindValue(':appid', $_GET['appID']);
-        $stmt -> execute();
+        $stmt->bindValue(':appid', $_GET['appID']);
+        $stmt->execute();
 
-        if ($smt->rowCount() > 0){
+        if ($stmt->rowCount() > 0){
             $check = $q->fetch(PDO::FETCH_ASSOC);
             echo $check['studentID'] . "<br>";
             // do something
