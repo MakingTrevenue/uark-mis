@@ -157,7 +157,7 @@ try {
 				$file_type=$_FILES[$fn]['type'];
 				$fn=md5_file($_FILES[$fn]['tmp_name']);
 				if(strlen($fn)<5)
-					break;	
+					continue;
 				move_uploaded_file($file_tmp,"../docs/".$fn);
 				$stmt = $conn->prepare("INSERT INTO attachment (applicationID,documentType,filename)
 					VALUES  (:appID,:docType,:filename);");
