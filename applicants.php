@@ -164,6 +164,34 @@
 <?php
 
     if(!empty($_GET['appID'])){
+        try{
+        $config = parse_ini_file('../private/credentials.ini');
+        $servername = $config["servername"];
+        $username = $config["username"];
+        $password = $config["password"];
+        $dbname = $config["dbname"];
+
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+        $stmt = $conn->prepare("SELECT * FROM application WHERE applicationID=:appid");
+        $stmt -> bindValue(':appid', $_GET['appID']);
+        $stmt -> execute();
+
+        if ($smt->rowCount() > 0){
+            $check = $q->fetch(PDO::FETCH_ASSOC);
+            echo $check['id'] . "<br>";
+            // do something
+        }
+        }catch(Exception $e){
+            echo "Error: " . $e->getMessage();
+	        echo "<br> Stack trace: " . $e->getTraceAsString();
+        }
+
+
+
+
 
 ?>
 <!-- Page Content Container -->
