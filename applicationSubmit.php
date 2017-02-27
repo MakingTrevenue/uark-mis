@@ -2,7 +2,7 @@
 
 error_reporting(E_ALL & ~E_WARNING);
 ini_set('display_errors', 1);
-echo $_POST['firstName'];
+echo "fn: " . $_POST['firstName'];
 try {
 	$config = parse_ini_file('../private/credentials.ini');
 	$servername = $config["servername"];
