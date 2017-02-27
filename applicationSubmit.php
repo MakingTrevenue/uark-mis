@@ -148,6 +148,7 @@ try {
 	echo "Application record created successfully";	
 	
 	$appid = $conn->lastInsertId();
+	echo "appid= " . $appid;
 	$fileFormName=array('resumeFile','essayQuestionsFile','transcriptFile','recLetter1','recLetter2','recLetter3');
 	try{
 		foreach($fileFormName as $fn){
@@ -173,7 +174,7 @@ try {
 			}
 		}
 	}catch(Exception $e){
-		echo "Error: " . $e->getMessage();
+		echo "<br>Error: " . $e->getMessage();
 		echo "<br> Stack trace: " . $e->getTraceAsString();		
 	}
 	
