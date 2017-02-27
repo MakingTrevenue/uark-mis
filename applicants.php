@@ -181,7 +181,7 @@
 
         if ($smt->rowCount() > 0){
             $check = $q->fetch(PDO::FETCH_ASSOC);
-            echo $check['id'] . "<br>";
+            echo $check['studentID'] . "<br>";
             // do something
         }
         }catch(Exception $e){
