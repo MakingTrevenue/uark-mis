@@ -91,38 +91,59 @@ try {
 	$term= $_POST['term'];
 	$year= $_POST['year'];
 	$program = $_POST['program'];
-	$reqScholarship = $_POST['reqScholarship'];
-	$previousApp = $_POST['previousApp'];
+	if(isset($_POST['reqScholarship']))
+		$reqScholarship = $_POST['reqScholarship'];
+	else
+		$reqScholarship = 0;
+	if(isset($_POST['previousApp']))
+		$previousApp = $_POST['previousApp'];
+	else
+		$previoiusApp = 0;
 	$previousAppDate = $_POST['previousAppDate'];
-	$previousEnrollment = $_POST['previousEnrollment'];
+	if(isset($_POST['previousEnrollment']))
+		$previousEnrollment = $_POST['previousEnrollment'];
+	else
+		$previousEnrollment=0;
 	$previousEnrollmentDate = $_POST['previousEnrollmentDate'];
 	$previousEnrollmentStatus = $_POST['previousEnrollmentStatus'];
 	$undergradGPA = $_POST['undergradGPA'];
 	$juniorseniorGPA = $_POST['juniorseniorGPA'];
 	$currentEmployer = $_POST['currentEmployer'];
 	$timeAtCurrentEmployer = $_POST['timeAtCurrentEmployer'];
-	$gmat = $_POST['gmat'];
+	if(isset($_POST['gmat']))
+		$gmat = $_POST['gmat'];
+	else
+		$gmat=0;
 	$gmatTestDate = $_POST['gmatTestDate'];
 	$gmatQScore = $_POST['gmatQScore'];
 	$gmatVScore = $_POST['gmatVScore'];
 	$gmatTScore = $_POST['gmatTScore'];
-	$gre = $_POST['gre'];
+	if(isset($_POST['gre']))
+		$gre = $_POST['gre'];
+	else
+		$gre=0;
 	$greTestDate = $_POST['greTestDate'];
 	$greQScore = $_POST['greQScore'];
 	$greVScore = $_POST['greVScore'];
 	$greTScore = $_POST['greTScore'];
-	$toeflOnline = $_POST['toeflOnline'];
-	$toeflPaper = $_POST['toeflPaper'];
+	if(isset($_POST['toeflOnline']))
+		$toeflOnline = $_POST['toeflOnline'];
+	else
+		$toeflOnline = 0;
+	if(isset($_POST['toeflPaper']))		
+		$toeflPaper = $_POST['toeflPaper'];
+	else
+		$toeflPaper = 0;
 	$toeflTestDate = $_POST['toeflTestDate'];
 	$toeflOnlineScore = $_POST['toeflOnlineScore'];
 	$toeflPaperScore = $_POST['toeflPaperScore'];
 	$tse = $_POST['tse'];
 	$tseTestDate = $_POST['tseTestDate'];
 	$tseScore = $_POST['tseScore'];
-	/*
-	$result=$stmt->execute();
+	$stmt->execute();
 	echo "<br>";
 	echo "Application record created successfully";	
+	/*
 	$appid = $conn->lastInsertId();
 	$fileFormName=array('resumeFile','essayQuestionsFile','transcriptFile','recLetter1','recLetter2','recLetter3');
 	try{
