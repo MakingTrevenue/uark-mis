@@ -1,8 +1,3 @@
-<?php
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -161,6 +156,11 @@
     </div>
 </div>
 
+<?php
+
+    if(isset($_GET(appID))){
+
+?>
 <!-- Page Content Container -->
 <div class="container-fluid">
     
@@ -559,7 +559,11 @@
     </form>
     
 </div>
+<?php
 
+    }
+
+?>
 <div class="container-fluid">
 
   <h2>List of Applicants</h2>        
