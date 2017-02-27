@@ -171,6 +171,8 @@ try {
 				$filename = $fn;	
 				$applicationID=$appid;			
 				$stmt->execute();
+				echo "<br>";
+				echo "Attachment record created successfully";	
 
 			}else{
 
