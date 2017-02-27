@@ -180,7 +180,7 @@
         $stmt->execute();
 
         if ($stmt->rowCount() > 0){
-            $check = $q->fetch(PDO::FETCH_ASSOC);
+            $check = $stmt->fetch(PDO::FETCH_ASSOC);
             echo $check['studentID'] . "<br>";
             // do something
         }
