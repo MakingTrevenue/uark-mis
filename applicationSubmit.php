@@ -72,7 +72,6 @@ try {
 													 :currentEmployer,  :timeAtCurrentEmployer, :gmat, :gmatTestDate, :gmatQScore, :gmatVScore, :gmatTScore, :gre, :greTestDate, :greQScore, :greVScore, :greTScore, :toeflOnline, :toeflPaper, :toeflTestDate, :toeflOnlineScore,
 													 :toeflPaperScore, :tse, :tseTestDate, :tseScore )");
 
-	$stmt->bindParam(':studentID', $studentID);
 	$stmt->bindParam(':term', $term);
 	$stmt->bindParam(':year', $year);
 	$stmt->bindParam(':program', $program);
@@ -105,7 +104,6 @@ try {
 	$stmt->bindParam(':tseTestDate', $tseTestDate);
 	$stmt->bindParam(':tseScore', $tseScore	);
 
-	$studentID = $_POST['studentID'];
 	$term= $_POST['term'];
 	$year= $_POST['year'];
 	$program = $_POST['program'];
