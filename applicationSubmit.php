@@ -165,7 +165,7 @@ try {
 				$stmt->bindParam(':appID', $applicationID);
 				$stmt->bindParam(':docType', $docType);
 				$stmt->bindParam(':filename', $filename);			
-				$documentType = $file_type;
+				$docType= $file_type;
 				$filename = $fn;	
 				$applicationID=$appid;			
 				$stmt->execute();
