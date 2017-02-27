@@ -119,7 +119,7 @@ try {
 	$tse = $_POST['tse'];
 	$tseTestDate = $_POST['tseTestDate'];
 	$tseScore = $_POST['tseScore'];
-
+	/*
 	$result=$stmt->execute();
 	echo "<br>";
 	echo "Application record created successfully";	
@@ -150,7 +150,7 @@ try {
 		}
 	}catch(Exception $e){
 	}
-
+	*/
 }
 catch(Exception $e){
 	echo "Error: " . $e->getMessage();
