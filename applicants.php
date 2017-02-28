@@ -319,7 +319,11 @@
                             <option>Accept Offer</option>
                             <option>Reject OFfer</option>
                         </select>
-                    </h4>                   
+                    </h4>
+
+                    <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3 text-center">
+                        <button id="" class="btn btn-success" onlick="">Update Status</button>
+                    </div>
 
                 </div>
 
