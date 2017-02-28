@@ -52,7 +52,7 @@
 
             <ul class="nav navbar-nav">
                 <li><a href="./application.html">Application</a></li>
-                <li class="active"><a href="./applicants.html">Applicants</a></li>
+                <li class="active"><a href="./applicants.php">Applicants</a></li>
                 <li><a href="./advising.html">Advising</a></li>                
                 <li><a href="./enrollment.html">Enrollment</a></li>
                 <li><a href="./graduation.html">Graduation</a></li>  
