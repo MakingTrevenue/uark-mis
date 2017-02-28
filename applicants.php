@@ -175,7 +175,16 @@
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-        $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID WHERE applicationID=:appid");
+        $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID JOIN college ON college.applicationID = application.applicationID JOIN student_address ON student_address.studentID = student.studentID JOIN address ON address.addressID = student_address.addressID WHERE applicationID=:appid");
+
+        // SELECT * FROM application
+        // JOIN student ON student.studentID = application.studentID
+        // JOIN college ON college.applicationID = application.applicationID
+        // JOIN attachment ON attachment.applicationID = application.applicationID
+        // JOIN student_address ON student_address.studentID = student.studentID
+        // JOIN address ON address.addressID = student_address.addressID
+        // WHERE application.applicationID=1;
+
         $stmt->bindValue(':appid', $_GET['appID']);
         $stmt->execute();
 
@@ -266,11 +275,11 @@
                     </h4>
 
                     <h4>
-                        <b>Secondary Email: </b> <?php echo $check['secondaryEmail']; ?>                
+                        <b>Secondary Email: </b> <?php echo $check['secondaryEmail']; ?>
                     </h4>
 
                     <h4>
-                        <b>Primary Phone: </b> <?php echo $check['primaryPhone']; ?>                   
+                        <b>Primary Phone: </b> <?php echo $check['primaryPhone']; ?>
                     </h4>
 
                     <h4>
@@ -278,11 +287,11 @@
                     </h4>
 
                     <h4>
-                        <b>Permanent Address: </b>
+                        <b>Permanent Address: </b> <?php echo $check['street1'] . " " . $check['street2'] . " " . $check['city'] . " " . $check['stateID'] . " " . $check['zipCode'] ;?>
                     </h4>
 
                     <h4>
-                        <b>Mailing Address: </b>
+                        <b>Mailing Address: </b> <?php echo $check['street1'] . " " . $check['street2'] . " " . $check['city'] . " " . $check['stateID'] . " " . $check['zipCode'] ;?>
                     </h4> 
 
                 </div>
@@ -356,7 +365,7 @@
                     </h4>
 
                     <h4>
-                        <b>Requested Assistantship: </b>
+                        <b>Requested Assistantship: </b> <?php echo $check['reqScholarship']; ?>
                     </h4>
 
                     <h4>
@@ -384,27 +393,27 @@
                 <div class="panel-body">
 
                     <h4>
-                        <b>College Name: </b>University of Arkansas - Fayetteville
+                        <b>College Name: </b> <?php echo $check['collegeName']; ?>
                     </h4>
 
                     <h4>
-                        <b>Dates Attended: </b>08/2013 - 05/2017
+                        <b>Dates Attended: </b> <?php echo $check['dateStarted'] . " - " . $check['dateEnded']; ?>
                     </h4>
 
                     <h4>
-                        <b>GPA: </b>4.00
+                        <b>GPA: </b> <?php echo $check['gpa']; ?>
                     </h4>
 
                     <h4>
-                        <b>Hours Completed: </b>120
+                        <b>Hours Completed: </b><?php echo $check['hoursEarned']; ?>
                     </h4>
 
                     <h4>
-                        <b>Hours Enrolled: </b>12
+                        <b>Hours Enrolled: </b> <?php echo $check['hoursEnrolled']; ?>
                     </h4>
 
                     <h4>
-                        <b>Degree & Major(s): </b>Bachelor's Degree in Information Systems
+                        <b>Degree & Major(s): </b> <?php echo $check['degree'] . " in " $check['major']; ?>
                     </h4>                  
 
                 </div>
@@ -429,35 +438,35 @@
                 <div class="panel-body">
 
                     <h4>
-                        <b>GMAT Test Date: </b>
+                        <b>GMAT Test Date: </b> <?php echo $check['gmatTestDate']; ?>
                     </h4>
 
                     <h4>
-                        <b>GMAT Quantitative Score: </b>
+                        <b>GMAT Quantitative Score: </b> <?php echo $check['gmatQScore']; ?>
                     </h4>
 
                     <h4>
-                        <b>GMAT Verbal Score: </b>
+                        <b>GMAT Verbal Score: </b> <?php echo $check['gmatVScore']; ?>
                     </h4>
 
                     <h4>
-                        <b>GMAT Total Score: </b>
+                        <b>GMAT Total Score: </b> <?php echo $check['gmatTScore']; ?>
                     </h4>
 
                     <h4>
-                        <b>GRE Test Date: </b>
+                        <b>GRE Test Date: </b> <?php echo $check['greTestDate']; ?>
                     </h4>
 
                     <h4>
-                        <b>GRE Quantitative Score: </b>
+                        <b>GRE Quantitative Score: </b> <?php echo $check['greQScore']; ?>
                     </h4>
 
                     <h4>
-                        <b>GRE Verbal Score: </b>
+                        <b>GRE Verbal Score: </b> <?php echo $check['greVScore']; ?>
                     </h4>
 
                     <h4>
-                        <b>GRE Total Score: </b>
+                        <b>GRE Total Score: </b> <?php echo $check['greTScore']; ?>
                     </h4>
 
                 </div>
@@ -477,19 +486,19 @@
                 <div class="panel-body">
 
                     <h4>
-                        <b>TOEFL Test Date: </b>
+                        <b>TOEFL Test Date: </b> <?php echo $check['toeflTestDate']; ?>
                     </h4>
 
                     <h4>
-                        <b>TOEFL Score: </b>
+                        <b>TOEFL Score: </b> <?php echo $check['toeflOnlineScore']; ?>
                     </h4>
 
                     <h4>
-                        <b>TSE Test Date: </b>
+                        <b>TSE Test Date: </b> <?php echo $check['tseTestDate']; ?>
                     </h4>
 
                     <h4>
-                        <b>TSE Score: </b>
+                        <b>TSE Score: </b> <?php echo $check['tseScore']; ?>
                     </h4>
 
                 </div>
