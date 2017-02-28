@@ -175,7 +175,7 @@
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-        $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID JOIN college ON college.applicationID = application.applicationID JOIN student_address ON student_address.studentID = student.studentID JOIN address ON address.addressID = student_address.addressID WHERE applicationID=:appid");
+        $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID WHERE applicationID=:appid");
 
         // SELECT * FROM application
         // JOIN student ON student.studentID = application.studentID
