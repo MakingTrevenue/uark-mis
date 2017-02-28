@@ -207,6 +207,55 @@
             <div class="panel panel-primary">
 
                 <div class="panel-heading">
+                    <h2 class="panel-title">Application Status</h2>
+                </div>
+
+                <div class="panel-body">
+
+                    <h4>
+                        <b>Offer Status: </b>
+                        <select name="offerStatus" id="offerStatus" class="selectpicker form-control" data-live-search="true">
+                            <option>Undecided</option>
+                            <option>Accepted</option>
+                            <option>Rejected</option>
+                            <option>Waitlist</option>
+                        </select>
+                    </h4>
+
+                    <h4>
+                        <b>Assistantship Status: </b>
+                        <select name="assistantshipStatus" id="assistantshipStatus" class="selectpicker form-control" data-live-search="true">
+                            <option></option>
+                            <option>Silver</option>
+                            <option>Gold</option>
+                        </select>
+                    </h4>
+
+                    <h4>
+                        <b>Applicant Response: </b>
+                        <select name="applicantResponse" id="applicantResponse" class="selectpicker form-control" data-live-search="true">
+                            <option></option>
+                            <option>Decision Pending</option>
+                            <option>Accept Offer</option>
+                            <option>Reject OFfer</option>
+                        </select>
+                    </h4>
+
+                    <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3 text-center">
+                        <button id="" class="btn btn-success" onlick="">Update Status</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>   
+
+        <div class="col-md-4 col-sm-12">
+
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
                     <h2 class="panel-title">Contact Information</h2>
                 </div>
 
@@ -280,56 +329,7 @@
 
             </div>
 
-        </div>
-
-        <div class="col-md-4 col-sm-12">
-
-            <div class="panel panel-primary">
-
-                <div class="panel-heading">
-                    <h2 class="panel-title">Application Status</h2>
-                </div>
-
-                <div class="panel-body">
-
-                    <h4>
-                        <b>Offer Status: </b>
-                        <select name="offerStatus" id="offerStatus" class="selectpicker form-control" data-live-search="true">
-                            <option>Undecided</option>
-                            <option>Accepted</option>
-                            <option>Rejected</option>
-                            <option>Waitlist</option>
-                        </select>
-                    </h4>
-
-                    <h4>
-                        <b>Assistantship Status: </b>
-                        <select name="assistantshipStatus" id="assistantshipStatus" class="selectpicker form-control" data-live-search="true">
-                            <option></option>
-                            <option>Silver</option>
-                            <option>Gold</option>
-                        </select>
-                    </h4>
-
-                    <h4>
-                        <b>Applicant Response: </b>
-                        <select name="applicantResponse" id="applicantResponse" class="selectpicker form-control" data-live-search="true">
-                            <option></option>
-                            <option>Decision Pending</option>
-                            <option>Accept Offer</option>
-                            <option>Reject OFfer</option>
-                        </select>
-                    </h4>
-
-                    <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3 text-center">
-                        <button id="" class="btn btn-success" onlick="">Update Status</button>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>       
+        </div>    
 
     </div>
 
@@ -348,7 +348,7 @@
                 <div class="panel-body">
 
                     <h4>
-                        <b>Term: </b> <?php echo $check['term']; ?>
+                        <b>Term: </b> <?php echo $check['term'] . " " . $check['year']; ?>
                     </h4>
 
                     <h4>
