@@ -287,11 +287,11 @@
                     </h4>
 
                     <h4>
-                        <b>Permanent Address: </b> <?php echo $check['street1'] . " " . $check['street2'] . " " . $check['city'] . " " . $check['stateID'] . " " . $check['zipCode'] ;?>
+                        <b>Permanent Address: </b> <?php //echo $check['street1'] . " " . $check['street2'] . " " . $check['city'] . " " . $check['stateID'] . " " . $check['zipCode'] ;?>
                     </h4>
 
                     <h4>
-                        <b>Mailing Address: </b> <?php echo $check['street1'] . " " . $check['street2'] . " " . $check['city'] . " " . $check['stateID'] . " " . $check['zipCode'] ;?>
+                        <b>Mailing Address: </b> <?php //echo $check['street1'] . " " . $check['street2'] . " " . $check['city'] . " " . $check['stateID'] . " " . $check['zipCode'] ;?>
                     </h4> 
 
                 </div>
@@ -393,27 +393,27 @@
                 <div class="panel-body">
 
                     <h4>
-                        <b>College Name: </b> <?php echo $check['collegeName']; ?>
+                        <b>College Name: </b> <?php //echo $check['collegeName']; ?>
                     </h4>
 
                     <h4>
-                        <b>Dates Attended: </b> <?php echo $check['dateStarted'] . " - " . $check['dateEnded']; ?>
+                        <b>Dates Attended: </b> <?php //echo $check['dateStarted'] . " - " . $check['dateEnded']; ?>
                     </h4>
 
                     <h4>
-                        <b>GPA: </b> <?php echo $check['gpa']; ?>
+                        <b>GPA: </b> <?php //echo $check['gpa']; ?>
                     </h4>
 
                     <h4>
-                        <b>Hours Completed: </b><?php echo $check['hoursEarned']; ?>
+                        <b>Hours Completed: </b><?php //echo $check['hoursEarned']; ?>
                     </h4>
 
                     <h4>
-                        <b>Hours Enrolled: </b> <?php echo $check['hoursEnrolled']; ?>
+                        <b>Hours Enrolled: </b> <?php //echo $check['hoursEnrolled']; ?>
                     </h4>
 
                     <h4>
-                        <b>Degree & Major(s): </b> <?php echo $check['degree'] . " in " $check['major']; ?>
+                        <b>Degree & Major(s): </b> <?php //echo $check['degree'] . " in " $check['major']; ?>
                     </h4>                  
 
                 </div>
@@ -438,35 +438,35 @@
                 <div class="panel-body">
 
                     <h4>
-                        <b>GMAT Test Date: </b> <?php echo $check['gmatTestDate']; ?>
+                        <b>GMAT Test Date: </b> <?php //echo $check['gmatTestDate']; ?>
                     </h4>
 
                     <h4>
-                        <b>GMAT Quantitative Score: </b> <?php echo $check['gmatQScore']; ?>
+                        <b>GMAT Quantitative Score: </b> <?php //echo $check['gmatQScore']; ?>
                     </h4>
 
                     <h4>
-                        <b>GMAT Verbal Score: </b> <?php echo $check['gmatVScore']; ?>
+                        <b>GMAT Verbal Score: </b> <?php //echo $check['gmatVScore']; ?>
                     </h4>
 
                     <h4>
-                        <b>GMAT Total Score: </b> <?php echo $check['gmatTScore']; ?>
+                        <b>GMAT Total Score: </b> <?php //echo $check['gmatTScore']; ?>
                     </h4>
 
                     <h4>
-                        <b>GRE Test Date: </b> <?php echo $check['greTestDate']; ?>
+                        <b>GRE Test Date: </b> <?php //echo $check['greTestDate']; ?>
                     </h4>
 
                     <h4>
-                        <b>GRE Quantitative Score: </b> <?php echo $check['greQScore']; ?>
+                        <b>GRE Quantitative Score: </b> <?php //echo $check['greQScore']; ?>
                     </h4>
 
                     <h4>
-                        <b>GRE Verbal Score: </b> <?php echo $check['greVScore']; ?>
+                        <b>GRE Verbal Score: </b> <?php //echo $check['greVScore']; ?>
                     </h4>
 
                     <h4>
-                        <b>GRE Total Score: </b> <?php echo $check['greTScore']; ?>
+                        <b>GRE Total Score: </b> <?php //echo $check['greTScore']; ?>
                     </h4>
 
                 </div>
@@ -486,19 +486,19 @@
                 <div class="panel-body">
 
                     <h4>
-                        <b>TOEFL Test Date: </b> <?php echo $check['toeflTestDate']; ?>
+                        <b>TOEFL Test Date: </b> <?php //echo $check['toeflTestDate']; ?>
                     </h4>
 
                     <h4>
-                        <b>TOEFL Score: </b> <?php echo $check['toeflOnlineScore']; ?>
+                        <b>TOEFL Score: </b> <?php //echo $check['toeflOnlineScore']; ?>
                     </h4>
 
                     <h4>
-                        <b>TSE Test Date: </b> <?php echo $check['tseTestDate']; ?>
+                        <b>TSE Test Date: </b> <?php //echo $check['tseTestDate']; ?>
                     </h4>
 
                     <h4>
-                        <b>TSE Score: </b> <?php echo $check['tseScore']; ?>
+                        <b>TSE Score: </b> <?php //echo $check['tseScore']; ?>
                     </h4>
 
                 </div>
