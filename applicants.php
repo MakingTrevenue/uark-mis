@@ -34,6 +34,14 @@
     <script type="text/javascript" src="./js/scripts.js"></script>
     <script type="text/javascript" src="./js/bootstrap-filestyle.min.js"></script>
 
+    <script type="text/javascript">
+        $(document).ready(function() 
+            { 
+                $("#applicantTable").tablesorter(); 
+            } 
+        );
+    </script>
+
 </head>
 
 <body>
@@ -661,11 +669,5 @@
 
 </body>
 
-<script>
-    $(document).ready(function() 
-        { 
-            $("#applicantTable").tablesorter(); 
-        } 
-    );
-</script>
+
 </html>
