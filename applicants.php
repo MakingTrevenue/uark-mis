@@ -236,7 +236,7 @@
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-            $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID WHERE applicationID=:appid");
+            $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID JOIN college ON college.applicationID = application.applicationID WHERE application.applicationID=:appid");
             
             if(!empty($_GET['appID']))
                 $appID=$_GET['appID'];
@@ -452,7 +452,12 @@
                 <div class="panel-heading">
                     <h2 class="panel-title">Colleges Attended</h2>
                 </div>
+                
+                <?php
+                    $rc=$check->rowCount();
+                    for($i=0; $i<$rc; $r++){
 
+                ?>
                 <div class="panel-body">
 
                     <h4>
@@ -480,6 +485,10 @@
                     </h4>                  
 
                 </div>
+                <?php
+                    $check = $check->fetch(PDO::FETCH_BOTH);
+                    }
+                ?>
 
             </div>
 
