@@ -212,10 +212,10 @@
             $stmt = $conn->prepare("UPDATE application SET offerStatus=:offerStatus, assistantshipStatus=:assistantshipStatus, applicantResponse=:applicantResponse 
                                     WHERE applicationID=:appID");
 
-	        $stmt->bindParam(':offerStatus', $_POST['appID']);
-            $stmt->bindParam(':assistantshipStatus', $_POST['offerStatus']);
-            $stmt->bindParam(':applicantResponse', $_POST['assistantshipStatus']);
-            $stmt->bindParam(':applicationID', $_POST['applicantResponse']);
+	        $stmt->bindParam(':offerStatus', $_POST['offerStatus']);
+            $stmt->bindParam(':assistantshipStatus', $_POST['assistantshipStatus']);
+            $stmt->bindParam(':applicantResponse', $_POST['applicantResponse']);
+            $stmt->bindParam(':applicationID', $_POST['appID']);
 
             $stmt->execute();
         }catch(Exception $e){
