@@ -171,7 +171,7 @@ try {
 				$stmt->execute();
 				//echo "<br>";
 				//echo "Attachment record created successfully";
-				header("Location: https://www.uark.us/applicationSuccess.html");	
+				echo "<script type='text/javascript'>window.location.href = 'applicationSuccess.html';</script>";
 				exit();
 
 
