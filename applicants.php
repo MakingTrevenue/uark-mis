@@ -260,7 +260,7 @@
                 <div class="panel-body">
                     <form id="applicantUpdate" action="/applicants.php" method='post' enctype="multipart/form-data">
                     <h4>
-                        <input  name="appID" value="<?php echo $check['applicationID'];?>" />
+                        <input type="hidden" name="appID" value="<?php echo $check['applicationID'];?>" />
                         <b>Offer Status: </b>
                         <select name="offerStatus" id="offerStatus" class="selectpicker form-control" data-live-search="true">
                             <option>Undecided</option>
