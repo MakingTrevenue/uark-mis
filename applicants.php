@@ -675,7 +675,7 @@
     <?php 
     while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
         echo "<tr>
-                <td>" . $row[34] . " " . $row[36] . "</td>
+                <td> <a href='http://uark.us/applicants.php?appID=" . $row[0] . "'>" . $row[34] . " " . $row[36] . "</a></td>
                 <td>" . $row[2] . " " . $row[3] . "</td>
                 <td>" . $row[4] . "</td>
                 <td>" . $row[11] . "</td>
