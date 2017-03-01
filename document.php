@@ -2,7 +2,7 @@
 
 
 
-    $file="test";
+    $file="../docs/test";
     header('Content-type: application/pdf');
     header('Content-disposition: inline; filename="' . $file . '"');
     header('Content-Transfer-Encoding: binary');
