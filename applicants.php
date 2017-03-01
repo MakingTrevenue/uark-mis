@@ -660,7 +660,7 @@
 ?>
 <div class="container-fluid">
   <h2>List of Applicants</h2>        
-  <div style="height:100px;overflow:auto;">
+  <div style="height:500px;overflow:auto;">
   <table id="applicantTable" class="table table-striped">
     <thead>
       <tr>
