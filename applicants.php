@@ -698,7 +698,8 @@
         <th>Term</th>
         <th>Program</th>
         <th>GPA</th>
-        <th>GMAT/GRE Percentile</th>
+        <th>GMAT Total Score</th>
+        <th>GRE Total Score</th>
       </tr>
     </thead>
     <tbody>
