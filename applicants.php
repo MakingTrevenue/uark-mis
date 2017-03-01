@@ -237,14 +237,14 @@
 
 
             $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID WHERE applicationID=:appid");
-            $stmt->bindValue(':appid', $appID);
-            
+
             if(!empty($_GET['appID']))
                 $appID=$_GET['appID'];
             else
                 $appID=$_POST['appID'];
 
-
+            $stmt->bindValue(':appid', $appID);
+            
             $stmt->execute();
 
             if ($stmt->rowCount() > 0){
