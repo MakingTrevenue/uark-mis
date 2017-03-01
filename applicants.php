@@ -558,19 +558,19 @@
                 <div class="panel-body">
 
                     <h4>
-                        <b>TOEFL Test Date: </b> <?php //echo $check['toeflTestDate']; ?>
+                        <b>TOEFL Test Date: </b> <?php echo $check['toeflTestDate']; ?>
                     </h4>
 
                     <h4>
-                        <b>TOEFL Score: </b> <?php //echo $check['toeflOnlineScore']; ?>
+                        <b>TOEFL Score: </b> <?php echo $check['toeflOnlineScore']; ?>
                     </h4>
 
                     <h4>
-                        <b>TSE Test Date: </b> <?php //echo $check['tseTestDate']; ?>
+                        <b>TSE Test Date: </b> <?php echo $check['tseTestDate']; ?>
                     </h4>
 
                     <h4>
-                        <b>TSE Score: </b> <?php //echo $check['tseScore']; ?>
+                        <b>TSE Score: </b> <?php echo $check['tseScore']; ?>
                     </h4>
 
                 </div>
