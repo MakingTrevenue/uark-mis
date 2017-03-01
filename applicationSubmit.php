@@ -46,7 +46,7 @@ try {
 	$countryOfBirth = 'US';
 	$stmt->execute();
 
-	echo "Student record created successfully";
+	//echo "Student record created successfully";
 
 	$stmt = $conn->prepare("INSERT INTO application (studentID,  term,  year,  program, reqScholarship,  previousApp,  previousAppDate,  previousEnrollment,  previousEnrollmentDate,  previousEnrollmentStatus,  undergradGPA,  juniorseniorGPA,  
 													 currentEmployer,  timeAtCurrentEmployer, gmat, gmatTestDate,gmatQScore, gmatVScore, gmatTScore, gre, greTestDate, greQScore, greVScore, greTScore, toeflOnline, toeflPaper, toeflTestDate, toeflOnlineScore,
@@ -143,8 +143,8 @@ try {
 	$tseTestDate = $_POST['tseTestDate'];
 	$tseScore = $_POST['tseScore'];
 	$stmt->execute();
-	echo "<br>";
-	echo "Application record created successfully";	
+	//echo "<br>";
+	//echo "Application record created successfully";	
 	
 	$appid = $conn->lastInsertId();
 	$fileFormName=array('resumeFile','essayQuestionsFile','transcriptFile','recLetter1','recLetter2','recLetter3');
@@ -169,8 +169,10 @@ try {
 				$filename = $fn;	
 				$applicationID=$appid;			
 				$stmt->execute();
-				echo "<br>";
-				echo "Attachment record created successfully";	
+				//echo "<br>";
+				//echo "Attachment record created successfully";
+				header("Location: https://www.uark.us/applicationSuccess.html");	
+
 
 			}else{
 
