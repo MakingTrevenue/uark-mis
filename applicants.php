@@ -643,7 +643,7 @@
     while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
         echo "<tr>
                 <td>" . $row[34] . " " . $row[36] . "</td>
-                <td>" . $row[2] . "</td>
+                <td>" . $row[2] . " " . $row[3] . "</td>
                 <td>" . $row[4] . "</td>
                 <td>" . $row[11] . "</td>
                 <td>" . "" . "</td>
