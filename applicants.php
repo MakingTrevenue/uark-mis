@@ -215,7 +215,7 @@
 	        $stmt->bindParam(':offerStatus', $_POST['offerStatus']);
             $stmt->bindParam(':assistantshipStatus', $_POST['assistantshipStatus']);
             $stmt->bindParam(':applicantResponse', $_POST['applicantResponse']);
-            $stmt->bindParam(':applicationID', $_POST['appID']);
+            $stmt->bindParam(':appID', $_POST['appID']);
 
             $stmt->execute();
         }catch(Exception $e){
