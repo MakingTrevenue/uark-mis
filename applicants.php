@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
@@ -1461,7 +1460,4 @@
 </div>
 
 </body>
-
-
->>>>>>> 34dbfa65c108410f634e93a1f4d3fad443316d5b
 </html>
