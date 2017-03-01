@@ -200,6 +200,15 @@
 
     if((!empty($_POST['appID']) && !empty($_POST['offerStatus']) && !empty($_POST['assistantshipStatus']) && !empty($_POST['applicantResponse']) )){
         try{
+            $config = parse_ini_file('../private/credentials.ini');
+            $servername = $config["servername"];
+            $username = $config["username"];
+            $password = $config["password"];
+            $dbname = $config["dbname"];
+
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        
             $stmt = $conn->prepare("UPDATE application SET offerStatus=:offerStatus, assistantshipStatus=:assistantshipStatus, applicantResponse=:applicantResponse 
                                     WHERE applicationID=:appID");
 
