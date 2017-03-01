@@ -481,7 +481,7 @@
                     </h4>
 
                     <h4>
-                        <b>Degree & Major(s): </b> <?php echo $check['degree'] . " in " $check['major']; ?>
+                        <b>Degree & Major(s): </b> <?php echo $check['degree'] . " in " . $check['major']; ?>
                     </h4>                  
 
                 </div>
