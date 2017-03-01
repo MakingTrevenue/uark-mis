@@ -172,6 +172,7 @@ try {
 				//echo "<br>";
 				//echo "Attachment record created successfully";
 				header("Location: https://www.uark.us/applicationSuccess.html");	
+				exit();
 
 
 			}else{
