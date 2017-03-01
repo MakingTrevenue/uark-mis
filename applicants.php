@@ -223,6 +223,9 @@
 
         if ($stmt->rowCount() > 0){
             $check = $stmt->fetch(PDO::FETCH_ASSOC);
+        }else{
+            exit();
+
         }
         }catch(Exception $e){
             echo "Error: " . $e->getMessage();
@@ -253,7 +256,7 @@
                 </div>
 
                 <div class="panel-body">
-
+                    <form id="accountlogin" action="/applicants.php" method="post" enctype="multipart/form-data">
                     <h4>
                         <b>Offer Status: </b>
                         <select name="offerStatus" id="offerStatus" class="selectpicker form-control" data-live-search="true">
@@ -284,9 +287,9 @@
                     </h4>
 
                     <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3 text-center">
-                        <button id="" class="btn btn-success" onlick="">Update Status</button>
+                        <input type="submit"" id="" class="btn btn-success" submit="Update Status">
                     </div>
-
+                    </form>
                 </div>
 
             </div>
