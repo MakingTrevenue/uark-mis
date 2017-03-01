@@ -642,11 +642,11 @@
     <?php 
     while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
         echo "<tr>
-                <td>" . $row[0] . "</td>
-                <td>" . $row[1] . "</td>
+                <td>" . $row['firstName'] . "</td>
                 <td>" . $row[2] . "</td>
-                <td>" . $row[3] . "</td>
                 <td>" . $row[4] . "</td>
+                <td>" . $row[11] . "</td>
+                <td>" . $row[] . "</td>
              </tr>";
     }    
     ?>
