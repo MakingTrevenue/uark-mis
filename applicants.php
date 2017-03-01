@@ -607,8 +607,22 @@
 
 
 
-    }else
-        echo "nah";
+    }else{
+        $config = parse_ini_file('../private/credentials.ini');
+        $servername = $config["servername"];
+        $username = $config["username"];
+        $password = $config["password"];
+        $dbname = $config["dbname"];
+
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+        $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID");
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
 ?>
 <div class="container-fluid">
@@ -625,27 +639,17 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Trevor V. Darby</td>
-        <td>Fall 2017</td>
-        <td>Full-Time MIS</td>
-        <td>4.00</td>
-        <td>96</td>
-      </tr>
-      <tr>
-        <td>Michael Scott</td>
-        <td>Fall 2017</td>
-        <td>Professional MIS</td>
-        <td>3.82</td>
-        <td>91</td>
-      </tr>
-      <tr>
-        <td>Dwight Schrute</td>
-        <td>Fall 2017</td>
-        <td>Full-Time MIS</td>
-        <td>3.96</td>
-        <td>99</td>
-      </tr>
+    <?php 
+    while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
+        echo "<tr>
+                <td>" . $row[0] . "</td>
+                <td>" . $row[1] . "</td>
+                <td>" . $row[2] . "</td>
+                <td>" . $row[3] . "</td>
+                <td>" . $row[4] . "</td>
+             </tr>";
+    }    
+    ?>
     </tbody>
   </table>
 </div>
