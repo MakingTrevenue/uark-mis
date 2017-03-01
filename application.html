@@ -20,7 +20,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Font Awesome JavaScript -->
-    <script src="https://use.fontawesome.com/2fe8cd2f19.js"></script> 
+    <script src="https://use.fontawesome.com/2fe8cd2f19.js"></script>
+
+    <!-- Form Validation jQuery -->
+    <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.js"></script>
 
     <!-- Custom JavaScript -->
     <script type="text/javascript" src="./js/bootstrap-filestyle.min.js"></script>
@@ -986,5 +989,83 @@
 
     <!-- Custom Scripts -->
     <script type="text/javascript" src="./js/scripts.js"></script>
+    <script>
+        $("#applicationform").validate({
+        rules: {
+            firstName: {
+                required: true,
+                minlength: 2,
+                maxlength: 30
+            },
+
+            middleName: {
+                required: false,
+                minlength: 2,
+                maxlength: 30
+            },
+
+            lastName: {
+                required: true,
+                minlength: 2,
+                maxlength: 30
+            },
+
+            preferredName: {
+                required: false,
+                minlength: 2,
+                maxlength: 90
+            },
+
+            primaryEmail: {
+                required: true,
+                email: true,
+                maxlength: 100
+            },
+
+            secondaryEmail: {
+                required: false,
+                email: true,
+                maxlength: 100
+            },
+
+            primaryPhone: {
+                required: true,
+                digits: true,
+                minlength: 10,
+                maxlength: 15
+            },
+
+            secondaryPhone: {
+                required: false,
+                digits: true,
+                minlength: 10,
+                maxlength: 15
+            },
+        },
+
+        messages: {
+            firstName: {
+                required: "Please enter your first name.",
+            },
+
+            lastName: {
+                required: "Please enter your last name.",
+            },
+
+            primaryEmail: {
+                required: "Please enter your email address.",
+            },
+
+            primaryPhone: {
+
+            }
+        }
+
+    });
+
+
+
+
+    </script>
 
 </html>
