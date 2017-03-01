@@ -286,7 +286,7 @@
                     <h4>
                         <input type="hidden" name="appID" value="<?php echo $check['applicationID'];?>" />
                         <b>Offer Status: </b>
-                        <select name="offerStatus" id="offerStatus" class="selectpicker form-control" data-live-search="true">
+                        <select name="offerStatus" id="offerStatus" value="<?php echo $check['offerStatus'];?>" class="selectpicker form-control" data-live-search="true">
                             <option>Undecided</option>
                             <option>Accepted</option>
                             <option>Rejected</option>
@@ -296,7 +296,7 @@
 
                     <h4>
                         <b>Assistantship Status: </b>
-                        <select name="assistantshipStatus" id="assistantshipStatus" class="selectpicker form-control" data-live-search="true">
+                        <select name="assistantshipStatus" id="assistantshipStatus" value="<?php echo $check['assisstantshipStatus'];?>" class="selectpicker form-control" data-live-search="true">
                             <option></option>
                             <option>Silver</option>
                             <option>Gold</option>
@@ -305,7 +305,7 @@
 
                     <h4>
                         <b>Applicant Response: </b>
-                        <select name="applicantResponse" id="applicantResponse" class="selectpicker form-control" data-live-search="true">
+                        <select name="applicantResponse" id="applicantResponse" value="<?php echo $check['applicantResponse'];?>" class="selectpicker form-control" data-live-search="true">
                             <option></option>
                             <option>Decision Pending</option>
                             <option>Accept Offer</option>
