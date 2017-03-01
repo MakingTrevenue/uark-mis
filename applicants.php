@@ -640,22 +640,22 @@
 
 
 
-    }else{
-        $config = parse_ini_file('../private/credentials.ini');
-        $servername = $config["servername"];
-        $username = $config["username"];
-        $password = $config["password"];
-        $dbname = $config["dbname"];
-
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
-        $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID");
-        $stmt->execute();
-
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    $config = parse_ini_file('../private/credentials.ini');
+    $servername = $config["servername"];
+    $username = $config["username"];
+    $password = $config["password"];
+    $dbname = $config["dbname"];
+
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+    $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID");
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
 ?>
 <div class="container-fluid">
