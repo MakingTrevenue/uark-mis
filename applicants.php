@@ -256,7 +256,7 @@
                 </div>
 
                 <div class="panel-body">
-                    <form id="accountlogin" action="/applicants.php" method="post" enctype="multipart/form-data">
+                    <form id="applicantUpdate" action="/applicants.php" method="post" enctype="multipart/form-data">
                     <h4>
                         <b>Offer Status: </b>
                         <select name="offerStatus" id="offerStatus" class="selectpicker form-control" data-live-search="true">
