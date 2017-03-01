@@ -328,7 +328,7 @@
                             <label for="streetAddress-M">Street Address</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-home"></i></span>
-                                <input type="text" class="form-control" name="streetAddressM"  id="streetAddress-M" placeholder="567 Oak Avenue">
+                                <input type="text" class="form-control" name="streetAddressM"  id="streetAddressM" placeholder="567 Oak Avenue">
                             </div>
                         </div>
 
@@ -336,7 +336,7 @@
                             <label for="streetAddress2-M">Street Address 2 (optional)</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-home"></i></span>
-                                <input type="text" class="form-control" name="streetAddress2M" id="streetAddress2-M" placeholder="Apartment, suite, unit, building, floor, etc.">
+                                <input type="text" class="form-control" name="streetAddress2M" id="streetAddress2M" placeholder="Apartment, suite, unit, building, floor, etc.">
                             </div>
                         </div>
 
@@ -344,7 +344,7 @@
                             <label for="city-M">City</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-home"></i></span>
-                                <input type="text" class="form-control" name="cityM" id="city-M" placeholder="Beverly Hills">
+                                <input type="text" class="form-control" name="cityM" id="cityM" placeholder="Beverly Hills">
                             </div>
                         </div>
 
@@ -352,7 +352,7 @@
                             <label for="state-M">State</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-home"></i></span>
-                                <input type="text" class="form-control" name="stateM" id="state-M" placeholder="California">
+                                <input type="text" class="form-control" name="stateM" id="stateM" placeholder="California">
                             </div>
                         </div>
 
@@ -360,7 +360,7 @@
                             <label for="zipCode-M">ZIP Code</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-home"></i></span>
-                                <input type="number" pattern="\d*" class="form-control" name="zipCodeM" id="zipCode-M" placeholder="90210">
+                                <input type="number" pattern="\d*" class="form-control" name="zipCodeM" id="zipCodeM" placeholder="90210">
                             </div>
                         </div>
 
@@ -368,7 +368,7 @@
                             <label for="country-M">Country</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-globe"></i></span>
-                                <input type="text" class="form-control" name="country-M" id="country-M" placeholder="US">
+                                <input type="text" class="form-control" name="countryM" id="countryM" placeholder="US">
                             </div>
                         </div>
 
@@ -992,28 +992,26 @@
     <script>
         $("#applicationform").validate({
         rules: {
+
+            // Personal & Contact Information
             firstName: {
                 required: true,
-                minlength: 2,
-                maxlength: 30
+                rangelength: [2, 30]
             },
 
             middleName: {
                 required: false,
-                minlength: 2,
-                maxlength: 30
+                rangelength: [2, 30]
             },
 
             lastName: {
                 required: true,
-                minlength: 2,
-                maxlength: 30
+                rangelength: [2, 30]
             },
 
             preferredName: {
                 required: false,
-                minlength: 2,
-                maxlength: 90
+                rangelength: [2, 90]
             },
 
             primaryEmail: {
@@ -1031,16 +1029,70 @@
             primaryPhone: {
                 required: true,
                 digits: true,
-                minlength: 10,
-                maxlength: 15
+                rangelength: [10, 15]
             },
 
             secondaryPhone: {
                 required: false,
                 digits: true,
-                minlength: 10,
-                maxlength: 15
+                rangelength: [10, 15]
             },
+
+            // Address Information
+            streetAddress: {
+                required: true
+            },
+
+            streetAddress2: {
+                required: false
+            },
+
+            city: {
+                required: true
+            },
+
+            state: {
+                required: true,
+                rangelength: [2, 2]
+            },
+
+            zipCode: {
+                required: true,
+                rangelength: [5, 5]
+            },
+
+            country: {
+                required: true,
+                rangelength: [2, 2]
+            },
+
+            streetAddressM: {
+                required: true
+            },
+
+            streetAddress2M: {
+                required: false
+            },
+
+            cityM: {
+                required: true
+            },
+
+            stateM: {
+                required: true,
+                rangelength: [2, 2]
+            },
+
+            zipCodeM: {
+                required: true,
+                rangelength: [5, 5]
+            },
+
+            countryM: {
+                required: true,
+                rangelength: [2, 2]
+            },
+
         },
 
         messages: {
@@ -1055,10 +1107,6 @@
             primaryEmail: {
                 required: "Please enter your email address.",
             },
-
-            primaryPhone: {
-
-            }
         }
 
     });
