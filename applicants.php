@@ -286,11 +286,11 @@
                     <h4>
                         <input type="hidden" name="appID" value="<?php echo $check['applicationID'];?>" />
                         <b>Offer Status: </b>
-                        <select name="offerStatus" id="offerStatus" value="<?php echo $check['offerStatus'];?>" class="selectpicker form-control" data-live-search="true">
-                            <option>Undecided</option>
-                            <option>Accepted</option>
-                            <option>Rejected</option>
-                            <option>Waitlist</option>
+                        <select name="offerStatus" id="offerStatus" class="selectpicker form-control" data-live-search="true">
+                            <option value="Undecided"<?=$check['offerStatus'] == 'Undecided' ? ' selected="selected"' : '';?> >\</option>
+                            <option value="Accepted"<?=$check['offerStatus'] == 'Accepted' ? ' selected="selected"' : '';?> >\</option>
+                            <option value="Rejected"<?=$check['offerStatus'] == 'Rejected' ? ' selected="selected"' : '';?> >\</option>
+                            <option value="Waitlist"<?=$check['offerStatus'] == 'Waitlist' ? ' selected="selected"' : '';?> >\</option>
                         </select>
                     </h4>
 
