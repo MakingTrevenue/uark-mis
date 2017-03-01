@@ -209,6 +209,8 @@
             $stmt->bindParam(':applicationID', $_POST['applicantResponse']);
 
             $stmt->execute();
+
+            $_GET['appID'] = $_POST['appID'];
         }catch(Exception $e){
             echo "Error: " . $e->getMessage();
 	        echo "<br> Stack trace: " . $e->getTraceAsString();            
