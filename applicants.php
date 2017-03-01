@@ -658,7 +658,7 @@
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
 ?>
-<div class="container-fluid">
+<div class="container-fluid" style="height:100px;overflow:auto;">
 
   <h2>List of Applicants</h2>        
   <table id="applicantTable" class="table table-striped">
