@@ -461,27 +461,27 @@
                 <div class="panel-body">
 
                     <h4>
-                        <b>College Name: </b> <?php //echo $check['collegeName']; ?>
+                        <b>College Name: </b> <?php echo $check['collegeName']; ?>
                     </h4>
 
                     <h4>
-                        <b>Dates Attended: </b> <?php //echo $check['dateStarted'] . " - " . $check['dateEnded']; ?>
+                        <b>Dates Attended: </b> <?php echo $check['dateStarted'] . " - " . $check['dateEnded']; ?>
                     </h4>
 
                     <h4>
-                        <b>GPA: </b> <?php //echo $check['gpa']; ?>
+                        <b>GPA: </b> <?php echo $check['gpa']; ?>
                     </h4>
 
                     <h4>
-                        <b>Hours Completed: </b><?php //echo $check['hoursEarned']; ?>
+                        <b>Hours Completed: </b><?php echo $check['hoursEarned']; ?>
                     </h4>
 
                     <h4>
-                        <b>Hours Enrolled: </b> <?php //echo $check['hoursEnrolled']; ?>
+                        <b>Hours Enrolled: </b> <?php echo $check['hoursEnrolled']; ?>
                     </h4>
 
                     <h4>
-                        <b>Degree & Major(s): </b> <?php //echo $check['degree'] . " in " $check['major']; ?>
+                        <b>Degree & Major(s): </b> <?php echo $check['degree'] . " in " $check['major']; ?>
                     </h4>                  
 
                 </div>
