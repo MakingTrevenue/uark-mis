@@ -455,7 +455,7 @@
                 </div>
                 
                 <?php
-                    $rc=$check->rowCount();
+                    $rc=$stmt->rowCount();
                     for($i=0; $i<$rc; $r++){
 
                 ?>
