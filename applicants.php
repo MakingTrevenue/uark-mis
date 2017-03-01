@@ -1,8 +1,6 @@
 <?php
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
-    echo "hi ";
-    print_r($_GET);
 ?>
 
 <!DOCTYPE html>
@@ -198,37 +196,46 @@
 
 <?php
 
-    if(!empty($_GET['appID'])){
+
+
+    if((!empty($_POST['appID']) && !empty($_POST['offerStatus']) && !empty($_POST['assistantshipStatus']) && !empty($_POST['applicantResponse']) )){
         try{
-        $config = parse_ini_file('../private/credentials.ini');
-        $servername = $config["servername"];
-        $username = $config["username"];
-        $password = $config["password"];
-        $dbname = $config["dbname"];
+            $stmt = $conn->prepare("UPDATE application SET offerStatus=:offerStatus, assistantshipStatus=:assistantshipStatus, applicantResponse=:applicantResponse 
+                                    WHERE applicationID=:appID");
 
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
-        $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID WHERE applicationID=:appid");
-
-        // SELECT * FROM application
-        // JOIN student ON student.studentID = application.studentID
-        // JOIN college ON college.applicationID = application.applicationID
-        // JOIN attachment ON attachment.applicationID = application.applicationID
-        // JOIN student_address ON student_address.studentID = student.studentID
-        // JOIN address ON address.addressID = student_address.addressID
-        // WHERE application.applicationID=1;
-
-        $stmt->bindValue(':appid', $_GET['appID']);
-        $stmt->execute();
-
-        if ($stmt->rowCount() > 0){
-            $check = $stmt->fetch(PDO::FETCH_ASSOC);
-        }else{
-            exit();
-
+	        $stmt->bindParam(':offerStatus', $_POST['appID']);
+            $stmt->bindParam(':assistantshipStatus', $_POST['offerStatus']);
+            $stmt->bindParam(':applicantResponse', $_POST['assistantshipStatus']);
+            $stmt->bindParam(':applicationID', $_POST['applicantResponse']);
+        }catch(Exception $e){
+            echo "Error: " . $e->getMessage();
+	        echo "<br> Stack trace: " . $e->getTraceAsString();            
         }
+    }
+
+    if(!empty($_GET['appID']) || (!empty($_POST['appID']) && !empty($_POST['offerStatus']) && !empty($_POST['assistantshipStatus']) && !empty($_POST['applicantResponse']) )){
+        try{
+            $config = parse_ini_file('../private/credentials.ini');
+            $servername = $config["servername"];
+            $username = $config["username"];
+            $password = $config["password"];
+            $dbname = $config["dbname"];
+
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+            $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID WHERE applicationID=:appid");
+
+            $stmt->bindValue(':appid', $_GET['appID']);
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0){
+                $check = $stmt->fetch(PDO::FETCH_ASSOC);
+            }else{
+                exit();
+
+            }
         }catch(Exception $e){
             echo "Error: " . $e->getMessage();
 	        echo "<br> Stack trace: " . $e->getTraceAsString();
@@ -242,7 +249,7 @@
 <!-- Page Content Container -->
 <div class="container-fluid">
     
-    <form id="" action="" method="">
+    <form id="applicantUpdate" action="/applicants.php" method='post' enctype="multipart/form-data">
         
     <!-- Contact, Personal, & Application Information -->
     <div class="row">
@@ -258,7 +265,7 @@
                 </div>
 
                 <div class="panel-body">
-                    <form id="applicantUpdate" action="/applicants.php" method='post' enctype="multipart/form-data">
+                    
                     <h4>
                         <input type="hidden" name="appID" value="<?php echo $check['applicationID'];?>" />
                         <b>Offer Status: </b>
