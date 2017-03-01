@@ -487,7 +487,7 @@
 
                 </div>
                 <?php
-                    $check = $check->fetch(PDO::FETCH_BOTH);
+                    $check = $stmt->fetch(PDO::FETCH_BOTH);
                     }
                 ?>
 
