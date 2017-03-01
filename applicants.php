@@ -207,6 +207,8 @@
             $stmt->bindParam(':assistantshipStatus', $_POST['offerStatus']);
             $stmt->bindParam(':applicantResponse', $_POST['assistantshipStatus']);
             $stmt->bindParam(':applicationID', $_POST['applicantResponse']);
+
+            $stmt->execute();
         }catch(Exception $e){
             echo "Error: " . $e->getMessage();
 	        echo "<br> Stack trace: " . $e->getTraceAsString();            
