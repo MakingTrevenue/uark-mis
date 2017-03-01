@@ -646,9 +646,9 @@
                 <td>" . $row[2] . "</td>
                 <td>" . $row[4] . "</td>
                 <td>" . $row[11] . "</td>
-                <td>" . $row[] . "</td>
+                <td>" . $row[34] . " " . $row[36] . "</td>
              </tr>";
-    }    
+    }   
     ?>
     </tbody>
   </table>
