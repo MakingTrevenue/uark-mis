@@ -237,7 +237,7 @@
 
 
             $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID WHERE applicationID=:appid");
-
+            
             if(!empty($_GET['appID']))
                 $appID=$_GET['appID'];
             else
