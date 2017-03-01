@@ -25,7 +25,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- table sorter jquery plugin -->
-    <script type="text/javascript" src="/path/to/jquery.tablesorter.js"></script> 
+    <script type="text/javascript" src="/jquery.tablesorter.js"></script> 
 
     <!-- Font Awesome JavaScript -->
     <script src="https://use.fontawesome.com/2fe8cd2f19.js"></script> 
