@@ -454,6 +454,7 @@
                 </div>
                 
                 <?php
+                    $check2=$check;
                     $rc=$stmt->rowCount();
                     for($i=0; $i<$rc; $i++){
 
@@ -461,19 +462,19 @@
                 <div class="panel-body">
 
                     <h4>
-                        <b>College Name: </b> <?php echo $check['collegeName']; ?>
+                        <b>College Name: </b> <?php echo $check2['collegeName']; ?>
                     </h4>
 
                     <h4>
-                        <b>Dates Attended: </b> <?php echo $check['dateStarted'] . " - " . $check['dateEnded']; ?>
+                        <b>Dates Attended: </b> <?php echo $check2['dateStarted'] . " - " . $check['dateEnded']; ?>
                     </h4>
 
                     <h4>
-                        <b>GPA: </b> <?php echo $check['gpa']; ?>
+                        <b>GPA: </b> <?php echo $check2['gpa']; ?>
                     </h4>
 
                     <h4>
-                        <b>Hours Completed: </b><?php echo $check['hoursEarned']; ?>
+                        <b>Hours Completed: </b><?php echo $check2['hoursEarned']; ?>
                     </h4>
 
                     <h4>
@@ -481,12 +482,12 @@
                     </h4>
 
                     <h4>
-                        <b>Degree & Major(s): </b> <?php echo $check['degree'] . " in " . $check['major']; ?>
+                        <b>Degree & Major(s): </b> <?php echo $check2['degree'] . " in " . $check2['major']; ?>
                     </h4>                  
 
                 </div>
                 <?php
-                    $check = $stmt->fetch(PDO::FETCH_BOTH);
+                    $check2 = $stmt->fetch(PDO::FETCH_BOTH);
                     }
                 ?>
 
