@@ -171,10 +171,6 @@ try {
 				$stmt->execute();
 				//echo "<br>";
 				//echo "Attachment record created successfully";
-				echo "<script type='text/javascript'>window.location.href = 'applicationSuccess.html';</script>";
-				echo "hi";
-
-
 			}else{
 
 			}
@@ -190,7 +186,5 @@ catch(Exception $e){
 	echo "<br> Stack trace: " . $e->getTraceAsString();
 }
 $conn = null;
-
-		
-
+header('Location: applicationSuccess.html');
 ?>
