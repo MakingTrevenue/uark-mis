@@ -24,6 +24,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <!-- table sorter jquery plugin -->
+    <script type="text/javascript" src="/path/to/jquery.tablesorter.js"></script> 
+
     <!-- Font Awesome JavaScript -->
     <script src="https://use.fontawesome.com/2fe8cd2f19.js"></script> 
 
@@ -628,7 +631,7 @@
 <div class="container-fluid">
 
   <h2>List of Applicants</h2>        
-  <table class="table table-striped">
+  <table id="applicantTable" class="table table-striped">
     <thead>
       <tr>
         <th>Applicant Name</th>
@@ -657,4 +660,12 @@
 </div>
 
 </body>
+
+<script>
+    $(document).ready(function() 
+        { 
+            $("#applicantTable").tablesorter(); 
+        } 
+    );
+</script>
 </html>
