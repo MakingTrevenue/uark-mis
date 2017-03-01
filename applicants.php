@@ -208,7 +208,7 @@
 
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        
+
             $stmt = $conn->prepare("UPDATE application SET offerStatus=:offerStatus, assistantshipStatus=:assistantshipStatus, applicantResponse=:applicantResponse 
                                     WHERE applicationID=:appID");
 
@@ -218,8 +218,6 @@
             $stmt->bindParam(':applicationID', $_POST['applicantResponse']);
 
             $stmt->execute();
-
-            $_GET['appID'] = $_POST['appID'];
         }catch(Exception $e){
             echo "Error: " . $e->getMessage();
 	        echo "<br> Stack trace: " . $e->getTraceAsString();            
@@ -239,8 +237,14 @@
 
 
             $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID WHERE applicationID=:appid");
+            $stmt->bindValue(':appid', $appID);
+            
+            if(!empty($_GET['appID']))
+                $appID=$_GET['appID'];
+            else
+                $appID=$_POST['appID'];
 
-            $stmt->bindValue(':appid', $_GET['appID']);
+
             $stmt->execute();
 
             if ($stmt->rowCount() > 0){
