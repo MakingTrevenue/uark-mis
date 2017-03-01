@@ -699,8 +699,8 @@
 ?>
 <div class="container-fluid">
   <h2>List of Applicants</h2>        
-  <div style="min-height:100%;overflow:auto;">
-  <table id="applicantTable" class="table table-striped">
+  <div style="min-height:100%;overflow:scroll;">
+  <table id="applicantTable" class="table table-striped table-responsive">
     <thead>
       <tr>
         <th>Applicant Name</th>
