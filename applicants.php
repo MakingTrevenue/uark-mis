@@ -456,7 +456,7 @@
                 
                 <?php
                     $rc=$stmt->rowCount();
-                    for($i=0; $i<$rc; $r++){
+                    for($i=0; $i<$rc; $i++){
 
                 ?>
                 <div class="panel-body">
