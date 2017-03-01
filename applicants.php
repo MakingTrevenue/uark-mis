@@ -298,8 +298,8 @@
                         <b>Assistantship Status: </b>
                         <select name="assistantshipStatus" id="assistantshipStatus" value="<?php echo $check['assisstantshipStatus'];?>" class="selectpicker form-control" data-live-search="true">
                             <option></option>
-                            <option>Silver</option>
-                            <option>Gold</option>
+                            <option value="Silver"<?=$check['assistantshipStatus'] == 'Silver' ? ' selected="selected"' : '';?> >Silver</option>
+                            <option value="Gold"<?=$check['assistantshipStatus'] == 'Gold' ? ' selected="selected"' : '';?> >Gold</option>
                         </select>
                     </h4>
 
@@ -307,9 +307,9 @@
                         <b>Applicant Response: </b>
                         <select name="applicantResponse" id="applicantResponse" value="<?php echo $check['applicantResponse'];?>" class="selectpicker form-control" data-live-search="true">
                             <option></option>
-                            <option>Decision Pending</option>
-                            <option>Accept Offer</option>
-                            <option>Reject OFfer</option>
+                            <option value="Decision Pending"<?=$check['applicantResponse'] == 'Decision Pending' ? ' selected="selected"' : '';?> >Decision Pending</option>
+                            <option value="Accept Offer"<?=$check['applicantResponse'] == 'Accept Offer' ? ' selected="selected"' : '';?> >Accept Offer</option>
+                            <option value="Reject Offer"<?=$check['applicantResponse'] == 'Reject Offer' ? ' selected="selected"' : '';?> >Reject Offer</option>
                         </select>
                     </h4>
 
