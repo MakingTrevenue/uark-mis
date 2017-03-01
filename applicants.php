@@ -510,35 +510,35 @@
                 <div class="panel-body">
 
                     <h4>
-                        <b>GMAT Test Date: </b> <?php //echo $check['gmatTestDate']; ?>
+                        <b>GMAT Test Date: </b> <?php echo $check['gmatTestDate']; ?>
                     </h4>
 
                     <h4>
-                        <b>GMAT Quantitative Score: </b> <?php //echo $check['gmatQScore']; ?>
+                        <b>GMAT Quantitative Score: </b> <?php echo $check['gmatQScore']; ?>
                     </h4>
 
                     <h4>
-                        <b>GMAT Verbal Score: </b> <?php //echo $check['gmatVScore']; ?>
+                        <b>GMAT Verbal Score: </b> <?php echo $check['gmatVScore']; ?>
                     </h4>
 
                     <h4>
-                        <b>GMAT Total Score: </b> <?php //echo $check['gmatTScore']; ?>
+                        <b>GMAT Total Score: </b> <?php echo $check['gmatTScore']; ?>
                     </h4>
 
                     <h4>
-                        <b>GRE Test Date: </b> <?php //echo $check['greTestDate']; ?>
+                        <b>GRE Test Date: </b> <?php echo $check['greTestDate']; ?>
                     </h4>
 
                     <h4>
-                        <b>GRE Quantitative Score: </b> <?php //echo $check['greQScore']; ?>
+                        <b>GRE Quantitative Score: </b> <?php echo $check['greQScore']; ?>
                     </h4>
 
                     <h4>
-                        <b>GRE Verbal Score: </b> <?php //echo $check['greVScore']; ?>
+                        <b>GRE Verbal Score: </b> <?php echo $check['greVScore']; ?>
                     </h4>
 
                     <h4>
-                        <b>GRE Total Score: </b> <?php //echo $check['greTScore']; ?>
+                        <b>GRE Total Score: </b> <?php echo $check['greTScore']; ?>
                     </h4>
 
                 </div>
