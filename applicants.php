@@ -455,7 +455,6 @@
                 
                 <?php
                     $rc=$stmt->rowCount();
-                    echo "<script>alert(".$rc.")</script>";
                     for($i=0; $i<$rc; $i++){
 
                 ?>
