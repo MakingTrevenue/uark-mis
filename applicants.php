@@ -456,7 +456,7 @@
                 <?php
                     $rc=$stmt->rowCount();
                     echo "<script>alert(".$rc.")</script>";
-                    //for($i=0; $i<$rc; $i++){
+                    for($i=0; $i<$rc; $i++){
 
                 ?>
                 <div class="panel-body">
@@ -487,8 +487,8 @@
 
                 </div>
                 <?php
-                    //$check = $stmt->fetch(PDO::FETCH_BOTH);
-                    //}
+                    $check = $stmt->fetch(PDO::FETCH_BOTH);
+                    }
                 ?>
 
             </div>
