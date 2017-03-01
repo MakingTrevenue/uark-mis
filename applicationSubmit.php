@@ -172,7 +172,7 @@ try {
 				//echo "<br>";
 				//echo "Attachment record created successfully";
 				echo "<script type='text/javascript'>window.location.href = 'applicationSuccess.html';</script>";
-				exit();
+				echo "hi";
 
 
 			}else{
