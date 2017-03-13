@@ -297,7 +297,6 @@
                     <h4>
                         <b>Assistantship Status: </b>
                         <select name="assistantshipStatus" id="assistantshipStatus" value="<?php echo $check['assisstantshipStatus'];?>" class="selectpicker form-control" data-live-search="true">
-                            <option></option>
                             <option value="Silver"<?=$check['assistantshipStatus'] == 'Silver' ? ' selected="selected"' : '';?> >Silver</option>
                             <option value="Gold"<?=$check['assistantshipStatus'] == 'Gold' ? ' selected="selected"' : '';?> >Gold</option>
                         </select>
@@ -306,7 +305,6 @@
                     <h4>
                         <b>Applicant Response: </b>
                         <select name="applicantResponse" id="applicantResponse" value="<?php echo $check['applicantResponse'];?>" class="selectpicker form-control" data-live-search="true">
-                            <option></option>
                             <option value="Decision Pending"<?=$check['applicantResponse'] == 'Decision Pending' ? ' selected="selected"' : '';?> >Decision Pending</option>
                             <option value="Accept Offer"<?=$check['applicantResponse'] == 'Accept Offer' ? ' selected="selected"' : '';?> >Accept Offer</option>
                             <option value="Reject Offer"<?=$check['applicantResponse'] == 'Reject Offer' ? ' selected="selected"' : '';?> >Reject Offer</option>
@@ -700,7 +698,7 @@
 ?>
 <div class="container-fluid">
   <h2 class="text-danger text-center">DISCLAIMER: This is a student project. This is NOT the official website for the University of Arkansas and is in no way affiliated with the University of Arkansas.</h2><br>
-  <h2>List of Applicants</h2>        
+  <h2 class="text-primary text-center">List of Applicants</h2>        
   <div style="height:750px;overflow:auto;">
   <table id="applicantTable" class="table table-striped table-responsive">
     <thead>
