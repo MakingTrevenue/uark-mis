@@ -293,7 +293,7 @@ $("#applicationform").validate({
         },
 
         country: {
-            required: "Please enter a country.",
+            required: "Please enter a country code.",
             rangelength: "Please enter the two-character country code."
         },
 
@@ -316,7 +316,7 @@ $("#applicationform").validate({
         },
 
         countryM: {
-            required: "Please enter a country.",
+            required: "Please enter a country code.",
             rangelength: "Please enter the two-character country code."
         },
 
