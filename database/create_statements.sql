@@ -104,6 +104,9 @@ CREATE TABLE `application` (
   `tse` BOOLEAN NOT NULL DEFAULT 0,
   `tseTestDate` DATE DEFAULT NULL,
   `tseScore` SMALLINT DEFAULT NULL,
+  `offerStatus` VARCHAR(25) NOT NULL DEFAULT 'Undecided',
+  `assistantshipStatus` VARCHAR(25) DEFAULT NULL,
+  `applicantResponse` VARCHAR(25) DEFAULT NULL,
   PRIMARY KEY (`applicationID`),
   FOREIGN KEY (`studentID`) REFERENCES `student`(`studentID`)
 );
@@ -134,8 +137,8 @@ CREATE TABLE `college` (
 
 CREATE TABLE `room` (
   `roomID` INT(11) NOT NULL AUTO_INCREMENT,
-  `building` VARCHAR(50) NOT NULL,
-  `roomNumber` VARCHAR(10) NOT NULL,
+  `building` CHAR(4) NOT NULL,
+  `roomNumber` CHAR(4) NOT NULL,
   PRIMARY KEY (`roomID`)
 );
 
@@ -143,8 +146,15 @@ CREATE TABLE `course` (
   `courseID` VARCHAR(10) NOT NULL,
   `name` VARCHAR(100) NOT NULL,
   `description` TEXT NULL,
+  `hours` SMALLINT NOT NULL,
+  `offered` VARCHAR(25) NOT NULL,
+  PRIMARY KEY (`courseID`)
+);
+
+CREATE TABLE `class` (
+  `classID` INT(11) NOT NULL AUTO_INCREMENT,
   `section` SMALLINT NOT NULL DEFAULT 1,
-  `day` VARCHAR(25) NOT NULL,
+  `day` VARCHAR(7) NOT NULL,
   `startTime` TIME NOT NULL,
   `endTime` TIME NOT NULL,
   `roomID` INT(11) NOT NULL,
@@ -152,9 +162,10 @@ CREATE TABLE `course` (
   `endDate` DATE NOT NULL,
   `instructionMode` CHAR(2) NOT NULL DEFAULT 'P',
   `status` VARCHAR(10) NOT NULL DEFAULT 'Open',
-  `offered` VARCHAR(10) NOT NULL DEFAULT 'All',
-  PRIMARY KEY (`courseID`),
-  FOREIGN KEY (`roomID`) REFERENCES `room`(`roomID`)
+  `courseID` VARCHAR(10) NOT NULL,
+  PRIMARY KEY (`classID`),
+  FOREIGN KEY (`roomID`) REFERENCES `room`(`roomID`),
+  FOREIGN KEY (`courseID`) REFERENCES `course`(`courseID`)
 );
 
 CREATE TABLE `instructor` (
@@ -170,23 +181,23 @@ CREATE TABLE `instructor` (
   FOREIGN KEY (`roomID`) REFERENCES `room`(`roomID`)
 );
 
-CREATE TABLE `course_instructor` (
-  `courseID` VARCHAR(10) NOT NULL,
+CREATE TABLE `class_instructor` (
+  `classID` INT(11) NOT NULL,
   `instructorID` INT(11) NOT NULL,
   `term` VARCHAR(25) NOT NULL,
   `year` YEAR(4) NOT NULL,
-  PRIMARY KEY (`courseID`, `instructorID`),
-  FOREIGN KEY (`courseID`) REFERENCES `course`(`courseID`),
+  PRIMARY KEY (`classID`, `instructorID`),
+  FOREIGN KEY (`classID`) REFERENCES `class`(`classID`),
   FOREIGN KEY (`instructorID`) REFERENCES `instructor`(`instructorID`)
 );
 
-CREATE TABLE `student_course` (
+CREATE TABLE `student_class` (
   `studentID` INT(11) NOT NULL,
-  `courseID` VARCHAR(10) NOT NULL,
+  `classID` INT(11) NOT NULL,
   `grade` DECIMAL(2,1) NULL,
   `term` VARCHAR(25) NOT NULL,
   `year` YEAR(4) NOT NULL,
-  PRIMARY KEY (`studentID`, `courseID`),
+  PRIMARY KEY (`studentID`, `classID`),
   FOREIGN KEY (`studentID`) REFERENCES `student`(`studentID`),
-  FOREIGN KEY (`courseID`) REFERENCES `course`(`courseID`)
+  FOREIGN KEY (`classID`) REFERENCES `class`(`classID`)
 );
