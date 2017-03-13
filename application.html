@@ -426,7 +426,6 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-group"></i></span>
                                 <select name="ethnicity" id="ethnicity" class="selectpicker form-control" data-live-search="true">
-                                    <option></option>
                                     <option>Alaskan Native or American Indian</option>
                                     <option>Asian or Pacific Islander</option>
                                     <option>Black, Non-Hispanic</option>
@@ -441,7 +440,6 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-venus-mars"></i></span>
                                 <select name="gender" id="gender" class="selectpicker form-control" data-live-search="true">
-                                    <option></option>
                                     <option>Male</option>
                                     <option>Female</option>
                                     <option>Other</option>
@@ -454,7 +452,6 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-globe"></i></span>
                                 <select name="citizenship" id="citizenship" class="selectpicker form-control" data-live-search="true">
-                                    <option></option>
                                     <option>U.S. Citizen</option>
                                     <option>Resident Alien</option>
                                     <option>Non-Resident Alien</option>
@@ -493,7 +490,6 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
                                 <select name="term" id="term" class="selectpicker show-tick form-control" data-live-search="true">
-                                    <option></option>
                                     <option>Fall</option>
                                     <option>Spring</option>
                                     <option>Summer</option>
@@ -506,7 +502,6 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
                                 <select name="year" id="year" class="selectpicker show-tick form-control" data-live-search="true">
-                                    <option></option>
                                     <option>2017</option>
                                     <option>2018</option>
                                     <option>2019</option>
@@ -525,7 +520,6 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
                                 <select name="program" id="program" class="selectpicker show-tick form-control" data-live-search="true">
-                                    <option></option>
                                     <option>Full-Time MIS</option>
                                     <option>Professional MIS</option>
                                 </select>
@@ -571,7 +565,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">When?</span>
-                                    <input type="text" class="form-control" name="previousAppDate" value ="" placeholder="Semester / Year">
+                                    <input type="text" class="form-control" name="previousAppDate" value ="" placeholder="Fall 2017">
                                 </div>
                             </div><br>
                         </div>
@@ -586,7 +580,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">When?</span>
-                                    <input type="text" class="form-control" name="previousEnrollmentDate" value="" placeholder="Semester / Year">
+                                    <input type="text" class="form-control" name="previousEnrollmentDate" value="" placeholder="Fall 2013">
                                 </div>
                             </div>
 
@@ -594,7 +588,6 @@
                                 <div class="input-group">
                                     <span class="input-group-addon">If you enrolled, were you:</span>
                                     <select name="previousEnrollmentStatus" value="previousEnrollmentStatus" class="selectpicker show-tick form-control" data-live-search="true" title="">
-                                        <option></option>
                                         <option>Undergraduate</option>
                                         <option>Graduate</option>
                                         <option>Other</option>
@@ -610,7 +603,7 @@
                             <label for="undergradGPA">Undergraduate GPA</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
-                                <input type="number" class="form-control" name="undergradGPA" id="undergradGPA" placeholder="Range: 0.00-4.00">
+                                <input type="number" step="0.01" class="form-control" name="undergradGPA" id="undergradGPA" placeholder="Range: 0.00-4.00">
                             </div>
                         </div>
                         
@@ -618,7 +611,7 @@
                             <label for="undergradJRSRGPA">GPA in Junior/Senior Years</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
-                                <input type="number" class="form-control" name="juniorseniorGPA" id="undergradJRSRGPA" placeholder="Range: 0.00-4.00">
+                                <input type="number" step="0.01" class="form-control" name="juniorseniorGPA" id="undergradJRSRGPA" placeholder="Range: 0.00-4.00">
                             </div>                            
                         </div>
 
@@ -678,7 +671,7 @@
                             <label for="collegeGPA">GPA</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
-                                <input type="number" class="form-control" name="collegeGPA" id="collegeGPA" placeholder="Range: 0.00-4.00">
+                                <input type="number" step="0.01" class="form-control" name="collegeGPA" id="collegeGPA" placeholder="Range: 0.00-4.00">
                             </div>
                         </div>                        
 
