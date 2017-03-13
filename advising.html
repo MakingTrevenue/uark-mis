@@ -123,63 +123,204 @@
 
 <div class="container-fluid">
 
+    <!-- Student Information -->
     <div class="row">
-        <div class="col-md-12">
-            <h1 class="text-info text-center">Advising Portal is under construction!</h1>
-            <h3 class="text-info">Student Information</h3>
 
-            <div class="col-md-6">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input id="" type="text" class="form-control" name="" placeholder="Name">
-                </div><br>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
-                    <input id="" type="text" class="form-control" name="" placeholder="Student ID">
-                </div><br>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-triangle-right"></i></span>
-                    <input id="" type="text" class="form-control" name="" placeholder="Major">
-                </div><br>
+        <div class="col-md-12 col-sm-12">
+
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h2 class="panel-title">Student Information</h2>
+                </div>
+
+                <div class="panel-body">
+
+                    <!-- Student Information Left Column -->
+                    <div class="col-md-6 col-sm-6">
+
+                        <div class="form-group">
+                            <label for="studentName">Student Name</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input type="text" class="form-control" name="studentName" id="studentName" placeholder="John E. Doe">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentID">Student ID</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                                <input type="number" pattern="\d*" class="form-control" name="studentID" id="studentID" placeholder="123456789">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="program">Program</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
+                                <select name="program" id="program" class="selectpicker show-tick form-control" data-live-search="true">
+                                    <option>Full-Time MIS</option>
+                                    <option>Professional MIS</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Student Information Right Column -->
+                    <div class="col-md-6 col-sm-6">
+
+                        <div class="form-group">
+                            <label for="term">Term</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
+                                <select name="term" id="term" class="selectpicker show-tick form-control" data-live-search="true">
+                                    <option>Fall</option>
+                                    <option>Spring</option>
+                                    <option>Summer</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="year">Year</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
+                                <select name="year" id="year" class="selectpicker show-tick form-control" data-live-search="true">
+                                    <option>2017</option>
+                                    <option>2018</option>
+                                    <option>2019</option>
+                                    <option>2020</option>
+                                    <option>2021</option>
+                                    <option>2022</option>
+                                    <option>2023</option>
+                                    <option>2024</option>
+                                    <option>2025</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="concentration">Concentration</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
+                                <select name="concentration" id="concentration" class="selectpicker show-tick form-control" data-live-search="true">
+                                    <option>Enterprise Resource Planning (ERP) Management</option>
+                                    <option>Enterprise Systems (ES) Management</option>
+                                    <option>Information Technology Management</option>
+                                    <option>Software Engineering Management</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="col-md-6">
-                <div class="input-group">
-                    <span class="input-group-addon">Term</span>
-                    <select id="" class="selectpicker show-tick form-control" data-live-search="true" title="">
-                        <option>Fall</option>
-                        <option>Spring</option>
-                        <option>Summer</option>
-                    </select>
-                </div><br>
-                <div class="input-group">
-                    <span class="input-group-addon">Year</span>
-                    <select id="" class="selectpicker show-tick form-control" data-live-search="true" title="">
-                        <option>2017</option>
-                        <option>2018</option>
-                        <option>2019</option>
-                        <option>2020</option>
-                        <option>2021</option>
-                        <option>2022</option>
-                        <option>2023</option>
-                    </select>
-                </div><br>
-                <div class="input-group">
-                    <span class="input-group-addon">Program</span>
-                    <select id="" class="selectpicker show-tick form-control" data-live-search="true" title="">
-                        <option>Full-Time MIS</option>
-                        <option>Part-Time MIS</option>
-                        <option>Professional MIS</option>
-                    </select>
-                </div><br>
-            </div>
-        </div>
+        </div>       
+
     </div>
 
+    <!-- Advising Information -->
     <div class="row">
-        <div class="col-md-12">
-            <h3 class="text-info">Advising Form</h3>
-        </div>
+
+        <div class="col-md-12 col-sm-12">
+
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h2 class="panel-title">Student Information</h2>
+                </div>
+
+                <div class="panel-body">
+
+                    <!-- Advising Information Left Column -->
+                    <div class="col-md-6 col-sm-6">
+
+                        <div class="form-group">
+                            <label for="course1">Course #1</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-list"></i></span>
+                                <input type="text" class="form-control" name="course1" id="course1" placeholder="ISYS 4373">
+                            </div>
+                        </div>                        
+
+                    </div>
+
+                    <!-- Advising Information Middle Column -->
+                    <div class="col-md-3 col-sm-3">
+
+                        <div class="form-group">
+                            <label for="section1">Section</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-th"></i></span>
+                                <input type="text" class="form-control" name="section1" id="section1" placeholder="001">
+                            </div>
+                        </div> 
+
+                    </div>
+
+                    <!-- Advising Information Right Column -->
+                    <div class="col-md-3 col-sm-3">
+
+                        <div class="form-group">
+                            <label for="time1">Time</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                <input type="text" class="form-control" name="time1" id="time1" placeholder="8:35AM-9:25AM">
+                            </div>
+                        </div> 
+
+                    </div>
+
+                    <!-- Advising Information Left Column -->
+                    <div class="col-md-6 col-sm-6">
+
+                        <div class="form-group">
+                            <label for="course1">Course #1</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-list"></i></span>
+                                <input type="text" class="form-control" name="course1" id="course1" placeholder="ISYS 4373">
+                            </div>
+                        </div>                        
+
+                    </div>
+
+                    <!-- Advising Information Middle Column -->
+                    <div class="col-md-3 col-sm-3">
+
+                        <div class="form-group">
+                            <label for="section1">Section</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-th"></i></span>
+                                <input type="text" class="form-control" name="section1" id="section1" placeholder="001">
+                            </div>
+                        </div> 
+
+                    </div>
+
+                    <!-- Advising Information Right Column -->
+                    <div class="col-md-3 col-sm-3">
+
+                        <div class="form-group">
+                            <label for="time1">Time</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                <input type="text" class="form-control" name="time1" id="time1" placeholder="8:35AM-9:25AM">
+                            </div>
+                        </div> 
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>       
+
     </div>
 
     <div class="row">
@@ -307,10 +448,8 @@
             </div>
 
         </div>
-
-
-
     </div>
+
 
 </div>
 

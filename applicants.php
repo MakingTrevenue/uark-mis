@@ -698,7 +698,7 @@
 ?>
 <div class="container-fluid">
   <h2 class="text-danger text-center">DISCLAIMER: This is a student project. This is NOT the official website for the University of Arkansas and is in no way affiliated with the University of Arkansas.</h2><br>
-  <h2 class="text-primary text-center">List of Applicants</h2>        
+  <h2 class="text-center">List of Applicants</h2>        
   <div style="height:750px;overflow:auto;">
   <table id="applicantTable" class="table table-striped table-responsive">
     <thead>
