@@ -224,7 +224,7 @@
             $dbname = $config["dbname"];
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID JOIN college ON college.applicationID = application.applicationID WHERE application.applicationID=:appid");
+            $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID JOIN college ON college.applicationID = application.applicationID JOIN attachment ON attachment.applicationID = application.applicationID WHERE application.applicationID=:appid");
             
             if(!empty($_GET['appID']))
                 $appID=$_GET['appID'];
@@ -480,12 +480,7 @@
                 </div>
                 <div class="panel-body">
                     <h4>
-                        <a href="/document.php?id= <?php $check[''] ?>" target="_blank" rel="noopener noreferrer">Resume</a><br>
-                        <a href="../docs/test.pdf" target="_blank" rel="noopener noreferrer">Essay Questions</a><br>
-                        <a href="../docs/test.pdf" target="_blank" rel="noopener noreferrer">Official Transcript</a><br>
-                        <a href="../docs/test.pdf" target="_blank" rel="noopener noreferrer">Recommendation Letter #1</a><br>
-                        <a href="../docs/test.pdf" target="_blank" rel="noopener noreferrer">Recommendation Letter #2</a><br>
-                        <a href="../docs/test.pdf" target="_blank" rel="noopener noreferrer">Recommendation Letter #3</a><br>
+                        <a href="/document.php?id= <?php $check['filename'] ?>" target="_blank" rel="noopener noreferrer">Resume</a><br>
                     </h4>                 
                 </div>
             </div>
