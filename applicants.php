@@ -672,11 +672,11 @@
     </div>
         
     </form>
-    
-</div>
 
-<?php
+</div>
+    <?php
     $config = parse_ini_file('../private/credentials.ini');
+    
     $servername = $config["servername"];
     $username = $config["username"];
     $password = $config["password"];
@@ -690,7 +690,7 @@
     $stmt->execute();
 
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
+    if(empty($_GET['appID'])){  
 ?>
 <div class="container-fluid">
   <h2 class="text-danger text-center">DISCLAIMER: This is a student project. This is NOT the official website for the University of Arkansas and is in no way affiliated with the University of Arkansas.</h2><br>
@@ -708,8 +708,7 @@
       </tr>
     </thead>
     <tbody>
-    <?php 
-        if(empty($_GET['appID'])){     
+    <?php    
             while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
                 echo "<tr>
                         <td> <a href='http://uark.us/applicants.php?appID=" . $row[0] . "'>" . $row[37] . "  " . $row[39] . "</a></td>
