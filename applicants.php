@@ -481,10 +481,9 @@
                 <div class="panel-body">
                     <h4>
                         <?php  
-                            $check= $stmt->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_FIRST);
                             do { ?>
                         <a href="/document.php?id=<?php echo $check['filename']; ?>" target="_blank" rel="noopener noreferrer">Resume</a><br>
-                        <?php } while ($check = $stmt->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT));?>
+                        <?php } while ($check = $stmt->fetch(PDO::FETCH_ASSOC));?>
                     </h4>                 
                 </div>
             </div>
