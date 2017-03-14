@@ -690,7 +690,7 @@
     $stmt->execute();
 
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    echo "<script>console.log(".$_GET['appID'].")</script>";
+    echo $_GET['appID'];
     if(empty($_GET['appID'])){
 
 ?>
