@@ -571,6 +571,7 @@
       </tr>
     </thead>
     <tbody>
+    
     <?php 
         while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
             echo "<tr>
