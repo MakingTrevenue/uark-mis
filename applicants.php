@@ -690,8 +690,7 @@
     $stmt->execute();
 
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    echo $_GET['appID'];
-    if(empty($_GET['appID'])){
+    if(false){
 
 ?>
 <div class="container-fluid">
@@ -721,12 +720,14 @@
                         <td>" . $row[24] . "</td>
                     </tr>";
             }
-        }
     ?>
     </tbody>
   </table>
   </div>
 </div>
+    <?php
+    }
+    ?>
 
 </div>
 
