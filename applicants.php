@@ -511,6 +511,7 @@
             </div>
         </div>
     </div>
+
     <!-- Comments -->
     <div class="row">
         <div class="col-md-12 col-sm-12">
@@ -519,19 +520,22 @@
                     <h2 class="panel-title">Comments</h2>
                 </div>
                 <div class="panel-body">
-               
-                <h4>
-                    <b>Christina Serrano said: </b>
-                    This is a comment about the person who applied to our program!
-                </h4>
-                <h4>
-                    <b>Paul Cronan said: </b>
-                    This is another comment about the person who applied to our program!
-                </h4>
-                <h4>
-                    <b>Jeff Mullins said: </b>
-                    This is a third comment about the person who applied to our program!
-                </h4>
+
+                    <div class="form-group">
+                        <label for="comments">Comments</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-comment-o"></i></span>
+                            <input type="text" class="form-control" name="comments" id="comments" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="col-md-2 col-sm-4 col-md-offset-5 col-sm-offset-4 text-center">   
+
+                        <input type="submit" class="btn btn-success btn-lg" id="submitComment" value="Submit Comment">
+                        <br>
+
+                    </div>
+
                 </div>
             </div>
         </div>
