@@ -676,9 +676,6 @@
 </div>
 
 <?php
-
-    }else{
-
     $config = parse_ini_file('../private/credentials.ini');
     $servername = $config["servername"];
     $username = $config["username"];
@@ -712,17 +709,18 @@
     </thead>
     <tbody>
     <?php 
-    while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
-        echo "<tr>
-                <td> <a href='http://uark.us/applicants.php?appID=" . $row[0] . "'>" . $row[37] . "  " . $row[39] . "</a></td>
-                <td>" . $row[2] . " " . $row[3] . "</td>
-                <td>" . $row[4] . "</td>
-                <td>" . $row[11] . "</td>
-                <td>" . $row[19] . "</td>
-                <td>" . $row[24] . "</td>
-             </tr>";
-    }
-    }   
+        if(!empty($_GET['appID']) || (!empty($_POST['appID']) && !empty($_POST['offerStatus']) && !empty($_POST['assistantshipStatus']) && !empty($_POST['applicantResponse']) )){     
+            while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
+                echo "<tr>
+                        <td> <a href='http://uark.us/applicants.php?appID=" . $row[0] . "'>" . $row[37] . "  " . $row[39] . "</a></td>
+                        <td>" . $row[2] . " " . $row[3] . "</td>
+                        <td>" . $row[4] . "</td>
+                        <td>" . $row[11] . "</td>
+                        <td>" . $row[19] . "</td>
+                        <td>" . $row[24] . "</td>
+                    </tr>";
+            }
+        }
     ?>
     </tbody>
   </table>
