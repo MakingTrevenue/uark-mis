@@ -2,7 +2,7 @@
 
 
 
-    $file="../docs/" . $_POST['filename'];
+    $file="../docs/" . $_GET['id'];
     header('Content-type: application/pdf');
     header('Content-disposition: inline; filename="' . $file . '"');
     header('Content-Transfer-Encoding: binary');
