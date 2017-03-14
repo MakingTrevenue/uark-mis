@@ -709,7 +709,7 @@
     </thead>
     <tbody>
     <?php 
-        if(!empty($_GET['appID']) || (!empty($_POST['appID']) && !empty($_POST['offerStatus']) && !empty($_POST['assistantshipStatus']) && !empty($_POST['applicantResponse']) )){     
+        if(empty($_GET['appID'])){     
             while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
                 echo "<tr>
                         <td> <a href='http://uark.us/applicants.php?appID=" . $row[0] . "'>" . $row[37] . "  " . $row[39] . "</a></td>
