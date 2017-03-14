@@ -17,7 +17,7 @@ function duplicate() {
 }
 
 //Checkbox Show On Clicked
-$(document).ready(function() {
+$(document).ready(function(){
     $('input[type="checkbox"]').click(function(){
         var inputValue = $(this).attr("value");
         $("." + inputValue).toggle();
@@ -25,7 +25,7 @@ $(document).ready(function() {
 })
 
 //jQuery Masked Input
-$(document).ready(function() {
+$(document).ready(function(){
     $("#primaryPhone").inputmask("(999) 999-9999", { showMaskOnHover: false });
     $("#secondaryPhone").inputmask("(999) 999-9999", { showMaskOnHover: false });
     $("#socialSecurityNumber").inputmask("999-99-9999", { showMaskOnHover: false });
