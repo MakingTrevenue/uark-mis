@@ -690,7 +690,6 @@
     $stmt->execute();
 
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    if(false){
 
 ?>
 <div class="container-fluid">
@@ -711,6 +710,7 @@
     <tbody>
     <?php    
             while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
+                /*
                 echo "<tr>
                         <td> <a href='http://uark.us/applicants.php?appID=" . $row[0] . "'>" . $row[37] . "  " . $row[39] . "</a></td>
                         <td>" . $row[2] . " " . $row[3] . "</td>
@@ -719,15 +719,13 @@
                         <td>" . $row[19] . "</td>
                         <td>" . $row[24] . "</td>
                     </tr>";
+                */
             }
     ?>
     </tbody>
   </table>
   </div>
 </div>
-    <?php
-    }
-    ?>
 
 </div>
 
