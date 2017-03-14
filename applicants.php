@@ -480,9 +480,9 @@
                 </div>
                 <div class="panel-body">
                     <h4>
-                        <?php while ($check = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)){ ?>
+                        <?php  do { ?>
                         <a href="/document.php?id=<?php echo $check['filename']; ?>" target="_blank" rel="noopener noreferrer">Resume</a><br>
-                        <?php } ?>
+                        <?php } while ($check = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT));?>
                     </h4>                 
                 </div>
             </div>
