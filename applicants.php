@@ -24,7 +24,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!-- table sorter jquery plugin -->
+    <!-- Table Sorter jQuery Plugin -->
     <script type="text/javascript" src="/jquery.tablesorter.js"></script> 
 
     <!-- Font Awesome JavaScript -->
@@ -32,37 +32,7 @@
 
     <!-- Custom JavaScript -->
     <script type="text/javascript" src="./js/scripts.js"></script>
-    <script type="text/javascript" src="./js/bootstrap-filestyle.min.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function() 
-            { 
-                $("#applicantTable").tablesorter(); 
-            } 
-        );
-    </script>
-
-    <script>
-    function filterTable() {
-        var input, filter, table, tr, td, i;
-        input = document.getElementById("filterInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("applicantTable");
-        tr = table.getElementsByTagName("tr");
-        // Loop through all table rows, and hide those who don't match the search query
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
-            } 
-        }
-    }
-    </script>    
-
+    
 </head>
 
 <body>
