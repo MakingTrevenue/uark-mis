@@ -26,6 +26,7 @@ $(document).ready(function() {
 
 //jQuery Masked Input
 $(document).ready(function() {
-  $("#primaryPhone").inputmask("(999) 999-9999");
-  $("#secondaryPhone").inputmask("(999) 999-9999");
+    $("#primaryPhone").inputmask("(999) 999-9999", { showMaskOnHover: false });
+    $("#secondaryPhone").inputmask("(999) 999-9999", { showMaskOnHover: false });
+    $("#socialSecurityNumber").inputmask("999-99-9999", { showMaskOnHover: false });
 });

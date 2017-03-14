@@ -16,7 +16,7 @@ $.validator.setDefaults({
         }
     }
 });
- 
+
 //Form Validation
 $("#applicationform").validate({ 
     focusInvalid: false,
@@ -130,8 +130,7 @@ $("#applicationform").validate({
         },
 
         socialSecurityNumber: {
-            required: true,
-            rangelength: [9, 9]
+            required: true
         },
 
         dateOfBirth: {
@@ -290,7 +289,7 @@ $("#applicationform").validate({
 
         zipCode: {
             required: "Please enter a ZIP code.",
-            rangelength: "Please enter the five-digit ZIP code."
+            rangelength: "Please enter a five-digit ZIP code."
         },
 
         country: {
@@ -313,7 +312,7 @@ $("#applicationform").validate({
 
         zipCodeM: {
             required: "Please enter a ZIP code.",
-            rangelength: "Please enter the five-digit ZIP code."
+            rangelength: "Please enter a five-digit ZIP code."
         },
 
         countryM: {
@@ -322,8 +321,7 @@ $("#applicationform").validate({
         },
 
         socialSecurityNumber: {
-            required: "Please enter your social security number.",
-            rangelength: "Please enter a valid social security number."
+            required: "Please enter your social security number."
         },
 
         dateOfBirth: {
