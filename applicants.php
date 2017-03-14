@@ -480,7 +480,7 @@
                 </div>
                 <div class="panel-body">
                     <h4>
-                        <a href="../docs/test.pdf" target="_blank" rel="noopener noreferrer">Resume</a><br>
+                        <a href="/document.php?id= <?php $check[''] ?>" target="_blank" rel="noopener noreferrer">Resume</a><br>
                         <a href="../docs/test.pdf" target="_blank" rel="noopener noreferrer">Essay Questions</a><br>
                         <a href="../docs/test.pdf" target="_blank" rel="noopener noreferrer">Official Transcript</a><br>
                         <a href="../docs/test.pdf" target="_blank" rel="noopener noreferrer">Recommendation Letter #1</a><br>
@@ -558,7 +558,7 @@
 <div class="container-fluid">
   <h2 class="text-danger text-center">DISCLAIMER: This is a student project. This is NOT the official website for the University of Arkansas and is in no way affiliated with the University of Arkansas.</h2><br>
   <h2 class="text-center">List of Applicants</h2>        
-  <div style="height:500px;overflow:auto;">
+  <div style="height:100%;overflow:auto;">
   <table id="applicantTable" class="table table-striped table-responsive">
     <thead>
       <tr>
