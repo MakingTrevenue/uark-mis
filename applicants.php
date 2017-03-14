@@ -30,9 +30,6 @@
     <!-- Font Awesome JavaScript -->
     <script src="https://use.fontawesome.com/2fe8cd2f19.js"></script> 
 
-    <!-- Custom JavaScript -->
-    <script type="text/javascript" src="./js/scripts.js"></script>
-    
 </head>
 
 <body>
@@ -564,4 +561,8 @@
 </div>
 </div>
 </body>
+
+    <!-- Custom JavaScript -->
+    <script type="text/javascript" src="./js/scripts.js"></script>
+    
 </html>
