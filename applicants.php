@@ -224,7 +224,7 @@
             $dbname = $config["dbname"];
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID JOIN college ON college.applicationID = application.applicationID JOIN attachment ON attachment.applicationID = application.applicationID WHERE application.applicationID=:appid");
+            $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID JOIN college ON college.applicationID = application.applicationID LEFT JOIN attachment ON attachment.applicationID = application.applicationID WHERE application.applicationID=:appid");
             
             if(!empty($_GET['appID']))
                 $appID=$_GET['appID'];
