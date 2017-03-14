@@ -674,11 +674,10 @@
     </form>
     
 </div>
+
 <?php
 
-
-
-    }
+    }else{
 
     $config = parse_ini_file('../private/credentials.ini');
     $servername = $config["servername"];
@@ -722,6 +721,7 @@
                 <td>" . $row[19] . "</td>
                 <td>" . $row[24] . "</td>
              </tr>";
+    }
     }   
     ?>
     </tbody>
