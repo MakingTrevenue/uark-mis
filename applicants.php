@@ -521,19 +521,21 @@
                 </div>
                 <div class="panel-body">
 
+                    <div>
+                        <p>Pull comments from database here.</p>
+                    </div>
+                    
+
                     <div class="form-group">
-                        <label for="comments">Comments</label>
+                        <label for="comments">Add Your Comments</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-comment-o"></i></span>
                             <input type="text" class="form-control" name="comments" id="comments" placeholder="">
                         </div>
                     </div>
 
-                    <div class="col-md-2 col-sm-4 col-md-offset-5 col-sm-offset-4 text-center">   
-
-                        <input type="submit" class="btn btn-success btn-lg" id="submitComment" value="Submit Comment">
-                        <br>
-
+                    <div class="col-md-2 col-sm-4 col-md-offset-5 col-sm-offset-4 text-center">
+                        <input type="submit" class="btn btn-success btn-sm" id="submitComment" value="Submit Comment"><br>         
                     </div>
 
                 </div>
