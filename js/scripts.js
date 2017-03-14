@@ -45,6 +45,16 @@ $.validator.setDefaults({
 
 //Form Validation
 $("#applicationform").validate({ 
+    focusInvalid: false,
+    invalidHandler: function(form, validator) {
+        if (!validator.numberOfInvalids())
+            return;
+
+        $('html, body').animate({
+          scrollTop: $(validator.errorList[0].element).offset().top
+         }, 2000);
+ 
+    },     
     rules: {
 
         // Personal & Contact Information
