@@ -480,7 +480,6 @@
                 </div>
                 <div class="panel-body">
                     <h4>
-                        $check = $stmt->fetch(PDO::FETCH_BOTH);
                         <?php while($check = $stmt->fetch(PDO::FETCH_BOTH)){ ?>
                         <a href="/document.php?id=<?php echo $check['filename']; ?>" target="_blank" rel="noopener noreferrer">Resume</a><br>
                         <?php } ?>
