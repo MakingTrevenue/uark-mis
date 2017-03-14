@@ -523,8 +523,7 @@
 
                     <div>
                         <p>Pull comments from database here.</p>
-                    </div>
-                    
+                    </div>   
 
                     <div class="form-group">
                         <label for="comments">Add Your Comments</label>
@@ -535,7 +534,7 @@
                     </div>
 
                     <div class="col-md-2 col-sm-4 col-md-offset-5 col-sm-offset-4 text-center">
-                        <input type="submit" class="btn btn-success btn-sm" id="submitComment" value="Submit Comment"><br>         
+                        <input type="submit" class="btn btn-success btn-md" id="submitComment" value="Submit Comment"><br>         
                     </div>
 
                 </div>
