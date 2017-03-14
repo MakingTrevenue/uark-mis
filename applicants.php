@@ -480,7 +480,7 @@
                 </div>
                 <div class="panel-body">
                     <h4>
-                        <a href="/document.php?id= <?php $check['filename'] ?>" target="_blank" rel="noopener noreferrer">Resume</a><br>
+                        <a href="/document.php?id= <?php $check['filename']; ?>" target="_blank" rel="noopener noreferrer">Resume</a><br>
                     </h4>                 
                 </div>
             </div>
