@@ -292,7 +292,7 @@
                     </h4>
 
                     <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3 text-center">
-                        <input type="submit"" id="" class="btn btn-success" submit="Update Status">
+                        <input type="submit"" id="" class="btn btn-success" submit="Update Status" value="Submit Status Update">
                     </div>
                     </form>
                 </div>
