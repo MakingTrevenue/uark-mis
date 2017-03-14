@@ -690,7 +690,9 @@
     $stmt->execute();
 
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    if(empty($_GET['appID'])){  
+    echo "<script>console.log(".$_GET['appID'].")</script>";
+    if(empty($_GET['appID'])){
+
 ?>
 <div class="container-fluid">
   <h2 class="text-danger text-center">DISCLAIMER: This is a student project. This is NOT the official website for the University of Arkansas and is in no way affiliated with the University of Arkansas.</h2><br>
