@@ -307,7 +307,10 @@
                         <b>Social Security Number: </b> <?php echo $check['socialSecurityNumber']; ?>
                     </h4>
                     <h4>
-                        <b>Date of Birth: </b><?php echo $check['dateOfBirth']; ?>
+                        <b>Date of Birth: </b>
+                        <?php 
+                            echo date('m/d/Y', strtotime($check['dateOfBirth']); 
+                        ?>
                     </h4>
                     <h4>
                         <b>Race: </b><?php echo $check['ethnicity']; ?>
