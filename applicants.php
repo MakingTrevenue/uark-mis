@@ -309,7 +309,7 @@
                     <h4>
                         <b>Date of Birth: </b>
                         <?php 
-                            echo date('m/d/Y', strtotime($check['dateOfBirth']); 
+                            echo date('m/d/Y', strtotime($check['dateOfBirth'])); 
                         ?>
                     </h4>
                     <h4>
