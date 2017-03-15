@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
 	
@@ -21,7 +22,6 @@
             $check = password_verify($userpassword,$row[0]);
             
             if($check){
-				session_start();
 			    $_SESSION["username"] = $un;
 				header('Location: index.php');
 			}

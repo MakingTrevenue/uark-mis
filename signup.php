@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
 	
@@ -26,7 +27,6 @@
 			$stmt->execute();
 
 			echo "New accounted created";
-			session_start();
 			$_SESSION["username"] = $un;
 			header('Location: index.php');
 		}
