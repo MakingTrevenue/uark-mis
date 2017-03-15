@@ -387,7 +387,7 @@
                             echo date('m/d/Y', strtotime($check['dateStarted'])); 
                             error_reporting(E_ALL);
                         ?>
-                        &nbsp;-&nbsp;
+                        -
                         <?php 
                             error_reporting(0);
                             echo date('m/d/Y', strtotime($check['dateEnded'])); 
