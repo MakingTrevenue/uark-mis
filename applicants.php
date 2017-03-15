@@ -229,6 +229,12 @@
                 </div>
 
                 <div class="panel-body">
+
+                    <h4>
+                        <input type="hidden" name="applicationDate">
+                        <b>Application Date & Time: </b><br>
+                        <?php echo $check['applicationDate']; ?>
+                    </h4>
                     
                     <h4>
                         <input type="hidden" name="appID" value="<?php echo $check['applicationID'];?>" />
