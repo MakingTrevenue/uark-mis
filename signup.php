@@ -28,7 +28,7 @@
 			echo "New accounted created";
 			session_start();
 			$_SESSION["username"] = $un;
-			header('Location: index.html');
+			header('Location: index.php');
 		}
 		catch(Exception $e){
 			echo "Error: " . $e->getMessage();

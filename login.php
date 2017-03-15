@@ -23,7 +23,7 @@
             if($check){
 				session_start();
 			    $_SESSION["username"] = $un;
-				header('Location: index.html');
+				header('Location: index.php');
 			}
             else
                 echo "Incorrect";
