@@ -9,8 +9,10 @@ try {
 	$password = $config["password"];
 	$dbname = $config["dbname"];
 
-	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password); //
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+	$pdo->beginTransaction();
 
 	$stmt = $conn->prepare("INSERT INTO student (firstName,  middleName,  lastName,  preferredName,  primaryEmail,  secondaryEmail,  primaryPhone,  secondaryPhone,  socialSecurityNumber,  dateOfBirth,  countryOfBirth,  ethnicity,  gender,  citizenship)
 									   VALUES  (:firstName, :middleName, :lastName, :preferredName, :primaryEmail, :secondaryEmail, :primaryPhone, :secondaryPhone, :socialSecurityNumber, :dateOfBirth, :countryOfBirth, :ethnicity, :gender, :citizenship);");
@@ -148,36 +150,32 @@ try {
 	
 	$appid = $conn->lastInsertId();
 	$fileFormName=array('resumeFile','essayQuestionsFile','transcriptFile','recLetter1','recLetter2','recLetter3');
-	try{
-		foreach($fileFormName as $fn){
-			if(isset($_FILES[$fn])){
-				$file_name=$_FILES[$fn]['name'];
-				$file_size=$_FILES[$fn]['size'];
-				$file_tmp=$_FILES[$fn]['tmp_name'];
-				$file_type=$_FILES[$fn]['type'];
-				$fn=md5_file($_FILES[$fn]['tmp_name']);
-				if(strlen($fn)<5)
-					continue;
-				move_uploaded_file($file_tmp,"../docs/".$fn);
-				$stmt = $conn->prepare("INSERT INTO attachment (applicationID,documentType,filename)
-					VALUES  (:appID,:docType,:filename);");
 
-				$stmt->bindParam(':appID', $applicationID);
-				$stmt->bindParam(':docType', $docType);
-				$stmt->bindParam(':filename', $filename);			
-				$docType= $file_type;
-				$filename = $fn;	
-				$applicationID=$appid;			
-				$stmt->execute();
-				//echo "<br>";
-				//echo "Attachment record created successfully";
-			}else{
+	foreach($fileFormName as $fn){
+		if(isset($_FILES[$fn])){
+			$file_name=$_FILES[$fn]['name'];
+			$file_size=$_FILES[$fn]['size'];
+			$file_tmp=$_FILES[$fn]['tmp_name'];
+			$file_type=$_FILES[$fn]['type'];
+			$fn=md5_file($_FILES[$fn]['tmp_name']);
+			if(strlen($fn)<5)
+				continue;
+			move_uploaded_file($file_tmp,"../docs/".$fn);
+			$stmt = $conn->prepare("INSERT INTO attachment (applicationID,documentType,filename)
+				VALUES  (:appID,:docType,:filename);");
 
-			}
+			$stmt->bindParam(':appID', $applicationID);
+			$stmt->bindParam(':docType', $docType);
+			$stmt->bindParam(':filename', $filename);			
+			$docType= $file_type;
+			$filename = $fn;	
+			$applicationID=$appid;			
+			$stmt->execute();
+			//echo "<br>";
+			//echo "Attachment record created successfully";
+		}else{
+
 		}
-	}catch(Exception $e){
-		echo "<br>Error: " . $e->getMessage();
-		echo "<br> Stack trace: " . $e->getTraceAsString();		
 	}
 
 	$stmt = $conn->prepare("INSERT INTO college (applicationID,  collegeName,  dateStarted,  dateEnded,  gpa,  hoursEarned,  hoursEnrolled,  degree,  major)
@@ -204,12 +202,14 @@ try {
 	$major = $_POST['major'];
 
 	$stmt->execute();	
+	$pdo->commit();
 	
 }
 catch(Exception $e){
 	echo "Error: " . $e->getMessage();
 	echo "<br> Stack trace: " . $e->getTraceAsString();
+	$pdo->rollBack();
 }
 $conn = null;
-//header('Location: applicationSuccess.html');
+header('Location: applicationSuccess.html');
 ?>
