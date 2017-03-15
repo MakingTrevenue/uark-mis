@@ -381,7 +381,18 @@
                         <b>College Name: </b> <?php echo $check2['collegeName']; ?>
                     </h4>
                     <h4>
-                        <b>Dates Attended: </b> <?php echo $check2['dateStarted'] . " - " . $check['dateEnded']; ?>
+                        <b>Dates Attended: </b>
+                        <?php 
+                            error_reporting(0);
+                            echo date('m/d/Y', strtotime($check['dateStarted'])); 
+                            error_reporting(E_ALL);
+                        ?>
+                        &nbsp;-&nbsp;
+                        <?php 
+                            error_reporting(0);
+                            echo date('m/d/Y', strtotime($check['dateEnded'])); 
+                            error_reporting(E_ALL);
+                        ?>
                     </h4>
                     <h4>
                         <b>GPA: </b> <?php echo $check2['gpa']; ?>
@@ -412,7 +423,12 @@
                 </div>
                 <div class="panel-body">
                     <h4>
-                        <b>GMAT Test Date: </b> <?php echo $check['gmatTestDate']; ?>
+                        <b>GMAT Test Date: </b>
+                        <?php 
+                            error_reporting(0);
+                            echo date('m/d/Y', strtotime($check['gmatTestDate'])); 
+                            error_reporting(E_ALL);
+                        ?>
                     </h4>
                     <h4>
                         <b>GMAT Quantitative Score: </b> <?php echo $check['gmatQScore']; ?>
@@ -424,7 +440,12 @@
                         <b>GMAT Total Score: </b> <?php echo $check['gmatTScore']; ?>
                     </h4>
                     <h4>
-                        <b>GRE Test Date: </b> <?php echo $check['greTestDate']; ?>
+                        <b>GRE Test Date: </b>
+                        <?php 
+                            error_reporting(0);
+                            echo date('m/d/Y', strtotime($check['greTestDate'])); 
+                            error_reporting(E_ALL);
+                        ?>
                     </h4>
                     <h4>
                         <b>GRE Quantitative Score: </b> <?php echo $check['greQScore']; ?>
@@ -445,13 +466,23 @@
                 </div>
                 <div class="panel-body">
                     <h4>
-                        <b>TOEFL Test Date: </b> <?php echo $check['toeflTestDate']; ?>
+                        <b>TOEFL Test Date: </b>
+                        <?php 
+                            error_reporting(0);
+                            echo date('m/d/Y', strtotime($check['toeflTestDate'])); 
+                            error_reporting(E_ALL);
+                        ?>
                     </h4>
                     <h4>
                         <b>TOEFL Score: </b> <?php echo $check['toeflOnlineScore']; ?>
                     </h4>
                     <h4>
-                        <b>TSE Test Date: </b> <?php echo $check['tseTestDate']; ?>
+                        <b>TSE Test Date: </b>
+                        <?php 
+                            error_reporting(0);
+                            echo date('m/d/Y', strtotime($check['tseTestDate'])); 
+                            error_reporting(E_ALL);
+                        ?>
                     </h4>
                     <h4>
                         <b>TSE Score: </b> <?php echo $check['tseScore']; ?>
