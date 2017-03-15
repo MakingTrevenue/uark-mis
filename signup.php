@@ -11,7 +11,7 @@
 		try {
 			$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			$stmt = $conn->prepare("INSERT INTO users (name,  email,  username,  password) 
+			$stmt = $conn->prepare("INSERT INTO user (name,  email,  username,  password) 
 											  VALUES (:name, :email, :username, :password)");
 			$stmt->bindParam(':name', $name);
 			$stmt->bindParam(':email', $email);

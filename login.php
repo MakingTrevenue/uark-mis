@@ -11,7 +11,7 @@
 		try {
 			$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare("SELECT password FROM users WHERE username=:username");
+            $stmt = $conn->prepare("SELECT password FROM user WHERE username=:username");
 
             $stmt->execute(array(':username' => $_POST['loginUsername']));
             $row = $stmt->fetch();
