@@ -198,7 +198,7 @@ try {
 	$dateStarted = $_POST['dateStarted'];
 	$dateEnded = $_POST['dateEnded'];
 	$gpa = $_POST['collegeGPA'];
-	$hoursEearned = $_POST['hoursEarned'];
+	$hoursEarned = $_POST['hoursEarned'];
 	$hoursEnrolled = $_POST['hoursEnrolled'];
 	$degree = $_POST['degree'];
 	$major = $_POST['major'];
