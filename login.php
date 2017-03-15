@@ -20,8 +20,10 @@
 			$userpassword = $_POST['loginPassword'];
             $check = password_verify($userpassword,$row[0]);
             
-            if($check)
-			    echo "Logged In";
+            if($check){
+			    $_SESSION["username"] = $un;
+				session_start();
+			}
             else
                 echo "Incorrect";
 		}

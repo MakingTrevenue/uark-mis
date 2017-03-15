@@ -23,10 +23,12 @@
 			$un = $_POST['signUpUsername'];
 			$userpassword = $_POST['signUpPassword'];
             $userpassword = password_hash($userpassword,PASSWORD_DEFAULT);
-
 			$stmt->execute();
 
 			echo "New accounted created";
+			session_start();
+			$_SESSION["username"] = $un;
+			header('Location: index.html');
 		}
 		catch(Exception $e){
 			echo "Error: " . $e->getMessage();
