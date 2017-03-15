@@ -22,7 +22,7 @@
             $check = password_verify($userpassword,$row[0]);
             
             if($check){
-			    $_SESSION["username"] = $un;
+			    $_SESSION["username"] = $username;
 				header('Location: index.php');
 			}
             else
