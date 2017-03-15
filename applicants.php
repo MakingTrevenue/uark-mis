@@ -545,7 +545,7 @@
     <?php 
         while ($row = $stmt->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT)) {
             echo "<tr>
-                    <td> <a href='http://uark.us/applicants.php?appID=" . $row[0] . "'>" . $row['firstName'] . "  " . $row['lastName'] . "</a></td>
+                    <td> <a href='http://uark.us/applicants.php?appID=" . $row['applicationID'] . "'>" . $row['firstName'] . "  " . $row['lastName'] . "</a></td>
                     <td>" . $row['term'] . " " . $row['year'] . "</td>
                     <td>" . $row['program'] . "</td>
                     <td>" . $row['undergradGPA'] . "</td>
