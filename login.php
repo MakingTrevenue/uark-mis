@@ -21,8 +21,9 @@
             $check = password_verify($userpassword,$row[0]);
             
             if($check){
-			    $_SESSION["username"] = $un;
 				session_start();
+			    $_SESSION["username"] = $un;
+				header('Location: index.html');
 			}
             else
                 echo "Incorrect";
