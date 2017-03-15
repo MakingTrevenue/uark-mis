@@ -1,5 +1,5 @@
 <?php
-echo "<script>alert(" . $_SESSION['username'] . ")</script>";
+    echo print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
