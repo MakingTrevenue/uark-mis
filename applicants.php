@@ -340,6 +340,9 @@
                         <b>Program: </b> <?php echo $check['program']; ?>
                     </h4>
                     <h4>
+                        <b>Concentration: </b> <?php echo $check['concentration']; ?>
+                    </h4>
+                    <h4>
                         <b>Requested Assistantship: </b> <?php echo $check['reqScholarship']; ?>
                     </h4>
                     <h4>
