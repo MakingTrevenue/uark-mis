@@ -343,7 +343,13 @@
                         <b>Concentration: </b> <?php echo $check['concentration']; ?>
                     </h4>
                     <h4>
-                        <b>Requested Assistantship: </b> <?php echo $check['reqScholarship']; ?>
+                        <b>Requested Assistantship: </b> 
+                        <?php 
+                        if($check['reqScholarship']==1)
+                            echo "Yes";
+                         else
+                            echo "No"; 
+                        ?>
                     </h4>
                     <h4>
                         <b>Previous Application: </b> <?php echo $check['previousAppDate']; ?>
