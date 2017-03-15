@@ -543,14 +543,14 @@
     <tbody>
 
     <?php 
-        while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
+        while ($row = $stmt->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT)) {
             echo "<tr>
-                    <td> <a href='http://uark.us/applicants.php?appID=" . $row[0] . "'>" . $row[37] . "  " . $row[39] . "</a></td>
-                    <td>" . $row[2] . " " . $row[3] . "</td>
-                    <td>" . $row[4] . "</td>
-                    <td>" . $row[11] . "</td>
-                    <td>" . $row[19] . "</td>
-                    <td>" . $row[24] . "</td>
+                    <td> <a href='http://uark.us/applicants.php?appID=" . $row[0] . "'>" . $row['firstName'] . "  " . $row['lastName'] . "</a></td>
+                    <td>" . $row['term'] . " " . $row['year'] . "</td>
+                    <td>" . $row['program'] . "</td>
+                    <td>" . $row['undergradGPA'] . "</td>
+                    <td>" . $row['gmatTScore'] . "</td>
+                    <td>" . $row['greTScore'] . "</td>
                 </tr>";
         }
     }   
