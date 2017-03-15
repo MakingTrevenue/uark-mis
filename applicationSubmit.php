@@ -180,23 +180,25 @@ try {
 		echo "<br> Stack trace: " . $e->getTraceAsString();		
 	}
 
-	$stmt = $conn->prepare("INSERT INTO student (applicationID,  collegeName,  dateStarted,  dateEnded,  gpa,  hoursEnrolled,  degree,  major)
-									   VALUES  (:applicationID, :collegeName, :dateStarted, :dateEnded, :gpa, :hoursEnrolled, :degree, :major);");
+	$stmt = $conn->prepare("INSERT INTO student (applicationID,  collegeName,  dateStarted,  dateEnded,  gpa,  hoursEarned,  hoursEnrolled,  degree,  major)
+									   VALUES  (:applicationID, :collegeName, :dateStarted, :dateEnded, :gpa, :hoursEarned, :hoursEnrolled, :degree, :major);");
 
 	$stmt->bindParam(':applicationID', $applicationID);
 	$stmt->bindParam(':collegeName', $collegeName);
 	$stmt->bindParam(':dateStarted', $dateStarted);
 	$stmt->bindParam(':dateEnded', $dateEnded);
 	$stmt->bindParam(':gpa', $gpa);
+	$stmt->bindParam(':hoursEarned', $hoursEarned);		
 	$stmt->bindParam(':hoursEnrolled', $hoursEnrolled);
 	$stmt->bindParam(':degree', $degree);
 	$stmt->bindParam(':major', $major);		
 
-	$applicationID = $_POST['applicationID'];
+	$applicationID = $appid;
 	$collegeName = $_POST['collegeName'];
 	$dateStarted = $_POST['dateStarted'];
 	$dateEnded = $_POST['dateEnded'];
-	$gpa = $_POST['gpa'];
+	$gpa = $_POST['collegeGPA'];
+	$hoursEearned = $_POST['hoursEarned'];
 	$hoursEnrolled = $_POST['hoursEnrolled'];
 	$degree = $_POST['degree'];
 	$major = $_POST['major'];
