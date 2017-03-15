@@ -523,7 +523,6 @@
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID");
     $stmt->execute();
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 <div class="container-fluid">
   <h2 class="text-danger text-center">DISCLAIMER: This is a student project. This is NOT the official website for the University of Arkansas and is in no way affiliated with the University of Arkansas.</h2><br>
