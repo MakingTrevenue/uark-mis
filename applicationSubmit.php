@@ -180,7 +180,7 @@ try {
 		echo "<br> Stack trace: " . $e->getTraceAsString();		
 	}
 
-	$stmt = $conn->prepare("INSERT INTO student (applicationID,  collegeName,  dateStarted,  dateEnded,  gpa,  hoursEarned,  hoursEnrolled,  degree,  major)
+	$stmt = $conn->prepare("INSERT INTO college (applicationID,  collegeName,  dateStarted,  dateEnded,  gpa,  hoursEarned,  hoursEnrolled,  degree,  major)
 									   VALUES  (:applicationID, :collegeName, :dateStarted, :dateEnded, :gpa, :hoursEarned, :hoursEnrolled, :degree, :major);");
 
 	$stmt->bindParam(':applicationID', $applicationID);
