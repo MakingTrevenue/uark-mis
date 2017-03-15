@@ -186,5 +186,5 @@ catch(Exception $e){
 	echo "<br> Stack trace: " . $e->getTraceAsString();
 }
 $conn = null;
-header('Location: applicationSuccess.html');
+//header('Location: applicationSuccess.html');
 ?>
