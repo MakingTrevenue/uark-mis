@@ -232,8 +232,7 @@
 
                     <h4>
                         <input type="hidden" name="applicationDate">
-                        <b>Application Date & Time: </b><br>
-                        <?php echo $check['applicationDate']; ?>
+                        <b>Application Date & Time: </b> <?php echo $check['applicationDate']; ?>     
                     </h4>
                     
                     <h4>
