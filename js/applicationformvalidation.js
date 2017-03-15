@@ -155,11 +155,11 @@ $("#applicationform").validate({
             required: true
         },
 
-        collegeDateStarted: {
+        dateStarted: {
             required: true
         },
 
-        collegeDateEnded: {
+        dateEnded: {
             required: true
         },
 
@@ -170,25 +170,25 @@ $("#applicationform").validate({
             max: 4
         },
 
-        collegeHoursEarned: {
+        hoursEarned: {
             required: true,
             number: true,
             min: 0,
             max: 240
         },
 
-        collegeHoursEnrolled: {
+        hoursEnrolled: {
             required: true,
             number: true,
             min: 0,
             max: 30
         },
 
-        collegeDegree: {
+        degree: {
             required: true
         },
 
-        collegeMajor: {
+        major: {
             required: true
         },
 
@@ -346,11 +346,11 @@ $("#applicationform").validate({
             required: "Please enter a college name."
         },
 
-        collegeDateStarted: {
+        dateStarted: {
             required: "Please enter the date started at this college."
         },
 
-        collegeDateEnded: {
+        dateEnded: {
             required: "Please enter the date ended at this college."
         },
 
@@ -361,25 +361,25 @@ $("#applicationform").validate({
             max: "Please enter a value less than or equal to 4.00."
         },
 
-        collegeHoursEarned: {
+        hoursEarned: {
             required: "Please enter the number of hours earned at this college.",
             number: "Please enter a number.",
             min: "Please enter a value greater than or equal to 0 hours.",
             max: "Please enter a value less than or equal to 240 hours."
         },
 
-        collegeHoursEnrolled: {
+        hoursEnrolled: {
             required: "Please enter the number of hours currently enrolled at this college.",
             number: "Please enter a number.",
             min: "Please enter a value greater than or equal to 0 hours.",
             max: "Please enter a value less than or equal to 30 hours."
         },
 
-        collegeDegree: {
+        degree: {
             required: "Please enter the degree(s) earned from this college."
         },
 
-        collegeMajor: {
+        major: {
             required: "Please enter the major(s) selected at this college."
         },
     }
