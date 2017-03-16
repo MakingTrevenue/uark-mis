@@ -58,33 +58,33 @@
         }
 
     // Select statement for permanent addresses.
-    if(!empty($_GET['appID']) || (!empty($_POST['appID']) && !empty($_POST['offerStatus']) && !empty($_POST['assistantshipStatus']) && !empty($_POST['applicantResponse']) )){
-        try{
-            $config = parse_ini_file('../private/credentials.ini');
-            $servername = $config["servername"];
-            $username = $config["username"];
-            $password = $config["password"];
-            $dbname = $config["dbname"];
-            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare("SELECT * FROM application JOIN student ON student.studentID = application.studentID JOIN student_address ON student_address.studentID = student.studentID JOIN address ON address.addressID = student_address.addressID WHERE application.applicationID=:appid AND student_address.type = 'permanent';");
+    // if(!empty($_GET['appID']) || (!empty($_POST['appID']) && !empty($_POST['offerStatus']) && !empty($_POST['assistantshipStatus']) && !empty($_POST['applicantResponse']) )){
+    //     try{
+    //         $config = parse_ini_file('../private/credentials.ini');
+    //         $servername = $config["servername"];
+    //         $username = $config["username"];
+    //         $password = $config["password"];
+    //         $dbname = $config["dbname"];
+    //         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    //         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    //         $stmt = $conn->prepare("SELECT * FROM application JOIN student ON student.studentID = application.studentID JOIN student_address ON student_address.studentID = student.studentID JOIN address ON address.addressID = student_address.addressID WHERE application.applicationID=:appid AND student_address.type = 'permanent';");
             
-            if(!empty($_GET['appID']))
-                $appID=$_GET['appID'];
-            else
-                $appID=$_POST['appID'];
-            $stmt->bindValue(':appid', $appID);
+    //         if(!empty($_GET['appID']))
+    //             $appID=$_GET['appID'];
+    //         else
+    //             $appID=$_POST['appID'];
+    //         $stmt->bindValue(':appid', $appID);
             
-            $stmt->execute();
-            if ($stmt->rowCount() > 0){
-                $check = $stmt->fetch(PDO::FETCH_ASSOC);
-            }else{
-                exit();
-            }
-        }catch(Exception $e){
-            echo "Error: " . $e->getMessage();
-            echo "<br> Stack trace: " . $e->getTraceAsString();
-        }
+    //         $stmt->execute();
+    //         if ($stmt->rowCount() > 0){
+    //             $check = $stmt->fetch(PDO::FETCH_ASSOC);
+    //         }else{
+    //             exit();
+    //         }
+    //     }catch(Exception $e){
+    //         echo "Error: " . $e->getMessage();
+    //         echo "<br> Stack trace: " . $e->getTraceAsString();
+    //     }
 ?>
 <!-- Page Content Container -->
 <div class="container-fluid">
