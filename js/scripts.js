@@ -30,14 +30,6 @@ $('ul.nav a').filter(function() {
     return this.href == url;
 }).parent().addClass('active');
 
-//Hide Search Bar
-var url2 = window.location.href;
-if(url2 == 'https://www.uark.us/applicants.php'){
-    $('#navbarSearch').show();
-else
-    $("#navbarSearch").hide();
-}
-
 //Duplicate Function
 document.getElementById('duplicateButton').onclick = duplicate;
 
