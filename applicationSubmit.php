@@ -12,7 +12,7 @@ try {
 	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password); //
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-	$pdo->beginTransaction();
+	$conn->beginTransaction();
 
 	$stmt = $conn->prepare("INSERT INTO student (firstName,  middleName,  lastName,  preferredName,  primaryEmail,  secondaryEmail,  primaryPhone,  secondaryPhone,  socialSecurityNumber,  dateOfBirth,  countryOfBirth,  ethnicity,  gender,  citizenship)
 									   VALUES  (:firstName, :middleName, :lastName, :preferredName, :primaryEmail, :secondaryEmail, :primaryPhone, :secondaryPhone, :socialSecurityNumber, :dateOfBirth, :countryOfBirth, :ethnicity, :gender, :citizenship);");
