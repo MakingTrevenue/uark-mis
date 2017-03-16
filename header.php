@@ -58,9 +58,9 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <!-- Navigation Bar Tabs -->
             <ul class="nav navbar-nav">
-                <li><a id="applicationTab" href="./application.php">Application</a></li>
-				<li><a id="applicantsTab" href="./applicants.php">Applicants</a></li>
-                <li><a id="advisingTab" href="./advising.php">Advising</a></li>
+                <li><a href="./application.php">Application</a></li>
+				<li><a href="./applicants.php">Applicants</a></li>
+                <li><a href="./advising.php">Advising</a></li>
             </ul>
             <!-- Navigation Bar Modals -->
             <ul class="nav navbar-nav navbar-right">
