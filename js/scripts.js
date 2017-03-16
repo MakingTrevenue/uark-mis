@@ -25,7 +25,7 @@ function filterTable() {
 
 // Navbar Active Tabs
 $(document).ready(function() {
-    $('.nav-tabs a[href="'+location.href+'"]').parents('li').addClass('active');
+    $('.nav-navbar a[href="'+location.href+'"]').parents('li').addClass('active');
 });
 
 //Duplicate Function

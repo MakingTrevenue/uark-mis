@@ -57,10 +57,10 @@
 
         <div class="collapse navbar-collapse" id="myNavbar">
             <!-- Navigation Bar Tabs -->
-            <ul class="nav nav-tabs">
-                <li><a href="./application.php" data-toggle="tab">Application</a></li>
-				<li><a href="./applicants.php" data-toggle="tab">Applicants</a></li>
-                <li><a href="./advising.php" data-toggle="tab">Advising</a></li>
+            <ul class="nav navbar-nav">
+                <li><a href="./application.php">Application</a></li>
+				<li><a href="./applicants.php">Applicants</a></li>
+                <li><a href="./advising.php">Advising</a></li>
             </ul>
             <!-- Navigation Bar Modals -->
             <ul class="nav navbar-nav navbar-right">
