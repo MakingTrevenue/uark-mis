@@ -38,7 +38,7 @@
             $dbname = $config["dbname"];
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID JOIN college ON college.applicationID = application.applicationID LEFT JOIN attachment ON attachment.applicationID = application.applicationID WHERE application.applicationID=:appid");
+            $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID JOIN college ON college.applicationID = application.applicationID WHERE application.applicationID=:appid");
             
             if(!empty($_GET['appID']))
                 $appID=$_GET['appID'];
@@ -374,8 +374,10 @@
                 <div class="panel-body">
                     <h4>
                         <?php  
+                            
+
                             while ($check = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
-                        <a href="/document.php?id=<?php echo $check['filename']; ?>" target="_blank" rel="noopener noreferrer">Resume</a><br>
+                                <a href="/document.php?id=<?php echo $check['filename']; ?>" target="_blank" rel="noopener noreferrer">Resume</a><br>
                         <?php } ?>
                     </h4>                 
                 </div>
