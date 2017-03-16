@@ -24,9 +24,11 @@ function filterTable() {
 }
 
 // Navbar Active Tabs
-$(document).ready(function() {
-    $('.nav-navbar a[href="'+location.href+'"]').parents('li').addClass('active');
-});
+window.onload=function () {
+    $('#applicationTab').addClass('active');
+    $('#applicantsTab').addClass('active');
+    $('#advisingTab').addClass('active');
+};
 
 //Duplicate Function
 document.getElementById('duplicateButton').onclick = duplicate;
