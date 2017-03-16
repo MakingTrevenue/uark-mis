@@ -37,6 +37,8 @@ if( url == "https://www.uark.us/applicants.php" ) {
   searchbar.style.display = "inline";
 }
 
+// Change Login & Logout Buttons Based on Session
+
 //Duplicate Function
 document.getElementById('duplicateButton').onclick = duplicate;
 
