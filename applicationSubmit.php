@@ -267,7 +267,7 @@ try {
 	$stmt->execute();	
 
 
-	$pdo->commit();	
+	$conn->commit();	
 	
 }
 catch(Exception $e){
