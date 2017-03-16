@@ -68,16 +68,18 @@
                 <li><a href="#loginModal" data-toggle="modal"><span class="fa fa-sign-in"></span>&nbsp; Login</a></li>
             </ul>
             <!-- Applicants Search Bar -->
-            <form class="navbar-form pull-right">
-                <div class="form-group" id="navbarSearch">
-                    <div class="input-group">
-                        <input type="text" id="filterInput" onkeyup="filterTable()" class="form-control" placeholder="Search all applicants">
-                        <span class="input-group-addon">
-                            <span class="fa fa-search"></span>
-                        </span>
+            <div id="navbarSearch">
+                <form class="navbar-form pull-right">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" id="filterInput" onkeyup="filterTable()" class="form-control" placeholder="Search all applicants">
+                            <span class="input-group-addon">
+                                <span class="fa fa-search"></span>
+                            </span>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </nav>

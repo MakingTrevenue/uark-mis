@@ -34,3 +34,7 @@
 .box {
     display: none;
 }
+
+#navbarSearch {
+	display: none;
+}

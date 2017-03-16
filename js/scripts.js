@@ -30,12 +30,12 @@ $('ul.nav a').filter(function() {
     return this.href == url;
 }).parent().addClass('active');
 
-var url2 = "https://www.uark.us/applicants.php";
-$(function(){
-    if (location.href==url2){
-        $('#navbarSearch').show();
-    }
-});
+//
+if(window.location.href == "https://www.uark.us/applicants.php"){
+    $("#navbarSearch").css("display", "inline");
+else
+    $("#navbarSearch").css("display", "none");
+}
 
 //Duplicate Function
 document.getElementById('duplicateButton').onclick = duplicate;
