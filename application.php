@@ -470,10 +470,10 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="undergradJRSRGPA">GPA in Junior/Senior Years</label>
+                            <label for="juniorseniorGPA">GPA in Junior/Senior Years</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
-                                <input type="number" step="0.01" class="form-control" name="juniorseniorGPA" id="undergradJRSRGPA" placeholder="Range: 0.00-4.00">
+                                <input type="number" step="0.01" class="form-control" name="juniorseniorGPA" id="juniorseniorGPA" placeholder="Range: 0.00-4.00">
                             </div>                            
                         </div>
 
