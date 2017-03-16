@@ -32,10 +32,10 @@ $('ul.nav a').filter(function() {
 
 //
 if(window.location.href == "https://www.uark.us/applicants.php"){
-    document.write('Yes it is working!')
-    $("#navbarSearch").css("display", "inline");
+    window.alert('Yes it is working!');
+   $("#navbarSearch").css("display", "inline");
 else
-    document.write('No, it is not working!')
+    window.alert('No, it is not working!');
     $("#navbarSearch").css("display", "none");
 }
 
