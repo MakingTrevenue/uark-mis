@@ -23,10 +23,9 @@ function filterTable() {
     }
 }
 
-
-// Scripts
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
+// Navbar Active Tabs
+$(document).ready(function() {
+    $('.nav-tabs a[href="'+location.href+'"]').parents('li').addClass('active');
 });
 
 //Duplicate Function
