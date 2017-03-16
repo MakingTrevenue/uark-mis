@@ -34,9 +34,3 @@
 .box {
     display: none;
 }
-
-/* Hide Search */
-#navbarSearch {
-	display: none;
-	visibility: hidden;
-}
