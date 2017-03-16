@@ -31,12 +31,15 @@ $('ul.nav a').filter(function() {
 }).parent().addClass('active');
 
 //
-if(window.location.href == "https://www.uark.us/applicants.php"){
-    window.alert('Yes it is working!');
-   $("#navbarSearch").css("display", "inline");
-else
-    window.alert('No, it is not working!');
-    $("#navbarSearch").css("display", "none");
+
+// Get URL
+var url = window.location.href;
+// Get DIV
+var msg = document.getElementById('navbarSearch');
+// Check if URL contains the keyword
+if( url.search( 'applicants' ) > 0 ) {
+  // Display the message
+  msg.style.display = "inline";
 }
 
 //Duplicate Function
