@@ -47,6 +47,7 @@ try {
 	$citizenship = $_POST['citizenship'];
 	$countryOfBirth = 'US';
 	$stmt->execute();
+	$studentID = $conn->lastInsertId();
 
 	//echo "Student record created successfully";
 
@@ -202,7 +203,71 @@ try {
 	$major = $_POST['major'];
 
 	$stmt->execute();	
-	$pdo->commit();
+	//
+	$stmt = $conn->prepare("INSERT INTO address (street1,  street2,  city,  stateID,  zipCode,  countryID)
+									   VALUES  (:street1, :street2, :city, :stateID, :zipCode, :countryID);");
+
+	$stmt->bindParam(':street1', $street1);
+	$stmt->bindParam(':street2', $street2);
+	$stmt->bindParam(':city', $city);
+	$stmt->bindParam(':stateID', $stateID);
+	$stmt->bindParam(':zipCode', $zipCode);
+	$stmt->bindParam(':countryID', $countryID);			
+
+	$street1 = $_POST['streetAddress'];
+	$street2 = $_POST['streetAddress2'];
+	$city = $_POST['city'];
+	$stateID = $_POST['state'];
+	$zipCode = $_POST['zipCode'];
+	$countryID = $_POST['country'];
+
+	$stmt->execute();	
+	$addressPid = $conn->lastInsertId();
+	//
+	$stmt = $conn->prepare("INSERT INTO address (street1,  street2,  city,  stateID,  zipCode,  countryID)
+									   VALUES  (:street1, :street2, :city, :stateID, :zipCode, :countryID);");
+
+	$stmt->bindParam(':street1', $street1);
+	$stmt->bindParam(':street2', $street2);
+	$stmt->bindParam(':city', $city);
+	$stmt->bindParam(':stateID', $stateID);
+	$stmt->bindParam(':zipCode', $zipCode);
+	$stmt->bindParam(':countryID', $countryID);				
+
+	$street1 = $_POST['streetAddressM'];
+	$street2 = $_POST['streetAddress2M'];
+	$city = $_POST['cityM'];
+	$stateID = $_POST['stateM'];
+	$zipCode = $_POST['zipCodeM'];
+	$countryID = $_POST['countryM'];
+
+	$stmt->execute();	
+	$addressMid = $conn->lastInsertId();	
+	//
+	$stmt = $conn->prepare("INSERT INTO student_address (studentID,  addressID, type)
+									   VALUES  (:studentID, :addressID, 'P');");
+
+	$stmt->bindParam(':studentID', $sid);
+	$stmt->bindParam(':addressID', $apid);	
+
+	$sid=$studentID;
+	$apid=$addressPid;
+
+	$stmt->execute();
+	//
+	$stmt = $conn->prepare("INSERT INTO student_address (studentID,  addressID, type)
+									   VALUES  (:studentID, :addressID, 'M');");
+
+	$stmt->bindParam(':studentID', $sid);
+	$stmt->bindParam(':addressID', $amid);	
+
+	$sid=$studentID;
+	$amid=$addressMid;
+
+	$stmt->execute();	
+
+
+	$pdo->commit();	
 	
 }
 catch(Exception $e){
