@@ -4,8 +4,6 @@
 
 <!-- Page Content Container -->
 <div class="container-fluid">
-
-    <h2 class="text-danger text-center">DISCLAIMER: This is a student project. This is NOT the official website for the University of Arkansas and is in no way affiliated with the University of Arkansas. Do NOT enter any personal information. To apply to the University of Arkansas, please visit their official website <a href="https://application.uark.edu/">here</a>.</h2><br>
     
     <form id="applicationform" action="/applicationSubmit.php" method="post" enctype="multipart/form-data">
         
@@ -842,8 +840,6 @@
     </form>
     
 </div>
-
-<h2 class="text-danger text-center">DISCLAIMER: This is a student project. This is NOT the official website for the University of Arkansas and is in no way affiliated with the University of Arkansas. Do NOT enter any personal information. To apply to the University of Arkansas, please visit their official website <a href="https://application.uark.edu/">here</a>.</h2><br>
 
 <?php
     include 'footer.php';
