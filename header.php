@@ -32,6 +32,9 @@
     <!-- Masked Inputs jQuery -->
     <script type="text/javascript" src="./js/jquery.inputmask.bundle.min.js"></script>
 
+    <!-- Table Sorter jQuery Plugin -->
+    <script type="text/javascript" src="./js/jquery.tablesorter.js"></script>
+
     <!-- Custom JavaScript -->
     <script type="text/javascript" src="./js/scripts.js"></script>
 
@@ -42,7 +45,6 @@
 <!-- Navigation Bar -->
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
-
         <!-- Navigation Bar Header -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -65,8 +67,18 @@
                 <li><a href="#signUpModal" data-toggle="modal"><span class="fa fa-user-plus"></span>&nbsp; Sign Up</a></li>
                 <li><a href="#loginModal" data-toggle="modal"><span class="fa fa-sign-in"></span>&nbsp; Login</a></li>
             </ul>
+            <!-- Applicants Search Bar -->
+            <form class="navbar-form pull-right" style="display:inline;">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" id="filterInput" onkeyup="filterTable()" class="form-control" placeholder="Search all applicants">
+                        <span class="input-group-addon">
+                            <span class="fa fa-search"></span>
+                        </span>
+                    </div>
+                </div>
+            </form>
         </div>
-
     </div>
 </nav>
 
