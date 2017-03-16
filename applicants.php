@@ -453,9 +453,7 @@
   </div>
 </div>
 </div>
-</body>
 
-    <!-- Custom JavaScript -->
-    <script type="text/javascript" src="./js/scripts.js"></script>
-
-</html>
+<?php
+    include 'footer.php';
+?>
