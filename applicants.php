@@ -374,9 +374,9 @@
                 <div class="panel-body">
                     <h4>
                         <?php  
-                            do { ?>
+                            while ($check = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
                         <a href="/document.php?id=<?php echo $check['filename']; ?>" target="_blank" rel="noopener noreferrer">Resume</a><br>
-                        <?php } while ($check = $stmt->fetch(PDO::FETCH_ASSOC));?>
+                        <?php } ?>
                     </h4>                 
                 </div>
             </div>
