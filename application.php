@@ -781,7 +781,7 @@
                         <input type="file" class="filestyle" name='transcriptFile' id="transcriptFile" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
 
                         <label for="educationalExperience">Summary of Educational Experience Form</label>
-                        <input type="file" class="filestyle" name='educationalExperience' id="educationalExperience" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
+                        <input type="file" class="filestyle" name='educationalExperience' id="educationalExperience" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file">
                         <p class="help-block">Required for international students only.</p>
                                                 
                     </div>
@@ -799,7 +799,7 @@
                         <input type="file" class="filestyle" id="recLetter3" name="recLetter3" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
 
                         <label for="supplementalForm">Supplemental & Financial Information Form</label>
-                        <input type="file" class="filestyle" name='educationalExperience' id="educationalExperience" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
+                        <input type="file" class="filestyle" name='educationalExperience' id="educationalExperience" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file">
                         <p class="help-block">Required for international students only.</p>
                                                 
                     </div>
