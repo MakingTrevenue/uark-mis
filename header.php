@@ -66,7 +66,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#signUpModal" data-toggle="modal"><span class="fa fa-user-plus"></span>&nbsp; Sign Up</a></li>
                 <li><a href="#loginModal" data-toggle="modal"><span class="fa fa-sign-in"></span>&nbsp; Login</a></li>
-                <li><a href="./logout.php" id="logoutButton"><span class="fa fa-sign-out"></span>&nbsp; Logout</a></li>
+                <li id="logoutButton"><a href="./logout.php"><span class="fa fa-sign-out"></span>&nbsp; Logout</a></li>
             </ul>
             <!-- Applicants Search Bar -->
             <div id="navbarSearch">
