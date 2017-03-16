@@ -245,7 +245,7 @@ try {
 	$addressMid = $conn->lastInsertId();	
 	//
 	$stmt = $conn->prepare("INSERT INTO student_address (studentID,  addressID, type)
-									   VALUES  (:studentID, :addressID, 'P');");
+									   VALUES  (:studentID, :addressID, 'permanent');");
 
 	$stmt->bindParam(':studentID', $sid);
 	$stmt->bindParam(':addressID', $apid);	
@@ -256,7 +256,7 @@ try {
 	$stmt->execute();
 	//
 	$stmt = $conn->prepare("INSERT INTO student_address (studentID,  addressID, type)
-									   VALUES  (:studentID, :addressID, 'M');");
+									   VALUES  (:studentID, :addressID, 'mailing');");
 
 	$stmt->bindParam(':studentID', $sid);
 	$stmt->bindParam(':addressID', $amid);	
@@ -268,7 +268,7 @@ try {
 
 
 	$conn->commit();	
-	
+	header('Location: applicationSuccess.html');
 }
 catch(Exception $e){
 	echo "Error: " . $e->getMessage();
@@ -276,5 +276,5 @@ catch(Exception $e){
 	$pdo->rollBack();
 }
 $conn = null;
-header('Location: applicationSuccess.html');
+
 ?>
