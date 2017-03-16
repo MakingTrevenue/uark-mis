@@ -35,9 +35,6 @@
     <!-- Table Sorter jQuery Plugin -->
     <script type="text/javascript" src="./js/jquery.tablesorter.js"></script>
 
-    <!-- Custom JavaScript -->
-    <script type="text/javascript" src="./js/scripts.js"></script>
-
 </head>
 
 <body>
