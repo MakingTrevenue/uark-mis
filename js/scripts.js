@@ -30,11 +30,9 @@ $('ul.nav a').filter(function() {
     return this.href == url;
 }).parent().addClass('active');
 
-//
-
+// Show/Hide Applicants Search Bar
 var url = window.location.href;
 var searchbar = document.getElementById('navbarSearch');
-// Check if URL contains the keyword
 if( url == "https://www.uark.us/applicants.php" ) {
   searchbar.style.display = "inline";
 }
