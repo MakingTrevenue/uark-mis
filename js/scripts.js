@@ -31,11 +31,11 @@ $('ul.nav a').filter(function() {
 }).parent().addClass('active');
 
 //
-if(window.location.href == "https://www.uark.us/applicants.php"){
-    $("#navbarSearch").css("display", "inline");
-else
-    $("#navbarSearch").css("display", "none");
-}
+//if(window.location.href == "https://www.uark.us/applicants.php"){
+//    $("#navbarSearch").css("display", "inline");
+//else
+//    $("#navbarSearch").css("display", "none");
+//}
 
 //Duplicate Function
 document.getElementById('duplicateButton').onclick = duplicate;
