@@ -38,3 +38,7 @@
 #navbarSearch {
 	display: none;
 }
+
+#logoutButton {
+	display: none;
+}
