@@ -455,7 +455,7 @@
 <div class="container-fluid">
   <h2 class="text-center">List of Applicants</h2>        
   <div style="height:500px;overflow:auto;">
-  <table id="applicantTable" class="table">
+  <table id="applicantTable" class="tablesorter">
     <thead>
       <tr>
         <th>Applicant Name</th>
