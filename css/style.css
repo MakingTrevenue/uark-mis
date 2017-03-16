@@ -38,4 +38,5 @@
 /* Hide Search */
 #navbarSearch {
 	display: none;
+	visibility: hidden;
 }
