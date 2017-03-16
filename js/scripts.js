@@ -32,14 +32,11 @@ $('ul.nav a').filter(function() {
 
 //
 
-// Get URL
 var url = window.location.href;
-// Get DIV
-var msg = document.getElementById('navbarSearch');
+var searchbar = document.getElementById('navbarSearch');
 // Check if URL contains the keyword
-if( url.search( 'applicants' ) > 0 ) {
-  // Display the message
-  msg.style.display = "inline";
+if( url == "https://www.uark.us/applicants.php" ) {
+  searchbar.style.display = "inline";
 }
 
 //Duplicate Function
