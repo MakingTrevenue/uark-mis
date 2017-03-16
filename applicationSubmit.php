@@ -150,7 +150,7 @@ try {
 	//echo "Application record created successfully";	
 	
 	$appid = $conn->lastInsertId();
-	$fileFormName=array('resumeFile','essayQuestionsFile','transcriptFile','recLetter1','recLetter2','recLetter3');
+	$fileFormName=array('resumeFile','essayQuestionsFile','transcriptFile','recLetter1','recLetter2','recLetter3', 'educationalExperienceFile', 'supplementalFormFile');
 
 	foreach($fileFormName as $fn){
 		if(isset($_FILES[$fn])){
