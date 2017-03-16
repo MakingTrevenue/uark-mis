@@ -5,6 +5,7 @@
 ?>
 
 <?php
+    // Update statement for updating application statuses.
     if((!empty($_POST['appID']) && !empty($_POST['offerStatus']) && !empty($_POST['assistantshipStatus']) && !empty($_POST['applicantResponse']) )){
         try{
             $config = parse_ini_file('../private/credentials.ini');
@@ -26,6 +27,8 @@
             echo "<br> Stack trace: " . $e->getTraceAsString();            
         }
     }
+
+    // Select statement for selecting all of the application info.
     if(!empty($_GET['appID']) || (!empty($_POST['appID']) && !empty($_POST['offerStatus']) && !empty($_POST['assistantshipStatus']) && !empty($_POST['applicantResponse']) )){
         try{
             $config = parse_ini_file('../private/credentials.ini');
@@ -36,6 +39,35 @@
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID JOIN college ON college.applicationID = application.applicationID LEFT JOIN attachment ON attachment.applicationID = application.applicationID WHERE application.applicationID=:appid");
+            
+            if(!empty($_GET['appID']))
+                $appID=$_GET['appID'];
+            else
+                $appID=$_POST['appID'];
+            $stmt->bindValue(':appid', $appID);
+            
+            $stmt->execute();
+            if ($stmt->rowCount() > 0){
+                $check = $stmt->fetch(PDO::FETCH_ASSOC);
+            }else{
+                exit();
+            }
+        }catch(Exception $e){
+            echo "Error: " . $e->getMessage();
+            echo "<br> Stack trace: " . $e->getTraceAsString();
+        }
+
+    // Select statement for permanent addresses.
+    if(!empty($_GET['appID']) || (!empty($_POST['appID']) && !empty($_POST['offerStatus']) && !empty($_POST['assistantshipStatus']) && !empty($_POST['applicantResponse']) )){
+        try{
+            $config = parse_ini_file('../private/credentials.ini');
+            $servername = $config["servername"];
+            $username = $config["username"];
+            $password = $config["password"];
+            $dbname = $config["dbname"];
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $conn->prepare("SELECT * FROM application JOIN student ON student.studentID = application.studentID JOIN student_address ON student_address.studentID = student.studentID JOIN address ON address.addressID = student_address.addressID WHERE application.applicationID=:appid AND student_address.type = 'permanent';");
             
             if(!empty($_GET['appID']))
                 $appID=$_GET['appID'];
@@ -133,7 +165,7 @@
                         <b>Secondary Phone: </b> <?php echo $check['secondaryPhone']; ?>
                     </h4>
                     <h4>
-                        <b>Permanent Address: </b> <?php //echo $check['street1'] . " " . $check['street2'] . " " . $check['city'] . " " . $check['stateID'] . " " . $check['zipCode'] ;?>
+                        <b>Permanent Address: </b> <?php echo $check['street1'] . " " . $check['street2'] . " " . $check['city'] . " " . $check['stateID'] . " " . $check['zipCode'] . " " . $check['countryID'] ;?>
                     </h4>
                     <h4>
                         <b>Mailing Address: </b> <?php //echo $check['street1'] . " " . $check['street2'] . " " . $check['city'] . " " . $check['stateID'] . " " . $check['zipCode'] ;?>

@@ -38,6 +38,15 @@ if( url == "https://www.uark.us/applicants.php" ) {
 }
 
 // Change Login & Logout Buttons Based on Session
+// var url = window.location.href;
+// var signup = document.getElementById('signupButton');
+// var login = document.getElementById('loginButton');
+// var logout = document.getElementById('logoutButton');
+// if( ) {
+//   signup.style.display = "none";
+//   login.style.display = "none";
+//   logout.style.display = "inline";
+// }
 
 //Duplicate Function
 document.getElementById('duplicateButton').onclick = duplicate;
