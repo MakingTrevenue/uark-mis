@@ -23,11 +23,15 @@ function filterTable() {
     }
 }
 
+// Navbar Active Tabs
+var url = window.location;
+// Will only work if string in href matches with location
+$('ul.nav a[href="'+ url +'"]').parent().addClass('active');
 
-// Scripts
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
-});
+// Will also work for relative and absolute hrefs
+$('ul.nav a').filter(function() {
+    return this.href == url;
+}).parent().addClass('active');
 
 //Duplicate Function
 document.getElementById('duplicateButton').onclick = duplicate;
