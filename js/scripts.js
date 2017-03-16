@@ -32,9 +32,9 @@ $('ul.nav a').filter(function() {
 
 //Hide Search Bar
 if(window.location.href == "https://www.uark.us/applicants.php"){
-    $(#navbarSearch).show();
+    $("#navbarSearch").show();
 else
-    $(#navbarSearch).hide();
+    $("#navbarSearch").hide();
 }
 
 //Duplicate Function
