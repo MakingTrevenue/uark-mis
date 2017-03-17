@@ -202,12 +202,10 @@
                     <h4>
                         <b>Employer: </b>
                         <?php
-                            echo $check['currentEmployer']
-                            . " since " . 
                             error_reporting(0);
-                            echo date('m/d/Y', strtotime($check['timeAtCurrentEmployer'])); 
+                            echo $check['currentEmployer'] . " since " . date('m/d/Y', strtotime($check['timeAtCurrentEmployer']));
                             error_reporting(E_ALL);
-                            ?>
+                        ?>
                     </h4>
                 </div>
             </div>
