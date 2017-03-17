@@ -165,10 +165,10 @@
                         <b>Secondary Phone: </b> <?php echo $check['secondaryPhone']; ?>
                     </h4>
                     <h4>
-                        <b>Permanent Address: </b> <?php echo $perm['street1'] . " " . $perm['street2'] . " " . $perm['city'] . ", " . $perm['stateID'] . " " . $perm['zipCode'] . " " . $perm['countryID'] ;?>
+                        <b>Permanent Address: </b> <?php echo $perm['street1'] . " " . $perm['street2'] . ", " . $perm['city'] . ", " . $perm['stateID'] . " " . $perm['zipCode'] . " " . $perm['countryID'] ;?>
                     </h4>
                     <h4>
-                        <b>Mailing Address: </b> <?php echo $mail['street1'] . " " . $mail['street2'] . " " . $mail['city'] . ", " . $mail['stateID'] . " " . $mail['zipCode'] . " " . $mail['countryID'];?>
+                        <b>Mailing Address: </b> <?php echo $mail['street1'] . " " . $mail['street2'] . ", " . $mail['city'] . ", " . $mail['stateID'] . " " . $mail['zipCode'] . " " . $mail['countryID'];?>
                     </h4> 
                 </div>
             </div>
