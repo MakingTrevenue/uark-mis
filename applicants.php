@@ -419,7 +419,7 @@
                         <input type="submit" class="btn btn-success btn-md" id="uploadInterview" value="Upload Interview File">
                     </div>
                     <?php
-                        $stmt = $conn->prepare("SELECT * FROM interview_file JOIN application ON ineterview_file.applicationID=application.applicationID WHERE application.applicationID=:appid");
+                        $stmt = $conn->prepare("SELECT * FROM interview_file JOIN application ON interview_file.applicationID=application.applicationID WHERE application.applicationID=:appid");
                         $stmt->bindValue(':appid', $appID);                            
                         $stmt->execute();
                         while ($docs = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
