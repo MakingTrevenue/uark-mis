@@ -1,3 +1,7 @@
+<?php
+	session_start();
+    echo print_r($_SESSION);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
