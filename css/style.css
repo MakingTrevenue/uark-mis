@@ -57,10 +57,6 @@ hr {
 	display: none;
 }
 
-#logoutButton {
-	display: none;
-}
-
 /* Table Sorter CSS */
 table.tablesorter {
 	font-family:sans-serif;
