@@ -8,7 +8,7 @@
 	<div class="container-fluid">
 	    <hr width="100%">
 		<p class="text-center text-muted">
-		DISCLAIMER: This is a student project. This is NOT the official website for the University of Arkansas and is in no way affiliated with the University of Arkansas. Do NOT enter any personal information. To apply to the University of Arkansas, please visit their official website <a href="https://application.uark.edu/">here</a>. For more information on this project, please visit our <a href="https://github.com/MakingTrevenue/uark-mis">GitHub</a>.
+		DISCLAIMER: This is a student project. This is NOT the official website of the University of Arkansas and is in no way affiliated with the University of Arkansas. Do NOT enter any personal information. All images and logos are property of the University of Arkansas. To apply to the University of Arkansas, please visit their <a href="https://application.uark.edu/">official website</a>. For more information on this project, please visit our <a href="https://github.com/MakingTrevenue/uark-mis">GitHub</a>. 
 		</p>
 		<div class="row" id="socialMediaIcons">
 			<div class="col-md-12 col-sm-12 text-center">

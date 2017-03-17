@@ -1,4 +1,4 @@
-USE `uark`;
+CREATE DATABASE `uark` DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE `user` (
   `userID` INT(11) NOT NULL AUTO_INCREMENT,
@@ -7,16 +7,6 @@ CREATE TABLE `user` (
   `username` VARCHAR(15) NOT NULL,
   `password` VARCHAR(60) NOT NULL,
   PRIMARY KEY (`userID`)
-);
-
-CREATE TABLE `user_comment` (
-  `commentID` INT(11) AUTO_INCREMENT,
-  `userID` INT(11) NOT NULL,
-  `applicationID` INT(11) NOT NULL,
-  `commentText` TEXT,
-  PRIMARY KEY (`commentID`),
-  FOREIGN KEY (`applicationID`) REFERENCES `application`(`applicationID`),
-  FOREIGN KEY (`userID`) REFERENCES `user`(`userID`)
 );
 
 CREATE TABLE `country` (
@@ -33,8 +23,13 @@ CREATE TABLE `state` (
 
 CREATE TABLE `zip_code` (
   `zipCode` VARCHAR(5) NOT NULL,
-  `zipCodeExt` VARCHAR(4) DEFAULT NULL,
-  PRIMARY KEY (`zipCode`)
+  `latitude` VARCHAR(12) DEFAULT NULL,
+  `longitude` VARCHAR(13) DEFAULT NULL,
+  `city` VARCHAR(40) DEFAULT NULL,
+  `stateID` CHAR(2) NOT NULL,
+  `county` VARCHAR(40) DEFAULT NULL,
+  PRIMARY KEY (`zipCode`),
+  FOREIGN KEY (`stateID`) REFERENCES `state`(`stateID`)
 );
 
 CREATE TABLE `address` (
@@ -62,7 +57,7 @@ CREATE TABLE `student` (
   `primaryPhone` VARCHAR(15) NOT NULL,
   `secondaryPhone` VARCHAR(15) DEFAULT NULL,
   `socialSecurityNumber` VARCHAR(11) NOT NULL,
-  `dateOfBirth` date NOT NULL,
+  `dateOfBirth` DATE NOT NULL,
   `countryOfBirth` CHAR(2) NOT NULL,
   `ethnicity` VARCHAR(50) NOT NULL,
   `gender` VARCHAR(10) NOT NULL,
@@ -86,6 +81,7 @@ CREATE TABLE `application` (
   `term` VARCHAR(25) NOT NULL,
   `year` YEAR(4) NOT NULL,
   `program` VARCHAR(25) NOT NULL,
+  `concentration` VARCHAR(50) NOT NULL,
   `reqScholarship` BOOLEAN NOT NULL DEFAULT 0,
   `previousApp` BOOLEAN NOT NULL DEFAULT 0,
   `previousAppDate` VARCHAR(25) DEFAULT NULL,
@@ -117,6 +113,7 @@ CREATE TABLE `application` (
   `offerStatus` VARCHAR(25) NOT NULL DEFAULT 'Undecided',
   `assistantshipStatus` VARCHAR(25) DEFAULT NULL,
   `applicantResponse` VARCHAR(25) DEFAULT NULL,
+  `applicationDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`applicationID`),
   FOREIGN KEY (`studentID`) REFERENCES `student`(`studentID`)
 );
@@ -210,4 +207,14 @@ CREATE TABLE `student_class` (
   PRIMARY KEY (`studentID`, `classID`),
   FOREIGN KEY (`studentID`) REFERENCES `student`(`studentID`),
   FOREIGN KEY (`classID`) REFERENCES `class`(`classID`)
+);
+
+CREATE TABLE `user_comment` (
+  `commentID` INT(11) AUTO_INCREMENT,
+  `userID` INT(11) NOT NULL,
+  `applicationID` INT(11) NOT NULL,
+  `commentText` TEXT,
+  PRIMARY KEY (`commentID`),
+  FOREIGN KEY (`applicationID`) REFERENCES `application`(`applicationID`),
+  FOREIGN KEY (`userID`) REFERENCES `user`(`userID`)
 );
