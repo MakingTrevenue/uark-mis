@@ -429,18 +429,17 @@
                     </div>
 
                     <div class="col-md-2 col-sm-4 col-md-offset-5 col-sm-offset-4 text-center">
-                        <input type="submit" class="btn btn-success btn-md" id="submitComment" value="Submit Comment"><br>         
+                        <input type="submit" class="btn btn-success btn-md" id="submitComment" value="Submit Comment">
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-        
     </form>
-    
+
 </div>
-    <?php
+
+<?php
     }else{
     $config = parse_ini_file('../private/credentials.ini');
     $servername = $config["servername"];
@@ -452,10 +451,11 @@
     $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID");
     $stmt->execute();
 ?>
+
 <div class="container-fluid">
-  <h2 class="text-center">List of Applicants</h2>        
-  <div style="height:500px;overflow:auto;">
-  <table id="applicantTable" class="tablesorter">
+    <h3 class="text-center">List of Applicants</h3>        
+    <div style="height:500px;overflow:auto;">
+    <table id="applicantTable" class="tablesorter">
     <thead>
       <tr>
         <th>Applicant Name</th>
@@ -471,7 +471,7 @@
     <?php 
         while ($row = $stmt->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT)) {
             echo "<tr>
-                    <td> <a href='http://uark.us/applicants.php?appID=" . $row->applicationID . "'>" . $row->firstName . "  " . $row->lastName . "</a></td>
+                    <td> <a href='https://uark.us/applicants.php?appID=" . $row->applicationID . "'>" . $row->firstName . "  " . $row->lastName . "</a></td>
                     <td>" . $row->term . " " . $row->year . "</td>
                     <td>" . $row->program . "</td>
                     <td>" . $row->undergradGPA . "</td>
@@ -482,9 +482,8 @@
     }   
     ?>
     </tbody>
-  </table>
-  </div>
-</div>
+    </table>
+    </div>
 </div>
 
 <?php
