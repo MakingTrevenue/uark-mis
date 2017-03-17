@@ -12,7 +12,7 @@
 		try {
 			$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare("SELECT userID,password FROM user WHERE username=:username");
+            $stmt = $conn->prepare("SELECT userID,password,name FROM user WHERE username=:username");
 
             $stmt->execute(array(':username' => $_POST['loginUsername']));
             $row = $stmt->fetch();
@@ -23,6 +23,7 @@
             
             if($check){
 			    $_SESSION["username"] = $row[0];
+				$_SESSION["name"]=$row[2];
 				header('Location: index.php');
 			}
             else

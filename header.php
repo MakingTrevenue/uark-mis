@@ -74,7 +74,7 @@
                     <li id="signupButton"><a href="#signUpModal" data-toggle="modal"><span class="fa fa-user-plus"></span>&nbsp; Sign Up</a></li>
                     <li id="loginButton"><a href="#loginModal" data-toggle="modal"><span class="fa fa-sign-in"></span>&nbsp; Login</a></li>
                 <?php }else{ ?>
-                    <li id="logoutButton"><a href="./logout.php"><span class="fa fa-sign-out"></span>&nbsp; Logout</a></li>
+                    <li id="logoutButton"><a href="./logout.php"><span class="fa fa-sign-out"></span>&nbsp; Logout <?php echo $_SESSION['name']?></a></li>
                 <?php } ?>
             </ul>
             <!-- Applicants Search Bar -->
