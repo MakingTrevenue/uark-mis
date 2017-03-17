@@ -1,6 +1,7 @@
 <?php
     include 'header.php';
 ?>
+<style> .navbar { margin-bottom: -20px; } </style>
 
 <div class="container-fluid">
 
@@ -61,7 +62,7 @@
 
         <div class="col-md-12 col-sm-12">
 
-            <h2 class="text-danger text-center">Welcome to the Master of Information Systems Portal!</h2>
+            <h2 class="text-danger text-center">Welcome to the University of Arkansas Master of Information Systems Portal!</h2>
 
         </div>
     </div>
