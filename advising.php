@@ -171,7 +171,7 @@
                             <label for="classID1">Class ID</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-star-o"></i></span>
-                                <input type="text" class="form-control" name="classID1" id="classID1" placeholder="1">
+                                <input type="text" class="form-control" name="classID1" id="classID1" placeholder="19">
                             </div>
                         </div>                        
 
@@ -223,7 +223,7 @@
                             <label for="classID2">Class ID</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-star-o"></i></span>
-                                <input type="text" class="form-control" name="classID2" id="classID2" placeholder="1">
+                                <input type="text" class="form-control" name="classID2" id="classID2" placeholder="11">
                             </div>
                         </div>                        
 
@@ -275,7 +275,7 @@
                             <label for="classID3">Class ID</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-star-o"></i></span>
-                                <input type="text" class="form-control" name="classID3" id="classID3" placeholder="1">
+                                <input type="text" class="form-control" name="classID3" id="classID3" placeholder="12">
                             </div>
                         </div>                        
 
@@ -327,7 +327,7 @@
                             <label for="classID4">Class ID</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-star-o"></i></span>
-                                <input type="text" class="form-control" name="classID4" id="classID4" placeholder="1">
+                                <input type="text" class="form-control" name="classID4" id="classID4" placeholder="3">
                             </div>
                         </div>                        
 
@@ -379,7 +379,7 @@
                             <label for="classID5">Class ID</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-star-o"></i></span>
-                                <input type="text" class="form-control" name="classID5" id="classID5" placeholder="1">
+                                <input type="text" class="form-control" name="classID5" id="classID5" placeholder="7">
                             </div>
                         </div>                        
 

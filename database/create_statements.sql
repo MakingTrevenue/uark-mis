@@ -218,3 +218,15 @@ CREATE TABLE `user_comment` (
   FOREIGN KEY (`applicationID`) REFERENCES `application`(`applicationID`),
   FOREIGN KEY (`userID`) REFERENCES `user`(`userID`)
 );
+
+CREATE TABLE `advising` (
+  `studentID` INT(11) NOT NULL,
+  `classID` INT(11) NOT NULL,
+  `term` VARCHAR(25) NOT NULL,
+  `year` YEAR(4),
+  `date` DATE NOT NULL,
+  `comments` TEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`studentID`, `classID`),
+  FOREIGN KEY (`studentID`) REFERENCES `student`(`studentID`),
+  FOREIGN KEY (`classID`) REFERENCES `class`(`classID`)
+);

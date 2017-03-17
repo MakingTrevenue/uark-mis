@@ -233,6 +233,18 @@ CREATE TABLE `user_comment` (
   FOREIGN KEY (`userID`) REFERENCES `user`(`userID`)
 );
 
+CREATE TABLE `advising` (
+  `studentID` INT(11) NOT NULL,
+  `classID` INT(11) NOT NULL,
+  `term` VARCHAR(25) NOT NULL,
+  `year` YEAR(4),
+  `date` DATE NOT NULL,
+  `comments` TEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`studentID`, `classID`),
+  FOREIGN KEY (`studentID`) REFERENCES `student`(`studentID`),
+  FOREIGN KEY (`classID`) REFERENCES `class`(`classID`)
+);
+
 -- User Insert Statements
 INSERT INTO `user` (`name`, `email`, `username`, `password`) VALUES ('Anne Tucker', 'atucker0@addtoany.com', 'atucker0', 'FcRwiE0zOxj');
 INSERT INTO `user` (`name`, `email`, `username`, `password`) VALUES ('Tina Owens', 'towens1@list-manage.com', 'towens1', '4PWkuryoFzp9');
