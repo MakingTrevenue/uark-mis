@@ -417,7 +417,7 @@
                     <input type="hidden" name="appID" value="<?php echo $appID;?>">
                     <div class="text-center">
                         <input type="submit" class="btn btn-success btn-md" id="uploadInterview" value="Upload Interview File">
-                    </div>
+                    </div><br>
                     <label for="uploadedInterviewFiles">Uploaded Interview Files</label><br>
                     <?php
                         $stmt = $conn->prepare("SELECT * FROM interview_file JOIN application ON interview_file.applicationID=application.applicationID WHERE application.applicationID=:appid");
