@@ -1,7 +1,7 @@
 <?php
     include 'header.php';
 ?>
-<style> .navbar { margin-bottom: -20px; } </style>
+<style> .navbar { margin-bottom: 0px; } </style>
 
 <div class="container-fluid">
 
