@@ -14,6 +14,11 @@
 	background: #F9F9F9;
 }
 
+hr {
+	border-color: #9E9E9E;
+	opacity: 0.5;
+}
+
 /* Square Corners on Various Items*/
 .btn,
 .form-control,

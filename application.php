@@ -779,10 +779,6 @@
                         
                         <label for="transcript">Official Transcript</label>
                         <input type="file" class="filestyle" name='transcriptFile' id="transcriptFile" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
-
-                        <label for="educationalExperience">Summary of Educational Experience Form</label>
-                        <input type="file" class="filestyle" name='educationalExperienceFile' id="educationalExperienceFile" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file">
-                        <p class="help-block">Required for international students only.</p>
                                                 
                     </div>
 
@@ -797,11 +793,23 @@
                         
                         <label for="recLetter3">Recommendation Letter #3</label>
                         <input type="file" class="filestyle" id="recLetter3" name="recLetter3" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
+                                                
+                    </div>
 
+                    <div class="col-md-6 col-sm-6">
+
+                        <label for="educationalExperience">Summary of Educational Experience Form</label>
+                        <input type="file" class="filestyle" name='educationalExperienceFile' id="educationalExperienceFile" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file">
+                        <p class="help-block">Required for international students only.</p>
+
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                    
                         <label for="supplementalForm">Supplemental & Financial Information Form</label>
                         <input type="file" class="filestyle" name='supplementalFormFile' id="supplementalFormFile" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file">
                         <p class="help-block">Required for international students only.</p>
-                                                
+
                     </div>
 
                 </div>
