@@ -98,7 +98,7 @@
 
         <div class="col-md-4 col-sm-12">
 
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
 
                 <div class="panel-heading">
                     <h2 class="panel-title">Application Status</h2>
@@ -108,7 +108,15 @@
 
                     <h4>
                         <input type="hidden" name="applicationDate">
-                        <b>Application Date & Time: </b> <?php echo $check['applicationDate']; ?>     
+                        <b>Application Date & Time: </b>
+                        <?php 
+                            error_reporting(0);
+                            echo date('m/d/Y', strtotime($check['applicationDate']));
+                            echo ' at ';
+                            echo date('h:i A', strtotime($check['applicationDate']));
+                            
+                            error_reporting(E_ALL);
+                        ?>    
                     </h4>
                     
                     <h4>
@@ -147,7 +155,7 @@
             </div>
         </div>   
         <div class="col-md-4 col-sm-12">
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h2 class="panel-title">Contact Information</h2>
                 </div>
@@ -174,7 +182,7 @@
             </div>
         </div>
         <div class="col-md-4 col-sm-12">
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h2 class="panel-title">Personal Information</h2>
                 </div>
@@ -214,7 +222,7 @@
     <!-- College & Testing -->
     <div class="row">
         <div class="col-md-6 col-sm-12">
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h2 class="panel-title">Admission Request</h2>
                 </div>
@@ -247,7 +255,7 @@
             </div>
         </div>
         <div class="col-md-6 col-sm-12">
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h2 class="panel-title">Colleges Attended</h2>
                 </div>
@@ -298,7 +306,7 @@
     <!-- Documents & Interviews -->
     <div class="row">
         <div class="col-md-3 col-sm-12">
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h2 class="panel-title">Test Scores</h2>
                 </div>
@@ -341,7 +349,7 @@
             </div>
         </div>
         <div class="col-md-3 col-sm-12">
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h2 class="panel-title">International Test Scores</h2>
                 </div>
@@ -372,7 +380,7 @@
             </div>
         </div>
         <div class="col-md-3 col-sm-12">
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h2 class="panel-title">Documents</h2>
                 </div>
@@ -395,24 +403,16 @@
             </div>
         </div>
         <div class="col-md-3 col-sm-12">
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h2 class="panel-title">Interviews</h2>
                 </div>
                 <div class="panel-body">
-                    <h4>
-                        <a href="../docs/test.pdf" target="_blank" rel="noopener noreferrer">Standard Interview Guide</a><br><br>
-                        <a href="../docs/test.pdf" target="_blank" rel="noopener noreferrer">Interview #1 Notes - Paul Cronan</a><br>
-                        <a href="../docs/test.pdf" target="_blank" rel="noopener noreferrer">Interview #1 Notes - Jeff Mullins</a><br>
-                        <a href="../docs/test.pdf" target="_blank" rel="noopener noreferrer">Interview #1 Notes - Christina Serrano</a><br>
-                        <a href="../docs/test.pdf" target="_blank" rel="noopener noreferrer">Interview #1 Transcript</a><br>
-                        <a href="../docs/test.mp3" target="_blank" rel="noopener noreferrer">Interview #1 Audio File</a><br><br>
-                        <a href="../docs/test.pdf" target="_blank" rel="noopener noreferrer">Interview #2 Notes - Paul Cronan</a><br>
-                        <a href="../docs/test.pdf" target="_blank" rel="noopener noreferrer">Interview #2 Notes - Jeff Mullins</a><br>
-                        <a href="../docs/test.pdf" target="_blank" rel="noopener noreferrer">Interview #2 Notes - Christina Serrano</a><br>
-                        <a href="../docs/test.pdf" target="_blank" rel="noopener noreferrer">Interview #2 Transcript</a><br>
-                        <a href="../docs/test.mp3" target="_blank" rel="noopener noreferrer">Interview #2 Audio File</a><br>
-                    </h4>
+                    <label for="resume">Interview File Upload</label>
+                    <input type="file" class="filestyle" name='interviewFile' id="interviewFile" data-buttonName="btn-primary" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
+                    <div class="text-center">
+                        <input type="submit" class="btn btn-success btn-md" id="uploadInterview" value="Upload Interview File">
+                    </div>
                 </div>
             </div>
         </div>
@@ -421,7 +421,7 @@
     <!-- Comments -->
     <div class="row">
         <div class="col-md-12 col-sm-12">
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h2 class="panel-title">Comments</h2>
                 </div>
