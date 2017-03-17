@@ -443,7 +443,7 @@
                             
                             $stmt->execute();
                             while ($comment = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                echo $comment['name'] . ": " . $comment['commentText'] . "<br>";
+                                echo "<strong>" . $comment['name'] . ": </strong>" . $comment['commentText'] . "<br>";
                             }
 
                         ?>
