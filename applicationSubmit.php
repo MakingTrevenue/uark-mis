@@ -153,7 +153,18 @@ try {
 	$fileFormName=array('resumeFile','essayQuestionsFile','transcriptFile','recLetter1','recLetter2','recLetter3', 'educationalExperienceFile', 'supplementalFormFile');
 
 	foreach($fileFormName as $fn){
-		$type=$fn;
+		if($fn=='resumeFile')
+			$type='Resume';
+		if($fn=='essayQuestionsFile')
+			$type='Essay Questions';
+		if($fn=='transcriptFile')
+			$type='Transcript';
+		if($fn=='recLetter1' || $fn=='recLetter2' || $fn=='recLetter3')
+			$type='Recommendation Letter';
+		if($fn=='educationalExperienceFile')
+			$type='Educational Experience';
+		if($fn=='supplementalFormFile')
+			$type='Supplemental Form';																								
 		if(isset($_FILES[$fn])){
 			$file_name=$_FILES[$fn]['name'];
 			$file_size=$_FILES[$fn]['size'];
