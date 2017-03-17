@@ -405,6 +405,7 @@
                 </div>
             </div>
         </div>
+        <form id="interviewForm" action="/insertinterview.php" method='post' enctype="multipart/form-data">
         <div class="col-md-3 col-sm-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -413,12 +414,14 @@
                 <div class="panel-body">
                     <label for="resume">Interview File Upload</label>
                     <input type="file" class="filestyle" name='interviewFile' id="interviewFile" data-buttonName="btn-primary" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
+                    <input type="hidden" name="appID" value="<?php echo $appID;?>">
                     <div class="text-center">
                         <input type="submit" class="btn btn-success btn-md" id="uploadInterview" value="Upload Interview File">
                     </div>
                 </div>
             </div>
         </div>
+        </form>
     </div>
 
     <!-- Comments -->
