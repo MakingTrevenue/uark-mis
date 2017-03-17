@@ -17,16 +17,17 @@ try{
         $file_type=$_FILES[$fn]['type'];
         $fn=md5_file($_FILES[$fn]['tmp_name']);
         if(strlen($fn)<5)
-            continue;
+            return;
         move_uploaded_file($file_tmp,"../docs/".$fn);
         $stmt = $conn->prepare("INSERT INTO interviewFile (applicationID,  filename)
-                                                VALUES   (:appID,        ,:filename);");
+                                                VALUES   (:appID,         :filename);");
 
         $stmt->bindParam(':appID', $applicationID);
         $stmt->bindParam(':filename', $filename);
 
         $filename = $fn;	
-        $applicationID=$_POST['appID'];			
+        $applicationID=$_POST['appID'];	
+        $stmt->debugDumpParams();		
         $stmt->execute();
         //echo "<br>";
         //echo "Attachment record created successfully";
