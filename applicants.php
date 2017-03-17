@@ -2,6 +2,9 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
     include 'header.php';
+
+    if(empty($_SESSION['username']))
+        header('Location: index.php');
 ?>
 
 <?php
@@ -436,6 +439,7 @@
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-comment-o"></i></span>
                             <input type="text" class="form-control" name="comments" id="comments" placeholder="">
+                            <input type="hidden" name="username" value="<?php echo $_SESSION['username'];?>">
                         </div>
                     </div>
 
