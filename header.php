@@ -78,6 +78,7 @@
                 <?php } ?>
             </ul>
             <!-- Applicants Search Bar -->
+            <?php if(basename($_SERVER['PHP_SELF'])=='applicants.php'){ ?>
             <div id="navbarSearch">
                 <form class="navbar-form pull-right">
                     <div class="form-group">
@@ -90,6 +91,7 @@
                     </div>
                 </form>
             </div>
+            <?php } ?>
         </div>
     </div>
 </nav>
