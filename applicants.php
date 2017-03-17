@@ -200,7 +200,14 @@
                         <b>Citizenship: </b><?php echo $check['citizenship']; ?>
                     </h4>
                     <h4>
-                        <b>Employer: </b><?php echo $check['currentEmployer'] . " since " . $check['timeAtCurrentEmployer']; ?>
+                        <b>Employer: </b>
+                        <?php
+                            echo $check['currentEmployer']
+                            . " since " . 
+                            error_reporting(0);
+                            echo date('m/d/Y', strtotime($check['timeAtCurrentEmployer'])); 
+                            error_reporting(E_ALL);
+                            ?>
                     </h4>
                 </div>
             </div>
