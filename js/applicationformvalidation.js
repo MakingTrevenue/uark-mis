@@ -26,7 +26,7 @@ $("#applicationform").validate({
 
         $('html, body').animate({
           scrollTop: $(validator.errorList[0].element).offset().top
-         }, 2000);
+         }, 1000);
  
     },     
     rules: {
