@@ -132,7 +132,7 @@
                             <label for="streetAddress2">Street Address 2 (optional)</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-home"></i></span>
-                                <input type="text" class="form-control" name="streetAddress2" id="streetAddress2" placeholder="Apartment, suite, unit, building, floor, etc.">
+                                <input type="text" class="form-control" name="streetAddress2" id="streetAddress2" placeholder="Apartment 314B">
                             </div>
                         </div>
 
@@ -187,7 +187,7 @@
                             <label for="streetAddress2-M">Street Address 2 (optional)</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-home"></i></span>
-                                <input type="text" class="form-control" name="streetAddress2M" id="streetAddress2M" placeholder="Apartment, suite, unit, building, floor, etc.">
+                                <input type="text" class="form-control" name="streetAddress2M" id="streetAddress2M" placeholder="Suite 269">
                             </div>
                         </div>
 
@@ -337,7 +337,7 @@
                         <div class="form-group">
                             <label for="term">Term</label>
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
+                                <span class="input-group-addon"><i class="fa fa-calendar-o"></i></span>
                                 <select name="term" id="term" class="selectpicker show-tick form-control" data-live-search="true">
                                     <option>Fall</option>
                                     <option>Spring</option>
@@ -349,7 +349,7 @@
                         <div class="form-group">
                             <label for="year">Year</label>
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
+                                <span class="input-group-addon"><i class="fa fa-calendar-o"></i></span>
                                 <select name="year" id="year" class="selectpicker show-tick form-control" data-live-search="true">
                                     <option>2017</option>
                                     <option>2018</option>
@@ -394,7 +394,7 @@
                             <label for="currentEmployer">Current Employer (optional)</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-building"></i></span>
-                                <input type="text" class="form-control" name="currentEmployer"  id="currentEmployer" placeholder="Walmart">
+                                <input type="text" class="form-control" name="currentEmployer"  id="currentEmployer" placeholder="Walmart Stores, Inc.">
                             </div>
                         </div>
 
@@ -559,7 +559,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="degree">Degree(s) Earned</label>
+                            <label for="degree">Degree Earned</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
                                 <input type="text" class="form-control" name="degree"  id="degree" placeholder="Bachelor's Degree">
@@ -567,7 +567,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="major">Major(s)</label>
+                            <label for="major">Major</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
                                 <input type="text" class="form-control" name="major"  id="major" placeholder="Information Systems">
@@ -609,7 +609,7 @@
 
                         <label class="checkbox-inline"><input name="gmat" type="checkbox" value="gmat">GMAT</label>
                         <label class="checkbox-inline"><input name="gre" type="checkbox" value="gre">GRE</label>
-                        <p class="help-block">Check the exam(s) you have taken.</p>
+                        <p class="help-block">Check the exam(s) you have taken. At least one is required.</p>
                         
                         <div class="gmat box">
                             <div class="form-group">
@@ -686,8 +686,8 @@
 
                         <h4 class="text-info">International Testing Information</h4>
 
-                        <label class="checkbox-inline"><input name="toeflOnline" type="checkbox" value="toeflOnline">TOEFL iBT</label>
-                        <label class="checkbox-inline"><input name="toeflPaper" type="checkbox" value="toeflPaper">TOEFL PBT</label>
+                        <label class="checkbox-inline"><input name="toeflOnline" type="checkbox" value="toeflOnline">TOEFL Online</label>
+                        <label class="checkbox-inline"><input name="toeflPaper" type="checkbox" value="toeflPaper">TOEFL Paper</label>
                         <label class="checkbox-inline"><input name="tse" type="checkbox" value="tse">TSE</label>
                         <p class="help-block">Check the exam(s) you have taken. At least one TOEFL exam is required if you are an international student.</p>
                         
@@ -701,7 +701,7 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="toeflOnlineScore">TOEFL iBT Score (Online Exam)</label>
+                                <label for="toeflOnlineScore">TOEFL Online Score</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
                                     <input type="number" pattern="\d*" class="form-control" name="toeflOnlineScore" id="toeflOnlineScore" placeholder="Range: 0-120">
@@ -719,7 +719,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="toeflPaperScore">TOEFL PBT Score (Written Exam)</label>
+                                <label for="toeflPaperScore">TOEFL Paper Score</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
                                     <input type="number" pattern="\d*" class="form-control" name="toeflPaperScore" id="toeflPaperScore" placeholder="Range: 310-677">
@@ -737,7 +737,7 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="tseScore">TSE Total Score</label>
+                                <label for="tseScore">TSE Score</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
                                     <input type="number" pattern="\d*" class="form-control" name="tseScore" id="tseScore" placeholder="Range: 20-60">
@@ -798,7 +798,7 @@
 
                     <div class="col-md-6 col-sm-6">
 
-                        <label for="educationalExperience">Summary of Educational Experience Form</label>
+                        <label for="educationalExperience">Summary of Educational Experience Form (optional)</label>
                         <input type="file" class="filestyle" name='educationalExperienceFile' id="educationalExperienceFile" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file">
                         <p class="help-block">Required for international students only.</p>
 
@@ -806,7 +806,7 @@
 
                     <div class="col-md-6 col-sm-6">
                     
-                        <label for="supplementalForm">Supplemental & Financial Information Form</label>
+                        <label for="supplementalForm">Supplemental & Financial Information Form (optional)</label>
                         <input type="file" class="filestyle" name='supplementalFormFile' id="supplementalFormFile" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file">
                         <p class="help-block">Required for international students only.</p>
 
@@ -838,8 +838,8 @@
 
             <div class="form-group">
                 <div class="input-group">
-                    <span class="input-group-addon">Electronic Signature:</span>
-                    <input type="text" class="form-control" id="electronicSignature" placeholder="Type full name here">
+                    <span class="input-group-addon">Electronic Signature</span>
+                    <input type="text" class="form-control" id="electronicSignature" placeholder="John E. Doe">
                 </div>
             </div>
 
@@ -847,7 +847,7 @@
 
             <br>
             <input type="submit" class="btn btn-success btn-lg" id="submitButton" value="Submit Application">
-            <br><br>
+            <br>
 
         </div>
 
