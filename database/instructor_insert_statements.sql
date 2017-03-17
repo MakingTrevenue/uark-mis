@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 INSERT INTO `instructor` (`firstName`, `lastName`, `title`, `department`, `email`, `phone`, `roomID`) VALUES ('Cash', 'Acrey', 'Clinical Assistant Professor', 'ISYS', 'jacrey@uark.edu', '479-575-1223', 1);
 INSERT INTO `instructor` (`firstName`, `lastName`, `title`, `department`, `email`, `phone`, `roomID`) VALUES ('Brittany', 'Bright', 'Instructor', 'ISYS', 'bbright@uark.edu', '479-575-6121', 2);
 INSERT INTO `instructor` (`firstName`, `lastName`, `title`, `department`, `email`, `phone`, `roomID`) VALUES ('Susan', 'Bristow', 'Clinical Assistant Professor', 'ISYS', 'sbristow@uark.edu', '479-575-4057', 3);
@@ -18,7 +17,6 @@ INSERT INTO `instructor` (`firstName`, `lastName`, `title`, `department`, `email
 INSERT INTO `instructor` (`firstName`, `lastName`, `title`, `department`, `email`, `phone`, `roomID`) VALUES ('Pankaj', 'Setia', 'Associate Professor', 'ISYS', 'psetia@uark.edu', '479-575-6454', 17);
 INSERT INTO `instructor` (`firstName`, `lastName`, `title`, `department`, `email`, `phone`, `roomID`) VALUES ('Tracy', 'Sykes', 'Associate Professor', 'ISYS', 'tsykes@uark.edu', '479-575-7776', 18);
 INSERT INTO `instructor` (`firstName`, `lastName`, `title`, `department`, `email`, `phone`, `roomID`) VALUES ('Viswanath', 'Venkatesh', 'Distinguished Professor', 'ISYS', 'vvenkatesh@uark.edu', '479-575-2332', 19);
-=======
 INSERT INTO `instructor` (`firstName`, `lastName`, `title`, `department`, `email`, `phone`, `roomID`) VALUES ('Cash', 'Acrey', 'Clinical Assistant Professor', 'ISYS', 'jacrey@uark.edu', '479-575-1223', 1);
 INSERT INTO `instructor` (`firstName`, `lastName`, `title`, `department`, `email`, `phone`, `roomID`) VALUES ('Brittany', 'Bright', 'Instructor', 'ISYS', 'bbright@uark.edu', '479-575-6121', 2);
 INSERT INTO `instructor` (`firstName`, `lastName`, `title`, `department`, `email`, `phone`, `roomID`) VALUES ('Susan', 'Bristow', 'Clinical Assistant Professor', 'ISYS', 'sbristow@uark.edu', '479-575-4057', 3);
@@ -38,5 +36,4 @@ INSERT INTO `instructor` (`firstName`, `lastName`, `title`, `department`, `email
 INSERT INTO `instructor` (`firstName`, `lastName`, `title`, `department`, `email`, `phone`, `roomID`) VALUES ('Pankaj', 'Setia', 'Associate Professor', 'ISYS', 'psetia@uark.edu', '479-575-6454', 17);
 INSERT INTO `instructor` (`firstName`, `lastName`, `title`, `department`, `email`, `phone`, `roomID`) VALUES ('Tracy', 'Sykes', 'Associate Professor', 'ISYS', 'tsykes@uark.edu', '479-575-7776', 18);
 INSERT INTO `instructor` (`firstName`, `lastName`, `title`, `department`, `email`, `phone`, `roomID`) VALUES ('Viswanath', 'Venkatesh', 'Distinguished Professor', 'ISYS', 'vvenkatesh@uark.edu', '479-575-2332', 19);
->>>>>>> Stashed changes
 INSERT INTO `instructor` (`firstName`, `lastName`, `title`, `department`, `email`, `phone`, `roomID`) VALUES ('Adriana', 'Wilhelm', 'Instructor', 'ISYS', 'awilhelm@uark.edu', '479-575-9882', 20);
