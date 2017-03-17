@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 INSERT INTO `class_instructor` VALUES (1, 3, 'Fall', '2017');
 INSERT INTO `class_instructor` VALUES (2, 3, 'Fall', '2017');
 INSERT INTO `class_instructor` VALUES (3, 3, 'Fall', '2017');
@@ -19,7 +18,6 @@ INSERT INTO `class_instructor` VALUES (17, 18, 'Fall', '2017');
 INSERT INTO `class_instructor` VALUES (18, 6, 'Fall', '2017');
 INSERT INTO `class_instructor` VALUES (19, 6, 'Fall', '2017');
 INSERT INTO `class_instructor` VALUES (20, 1, 'Fall', '2017');
-=======
 INSERT INTO `class_instructor` VALUES (1, 3, 'Fall', '2017');
 INSERT INTO `class_instructor` VALUES (2, 3, 'Fall', '2017');
 INSERT INTO `class_instructor` VALUES (3, 3, 'Fall', '2017');
@@ -40,5 +38,4 @@ INSERT INTO `class_instructor` VALUES (17, 18, 'Fall', '2017');
 INSERT INTO `class_instructor` VALUES (18, 6, 'Fall', '2017');
 INSERT INTO `class_instructor` VALUES (19, 6, 'Fall', '2017');
 INSERT INTO `class_instructor` VALUES (20, 1, 'Fall', '2017');
->>>>>>> Stashed changes
 INSERT INTO `class_instructor` VALUES (21, 1, 'Fall', '2017');

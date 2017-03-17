@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 INSERT INTO `room` (`building`, `roomNumber`) VALUES ('JBHT', '0144');
 INSERT INTO `room` (`building`, `roomNumber`) VALUES ('JBHT', '0216');
 INSERT INTO `room` (`building`, `roomNumber`) VALUES ('JBHT', '0217');
@@ -23,7 +22,6 @@ INSERT INTO `room` (`building`, `roomNumber`) VALUES ('WJWH', '0212');
 INSERT INTO `room` (`building`, `roomNumber`) VALUES ('WJWH', '0218');
 INSERT INTO `room` (`building`, `roomNumber`) VALUES ('WJWH', '0220');
 INSERT INTO `room` (`building`, `roomNumber`) VALUES ('WJWH', '0318');
-=======
 INSERT INTO `room` (`building`, `roomNumber`) VALUES ('JBHT', '0144');
 INSERT INTO `room` (`building`, `roomNumber`) VALUES ('JBHT', '0216');
 INSERT INTO `room` (`building`, `roomNumber`) VALUES ('JBHT', '0217');
@@ -48,4 +46,3 @@ INSERT INTO `room` (`building`, `roomNumber`) VALUES ('WJWH', '0212');
 INSERT INTO `room` (`building`, `roomNumber`) VALUES ('WJWH', '0218');
 INSERT INTO `room` (`building`, `roomNumber`) VALUES ('WJWH', '0220');
 INSERT INTO `room` (`building`, `roomNumber`) VALUES ('WJWH', '0318');
->>>>>>> Stashed changes

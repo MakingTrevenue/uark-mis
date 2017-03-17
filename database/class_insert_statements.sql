@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 INSERT INTO `class` (`section`, `day`, `startTime`, `endTime`, `roomID`, `startDate`, `endDate`, `instructionMode`, `status`, `courseID`) VALUES (1, 'MWF', '07:30:00', '08:20:00', 1, '2017-08-21', '2017-12-07', 'P', 'Open', 'ISYS 4373');
 INSERT INTO `class` (`section`, `day`, `startTime`, `endTime`, `roomID`, `startDate`, `endDate`, `instructionMode`, `status`, `courseID`) VALUES (2, 'MWF', '08:35:00', '09:25:00', 1, '2017-08-21', '2017-12-07', 'P', 'Open', 'ISYS 4373');
 INSERT INTO `class` (`section`, `day`, `startTime`, `endTime`, `roomID`, `startDate`, `endDate`, `instructionMode`, `status`, `courseID`) VALUES (3, 'TR', '08:00:00', '09:15:00', 1, '2017-08-21', '2017-12-07', 'P', 'Open', 'ISYS 4373');
@@ -19,7 +18,6 @@ INSERT INTO `class` (`section`, `day`, `startTime`, `endTime`, `roomID`, `startD
 INSERT INTO `class` (`section`, `day`, `startTime`, `endTime`, `roomID`, `startDate`, `endDate`, `instructionMode`, `status`, `courseID`) VALUES (1, 'MWF', '17:15:00', '18:05:00', 16, '2017-08-21', '2017-12-07', 'P', 'Open', 'ISYS 5833');
 INSERT INTO `class` (`section`, `day`, `startTime`, `endTime`, `roomID`, `startDate`, `endDate`, `instructionMode`, `status`, `courseID`) VALUES (2, 'MWF', '07:30:00', '8:20:00', 16, '2017-08-21', '2017-12-07', 'P', 'Open', 'ISYS 5833');
 INSERT INTO `class` (`section`, `day`, `startTime`, `endTime`, `roomID`, `startDate`, `endDate`, `instructionMode`, `status`, `courseID`) VALUES (1, 'TR', '08:00:00', '09:15:00', 20, '2017-08-21', '2017-12-07', 'P', 'Open', 'ISYS 5843');
-=======
 INSERT INTO `class` (`section`, `day`, `startTime`, `endTime`, `roomID`, `startDate`, `endDate`, `instructionMode`, `status`, `courseID`) VALUES (1, 'MWF', '07:30:00', '08:20:00', 1, '2017-08-21', '2017-12-07', 'P', 'Open', 'ISYS 4373');
 INSERT INTO `class` (`section`, `day`, `startTime`, `endTime`, `roomID`, `startDate`, `endDate`, `instructionMode`, `status`, `courseID`) VALUES (2, 'MWF', '08:35:00', '09:25:00', 1, '2017-08-21', '2017-12-07', 'P', 'Open', 'ISYS 4373');
 INSERT INTO `class` (`section`, `day`, `startTime`, `endTime`, `roomID`, `startDate`, `endDate`, `instructionMode`, `status`, `courseID`) VALUES (3, 'TR', '08:00:00', '09:15:00', 1, '2017-08-21', '2017-12-07', 'P', 'Open', 'ISYS 4373');
@@ -40,5 +38,4 @@ INSERT INTO `class` (`section`, `day`, `startTime`, `endTime`, `roomID`, `startD
 INSERT INTO `class` (`section`, `day`, `startTime`, `endTime`, `roomID`, `startDate`, `endDate`, `instructionMode`, `status`, `courseID`) VALUES (1, 'MWF', '17:15:00', '18:05:00', 16, '2017-08-21', '2017-12-07', 'P', 'Open', 'ISYS 5833');
 INSERT INTO `class` (`section`, `day`, `startTime`, `endTime`, `roomID`, `startDate`, `endDate`, `instructionMode`, `status`, `courseID`) VALUES (2, 'MWF', '07:30:00', '8:20:00', 16, '2017-08-21', '2017-12-07', 'P', 'Open', 'ISYS 5833');
 INSERT INTO `class` (`section`, `day`, `startTime`, `endTime`, `roomID`, `startDate`, `endDate`, `instructionMode`, `status`, `courseID`) VALUES (1, 'TR', '08:00:00', '09:15:00', 20, '2017-08-21', '2017-12-07', 'P', 'Open', 'ISYS 5843');
->>>>>>> Stashed changes
 INSERT INTO `class` (`section`, `day`, `startTime`, `endTime`, `roomID`, `startDate`, `endDate`, `instructionMode`, `status`, `courseID`) VALUES (2, 'TR', '09:30:00', '10:45:00', 20, '2017-08-21', '2017-12-07', 'P', 'Open', 'ISYS 5843');
