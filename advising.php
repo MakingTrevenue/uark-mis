@@ -164,8 +164,21 @@
 
                 <div class="panel-body">
 
+                    <!-- Advising Information Far Left Column -->
+                    <div class="col-md-2 col-sm-2">
+
+                        <div class="form-group">
+                            <label for="classID1">Class ID</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-star-o"></i></span>
+                                <input type="text" class="form-control" name="classID1" id="classID1" placeholder="1">
+                            </div>
+                        </div>                        
+
+                    </div>
+
                     <!-- Advising Information Left Column -->
-                    <div class="col-md-6 col-sm-6">
+                    <div class="col-md-4 col-sm-4">
 
                         <div class="form-group">
                             <label for="course1">Course #1</label>
@@ -203,8 +216,21 @@
 
                     </div>
 
+                    <!-- Advising Information Far Left Column -->
+                    <div class="col-md-2 col-sm-2">
+
+                        <div class="form-group">
+                            <label for="classID2">Class ID</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-star-o"></i></span>
+                                <input type="text" class="form-control" name="classID2" id="classID2" placeholder="1">
+                            </div>
+                        </div>                        
+
+                    </div>
+
                     <!-- Advising Information Left Column -->
-                    <div class="col-md-6 col-sm-6">
+                    <div class="col-md-4 col-sm-4">
 
                         <div class="form-group">
                             <label for="course2">Course #2</label>
@@ -242,8 +268,21 @@
 
                     </div>
 
+                    <!-- Advising Information Far Left Column -->
+                    <div class="col-md-2 col-sm-2">
+
+                        <div class="form-group">
+                            <label for="classID3">Class ID</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-star-o"></i></span>
+                                <input type="text" class="form-control" name="classID3" id="classID3" placeholder="1">
+                            </div>
+                        </div>                        
+
+                    </div>
+
                     <!-- Advising Information Left Column -->
-                    <div class="col-md-6 col-sm-6">
+                    <div class="col-md-4 col-sm-4">
 
                         <div class="form-group">
                             <label for="course3">Course #3</label>
@@ -281,8 +320,21 @@
 
                     </div>
 
+                    <!-- Advising Information Far Left Column -->
+                    <div class="col-md-2 col-sm-2">
+
+                        <div class="form-group">
+                            <label for="classID4">Class ID</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-star-o"></i></span>
+                                <input type="text" class="form-control" name="classID4" id="classID4" placeholder="1">
+                            </div>
+                        </div>                        
+
+                    </div>
+
                     <!-- Advising Information Left Column -->
-                    <div class="col-md-6 col-sm-6">
+                    <div class="col-md-4 col-sm-4">
 
                         <div class="form-group">
                             <label for="course4">Course #4</label>
@@ -320,8 +372,21 @@
 
                     </div>
 
+                    <!-- Advising Information Far Left Column -->
+                    <div class="col-md-2 col-sm-2">
+
+                        <div class="form-group">
+                            <label for="classID5">Class ID</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-star-o"></i></span>
+                                <input type="text" class="form-control" name="classID5" id="classID5" placeholder="1">
+                            </div>
+                        </div>                        
+
+                    </div>
+
                     <!-- Advising Information Left Column -->
-                    <div class="col-md-6 col-sm-6">
+                    <div class="col-md-4 col-sm-4">
 
                         <div class="form-group">
                             <label for="course5">Course #5</label>
@@ -354,45 +419,6 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
                                 <input type="text" class="form-control" name="time5" id="time5" placeholder="TR 9:30AM-10:45AM">
-                            </div>
-                        </div> 
-
-                    </div>
-
-                    <!-- Advising Information Left Column -->
-                    <div class="col-md-6 col-sm-6">
-
-                        <div class="form-group">
-                            <label for="course6">Course #6</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-list"></i></span>
-                                <input type="text" class="form-control" name="course6" id="course6" placeholder="">
-                            </div>
-                        </div>                        
-
-                    </div>
-
-                    <!-- Advising Information Middle Column -->
-                    <div class="col-md-3 col-sm-3">
-
-                        <div class="form-group">
-                            <label for="section6">Section</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-th"></i></span>
-                                <input type="text" class="form-control" name="section6" id="section6" placeholder="">
-                            </div>
-                        </div> 
-
-                    </div>
-
-                    <!-- Advising Information Right Column -->
-                    <div class="col-md-3 col-sm-3">
-
-                        <div class="form-group">
-                            <label for="time6">Time</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
-                                <input type="text" class="form-control" name="time6" id="time6" placeholder="">
                             </div>
                         </div> 
 
