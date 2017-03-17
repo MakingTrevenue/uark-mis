@@ -10,7 +10,7 @@
 
         <div class="col-md-12 col-sm-12">
 
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
 
                 <div class="panel-heading">
                     <h2 class="panel-title">Information & Resources</h2>
@@ -42,13 +42,6 @@
                         <h4 class="text-danger text-center"><a href="http://catalog.uark.edu/graduatecatalog/business/informationsystemsisys/#faculty" target="_blank">List of Faculty</a></h4>
                     </div>
 
-
-
-                    <div>
-                        
-
-                    </div>
-
                 </div>
 
             </div>
@@ -62,7 +55,7 @@
 
         <div class="col-md-12 col-sm-12">
 
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
 
                 <div class="panel-heading">
                     <h2 class="panel-title">Student Information</h2>
@@ -163,7 +156,7 @@
 
         <div class="col-md-12 col-sm-12 col-xs-12">
 
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
 
                 <div class="panel-heading">
                     <h2 class="panel-title">Advising Form</h2>

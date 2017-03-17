@@ -12,7 +12,7 @@
 
         <div class="col-md-12 col-sm-12">
 
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
 
                 <div class="panel-heading">
                     <h2 class="panel-title">Personal & Contact Information</h2>
@@ -107,7 +107,7 @@
 
         <div class="col-md-12 col-sm-12">
 
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
 
                 <div class="panel-heading">
                     <h2 class="panel-title">Address Information</h2>
@@ -238,7 +238,7 @@
 
         <div class="col-md-12 col-sm-12">
 
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
 
                 <div class="panel-heading">
                     <h2 class="panel-title">Additional Personal Information</h2>
@@ -323,7 +323,7 @@
 
         <div class="col-md-12 col-sm-12">
 
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
 
                 <div class="panel-heading">
                     <h2 class="panel-title">Admission Request</h2>
@@ -493,7 +493,7 @@
 
         <div class="col-md-12 col-sm-12">
 
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
 
                 <div class="panel-heading">
                     <h2 class="panel-title">Colleges Attended</h2>
@@ -594,7 +594,7 @@
 
         <div class="col-md-12 col-sm-12">
 
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
 
                 <div class="panel-heading">
                     <h2 class="panel-title">Credentials</h2>
@@ -760,7 +760,7 @@
 
         <div class="col-md-12 col-sm-12">
 
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
 
                 <div class="panel-heading">
                     <h2 class="panel-title">Documents</h2>
@@ -772,13 +772,13 @@
                     <div class="col-md-6 col-sm-6">
                         
                         <label for="resume">Résumé</label>
-                        <input type="file" class="filestyle" name='resumeFile' id="resumeFile" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
+                        <input type="file" class="filestyle" name='resumeFile' id="resumeFile" data-buttonName="btn-primary" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
                                                 
                         <label for="essayQuestions">Essay Questions</label>
-                        <input type="file" class="filestyle" name='essayQuestionsFile' id="essayQuestionsFile" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
+                        <input type="file" class="filestyle" name='essayQuestionsFile' id="essayQuestionsFile" data-buttonName="btn-primary" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
                         
                         <label for="transcript">Official Transcript</label>
-                        <input type="file" class="filestyle" name='transcriptFile' id="transcriptFile" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
+                        <input type="file" class="filestyle" name='transcriptFile' id="transcriptFile" data-buttonName="btn-primary" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
                                                 
                     </div>
 
@@ -786,20 +786,20 @@
                     <div class="col-md-6 col-sm-6">
                         
                         <label for="recLetter1">Recommendation Letter #1</label>
-                        <input type="file" class="filestyle" id="recLetter1" name="recLetter1" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
+                        <input type="file" class="filestyle" id="recLetter1" name="recLetter1" data-buttonName="btn-primary" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
                                                 
                         <label for="recLetter2">Recommendation Letter #2</label>
-                        <input type="file" class="filestyle" id="recLetter2" name="recLetter2" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
+                        <input type="file" class="filestyle" id="recLetter2" name="recLetter2" data-buttonName="btn-primary" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
                         
                         <label for="recLetter3">Recommendation Letter #3</label>
-                        <input type="file" class="filestyle" id="recLetter3" name="recLetter3" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
+                        <input type="file" class="filestyle" id="recLetter3" name="recLetter3" data-buttonName="btn-primary" data-buttonBefore="true" data-buttonText="&nbsp;Choose file"><br>
                                                 
                     </div>
 
                     <div class="col-md-6 col-sm-6">
 
                         <label for="educationalExperience">Summary of Educational Experience Form (optional)</label>
-                        <input type="file" class="filestyle" name='educationalExperienceFile' id="educationalExperienceFile" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file">
+                        <input type="file" class="filestyle" name='educationalExperienceFile' id="educationalExperienceFile" data-buttonName="btn-primary" data-buttonBefore="true" data-buttonText="&nbsp;Choose file">
                         <p class="help-block">Required for international students only.</p>
 
                     </div>
@@ -807,7 +807,7 @@
                     <div class="col-md-6 col-sm-6">
                     
                         <label for="supplementalForm">Supplemental & Financial Information Form (optional)</label>
-                        <input type="file" class="filestyle" name='supplementalFormFile' id="supplementalFormFile" data-buttonName="btn-danger" data-buttonBefore="true" data-buttonText="&nbsp;Choose file">
+                        <input type="file" class="filestyle" name='supplementalFormFile' id="supplementalFormFile" data-buttonName="btn-primary" data-buttonBefore="true" data-buttonText="&nbsp;Choose file">
                         <p class="help-block">Required for international students only.</p>
 
                     </div>
