@@ -1,8 +1,11 @@
 <?php
+    error_reporting(0);
 	session_start();
-    if(isset($_GET['logout']))
+    error_reporting(E_ALL);
+    if(isset($_GET['logout'])){
+        session_unset();
         session_destroy();
-    echo print_r($_SESSION);        
+    }       
 ?>
 <!DOCTYPE html>
 <html lang="en">

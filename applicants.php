@@ -1,10 +1,10 @@
 <?php
+    session_start();
+    if (!isset($_SESSION['username']))
+        header('Location: index.php');
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
     include 'header.php';
-
-    if(empty($_SESSION['username']))
-        header('Location: index.php');
 ?>
 
 <?php
