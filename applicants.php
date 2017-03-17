@@ -432,10 +432,25 @@
                 <div class="panel-body">
 
                     <div>
-                        <p>Pull comments from database here.</p>
+                        <?php
+
+                            $stmt = $conn->prepare("SELECT * FROM user_comment JOIN user ON user.userID = user_comment.userID WHERE user_comment.applicationID=:appid");      
+                            if(!empty($_GET['appID']))
+                                $appID=$_GET['appID'];
+                            else
+                                $appID=$_POST['appID'];
+                            $stmt->bindValue(':appid', $appID);
+                            
+                            $stmt->execute();
+                            while ($comment = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                echo $comment['name'] . ": " . $comment['commentText'] . "<br>";
+                            }
+
+                        ?>
+
                     </div>   
 
-                    <div class="form-group">
+                    <div class="form-group"><br>
                         <label for="comments">Add Your Comments</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-comment-o"></i></span>
