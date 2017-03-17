@@ -18,19 +18,16 @@ try{
         $fn=md5_file($_FILES[$fn]['tmp_name']);
         if(strlen($fn)<5)
             return;
-        move_uploaded_file($file_tmp,"../docs/".$fn);
-        $stmt = $conn->prepare("INSERT INTO interviewFile (applicationID,  filename)
+        move_uploaded_file($file_tmp,"../interviewdocs/".$fn);
+        $stmt = $conn->prepare("INSERT INTO interview_file (applicationID,  filename)
                                                 VALUES   (:appID,         :filename);");
 
         $stmt->bindParam(':appID', $applicationID);
         $stmt->bindParam(':filename', $filename);
 
         $filename = $fn;	
-        $applicationID=$_POST['appID'];	
-        $stmt->debugDumpParams();		
+        $applicationID=$_POST['appID'];			
         $stmt->execute();
-        //echo "<br>";
-        //echo "Attachment record created successfully";
     }else{
 
     }
