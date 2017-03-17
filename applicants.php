@@ -422,6 +422,7 @@
     </div>
 
     <!-- Comments -->
+    <form id="commentForm" action="/insertcomment.php" method='post' enctype="multipart/form-data">
     <div class="row">
         <div class="col-md-12 col-sm-12">
             <div class="panel panel-default">
@@ -438,8 +439,15 @@
                         <label for="comments">Add Your Comments</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-comment-o"></i></span>
-                            <input type="text" class="form-control" name="comments" id="comments" placeholder="">
+                            <input type="text" class="form-control" name="comment" id="comment" placeholder="">
                             <input type="hidden" name="username" value="<?php echo $_SESSION['username'];?>">
+                            <?php 
+                            if(isset($_GET['appID']))
+                                $appID=$_GET['appID'];
+                            else
+                                $appID=$_POST['appID'];
+                            ?>
+                            <input type="hidden" name="appid" value="<?php echo $appID;?>"> 
                         </div>
                     </div>
 
@@ -454,18 +462,18 @@
 
 </div>
 
-<?php
+    <?php
     }else{
-    $config = parse_ini_file('../private/credentials.ini');
-    $servername = $config["servername"];
-    $username = $config["username"];
-    $password = $config["password"];
-    $dbname = $config["dbname"];
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID");
-    $stmt->execute();
-?>
+        $config = parse_ini_file('../private/credentials.ini');
+        $servername = $config["servername"];
+        $username = $config["username"];
+        $password = $config["password"];
+        $dbname = $config["dbname"];
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID");
+        $stmt->execute();
+    ?>
 
 <div class="container-fluid">
     <h3 class="text-center">List of Applicants</h3>        
@@ -486,7 +494,7 @@
     <?php 
         while ($row = $stmt->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT)) {
             echo "<tr>
-                    <td> <a href='https://uark.us/applicants.php?appID=" . $row->applicationID . "'>" . $row->firstName . "  " . $row->lastName . "</a></td>
+                    <td> <a href='/applicants.php?appID=" . $row->applicationID . "'>" . $row->firstName . "  " . $row->lastName . "</a></td>
                     <td>" . $row->term . " " . $row->year . "</td>
                     <td>" . $row->program . "</td>
                     <td>" . $row->undergradGPA . "</td>
