@@ -20,5 +20,5 @@
         }catch(Exception $e){
          
         }    
-        header('Location: /applicants.php/?appID='.$_POST['appid']);
+        header('Location: /applicants.php?appID='.$_POST['appid']);
 ?>
