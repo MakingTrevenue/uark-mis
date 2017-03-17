@@ -153,6 +153,7 @@ try {
 	$fileFormName=array('resumeFile','essayQuestionsFile','transcriptFile','recLetter1','recLetter2','recLetter3', 'educationalExperienceFile', 'supplementalFormFile');
 
 	foreach($fileFormName as $fn){
+		$type=$fn;
 		if(isset($_FILES[$fn])){
 			$file_name=$_FILES[$fn]['name'];
 			$file_size=$_FILES[$fn]['size'];
@@ -168,7 +169,7 @@ try {
 			$stmt->bindParam(':appID', $applicationID);
 			$stmt->bindParam(':docType', $docType);
 			$stmt->bindParam(':filename', $filename);			
-			$docType= $file_type;
+			$docType= $type;
 			$filename = $fn;	
 			$applicationID=$appid;			
 			$stmt->execute();

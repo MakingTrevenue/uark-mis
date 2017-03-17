@@ -374,10 +374,16 @@
                 <div class="panel-body">
                     <h4>
                         <?php  
+                            $stmt = $conn->prepare("SELECT * FROM attachment JOIN application ON attachment.applicationID=application.applicationID WHERE application.applicationID=:appid");
                             
-
-                            while ($check = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
-                                <a href="/document.php?id=<?php echo $check['filename']; ?>" target="_blank" rel="noopener noreferrer">Resume</a><br>
+                            if(!empty($_GET['appID']))
+                                $appID=$_GET['appID'];
+                            else
+                                $appID=$_POST['appID'];
+                            $stmt->bindValue(':appid', $appID);                            
+                            $stmt->execute();
+                            while ($docs = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+                                <a href="/document.php?id=<?php echo $docs['filename']; ?>" target="_blank" rel="noopener noreferrer"><?php echo $docs['documentType']; ?></a><br>
                         <?php } ?>
                     </h4>                 
                 </div>
