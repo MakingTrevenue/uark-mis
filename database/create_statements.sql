@@ -9,6 +9,16 @@ CREATE TABLE `user` (
   PRIMARY KEY (`userID`)
 );
 
+CREATE TABLE `user_comment` (
+  `commentID` INT(11) AUTO_INCREMENT,
+  `userID` INT(11) NOT NULL,
+  `applicationID` INT(11) NOT NULL,
+  `commentText` TEXT,
+  PRIMARY KEY (`commentID`),
+  FOREIGN KEY (`applicationID`) REFERENCES `application`(`applicationID`),
+  FOREIGN KEY (`userID`) REFERENCES `user`(`userID`)
+);
+
 CREATE TABLE `country` (
   `countryID` CHAR(2) NOT NULL,
   `country` VARCHAR(50) NOT NULL,
