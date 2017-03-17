@@ -14,6 +14,10 @@
 	background: #F9F9F9;
 }
 
+.fa-stack {
+	color: black;
+}
+
 hr {
 	border-color: #9E9E9E;
 	opacity: 0.5;
