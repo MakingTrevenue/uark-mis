@@ -418,6 +418,7 @@
                     <div class="text-center">
                         <input type="submit" class="btn btn-success btn-md" id="uploadInterview" value="Upload Interview File">
                     </div>
+                    <label for="uploadedInterviewFiles">Uploaded Interview Files</label>
                     <?php
                         $stmt = $conn->prepare("SELECT * FROM interview_file JOIN application ON interview_file.applicationID=application.applicationID WHERE application.applicationID=:appid");
                         $stmt->bindValue(':appid', $appID);                            
