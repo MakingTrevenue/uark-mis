@@ -51,41 +51,38 @@ try {
 													 :currentEmployer,  :timeAtCurrentEmployer, :gmat, :gmatTestDate, :gmatQScore, :gmatVScore, :gmatTScore, :gre, :greTestDate, :greQScore, :greVScore, :greTScore, :toeflOnline, :toeflPaper, :toeflTestDate, :toeflOnlineScore,
 													 :toeflPaperScore, :tse, :tseTestDate, :tseScore )");
 
-	$stmt->bindParam(':term', $term);
-	$stmt->bindParam(':year', $year);
-	$stmt->bindParam(':program', $program);
+	$stmt->bindParam(':term', $_POST['term']);
+	$stmt->bindParam(':year', $_POST['year']);
+	$stmt->bindParam(':program', $_POST['program']);
 	$stmt->bindParam(':reqScholarship', $reqScholarship);
 	$stmt->bindParam(':previousApp', $previousApp);
 	$stmt->bindParam(':previousAppDate', $previousAppDate);
 	$stmt->bindParam(':previousEnrollment', $previousEnrollment);
-	$stmt->bindParam(':previousEnrollmentDate', $previousEnrollmentDate);
-	$stmt->bindParam(':previousEnrollmentStatus', $previousEnrollmentStatus);
-	$stmt->bindParam(':undergradGPA', $undergradGPA);
-	$stmt->bindParam(':juniorseniorGPA', $juniorseniorGPA);
-	$stmt->bindParam(':currentEmployer', $currentEmployer);
-	$stmt->bindParam(':timeAtCurrentEmployer', $timeAtCurrentEmployer);
+	$stmt->bindParam(':previousEnrollmentDate', $_POST['previousEnrollmentDate']);
+	$stmt->bindParam(':previousEnrollmentStatus', $_POST['previousEnrollmentStatus']);
+	$stmt->bindParam(':undergradGPA', $_POST['undergradGPA']);
+	$stmt->bindParam(':juniorseniorGPA', $_POST['juniorseniorGPA']);
+	$stmt->bindParam(':currentEmployer', $_POST['currentEmployer']);
+	$stmt->bindParam(':timeAtCurrentEmployer', $_POST['timeAtCurrentEmployer']);
 	$stmt->bindParam(':gmat', $gmat);
-	$stmt->bindParam(':gmatTestDate', $gmatTestDate);
-	$stmt->bindParam(':gmatQScore', $gmatQScore);
-	$stmt->bindParam(':gmatVScore', $gmatVScore);
-	$stmt->bindParam(':gmatTScore', $gmatTScore);
+	$stmt->bindParam(':gmatTestDate', $_POST['gmatTestDate']);
+	$stmt->bindParam(':gmatQScore', $_POST['gmatQScore']);
+	$stmt->bindParam(':gmatVScore', $_POST['gmatVScore']);
+	$stmt->bindParam(':gmatTScore', $_POST['gmatTScore']);
 	$stmt->bindParam(':gre', $gre);
-	$stmt->bindParam(':greTestDate', $greTestDate);
-	$stmt->bindParam(':greQScore', $greQScore);
-	$stmt->bindParam(':greVScore', $greVScore);
-	$stmt->bindParam(':greTScore', $greTScore);
+	$stmt->bindParam(':greTestDate', $_POST['greTestDate']);
+	$stmt->bindParam(':greQScore', $_POST['greQScore']);
+	$stmt->bindParam(':greVScore', $_POST['greVScore']);
+	$stmt->bindParam(':greTScore', $_POST['greTScore']);
 	$stmt->bindParam(':toeflOnline', $toeflOnline);
 	$stmt->bindParam(':toeflPaper', $toeflPaper);
-	$stmt->bindParam(':toeflTestDate', $toeflTestDate);
-	$stmt->bindParam(':toeflOnlineScore', $toeflOnlineScore);
-	$stmt->bindParam(':toeflPaperScore', $toeflPaperScore);
+	$stmt->bindParam(':toeflTestDate', $_POST['toeflTestDate']);
+	$stmt->bindParam(':toeflOnlineScore', $_POST['toeflOnlineScore']);
+	$stmt->bindParam(':toeflPaperScore', $_POST['toeflPaperScore']);
 	$stmt->bindParam(':tse', $tse);
-	$stmt->bindParam(':tseTestDate', $tseTestDate);
-	$stmt->bindParam(':tseScore', $tseScore	);
+	$stmt->bindParam(':tseTestDate', $_POST['tseTestDate']);
+	$stmt->bindParam(':tseScore', $_POST['tseScore']);
 
-	$term= $_POST['term'];
-	$year= $_POST['year'];
-	$program = $_POST['program'];
 	if(isset($_POST['reqScholarship']))
 		$reqScholarship = $_POST['reqScholarship'];
 	else
@@ -99,28 +96,14 @@ try {
 		$previousEnrollment = $_POST['previousEnrollment'];
 	else
 		$previousEnrollment=0;
-	$previousEnrollmentDate = $_POST['previousEnrollmentDate'];
-	$previousEnrollmentStatus = $_POST['previousEnrollmentStatus'];
-	$undergradGPA = $_POST['undergradGPA'];
-	$juniorseniorGPA = $_POST['juniorseniorGPA'];
-	$currentEmployer = $_POST['currentEmployer'];
-	$timeAtCurrentEmployer = $_POST['timeAtCurrentEmployer'];
 	if(isset($_POST['gmat']))
 		$gmat = $_POST['gmat'];
 	else
 		$gmat=0;
-	$gmatTestDate = $_POST['gmatTestDate'];
-	$gmatQScore = $_POST['gmatQScore'];
-	$gmatVScore = $_POST['gmatVScore'];
-	$gmatTScore = $_POST['gmatTScore'];
 	if(isset($_POST['gre']))
 		$gre = $_POST['gre'];
 	else
 		$gre=0;
-	$greTestDate = $_POST['greTestDate'];
-	$greQScore = $_POST['greQScore'];
-	$greVScore = $_POST['greVScore'];
-	$greTScore = $_POST['greTScore'];
 	if(isset($_POST['toeflOnline']))
 		$toeflOnline = $_POST['toeflOnline'];
 	else
@@ -129,15 +112,10 @@ try {
 		$toeflPaper = $_POST['toeflPaper'];
 	else
 		$toeflPaper = 0;
-	$toeflTestDate = $_POST['toeflTestDate'];
-	$toeflOnlineScore = $_POST['toeflOnlineScore'];
-	$toeflPaperScore = $_POST['toeflPaperScore'];
 	if(isset($_POST['tse']))
 		$tse = $_POST['tse'];
 	else
 		$tse=0;
-	$tseTestDate = $_POST['tseTestDate'];
-	$tseScore = $_POST['tseScore'];
 	$stmt->execute();
 	//echo "<br>";
 	//echo "Application record created successfully";	
@@ -188,43 +166,26 @@ try {
 									   VALUES  (:applicationID, :collegeName, :dateStarted, :dateEnded, :gpa, :hoursEarned, :hoursEnrolled, :degree, :major);");
 
 	$stmt->bindParam(':applicationID', $applicationID);
-	$stmt->bindParam(':collegeName', $collegeName);
-	$stmt->bindParam(':dateStarted', $dateStarted);
-	$stmt->bindParam(':dateEnded', $dateEnded);
-	$stmt->bindParam(':gpa', $gpa);
-	$stmt->bindParam(':hoursEarned', $hoursEarned);		
-	$stmt->bindParam(':hoursEnrolled', $hoursEnrolled);
-	$stmt->bindParam(':degree', $degree);
-	$stmt->bindParam(':major', $major);		
-
-	$applicationID = $appid;
-	$collegeName = $_POST['collegeName'];
-	$dateStarted = $_POST['dateStarted'];
-	$dateEnded = $_POST['dateEnded'];
-	$gpa = $_POST['collegeGPA'];
-	$hoursEarned = $_POST['hoursEarned'];
-	$hoursEnrolled = $_POST['hoursEnrolled'];
-	$degree = $_POST['degree'];
-	$major = $_POST['major'];
+	$stmt->bindParam(':collegeName', $_POST['collegeName']);
+	$stmt->bindParam(':dateStarted', $_POST['dateStarted']);
+	$stmt->bindParam(':dateEnded', $_POST['dateEnded']);
+	$stmt->bindParam(':gpa', $_POST['collegeGPA']);
+	$stmt->bindParam(':hoursEarned', $_POST['hoursEarned']);		
+	$stmt->bindParam(':hoursEnrolled', $_POST['hoursEnrolled']);
+	$stmt->bindParam(':degree', $_POST['degree']);
+	$stmt->bindParam(':major', $_POST['major']);		
 
 	$stmt->execute();	
 	//
 	$stmt = $conn->prepare("INSERT INTO address (street1,  street2,  city,  stateID,  zipCode,  countryID)
 									   VALUES  (:street1, :street2, :city, :stateID, :zipCode, :countryID);");
 
-	$stmt->bindParam(':street1', $street1);
-	$stmt->bindParam(':street2', $street2);
-	$stmt->bindParam(':city', $city);
-	$stmt->bindParam(':stateID', $stateID);
-	$stmt->bindParam(':zipCode', $zipCode);
-	$stmt->bindParam(':countryID', $countryID);			
-
-	$street1 = $_POST['streetAddress'];
-	$street2 = $_POST['streetAddress2'];
-	$city = $_POST['city'];
-	$stateID = $_POST['state'];
-	$zipCode = $_POST['zipCode'];
-	$countryID = $_POST['country'];
+	$stmt->bindParam(':street1', $_POST['streetAddress']);
+	$stmt->bindParam(':street2', $_POST['streetAddress2']);
+	$stmt->bindParam(':city', $_POST['city']);
+	$stmt->bindParam(':stateID', $_POST['state']);
+	$stmt->bindParam(':zipCode', $_POST['zipCode']);
+	$stmt->bindParam(':countryID', $_POST['country']);
 
 	$stmt->execute();	
 	$addressPid = $conn->lastInsertId();
@@ -232,19 +193,12 @@ try {
 	$stmt = $conn->prepare("INSERT INTO address (street1,  street2,  city,  stateID,  zipCode,  countryID)
 									   VALUES  (:street1, :street2, :city, :stateID, :zipCode, :countryID);");
 
-	$stmt->bindParam(':street1', $street1);
-	$stmt->bindParam(':street2', $street2);
-	$stmt->bindParam(':city', $city);
-	$stmt->bindParam(':stateID', $stateID);
-	$stmt->bindParam(':zipCode', $zipCode);
-	$stmt->bindParam(':countryID', $countryID);				
-
-	$street1 = $_POST['streetAddressM'];
-	$street2 = $_POST['streetAddress2M'];
-	$city = $_POST['cityM'];
-	$stateID = $_POST['stateM'];
-	$zipCode = $_POST['zipCodeM'];
-	$countryID = $_POST['countryM'];
+	$stmt->bindParam(':street1', $_POST['streetAddressM']);
+	$stmt->bindParam(':street2', $_POST['streetAddress2M']);
+	$stmt->bindParam(':city', $_POST['cityM']);
+	$stmt->bindParam(':stateID', $_POST['stateM']);
+	$stmt->bindParam(':zipCode', $_POST['zipCodeM']);
+	$stmt->bindParam(':countryID', $_POST['countryM']);				
 
 	$stmt->execute();	
 	$addressMid = $conn->lastInsertId();	
