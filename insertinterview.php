@@ -14,7 +14,7 @@ try{
             return;
         move_uploaded_file($file_tmp,"../interviewdocs/".$fn);
         $stmt = $conn->prepare("INSERT INTO interview_file (applicationID,  filename)
-                                                VALUES   (:appID,         :filename);");
+                                                   VALUES (:appID,         :filename);");
 
         $stmt->bindParam(':appID', $applicationID);
         $stmt->bindParam(':filename', $filename);

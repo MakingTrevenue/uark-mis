@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if (!isset($_SESSION['username']))
+    if (!isset($_SESSION['userID']))
         header('Location: index.php');
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
@@ -456,7 +456,7 @@
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-comment-o"></i></span>
                             <input type="text" class="form-control" name="comment" id="comment" placeholder="">
-                            <input type="hidden" name="username" value="<?php echo $_SESSION['username'];?>">
+                            <input type="hidden" name="username" value="<?php echo $_SESSION['userID'];?>">
                             <?php 
                             if(isset($_GET['appID']))
                                 $appID=$_GET['appID'];

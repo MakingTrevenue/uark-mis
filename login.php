@@ -12,12 +12,11 @@
             $stmt->execute(array(':username' => $_POST['loginUsername']));
             $row = $stmt->fetch();
 
-
 			$userpassword = $_POST['loginPassword'];
             $check = password_verify($userpassword,$row[1]);
             
             if($check){
-			    $_SESSION["username"] = $row[0];
+			    $_SESSION["userID"] = $row[0];
 				$_SESSION["name"]=$row[2];
 				header('Location: index.php');
 			}

@@ -5,7 +5,7 @@
     if(isset($_GET['logout'])){
         session_unset();
         session_destroy();
-    }       
+    }    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +70,7 @@
             </ul>
             <!-- Navigation Bar Modals -->
             <ul class="nav navbar-nav navbar-right">
-                <?php if(isset($_GET['logout']) || !isset($_SESSION['username'])){ ?>
+                <?php if(isset($_GET['logout']) || !isset($_SESSION['userID'])){ ?>
                     <li id="signupButton"><a href="#signUpModal" data-toggle="modal"><span class="fa fa-user-plus"></span>&nbsp; Sign Up</a></li>
                     <li id="loginButton"><a href="#loginModal" data-toggle="modal"><span class="fa fa-sign-in"></span>&nbsp; Login</a></li>
                 <?php }else{ ?>

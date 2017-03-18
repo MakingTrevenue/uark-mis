@@ -25,9 +25,11 @@
 			$userpassword = $_POST['signUpPassword'];
             $userpassword = password_hash($userpassword,PASSWORD_DEFAULT);
 			$stmt->execute();
-
+			$uid=$conn->lastInsertId();
 			echo "New accounted created";
-			$_SESSION["username"] = $un;
+			$_SESSION["userID"]=$uid;
+			$_SESSION["username"] = $uid;
+			$_SESSION["name"]=$name;
 			header('Location: index.php');
 		}
 		catch(Exception $e){
