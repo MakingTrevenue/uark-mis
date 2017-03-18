@@ -5,19 +5,14 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
     include 'header.php';
+    include 'php/functions.php';
 ?>
 
 <?php
     // Update statement for updating application statuses.
     if((!empty($_POST['appID']) && !empty($_POST['offerStatus']) && !empty($_POST['assistantshipStatus']) && !empty($_POST['applicantResponse']) )){
         try{
-            $config = parse_ini_file('../private/credentials.ini');
-            $servername = $config["servername"];
-            $username = $config["username"];
-            $password = $config["password"];
-            $dbname = $config["dbname"];
-            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $conn=createPDO();
             $stmt = $conn->prepare("UPDATE application SET offerStatus=:offerStatus, assistantshipStatus=:assistantshipStatus, applicantResponse=:applicantResponse 
                                     WHERE applicationID=:appID");
             $stmt->bindParam(':offerStatus', $_POST['offerStatus']);
@@ -34,13 +29,7 @@
     // Select statement for selecting all of the application info.
     if(!empty($_GET['appID']) || (!empty($_POST['appID']) && !empty($_POST['offerStatus']) && !empty($_POST['assistantshipStatus']) && !empty($_POST['applicantResponse']) )){
         try{
-            $config = parse_ini_file('../private/credentials.ini');
-            $servername = $config["servername"];
-            $username = $config["username"];
-            $password = $config["password"];
-            $dbname = $config["dbname"];
-            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $conn=createPDO();
             $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID JOIN college ON college.applicationID = application.applicationID WHERE application.applicationID=:appid");
             
             if(!empty($_GET['appID']))
@@ -491,13 +480,7 @@
 
     <?php
     }else{
-        $config = parse_ini_file('../private/credentials.ini');
-        $servername = $config["servername"];
-        $username = $config["username"];
-        $password = $config["password"];
-        $dbname = $config["dbname"];
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn=createPDO();
         $stmt = $conn->prepare("SELECT * FROM application JOIN student on student.studentID = application.studentID");
         $stmt->execute();
     ?>

@@ -1,17 +1,9 @@
 <?php
-
+    include 'php/functions.php';
 error_reporting(E_ALL & ~E_WARNING);
 ini_set('display_errors', 1);
 try {
-	$config = parse_ini_file('../private/credentials.ini');
-	$servername = $config["servername"];
-	$username = $config["username"];
-	$password = $config["password"];
-	$dbname = $config["dbname"];
-
-	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password); //
-	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+	$conn=createPDO();
 	$conn->beginTransaction();
 
 	$stmt = $conn->prepare("INSERT INTO student (firstName,  middleName,  lastName,  preferredName,  primaryEmail,  secondaryEmail,  primaryPhone,  secondaryPhone,  socialSecurityNumber,  dateOfBirth,  countryOfBirth,  ethnicity,  gender,  citizenship)

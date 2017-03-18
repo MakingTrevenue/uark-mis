@@ -2,16 +2,11 @@
 	session_start();
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
+    include 'php/functions.php';	
 	
 	if(isset($_POST)){
-		$config = parse_ini_file('../private/credentials.ini');
-		$servername = $config["servername"];
-		$username = $config["username"];
-		$password = $config["password"];
-		$dbname = $config["dbname"];
 		try {
-			$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$conn=createPDO();
             $stmt = $conn->prepare("SELECT userID,password,name FROM user WHERE username=:username");
 
             $stmt->execute(array(':username' => $_POST['loginUsername']));
@@ -32,6 +27,8 @@
 		catch(Exception $e){
 			echo "Error: " . $e->getMessage();
 		}
-		$conn = null;
+		finally{
+			$conn = null;
+		}
 	}
 ?>
