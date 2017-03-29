@@ -67,6 +67,7 @@
                 <li><a href="./application.php">Application</a></li>
 				<li><a href="./applicants.php">Applicants</a></li>
                 <li><a href="./advising.php">Advising</a></li>
+                <li><a href="./ga.php">GA</a></li>
             </ul>
             <!-- Navigation Bar Modals -->
             <ul class="nav navbar-nav navbar-right">
