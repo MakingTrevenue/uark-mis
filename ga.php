@@ -142,7 +142,6 @@
 
                             <!-- Table Body -->
                             <tbody>
-                            <form>
                                 <tr>
                                     <td><label>Internet <i class="fa fa-info-circle" rel="tooltip" title="skills include..."></i></label></td>
                                     <td class="text-center"><input type="radio" id="internet0" name="internet"></td>
@@ -185,7 +184,6 @@
                                     <td class="text-center"><input type="radio" id="sap2" name="sap"></td>
                                     <td class="text-center"><input type="radio" id="sap3" name="sap"></td>
                                 </tr>
-                            </form>
                             </tbody>
 
                         </table>
@@ -227,7 +225,6 @@
 
                             <!-- Table Body -->
                             <tbody>
-                            <form>
                                 <tr>
                                     <td><label>Writing <i class="fa fa-info-circle" rel="tooltip" title="skills include..."></i></label></td>
                                     <td class="text-center"><input type="radio" id="writing0" name="writing"></td>
@@ -256,16 +253,15 @@
                                     <td class="text-center"><input type="radio" id="grading2" name="grading"></td>
                                     <td class="text-center"><input type="radio" id="grading3" name="grading"></td>
                                 </tr>
-                            </form>
                             </tbody>
 
                         </table>
 
                         <div class="form-group">
-                            <label for="otherskills">Please list any other desired skills not menioned (optional).</label>
+                            <label for="otherSkills">Please list any other desired skills not menioned (optional).</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-comment"></i></span>
-                                <textarea class="form-control custom-control" rows="2" name="otherskills" id="otherskills"></textarea>
+                                <textarea class="form-control custom-control" rows="2" name="otherSkills" id="otherSkills"></textarea>
                             </div>
                         </div>
 
