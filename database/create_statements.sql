@@ -175,8 +175,8 @@ CREATE TABLE `class` (
   FOREIGN KEY (`courseID`) REFERENCES `course`(`courseID`)
 );
 
-CREATE TABLE `instructor` (
-  `instructorID` INT(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `faculty` (
+  `facultyID` INT(11) NOT NULL AUTO_INCREMENT,
   `firstName` VARCHAR(30) NOT NULL,
   `lastName` VARCHAR(30) NOT NULL,
   `title` VARCHAR(50) NULL,
@@ -184,18 +184,18 @@ CREATE TABLE `instructor` (
   `email` VARCHAR(100) NOT NULL,
   `phone` VARCHAR(15) NULL,
   `roomID` INT(11) NOT NULL,
-  PRIMARY KEY (`instructorID`),
+  PRIMARY KEY (`facultyID`),
   FOREIGN KEY (`roomID`) REFERENCES `room`(`roomID`)
 );
 
-CREATE TABLE `class_instructor` (
+CREATE TABLE `class_faculty` (
   `classID` INT(11) NOT NULL,
-  `instructorID` INT(11) NOT NULL,
+  `facultyID` INT(11) NOT NULL,
   `term` VARCHAR(25) NOT NULL,
   `year` YEAR(4) NOT NULL,
-  PRIMARY KEY (`classID`, `instructorID`),
+  PRIMARY KEY (`classID`, `facultyID`),
   FOREIGN KEY (`classID`) REFERENCES `class`(`classID`),
-  FOREIGN KEY (`instructorID`) REFERENCES `instructor`(`instructorID`)
+  FOREIGN KEY (`facultyID`) REFERENCES `faculty`(`facultyID`)
 );
 
 CREATE TABLE `student_class` (
@@ -223,10 +223,45 @@ CREATE TABLE `advising` (
   `studentID` INT(11) NOT NULL,
   `classID` INT(11) NOT NULL,
   `term` VARCHAR(25) NOT NULL,
-  `year` YEAR(4),
+  `year` YEAR(4) NOT NULL,
   `date` DATE NOT NULL,
   `comments` TEXT NULL DEFAULT NULL,
   PRIMARY KEY (`studentID`, `classID`),
   FOREIGN KEY (`studentID`) REFERENCES `student`(`studentID`),
   FOREIGN KEY (`classID`) REFERENCES `class`(`classID`)
+);
+
+CREATE TABLE `request` (
+  `requestID` INT(11) NOT NULL AUTO_INCREMENT,
+  `reason` TEXT NOT NULL,
+  `hours` TINYINT NOT NULL,
+  `description` TEXT NOT NULL,
+  `internet` TINYINT NOT NULL,
+  `wordProcessing` TINYINT NOT NULL,
+  `spreadsheets` TINYINT NOT NULL,
+  `programming` TINYINT NOT NULL,
+  `database` TINYINT NOT NULL,
+  `sap` TINYINT NOT NULL,
+  `statisticalPackages` VARCHAR(255) DEFAULT NULL,
+  `programmingLanguages` VARCHAR(255) DEFAULT NULL,
+  `writing` TINYINT NOT NULL,
+  `editing` TINYINT NOT NULL,
+  `english` TINYINT NOT NULL,
+  `grading` TINYINT NOT NULL,
+  `otherSkills` TEXT DEFAULT NULL,
+  `multipleGAs` BOOLEAN NOT NULL DEFAULT 0,
+  `multipleGAsNumber` TINYINT DEFAULT 1,
+  `requested_studentID` INT(11) DEFAULT NULL,
+  `comments` TEXT DEFAULT NULL,
+  PRIMARY KEY (`requestID`),
+  FOREIGN KEY (`requested_studentID`) REFERENCES `student`(`studentID`)
+);
+
+CREATE TABLE `faculty_request` (
+  `requestID` INT(11) NOT NULL,
+  `facultyID` INT(11) NOT NULL,
+  `requestDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`requestID`, `facultyID`),
+  FOREIGN KEY (`requestID`) REFERENCES `request`(`requestID`),
+  FOREIGN KEY (`facultyID`) REFERENCES `faculty`(`facultyID`)
 );
