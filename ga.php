@@ -96,23 +96,8 @@
                             <label for="gaDescription">Please provide a brief job description (e.g. duties to be performed).</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-comment"></i></span>
-                                <textarea class="form-control custom-control" rows="3" name="gaDescription" id="gaDescription"></textarea>
+                                <textarea class="form-control custom-control" rows="5" name="gaDescription" id="gaDescription"></textarea>
                             </div>
-                        </div>
-
-                        <div class="form-group">                
-                            <label>Would you like to request multiple GAs for the same task?&nbsp;&nbsp;
-                                <label class="checkbox-inline"><input name="multipleGAs" id="multipleGAs" type="checkbox" value="multipleGAs">Yes</label>
-                            </label>
-                        </div>
-
-                        <div class="multipleGAs box">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-addon">How many?</span>
-                                    <input type="number" class="form-control" name="multipleGAsNumber" value="multipleGAsNumber" placeholder="2">
-                                </div>
-                            </div><br>
                         </div>
 
                     </div>
@@ -282,6 +267,22 @@
                                 <span class="input-group-addon"><i class="fa fa-comment"></i></span>
                                 <textarea class="form-control custom-control" rows="2" name="otherskills" id="otherskills"></textarea>
                             </div>
+                        </div>
+
+                        <div class="form-group">                
+                            <label>Would you like to request multiple GAs with the same skills and required duties?&nbsp;&nbsp;
+                                <label class="checkbox-inline"><input name="multipleGAs" id="multipleGAs" type="checkbox" value="multipleGAs">Yes</label>
+                            </label>
+                            <p class="help-block">If you would like to request another GA with a different skill set, you will need to submit another GA request form.</p>
+                        </div>
+
+                        <div class="multipleGAs box">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">How many?</span>
+                                    <input type="number" class="form-control" name="multipleGAsNumber" value="multipleGAsNumber" placeholder="2">
+                                </div>
+                            </div><br>
                         </div>
                         
                     </div>
