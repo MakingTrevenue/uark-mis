@@ -2,7 +2,7 @@
 include 'php/functions.php';
 try{
     $conn=createPDO();
-    $stmt = $conn->prepare("SELECT * FROM ga_request JOIN instructor ON ga_request.facultyID=instructor.instructorID");
+    $stmt = $conn->prepare("SELECT * FROM ga_request JOIN faculty ON ga_request.facultyID=faculty.facultyID");
     $stmt->execute();    
 }catch(Exception $e){
    echo $e; 
