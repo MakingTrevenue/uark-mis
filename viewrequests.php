@@ -3,8 +3,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>jQuery UI Droppable - Default functionality</title>
-  <link rel="stylesheet" href="jquery-ui.css">
-  <link rel="stylesheet" href="style.css">
   <style>
   #requests { width: 200px; height: 350px; float: left; border-style: groove; }
   #students { width: 200px; height: 350px; float: left; border-style: groove;} 
@@ -14,8 +12,8 @@
   .student { margin: auto; width: 150px; height: 75px; border-style: groove; background-color: white;}  
   .dropped { background-color: yellow;}
   </style>
-  <script src="jquery-1.12.4.js"></script>
-  <script src="jquery-ui.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
   pairs={};
   pairs['r1']='i1';
