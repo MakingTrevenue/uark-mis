@@ -95,14 +95,38 @@
 	</div>
 	 
 	<div id="students">
-	  <div id="s0" class="student">student 1</div>
-	  <div id="s1" class="student">student 2</div>
-	  <div id="s2" class="student">student 3</div> 
-	  <div id="s3" class="student">student 4</div>
-	  <div id="s4" class="student">student 5</div>
-	  <div id="s5" class="student">student 6</div>
-	  <div id="s6" class="student">student 7</div>
-	  <div id="s7" class="student">student 8</div>             
+	  <div id="s0" class='student panel panel-default'>
+        <div class='panel-heading' style='background-color: #FFBCCF; color: #000000'>student 1</div>
+        content
+      </div>
+	  <div id="s1" class='student panel panel-default'>
+        <div class='panel-heading' style='background-color: #FFBCCF; color: #000000'>student 2</div>
+         content
+      </div>
+	  <div id="s2" class='student panel panel-default'>
+        <div class='panel-heading' style='background-color: #FFBCCF; color: #000000'>student 3</div>      
+         content
+      </div> 
+	  <div id="s3" class='student panel panel-default'>
+        <div class='panel-heading' style='background-color: #FFBCCF; color: #000000'>student 4</div>
+         content
+      </div>
+	  <div id="s4" class='student panel panel-default'>
+        <div class='panel-heading' style='background-color: #FFBCCF; color: #000000'>student 5</div>
+         content
+      </div>
+	  <div id="s5" class='student panel panel-default'>
+        <div class='panel-heading' style='background-color: #FFBCCF; color: #000000'>student 6</div>
+         content
+      </div>
+	  <div id="s6" class='student panel panel-default'>
+        <div class='panel-heading' style='background-color: #FFBCCF; color: #000000'>student 7</div>
+         content
+      </div>
+	  <div id="s7" class='student panel panel-default'>
+        <div class='panel-heading' style='background-color: #FFBCCF; color: #000000'>student 8</div>
+         content
+      </div>             
 	</div>
 	<br>
 	

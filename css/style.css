@@ -23,6 +23,12 @@
   border-color: #9D2235;
 }
 
+.panel-heading2 {
+  color: #000000;
+  background-color: #FFBCCF;
+  border-color: #FFBCCF;
+}
+
 .fa-stack {
 	color: black;
 }
