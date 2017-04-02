@@ -23,8 +23,8 @@
   #students { width: 50%; display:inline-block; float: left;} 
   .wrapper { width: 100%; float: left;}
   .formclass { float: left; border-style: groove;} 
-  .request { margin: auto; width: 33.3%; height: 100px; border-style: groove; background-color: #F9F9F9; float: left}
-  .student { margin: auto; width: 25%; height: 75px; border-style: groove; background-color: #F9F9F9; float: left}  
+  .request { margin: auto; width: 33.3%; min-width: 175px;height: 100px; border-style: groove; background-color: #F9F9F9; float: left}
+  .student { margin: auto; width: 25%;   min-width: 175px;height: 75px; border-style: groove; background-color: #F9F9F9; float: left}  
   .dropped { background-color: #EEBBBB;}
   </style>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
