@@ -98,11 +98,11 @@
 	  <div id="s0" class="student">student 1</div>
 	  <div id="s1" class="student">student 2</div>
 	  <div id="s2" class="student">student 3</div> 
-	  <div id="s3" class="student">student 1</div>
-	  <div id="s4" class="student">student 2</div>
-	  <div id="s5" class="student">student 3</div>
-	  <div id="s6" class="student">student 2</div>
-	  <div id="s7" class="student">student 3</div>             
+	  <div id="s3" class="student">student 4</div>
+	  <div id="s4" class="student">student 5</div>
+	  <div id="s5" class="student">student 6</div>
+	  <div id="s6" class="student">student 7</div>
+	  <div id="s7" class="student">student 8</div>             
 	</div>
 	<br>
 	
