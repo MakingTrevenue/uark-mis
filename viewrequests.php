@@ -1,12 +1,15 @@
 <?php
-include 'php/functions.php';
-try{
-    $conn=createPDO();
-    $stmt = $conn->prepare("SELECT * FROM ga_request JOIN faculty ON ga_request.facultyID=faculty.facultyID");
-    $stmt->execute();    
-}catch(Exception $e){
-   echo $e; 
-}
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    include 'header.php';
+    include 'php/functions.php';
+    try{
+        $conn=createPDO();
+        $stmt = $conn->prepare("SELECT * FROM ga_request JOIN faculty ON ga_request.facultyID=faculty.facultyID");
+        $stmt->execute();    
+    }catch(Exception $e){
+    echo $e; 
+    }
 
 ?>
 
@@ -16,13 +19,13 @@ try{
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>jQuery UI Droppable - Default functionality</title>
   <style>
-  #requests { width: 200px; display:inline-block; float: left; border-style: groove; }
-  #students { width: 200px; display:inline-block; float: left; border-style: groove;} 
-  .wrapper { float: left;}
+  #requests { width: 50%; display:inline-block; float: left;}
+  #students { width: 50%; display:inline-block; float: left;} 
+  .wrapper { width: 100%; float: left;}
   .formclass { float: left; border-style: groove;} 
-  .request { margin: auto; width: 175px; height: 100px; border-style: groove; background-color: white;}
-  .student { margin: auto; width: 150px; height: 75px; border-style: groove; background-color: white;}  
-  .dropped { background-color: yellow;}
+  .request { margin: auto; width: 33.3%; height: 100px; border-style: groove; background-color: #F9F9F9; float: left}
+  .student { margin: auto; width: 25%; height: 75px; border-style: groove; background-color: #F9F9F9; float: left}  
+  .dropped { background-color: #EEBBBB;}
   </style>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -76,43 +79,51 @@ try{
 	<div id="requests">
         <?php
         $stmt->execute(); 
-        $i=0;
+        $i=0;       
         while ($row = $stmt->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT)) {
             echo "
-            <div id='r".$i."' class='request'>
-		        ".$row->firstName . " " . $row->lastName
-                 ."<br>". $row->dept
+            <div id='r".$i."' class='request panel panel-default'>
+                <div class='panel-heading'>
+		            <h2 class='panel-title'>".$row->firstName . " " . $row->lastName."</h2>
+                </div>"
+                . $row->dept
                  ."<br>Hours: ".$row->hours."
-	        </div> ";
+	        </div>";
             $i++;
         }
         ?>
- 
 	</div>
 	 
 	<div id="students">
 	  <div id="s0" class="student">student 1</div>
 	  <div id="s1" class="student">student 2</div>
 	  <div id="s2" class="student">student 3</div> 
+	  <div id="s3" class="student">student 1</div>
+	  <div id="s4" class="student">student 2</div>
+	  <div id="s5" class="student">student 3</div>
+	  <div id="s6" class="student">student 2</div>
+	  <div id="s7" class="student">student 3</div>             
 	</div>
 	<br>
 	
     <div class='wrapper'>
-        GA Request Form (to be hidden):
         <form id="garequestform">
             <?php
             $stmt->execute(); 
             $i=0;
             while ($row = $stmt->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT)) {
-                echo
-                    "Request ".$row->requestID.": <input id='i".$i."' value=''><br>";
+                echo "<input id='i".$i."' value=''  type='hidden'>";
                 $i++;
             }
-            ?>        
-            <input type="submit" value="Submit (Won't be hidden)">
+            ?>
+            <center>
+            <input type="submit"  class="btn btn-success btn-lg" value="Submit">
+            </center>
         </form>
     </div>
+    
 </div>
+
 
  
 </body>
