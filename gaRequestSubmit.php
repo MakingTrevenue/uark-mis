@@ -31,7 +31,7 @@ try {
 	$stmt->bindParam(':gaComments', $_POST['gaComments']);
 	$stmt->execute();
 
-catch(Exception $e){
+} catch(Exception $e) {
 	echo "Error: " . $e->getMessage();
 	echo "<br> Stack trace: " . $e->getTraceAsString();
 	$pdo->rollBack();
