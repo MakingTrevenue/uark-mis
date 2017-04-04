@@ -87,8 +87,8 @@
                 <div class='panel-heading'>
 		            <h2 class='panel-title'>".$row->firstName . " " . $row->lastName."</h2>
                 </div>"
-                . $row->dept
-                 ."<br>Hours: ".$row->hours."
+                . "<br>Department: " . $row->department
+                . "<br>Hours: " . $row->hours."
 	        </div>";
             $i++;
         }
