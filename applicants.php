@@ -20,6 +20,13 @@
             $stmt->bindParam(':applicantResponse', $_POST['applicantResponse']);
             $stmt->bindParam(':appID', $_POST['appID']);
             $stmt->execute();
+            /*
+            if($_POST['offerStatus']=="Accepted" && $_POST['applicantResponse']=="Accept Offer"){
+                $stmt = $conn->prepare("UPDATE user SET gaRole=1 WHERE userID=:userID");
+                $stmt->bindParam(':userID',);
+                $stmt->execute();
+            }
+            */
         }catch(Exception $e){
             echo "Error: " . $e->getMessage();
             echo "<br> Stack trace: " . $e->getTraceAsString();            
