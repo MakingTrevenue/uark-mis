@@ -8,7 +8,7 @@ try {
 	$conn=createPDO();
 
 	$stmt = $conn->prepare("INSERT INTO request (reason,  hours,  description,  internet,  wordProcessing,  spreadsheets,  programming,  database,  sap,  statisticalPackages,  programmingLanguages,  writing,  editing,  english, grading, otherSkills, multipleGAs, multipleGAsNumber, gaComments)
-									   VALUES  (:reason, :hours, :description, :internet, :wordProcessing, :spreadsheets, :programming, :database, :sap, :statisticalPackages, :programmingLanguages, :writing, :editing, :english, :grading, :otherSkills, :multipleGAs, :multipleGAsNumber, :gaComments");
+									   VALUES  (:reason, :hours, :description, :internet, :wordProcessing, :spreadsheets, :programming, :database, :sap, :statisticalPackages, :programmingLanguages, :writing, :editing, :english, :grading, :otherSkills, :multipleGAs, :multipleGAsNumber, :gaComments)");
 
 	$stmt->bindParam(':reason', $_POST['reason']);
 	$stmt->bindParam(':hours', $_POST['hours']);
