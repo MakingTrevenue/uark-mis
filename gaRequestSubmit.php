@@ -7,7 +7,7 @@ try {
 
 	$conn=createPDO();
 
-	$stmt = $conn->prepare("INSERT INTO request (reason, hours, description, internet, wordProcessing, spreadsheets, programming, `database`, sap, statisticalPackages,  programmingLanguages,  writing,  editing,  english, grading, otherSkills, multipleGAs, multipleGAsNumber, gaComments) VALUES  (:reason, :hours, :description, :internet, :wordProcessing, :spreadsheets, :programming, :database, :sap, :statisticalPackages, :programmingLanguages, :writing, :editing, :english, :grading, :otherSkills, :multipleGAs, :multipleGAsNumber, :gaComments)");
+	$stmt = $conn->prepare("INSERT INTO request (reason, hours, description, internet, wordProcessing, spreadsheets, programming, `database`, sap, statisticalPackages,  programmingLanguages,  writing,  editing,  english, grading, otherSkills, multipleGAs, multipleGAsNumber, comments) VALUES  (:reason, :hours, :description, :internet, :wordProcessing, :spreadsheets, :programming, :database, :sap, :statisticalPackages, :programmingLanguages, :writing, :editing, :english, :grading, :otherSkills, :multipleGAs, :multipleGAsNumber, :comments)");
 
 	$stmt->bindParam(':reason', $_POST['reason']);
 	$stmt->bindParam(':hours', $_POST['hours']);
@@ -27,7 +27,7 @@ try {
 	$stmt->bindParam(':otherSkills', $_POST['otherSkills']);
 	$stmt->bindParam(':multipleGAs', $_POST['multipleGAs']);
 	$stmt->bindParam(':multipleGAsNumber', $_POST['multipleGAsNumber']);
-	$stmt->bindParam(':gaComments', $_POST['gaComments']);
+	$stmt->bindParam(':comments', $_POST['gaComments']);
 	$stmt->execute();
 
 } catch(Exception $e) {
