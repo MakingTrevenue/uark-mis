@@ -144,45 +144,45 @@
                             <tbody>
                                 <tr>
                                     <td><label>Internet <i class="fa fa-info-circle" rel="tooltip" title="skills include..."></i></label></td>
-                                    <td class="text-center"><input type="radio" id="internet0" name="internet"></td>
-                                    <td class="text-center"><input type="radio" id="internet1" name="internet"></td>
-                                    <td class="text-center"><input type="radio" id="internet2" name="internet"></td>
-                                    <td class="text-center"><input type="radio" id="internet3" name="internet"></td>
+                                    <td class="text-center"><input type="radio" id="internet0" name="internet" value=0></td>
+                                    <td class="text-center"><input type="radio" id="internet1" name="internet" value=1></td>
+                                    <td class="text-center"><input type="radio" id="internet2" name="internet" value=2></td>
+                                    <td class="text-center"><input type="radio" id="internet3" name="internet" value=3></td>
                                 </tr>
                                 <tr>
                                     <td><label>Word Processing <i class="fa fa-info-circle" rel="tooltip" title="skills include..."></i></label></td>
-                                    <td class="text-center"><input type="radio" id="wordProcessing0" name="wordProcessing"></td>
-                                    <td class="text-center"><input type="radio" id="wordProcessing1" name="wordProcessing"></td>
-                                    <td class="text-center"><input type="radio" id="wordProcessing2" name="wordProcessing"></td>
-                                    <td class="text-center"><input type="radio" id="wordProcessing3" name="wordProcessing"></td>
+                                    <td class="text-center"><input type="radio" id="wordProcessing0" name="wordProcessing" value=0></td>
+                                    <td class="text-center"><input type="radio" id="wordProcessing1" name="wordProcessing" value=1></td>
+                                    <td class="text-center"><input type="radio" id="wordProcessing2" name="wordProcessing" value=2></td>
+                                    <td class="text-center"><input type="radio" id="wordProcessing3" name="wordProcessing" value=3></td>
                                 </tr>
                                 <tr>
                                     <td><label>Spreadsheets <i class="fa fa-info-circle" rel="tooltip" title="skills include..."></i></label></td>
-                                    <td class="text-center"><input type="radio" id="spreadsheets0" name="spreadsheets"></td>
-                                    <td class="text-center"><input type="radio" id="spreadsheets1" name="spreadsheets"></td>
-                                    <td class="text-center"><input type="radio" id="spreadsheets2" name="spreadsheets"></td>
-                                    <td class="text-center"><input type="radio" id="spreadsheets3" name="spreadsheets"></td>
+                                    <td class="text-center"><input type="radio" id="spreadsheets0" name="spreadsheets" value=0></td>
+                                    <td class="text-center"><input type="radio" id="spreadsheets1" name="spreadsheets" value=1></td>
+                                    <td class="text-center"><input type="radio" id="spreadsheets2" name="spreadsheets" value=2></td>
+                                    <td class="text-center"><input type="radio" id="spreadsheets3" name="spreadsheets" value=3></td>
                                 </tr>
                                 <tr>
                                     <td><label>Programming <i class="fa fa-info-circle" rel="tooltip" title="skills include..."></i></label></td>
-                                    <td class="text-center"><input type="radio" id="programming0" name="programming"></td>
-                                    <td class="text-center"><input type="radio" id="programming1" name="programming"></td>
-                                    <td class="text-center"><input type="radio" id="programming2" name="programming"></td>
-                                    <td class="text-center"><input type="radio" id="programming3" name="programming"></td>
+                                    <td class="text-center"><input type="radio" id="programming0" name="programming" value=0></td>
+                                    <td class="text-center"><input type="radio" id="programming1" name="programming" value=1></td>
+                                    <td class="text-center"><input type="radio" id="programming2" name="programming" value=2></td>
+                                    <td class="text-center"><input type="radio" id="programming3" name="programming" value=3></td>
                                 </tr>
                                 <tr>
                                     <td><label>Database <i class="fa fa-info-circle" rel="tooltip" title="skills include..."></i></label></td>
-                                    <td class="text-center"><input type="radio" id="database0" name="database"></td>
-                                    <td class="text-center"><input type="radio" id="database1" name="database"></td>
-                                    <td class="text-center"><input type="radio" id="database2" name="database"></td>
-                                    <td class="text-center"><input type="radio" id="database3" name="database"></td>
+                                    <td class="text-center"><input type="radio" id="database0" name="database" value=0></td>
+                                    <td class="text-center"><input type="radio" id="database1" name="database" value=1></td>
+                                    <td class="text-center"><input type="radio" id="database2" name="database" value=2></td>
+                                    <td class="text-center"><input type="radio" id="database3" name="database" value=3></td>
                                 </tr>
                                 <tr>
                                     <td><label>SAP <i class="fa fa-info-circle" rel="tooltip" title="skills include..."></i></label></td>
-                                    <td class="text-center"><input type="radio" id="sap0" name="sap"></td>
-                                    <td class="text-center"><input type="radio" id="sap1" name="sap"></td>
-                                    <td class="text-center"><input type="radio" id="sap2" name="sap"></td>
-                                    <td class="text-center"><input type="radio" id="sap3" name="sap"></td>
+                                    <td class="text-center"><input type="radio" id="sap0" name="sap" value=0></td>
+                                    <td class="text-center"><input type="radio" id="sap1" name="sap" value=1></td>
+                                    <td class="text-center"><input type="radio" id="sap2" name="sap" value=2></td>
+                                    <td class="text-center"><input type="radio" id="sap3" name="sap" value=3></td>
                                 </tr>
                             </tbody>
 
@@ -227,31 +227,31 @@
                             <tbody>
                                 <tr>
                                     <td><label>Writing <i class="fa fa-info-circle" rel="tooltip" title="skills include..."></i></label></td>
-                                    <td class="text-center"><input type="radio" id="writing0" name="writing"></td>
-                                    <td class="text-center"><input type="radio" id="writing1" name="writing"></td>
-                                    <td class="text-center"><input type="radio" id="writing2" name="writing"></td>
-                                    <td class="text-center"><input type="radio" id="writing3" name="writing"></td>
+                                    <td class="text-center"><input type="radio" id="writing0" name="writing" value=0></td>
+                                    <td class="text-center"><input type="radio" id="writing1" name="writing" value=1></td>
+                                    <td class="text-center"><input type="radio" id="writing2" name="writing" value=2></td>
+                                    <td class="text-center"><input type="radio" id="writing3" name="writing" value=3></td>
                                 </tr>
                                 <tr>
                                     <td><label>Editing <i class="fa fa-info-circle" rel="tooltip" title="skills include..."></i></label></td>
-                                    <td class="text-center"><input type="radio" id="editing0" name="editing"></td>
-                                    <td class="text-center"><input type="radio" id="editing1" name="editing"></td>
-                                    <td class="text-center"><input type="radio" id="editing2" name="editing"></td>
-                                    <td class="text-center"><input type="radio" id="editing3" name="editing"></td>
+                                    <td class="text-center"><input type="radio" id="editing0" name="editing" value=0></td>
+                                    <td class="text-center"><input type="radio" id="editing1" name="editing" value=1></td>
+                                    <td class="text-center"><input type="radio" id="editing2" name="editing" value=2></td>
+                                    <td class="text-center"><input type="radio" id="editing3" name="editing" value=3></td>
                                 </tr>
                                 <tr>
                                     <td><label>English-Speaking <i class="fa fa-info-circle" rel="tooltip" title="skills include..."></i></label></td>
-                                    <td class="text-center"><input type="radio" id="english0" name="english"></td>
-                                    <td class="text-center"><input type="radio" id="english1" name="english"></td>
-                                    <td class="text-center"><input type="radio" id="english2" name="english"></td>
-                                    <td class="text-center"><input type="radio" id="english3" name="english"></td>
+                                    <td class="text-center"><input type="radio" id="english0" name="english" value=0></td>
+                                    <td class="text-center"><input type="radio" id="english1" name="english" value=1></td>
+                                    <td class="text-center"><input type="radio" id="english2" name="english" value=2></td>
+                                    <td class="text-center"><input type="radio" id="english3" name="english" value=3></td>
                                 </tr>
                                 <tr>
                                     <td><label>Grading <i class="fa fa-info-circle" rel="tooltip" title="skills include..."></i></label></td>
-                                    <td class="text-center"><input type="radio" id="grading0" name="grading"></td>
-                                    <td class="text-center"><input type="radio" id="grading1" name="grading"></td>
-                                    <td class="text-center"><input type="radio" id="grading2" name="grading"></td>
-                                    <td class="text-center"><input type="radio" id="grading3" name="grading"></td>
+                                    <td class="text-center"><input type="radio" id="grading0" name="grading" value=0></td>
+                                    <td class="text-center"><input type="radio" id="grading1" name="grading" value=1></td>
+                                    <td class="text-center"><input type="radio" id="grading2" name="grading" value=2></td>
+                                    <td class="text-center"><input type="radio" id="grading3" name="grading" value=3></td>
                                 </tr>
                             </tbody>
 
