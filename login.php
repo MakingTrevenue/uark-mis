@@ -7,7 +7,7 @@
 	if(isset($_POST)){
 		try {
 			$conn=createPDO();
-            $stmt = $conn->prepare("SELECT userID,password,name,applicantRole,gaRole,advisorRole,supervisorRole,committeeRole,adminRole FROM user WHERE username=:username");
+            $stmt = $conn->prepare("SELECT userID,password,name,gaRole,advisorRole,supervisorRole,committeeRole,adminRole FROM user WHERE username=:username");
 
             $stmt->execute(array(':username' => $_POST['loginUsername']));
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -18,7 +18,6 @@
             if($check){
 			    $_SESSION["userID"] = $row['userID'];
 				$_SESSION["name"]=$row['name'];
-				echo $row['applicantRole'];
 				if($row['gaRole'])
 					$_SESSION["gaRole"]=$row['gaRole'];
 				if($row['advisorRole'])
