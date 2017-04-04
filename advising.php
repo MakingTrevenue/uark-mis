@@ -1,4 +1,7 @@
 <?php
+    session_start();
+    if (!isset($_SESSION['advisorRole']) && !isset($_SESSION['adminRole']))
+        header('Location: invalidpermission.php?e=Advisor'); 
     include 'header.php';
 ?>
 

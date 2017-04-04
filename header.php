@@ -5,7 +5,8 @@
     if(isset($_GET['logout'])){
         session_unset();
         session_destroy();
-    }    
+    }
+    print_r($_SESSION);    
 ?>
 <!DOCTYPE html>
 <html lang="en">
