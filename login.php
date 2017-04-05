@@ -38,7 +38,7 @@
 			}
 		}
 		catch(Exception $e){
-			echo "Error: " . $e->getMessage();
+			header('Location: index.php');
 		}
 		finally{
 			$conn = null;
