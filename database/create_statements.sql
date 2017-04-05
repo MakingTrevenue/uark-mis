@@ -234,14 +234,15 @@ CREATE TABLE `advising` (
 
 CREATE TABLE `request` (
   `requestID` INT(11) NOT NULL AUTO_INCREMENT,
+  `facultyID` INT(11) NOT NULL,
   `reason` TEXT NOT NULL,
   `hours` TINYINT NOT NULL,
   `description` TEXT NOT NULL,
-  `internet` TINYINT NOT NULL,
+  `research` TINYINT NOT NULL,
   `wordProcessing` TINYINT NOT NULL,
-  `spreadsheets` TINYINT NOT NULL,
+  `dataAnalysis` TINYINT NOT NULL,
   `programming` TINYINT NOT NULL,
-  `database` TINYINT NOT NULL,
+  `databaseSkill` TINYINT NOT NULL,
   `sap` TINYINT NOT NULL,
   `statisticalPackages` VARCHAR(255) DEFAULT NULL,
   `programmingLanguages` VARCHAR(255) DEFAULT NULL,
@@ -255,14 +256,6 @@ CREATE TABLE `request` (
   `requested_studentID` INT(11) DEFAULT NULL,
   `comments` TEXT DEFAULT NULL,
   PRIMARY KEY (`requestID`),
-  FOREIGN KEY (`requested_studentID`) REFERENCES `student`(`studentID`)
-);
-
-CREATE TABLE `faculty_request` (
-  `requestID` INT(11) NOT NULL,
-  `facultyID` INT(11) NOT NULL,
-  `requestDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`requestID`, `facultyID`),
-  FOREIGN KEY (`requestID`) REFERENCES `request`(`requestID`),
+  FOREIGN KEY (`requested_studentID`) REFERENCES `student`(`studentID`),
   FOREIGN KEY (`facultyID`) REFERENCES `faculty`(`facultyID`)
 );

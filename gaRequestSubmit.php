@@ -7,7 +7,7 @@ try {
 
 	$conn=createPDO();
 
-	$stmt = $conn->prepare("INSERT INTO request (reason, hours, description, internet, wordProcessing, spreadsheets, programming, `database`, sap, statisticalPackages,  programmingLanguages,  writing,  editing,  english, grading, otherSkills, multipleGAs, multipleGAsNumber, comments) VALUES  (:reason, :hours, :description, :internet, :wordProcessing, :spreadsheets, :programming, :database, :sap, :statisticalPackages, :programmingLanguages, :writing, :editing, :english, :grading, :otherSkills, :multipleGAs, :multipleGAsNumber, :comments)");
+	$stmt = $conn->prepare("INSERT INTO request (reason, hours, description, internet, wordProcessing, spreadsheets, programming, databaseSkill, sap, statisticalPackages,  programmingLanguages,  writing,  editing,  english, grading, otherSkills, multipleGAs, multipleGAsNumber, comments) VALUES  (:reason, :hours, :description, :internet, :wordProcessing, :spreadsheets, :programming, :database, :sap, :statisticalPackages, :programmingLanguages, :writing, :editing, :english, :grading, :otherSkills, :multipleGAs, :multipleGAsNumber, :comments)");
 
 	$stmt->bindParam(':reason', $_POST['reason']);
 	$stmt->bindParam(':hours', $_POST['hours']);
@@ -16,7 +16,7 @@ try {
 	$stmt->bindParam(':wordProcessing', $_POST['wordProcessing']);
 	$stmt->bindParam(':spreadsheets', $_POST['spreadsheets']);
 	$stmt->bindParam(':programming', $_POST['programming']);
-	$stmt->bindParam(':database', $_POST['database']);
+	$stmt->bindParam(':databaseSkill', $_POST['databaseSkill']);
 	$stmt->bindParam(':sap', $_POST['sap']);
 	$stmt->bindParam(':statisticalPackages', $_POST['statisticalPackages']);
 	$stmt->bindParam(':programmingLanguages', $_POST['programmingLanguages']);
