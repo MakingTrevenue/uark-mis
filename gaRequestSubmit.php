@@ -36,8 +36,6 @@ try {
 	echo "<br> Stack trace: " . $e->getTraceAsString();
 }
 
-
-
-print_r($_POST);
+header('Location: gaRequestSuccess.php');
 
 ?>

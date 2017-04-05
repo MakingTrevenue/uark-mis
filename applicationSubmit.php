@@ -227,7 +227,7 @@ try {
 
 
 	$conn->commit();	
-	header('Location: applicationSuccess.html');
+	header('Location: applicationSuccess.php');
 }
 catch(Exception $e){
 	echo "Error: " . $e->getMessage();
