@@ -3,7 +3,6 @@
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
     include 'php/functions.php';	
-	
 	if(isset($_POST)){
 		try {
 			$conn=createPDO();
@@ -30,8 +29,15 @@
 					$_SESSION["adminRole"]=$row['adminRole'];																										
 				header('Location: index.php');
 			}
-            else
-                echo "Incorrect";
+            else{
+				include 'header.php'; ?>
+				<h1 class="text-center text-danger">
+					You need 
+					<b> <?php echo $_GET['e']; ?> </b>
+					permissions to access this page.
+				</h1>
+				<?php
+			}
 		}
 		catch(Exception $e){
 			echo "Error: " . $e->getMessage();
