@@ -165,7 +165,7 @@ try {
 	$stmt = $conn->prepare("INSERT INTO college (applicationID,  collegeName,  dateStarted,  dateEnded,  gpa,  hoursEarned,  hoursEnrolled,  degree,  major)
 									   VALUES  (:applicationID, :collegeName, :dateStarted, :dateEnded, :gpa, :hoursEarned, :hoursEnrolled, :degree, :major);");
 
-	$stmt->bindParam(':applicationID', $applicationID);
+	$stmt->bindParam(':applicationID', $appid);
 	$stmt->bindParam(':collegeName', $_POST['collegeName']);
 	$stmt->bindParam(':dateStarted', $_POST['dateStarted']);
 	$stmt->bindParam(':dateEnded', $_POST['dateEnded']);
