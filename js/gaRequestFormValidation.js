@@ -18,7 +18,7 @@ $.validator.setDefaults({
 });
 
 //Form Validation
-$("#applicationform").validate({ 
+$("#gaRequestForm").validate({ 
     focusInvalid: false,
     invalidHandler: function(form, validator) {
         if (!validator.numberOfInvalids())
