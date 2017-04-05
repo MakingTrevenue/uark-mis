@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.0.10.18
+-- https://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 05, 2017 at 03:11 AM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- Host: localhost
+-- Generation Time: Apr 05, 2017 at 07:18 PM
+-- Server version: 5.5.54
+-- PHP Version: 5.6.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `uark`
@@ -26,15 +26,18 @@ SET time_zone = "+00:00";
 -- Table structure for table `address`
 --
 
-CREATE TABLE `address` (
-  `addressID` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `address` (
+  `addressID` int(11) NOT NULL AUTO_INCREMENT,
   `street1` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `street2` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `city` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `stateID` char(2) COLLATE utf8_unicode_ci NOT NULL,
   `zipCode` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
-  `countryID` char(2) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `countryID` char(2) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`addressID`),
+  KEY `stateID` (`stateID`),
+  KEY `countryID` (`countryID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=151 ;
 
 --
 -- Dumping data for table `address`
@@ -198,13 +201,15 @@ INSERT INTO `address` (`addressID`, `street1`, `street2`, `city`, `stateID`, `zi
 -- Table structure for table `advising`
 --
 
-CREATE TABLE `advising` (
+CREATE TABLE IF NOT EXISTS `advising` (
   `studentID` int(11) NOT NULL,
   `classID` int(11) NOT NULL,
   `term` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `year` year(4) NOT NULL,
   `date` date NOT NULL,
-  `comments` text COLLATE utf8_unicode_ci
+  `comments` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`studentID`,`classID`),
+  KEY `classID` (`classID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -213,9 +218,10 @@ CREATE TABLE `advising` (
 -- Table structure for table `application`
 --
 
-CREATE TABLE `application` (
-  `applicationID` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `application` (
+  `applicationID` int(11) NOT NULL AUTO_INCREMENT,
   `studentID` int(11) NOT NULL,
+  `userID` int(11) DEFAULT NULL,
   `term` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `year` year(4) NOT NULL,
   `program` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
@@ -251,165 +257,167 @@ CREATE TABLE `application` (
   `offerStatus` varchar(25) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Undecided',
   `assistantshipStatus` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
   `applicantResponse` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `applicationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `applicationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`applicationID`),
+  KEY `studentID` (`studentID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=151 ;
 
 --
 -- Dumping data for table `application`
 --
 
-INSERT INTO `application` (`applicationID`, `studentID`, `term`, `year`, `program`, `concentration`, `reqScholarship`, `previousApp`, `previousAppDate`, `previousEnrollment`, `previousEnrollmentDate`, `previousEnrollmentStatus`, `undergradGPA`, `juniorseniorGPA`, `currentEmployer`, `timeAtCurrentEmployer`, `gmat`, `gmatTestDate`, `gmatQScore`, `gmatVScore`, `gmatTScore`, `gre`, `greTestDate`, `greQScore`, `greVScore`, `greTScore`, `toeflOnline`, `toeflPaper`, `toeflTestDate`, `toeflOnlineScore`, `toeflPaperScore`, `tse`, `tseTestDate`, `tseScore`, `offerStatus`, `assistantshipStatus`, `applicantResponse`, `applicationDate`) VALUES
-(1, 1, 'Spring', 2019, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 1, 0, 'Fall 2010', 1, 'Fall 2011', 'Undergraduate', '3.44', '2.73', 'Heller and Sons', '2009-10-26', 0, '2015-02-17', 46, 16, 307, 1, '2015-09-12', 139, 169, 282, 0, 0, '2014-04-04', 113, 488, 0, '2015-07-26', 43, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(2, 2, 'Fall', 2019, 'Professional MIS', 'Software Engineering Management', 0, 0, 'Spring 2013', 0, 'Spring 2011', 'Other', '2.81', '2.87', 'Beahan, Stark and Goyette', '2014-05-23', 1, '2013-08-09', 14, 46, 761, 1, '2014-04-12', 139, 150, 310, 0, 1, '2014-08-04', 88, 347, 1, '2016-07-03', 44, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(3, 3, 'Spring', 2020, 'Professional MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Fall 2015', 0, 'Fall 2010', 'Graduate', '3.41', '3.21', 'Koss-Boyle', '2014-06-24', 0, '2017-01-30', 36, 14, 724, 1, '2016-10-02', 140, 136, 272, 1, 1, '2012-03-23', 31, 511, 1, '2012-12-30', 29, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(4, 4, 'Spring', 2018, 'Professional MIS', 'Software Engineering Management', 0, 0, 'Fall 2013', 0, 'Fall 2013', 'Undergraduate', '3.04', '3.19', 'Hermann-Hagenes', '2011-12-30', 1, '2016-10-23', 49, 17, 405, 1, '2013-10-17', 154, 135, 273, 1, 0, '2013-02-13', 77, 374, 1, '2011-08-24', 22, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(5, 5, 'Summer', 2018, 'Professional MIS', 'Information Technology Management', 0, 1, 'Spring 2015', 0, 'Fall 2010', 'Other', '3.00', '3.36', 'Walter, Ward and Kerluke', '2013-02-17', 1, '2017-07-09', 50, 44, 264, 1, '2011-05-13', 170, 151, 294, 1, 0, '2016-05-21', 64, 496, 1, '2015-04-25', 54, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(6, 6, 'Summer', 2019, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Spring 2012', 0, 'Spring 2012', 'Graduate', '2.77', '3.39', 'Carroll-Berge', '2009-09-18', 0, '2016-08-22', 43, 38, 223, 0, '2017-11-06', 139, 135, 290, 0, 0, '2011-02-07', 116, 467, 0, '2015-06-09', 42, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(7, 7, 'Spring', 2019, 'Professional MIS', 'Software Engineering Management', 1, 0, 'Fall 2010', 1, 'Fall 2013', 'Undergraduate', '2.94', '2.62', 'Dooley-Jacobi', '2009-10-22', 1, '2014-10-03', 27, 51, 703, 1, '2017-09-22', 152, 149, 334, 0, 1, '2013-06-10', 3, 516, 1, '2017-05-09', 42, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(8, 8, 'Summer', 2019, 'Full-Time MIS', 'Software Engineering Management', 1, 0, 'Fall 2011', 1, 'Spring 2012', 'Graduate', '3.83', '3.54', 'Schmeler-Howell', '2007-05-27', 1, '2012-03-03', 43, 47, 650, 1, '2017-03-02', 137, 169, 313, 1, 0, '2013-10-07', 4, 464, 0, '2013-09-26', 32, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(9, 9, 'Fall', 2016, 'Professional MIS', 'Information Technology Management', 0, 0, 'Spring 2015', 0, 'Fall 2014', 'Other', '2.76', '2.76', 'Daniel Inc', '2013-05-20', 0, '2017-03-23', 51, 14, 261, 1, '2016-01-15', 154, 154, 294, 0, 0, '2011-06-10', 117, 490, 0, '2013-11-19', 52, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(10, 10, 'Fall', 2016, 'Full-Time MIS', 'Information Technology Management', 1, 0, 'Fall 2011', 0, 'Fall 2012', 'Graduate', '3.95', '3.41', 'Kovacek and Sons', '2009-02-22', 0, '2012-08-20', 20, 29, 539, 1, '2015-09-28', 167, 135, 310, 1, 1, '2014-12-19', 24, 387, 0, '2015-02-03', 36, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(11, 11, 'Summer', 2020, 'Full-Time MIS', 'Software Engineering Management', 0, 0, 'Fall 2015', 0, 'Spring 2015', 'Graduate', '3.42', '3.44', 'Lindgren Inc', '2008-03-12', 0, '2015-08-26', 21, 35, 788, 1, '2012-09-17', 166, 133, 327, 1, 1, '2017-08-16', 78, 604, 0, '2011-02-20', 28, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(12, 12, 'Fall', 2020, 'Full-Time MIS', 'Information Technology Management', 1, 1, 'Fall 2010', 0, 'Fall 2011', 'Graduate', '2.52', '3.96', 'Treutel, Stracke and Ruecker', '2008-02-13', 0, '2014-08-13', 26, 25, 679, 0, '2014-06-01', 170, 161, 263, 1, 0, '2011-03-15', 46, 586, 0, '2011-06-12', 48, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(13, 13, 'Fall', 2020, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Fall 2013', 1, 'Spring 2013', 'Other', '3.32', '2.87', 'Russel, Veum and Jacobs', '2009-05-26', 1, '2011-11-11', 27, 21, 359, 0, '2013-05-09', 134, 155, 273, 1, 0, '2017-06-23', 101, 486, 0, '2016-10-22', 31, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(14, 14, 'Spring', 2018, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 1, 0, 'Spring 2010', 1, 'Fall 2012', 'Undergraduate', '3.69', '2.74', 'Gerlach, Steuber and Lesch', '2012-07-19', 1, '2015-01-15', 26, 22, 474, 1, '2016-08-05', 141, 167, 331, 1, 0, '2013-05-23', 95, 348, 1, '2012-02-21', 43, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(15, 15, 'Spring', 2020, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Spring 2014', 0, 'Fall 2014', 'Undergraduate', '2.93', '3.00', 'Beer-Schowalter', '2013-02-22', 1, '2015-01-03', 27, 35, 303, 0, '2017-10-06', 153, 147, 339, 0, 1, '2014-04-23', 36, 677, 0, '2016-12-13', 24, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(16, 16, 'Fall', 2018, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Spring 2013', 0, 'Spring 2010', 'Other', '3.98', '3.39', 'Lindgren LLC', '2007-10-15', 0, '2015-08-05', 12, 17, 217, 1, '2016-11-24', 145, 165, 325, 1, 1, '2017-06-21', 8, 447, 1, '2016-05-05', 29, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(17, 17, 'Fall', 2016, 'Professional MIS', 'Software Engineering Management', 0, 1, 'Spring 2010', 1, 'Fall 2012', 'Undergraduate', '3.23', '2.66', 'Davis Inc', '2010-11-14', 0, '2016-09-30', 37, 49, 219, 0, '2016-06-18', 168, 155, 303, 1, 0, '2012-09-16', 17, 510, 1, '2015-11-17', 54, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(18, 18, 'Fall', 2020, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 1, 1, 'Fall 2013', 1, 'Spring 2014', 'Graduate', '3.79', '3.25', 'Kassulke-Haley', '2012-07-25', 0, '2012-10-01', 42, 10, 366, 0, '2017-07-19', 163, 156, 277, 1, 0, '2016-05-12', 28, 482, 0, '2017-05-02', 22, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(19, 19, 'Spring', 2017, 'Professional MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Spring 2012', 1, 'Spring 2012', 'Other', '3.90', '2.91', 'Torp Group', '2010-05-05', 0, '2012-06-08', 44, 25, 722, 1, '2013-05-06', 134, 158, 311, 0, 1, '2013-06-05', 92, 566, 0, '2013-06-07', 46, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(20, 20, 'Fall', 2016, 'Full-Time MIS', 'Information Technology Management', 1, 1, 'Spring 2011', 0, 'Fall 2012', 'Graduate', '2.56', '2.54', 'Predovic, Heidenreich and Jacobson', '2012-11-21', 0, '2017-03-25', 22, 22, 599, 1, '2013-09-08', 149, 170, 311, 1, 0, '2017-03-24', 85, 476, 0, '2016-04-09', 58, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(21, 21, 'Summer', 2020, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Fall 2012', 0, 'Fall 2011', 'Graduate', '3.44', '3.38', 'Waelchi-Lynch', '2007-12-31', 0, '2011-05-26', 33, 20, 772, 1, '2014-12-16', 149, 149, 319, 0, 0, '2014-09-21', 42, 665, 0, '2017-06-03', 38, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(22, 22, 'Spring', 2020, 'Full-Time MIS', 'Information Technology Management', 0, 0, 'Spring 2015', 1, 'Fall 2011', 'Other', '3.69', '2.73', 'Dooley-Jacobs', '2008-02-09', 0, '2014-07-11', 23, 45, 776, 1, '2016-04-15', 139, 147, 292, 1, 0, '2013-06-12', 113, 394, 0, '2016-10-20', 32, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(23, 23, 'Spring', 2016, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 0, 0, 'Spring 2013', 0, 'Spring 2014', 'Other', '3.69', '2.82', 'Kuhn, Dare and McDermott', '2013-01-31', 1, '2017-03-30', 33, 46, 225, 0, '2014-10-12', 130, 158, 293, 1, 1, '2016-07-14', 93, 418, 1, '2013-02-15', 53, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(24, 24, 'Fall', 2019, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 0, 'Spring 2012', 1, 'Fall 2014', 'Undergraduate', '3.94', '3.95', 'Durgan, Greenholt and Bartell', '2007-03-09', 0, '2012-11-10', 8, 6, 669, 0, '2012-05-03', 143, 151, 260, 0, 1, '2012-12-14', 105, 443, 1, '2011-09-05', 23, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(25, 25, 'Fall', 2018, 'Professional MIS', 'Software Engineering Management', 1, 1, 'Spring 2015', 0, 'Spring 2015', 'Graduate', '2.90', '3.64', 'Sporer, Hilll and Lehner', '2008-05-29', 1, '2017-03-06', 43, 42, 703, 1, '2017-07-31', 161, 160, 318, 1, 0, '2015-03-27', 40, 638, 1, '2014-06-25', 57, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(26, 26, 'Fall', 2019, 'Full-Time MIS', 'Software Engineering Management', 1, 1, 'Fall 2014', 1, 'Spring 2014', 'Other', '3.25', '2.85', 'Wiegand-Cassin', '2014-05-22', 0, '2012-08-04', 30, 49, 669, 1, '2013-01-20', 135, 143, 301, 0, 0, '2013-09-13', 72, 462, 1, '2015-07-16', 34, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(27, 27, 'Summer', 2016, 'Professional MIS', 'Software Engineering Management', 1, 0, 'Spring 2015', 0, 'Fall 2012', 'Graduate', '3.10', '3.42', 'Hoeger, Bogisich and Hahn', '2010-12-06', 0, '2016-11-13', 14, 11, 417, 1, '2017-09-24', 157, 144, 278, 0, 1, '2016-07-02', 105, 659, 0, '2015-01-24', 55, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(28, 28, 'Spring', 2019, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 1, 1, 'Fall 2012', 1, 'Spring 2013', 'Undergraduate', '3.25', '3.38', 'Dietrich-Predovic', '2014-12-10', 1, '2013-05-11', 12, 20, 309, 0, '2016-10-23', 143, 133, 296, 1, 0, '2017-03-17', 43, 318, 0, '2011-07-29', 46, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(29, 29, 'Spring', 2020, 'Full-Time MIS', 'Information Technology Management', 1, 1, 'Fall 2015', 1, 'Spring 2014', 'Other', '3.68', '2.63', 'Blick-Parker', '2012-05-17', 0, '2013-11-04', 51, 19, 787, 1, '2015-05-25', 153, 133, 283, 1, 1, '2016-09-02', 102, 559, 1, '2013-04-18', 21, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(30, 30, 'Fall', 2017, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 1, 1, 'Spring 2015', 1, 'Spring 2010', 'Graduate', '3.68', '3.00', 'Armstrong and Sons', '2010-02-18', 1, '2013-11-20', 19, 42, 591, 1, '2013-11-24', 146, 164, 276, 1, 1, '2016-08-29', 11, 426, 0, '2015-02-28', 37, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(31, 31, 'Spring', 2020, 'Full-Time MIS', 'Information Technology Management', 1, 0, 'Spring 2010', 1, 'Fall 2014', 'Undergraduate', '3.80', '2.59', 'Wyman, Spinka and Hermiston', '2008-10-25', 1, '2017-01-25', 17, 21, 378, 0, '2013-11-04', 168, 169, 276, 0, 0, '2013-06-19', 108, 587, 0, '2017-04-17', 35, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(32, 32, 'Spring', 2017, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 0, 0, 'Fall 2014', 0, 'Fall 2015', 'Other', '3.61', '3.63', 'Haley, Kessler and Gutkowski', '2015-11-01', 0, '2012-06-05', 23, 51, 431, 0, '2016-03-26', 144, 146, 262, 0, 1, '2017-05-23', 68, 433, 0, '2013-04-11', 58, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(33, 33, 'Fall', 2017, 'Professional MIS', 'Information Technology Management', 0, 0, 'Spring 2011', 0, 'Fall 2011', 'Other', '2.56', '2.59', 'VonRueden, Schmeler and Quigley', '2010-10-08', 1, '2017-12-04', 13, 38, 727, 0, '2014-03-27', 147, 161, 275, 1, 1, '2012-11-02', 30, 671, 0, '2016-10-09', 42, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(34, 34, 'Spring', 2016, 'Professional MIS', 'Information Technology Management', 0, 0, 'Spring 2013', 0, 'Spring 2013', 'Undergraduate', '3.99', '3.18', 'Sporer Inc', '2010-03-17', 1, '2017-03-10', 9, 20, 780, 1, '2016-12-11', 131, 154, 313, 1, 1, '2013-08-08', 4, 412, 1, '2016-07-03', 54, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(35, 35, 'Fall', 2020, 'Full-Time MIS', 'Information Technology Management', 1, 0, 'Fall 2014', 0, 'Fall 2010', 'Other', '2.76', '2.86', 'Orn LLC', '2014-05-14', 1, '2017-04-24', 16, 32, 733, 0, '2015-02-10', 139, 163, 315, 0, 1, '2012-07-07', 112, 520, 1, '2012-08-04', 40, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(36, 36, 'Fall', 2017, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Fall 2013', 1, 'Spring 2012', 'Graduate', '2.53', '3.17', 'Hoeger LLC', '2007-03-24', 1, '2013-06-09', 12, 47, 640, 1, '2014-10-30', 132, 170, 262, 0, 1, '2013-06-22', 36, 519, 0, '2017-07-15', 31, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(37, 37, 'Spring', 2018, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Spring 2015', 1, 'Spring 2015', 'Undergraduate', '2.64', '3.02', 'Wehner Inc', '2016-04-23', 1, '2015-09-28', 21, 40, 749, 1, '2017-04-30', 136, 146, 310, 1, 1, '2011-01-14', 12, 472, 1, '2016-09-01', 28, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(38, 38, 'Fall', 2018, 'Full-Time MIS', 'Software Engineering Management', 0, 1, 'Fall 2012', 0, 'Spring 2015', 'Other', '3.82', '2.58', 'Littel LLC', '2011-04-22', 1, '2016-07-16', 10, 41, 273, 0, '2014-01-29', 170, 136, 272, 0, 0, '2014-07-02', 92, 353, 0, '2012-12-01', 53, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(39, 39, 'Summer', 2018, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 1, 0, 'Spring 2015', 1, 'Spring 2012', 'Undergraduate', '2.70', '3.75', 'Moen, Ernser and Crist', '2008-07-09', 0, '2012-11-08', 16, 8, 577, 0, '2011-02-14', 152, 161, 276, 0, 1, '2013-08-08', 72, 561, 1, '2012-06-01', 53, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(40, 40, 'Fall', 2017, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 1, 0, 'Spring 2010', 1, 'Spring 2011', 'Other', '2.81', '3.40', 'Carter LLC', '2009-06-26', 1, '2015-04-15', 41, 47, 386, 1, '2015-02-28', 148, 148, 319, 0, 0, '2011-12-24', 16, 677, 1, '2015-08-04', 42, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(41, 41, 'Summer', 2018, 'Professional MIS', 'Information Technology Management', 1, 0, 'Fall 2013', 0, 'Fall 2013', 'Other', '3.17', '3.67', 'Will-Oberbrunner', '2010-04-27', 1, '2011-01-17', 24, 20, 239, 1, '2017-03-20', 130, 159, 275, 1, 0, '2011-04-09', 37, 501, 1, '2013-11-26', 40, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(42, 42, 'Fall', 2020, 'Full-Time MIS', 'Information Technology Management', 0, 1, 'Fall 2013', 1, 'Spring 2010', 'Graduate', '3.63', '3.49', 'Predovic-Mraz', '2014-02-20', 0, '2016-10-11', 43, 30, 254, 0, '2017-09-21', 161, 141, 268, 1, 0, '2012-01-14', 76, 612, 0, '2013-10-04', 38, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(43, 43, 'Fall', 2020, 'Professional MIS', 'Software Engineering Management', 0, 0, 'Fall 2012', 0, 'Fall 2015', 'Undergraduate', '3.58', '2.74', 'Wiegand, Hintz and Jaskolski', '2012-01-24', 0, '2011-09-25', 27, 29, 763, 1, '2013-03-29', 163, 139, 269, 0, 1, '2017-06-07', 25, 334, 0, '2012-07-15', 30, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(44, 44, 'Summer', 2020, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 1, 1, 'Fall 2015', 1, 'Spring 2015', 'Undergraduate', '3.94', '3.90', 'Schmitt-Welch', '2014-08-02', 0, '2014-06-09', 18, 40, 649, 0, '2016-01-22', 168, 168, 318, 0, 0, '2015-01-23', 76, 379, 1, '2017-12-17', 29, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(45, 45, 'Summer', 2017, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Spring 2014', 1, 'Fall 2014', 'Undergraduate', '2.72', '3.43', 'Beahan-Wunsch', '2008-06-26', 0, '2017-04-09', 44, 26, 296, 1, '2013-06-19', 167, 138, 287, 0, 1, '2013-10-04', 57, 502, 0, '2012-03-14', 31, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(46, 46, 'Summer', 2017, 'Professional MIS', 'Information Technology Management', 0, 1, 'Spring 2011', 0, 'Spring 2010', 'Graduate', '3.93', '3.76', 'Kreiger-Zemlak', '2008-10-21', 0, '2015-02-05', 35, 15, 544, 1, '2011-03-18', 163, 165, 335, 1, 0, '2014-03-12', 88, 423, 0, '2014-08-10', 41, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(47, 47, 'Fall', 2020, 'Professional MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Fall 2010', 1, 'Fall 2013', 'Graduate', '3.71', '3.60', 'Grimes, Satterfield and Hoeger', '2011-02-15', 0, '2014-07-30', 48, 9, 638, 0, '2015-07-22', 163, 168, 335, 1, 1, '2016-01-26', 117, 545, 1, '2017-03-13', 32, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(48, 48, 'Fall', 2017, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Spring 2012', 1, 'Spring 2012', 'Other', '3.02', '2.72', 'Bernhard Group', '2015-07-12', 0, '2011-09-07', 24, 42, 721, 1, '2015-12-02', 139, 135, 268, 1, 1, '2011-02-27', 17, 532, 0, '2013-04-30', 43, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(49, 49, 'Summer', 2016, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Fall 2012', 1, 'Fall 2011', 'Undergraduate', '3.32', '3.84', 'Huels-Stark', '2012-12-16', 1, '2016-10-12', 18, 36, 661, 1, '2011-05-27', 160, 166, 282, 0, 1, '2015-10-29', 69, 625, 0, '2014-10-08', 29, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(50, 50, 'Spring', 2017, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 1, 0, 'Spring 2010', 1, 'Fall 2012', 'Undergraduate', '3.27', '2.61', 'Kris Group', '2009-04-06', 1, '2011-09-03', 14, 28, 503, 0, '2011-09-09', 142, 166, 276, 1, 1, '2011-07-22', 7, 312, 1, '2012-10-10', 46, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(51, 51, 'Fall', 2017, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Fall 2011', 1, 'Spring 2013', 'Graduate', '2.81', '3.52', 'Jaskolski-Beer', '2014-04-14', 0, '2016-05-14', 32, 50, 443, 1, '2014-09-10', 169, 151, 312, 1, 1, '2013-07-26', 19, 608, 0, '2013-01-02', 54, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(52, 52, 'Summer', 2018, 'Full-Time MIS', 'Software Engineering Management', 0, 0, 'Fall 2013', 1, 'Fall 2015', 'Other', '2.73', '3.50', 'Bartell Inc', '2009-06-27', 0, '2014-06-28', 36, 47, 694, 1, '2015-05-17', 169, 150, 313, 1, 1, '2012-05-18', 112, 437, 0, '2015-09-17', 43, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(53, 53, 'Summer', 2018, 'Professional MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Spring 2015', 0, 'Spring 2013', 'Undergraduate', '2.84', '3.49', 'Ruecker LLC', '2007-04-13', 1, '2017-02-18', 10, 9, 551, 0, '2016-09-12', 162, 148, 271, 0, 1, '2012-09-11', 21, 426, 1, '2011-04-26', 44, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(54, 54, 'Summer', 2019, 'Professional MIS', 'Information Technology Management', 1, 1, 'Spring 2012', 1, 'Spring 2014', 'Graduate', '3.71', '3.93', 'McKenzie, Collins and Casper', '2016-03-29', 0, '2012-07-04', 24, 14, 665, 0, '2011-05-05', 148, 159, 276, 0, 1, '2014-04-13', 91, 596, 1, '2016-10-20', 34, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(55, 55, 'Fall', 2017, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 1, 1, 'Fall 2011', 0, 'Spring 2012', 'Undergraduate', '3.34', '3.62', 'Kreiger, Jerde and Batz', '2008-01-31', 1, '2016-05-03', 10, 13, 453, 0, '2011-08-25', 160, 133, 282, 1, 1, '2011-03-23', 96, 482, 0, '2016-04-12', 31, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(56, 56, 'Summer', 2017, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 0, 'Spring 2010', 1, 'Spring 2014', 'Graduate', '3.28', '3.77', 'Sanford-Halvorson', '2016-01-24', 0, '2013-12-09', 48, 29, 556, 1, '2015-08-03', 155, 137, 298, 0, 1, '2011-04-22', 9, 379, 1, '2012-06-26', 24, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(57, 57, 'Spring', 2020, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Fall 2013', 0, 'Fall 2011', 'Other', '3.51', '3.32', 'Stroman-Nader', '2012-10-17', 1, '2013-07-28', 36, 36, 792, 1, '2014-06-19', 170, 165, 261, 1, 1, '2015-06-21', 46, 554, 1, '2017-06-03', 53, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(58, 58, 'Summer', 2017, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 1, 'Spring 2010', 1, 'Spring 2014', 'Undergraduate', '3.28', '2.58', 'Gutkowski-Goodwin', '2013-04-09', 1, '2015-11-04', 17, 50, 241, 1, '2011-05-06', 158, 149, 267, 0, 1, '2015-06-04', 95, 438, 0, '2014-02-14', 29, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(59, 59, 'Fall', 2019, 'Professional MIS', 'Enterprise Systems (ES) Management', 0, 1, 'Fall 2014', 0, 'Fall 2015', 'Graduate', '3.46', '2.69', 'Hilpert, Bogan and Will', '2008-08-08', 0, '2017-10-05', 31, 30, 451, 0, '2012-08-11', 161, 170, 292, 1, 1, '2017-03-09', 78, 503, 1, '2015-03-30', 32, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(60, 60, 'Fall', 2017, 'Professional MIS', 'Information Technology Management', 1, 0, 'Fall 2013', 0, 'Spring 2013', 'Graduate', '3.63', '2.96', 'Keeling and Sons', '2013-08-11', 0, '2014-02-13', 46, 9, 703, 0, '2017-01-26', 168, 156, 295, 1, 1, '2017-09-12', 53, 528, 1, '2015-03-02', 52, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(61, 61, 'Spring', 2018, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Spring 2015', 0, 'Fall 2011', 'Undergraduate', '3.17', '3.15', 'Gerlach, Davis and Fritsch', '2008-08-01', 0, '2016-11-20', 22, 26, 249, 0, '2011-10-25', 169, 151, 284, 1, 0, '2014-04-21', 94, 367, 0, '2011-01-22', 38, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(62, 62, 'Spring', 2019, 'Professional MIS', 'Software Engineering Management', 1, 1, 'Spring 2011', 0, 'Spring 2010', 'Undergraduate', '2.83', '3.90', 'Christiansen, Ernser and Roberts', '2009-09-14', 1, '2015-09-10', 9, 10, 478, 1, '2014-07-31', 159, 150, 313, 1, 1, '2016-07-25', 94, 543, 0, '2017-06-14', 21, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(63, 63, 'Fall', 2020, 'Full-Time MIS', 'Information Technology Management', 0, 1, 'Fall 2010', 0, 'Spring 2013', 'Graduate', '3.92', '3.79', 'Raynor LLC', '2013-01-17', 0, '2011-11-01', 19, 8, 371, 1, '2013-03-13', 141, 157, 288, 1, 1, '2017-07-29', 72, 339, 1, '2015-04-05', 45, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(64, 64, 'Spring', 2018, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 1, 0, 'Spring 2012', 0, 'Spring 2013', 'Undergraduate', '3.97', '2.81', 'Kling, Boyer and Wyman', '2013-04-11', 1, '2013-09-11', 13, 33, 542, 1, '2014-05-13', 154, 134, 330, 1, 1, '2011-02-21', 61, 415, 1, '2011-04-19', 53, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(65, 65, 'Summer', 2017, 'Full-Time MIS', 'Information Technology Management', 0, 0, 'Spring 2010', 1, 'Fall 2011', 'Graduate', '3.94', '3.69', 'Pouros LLC', '2009-12-23', 1, '2013-10-24', 10, 50, 333, 0, '2013-03-21', 153, 150, 303, 1, 0, '2016-12-10', 59, 443, 0, '2016-08-29', 58, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(66, 66, 'Spring', 2020, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 0, 'Spring 2011', 0, 'Spring 2014', 'Undergraduate', '3.78', '3.23', 'Gleichner-Ebert', '2014-05-21', 1, '2012-02-11', 21, 16, 207, 0, '2014-04-16', 143, 140, 323, 0, 0, '2013-01-15', 76, 345, 0, '2012-09-01', 35, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(67, 67, 'Summer', 2016, 'Professional MIS', 'Information Technology Management', 1, 0, 'Spring 2010', 0, 'Spring 2014', 'Graduate', '2.57', '3.95', 'O\'Keefe, Mante and Moen', '2014-02-17', 0, '2013-04-10', 38, 47, 608, 1, '2011-05-11', 146, 156, 338, 0, 1, '2015-11-16', 110, 652, 0, '2013-05-25', 31, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(68, 68, 'Spring', 2019, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 1, 1, 'Spring 2015', 1, 'Fall 2013', 'Graduate', '2.83', '2.88', 'Lynch-MacGyver', '2012-09-12', 0, '2017-10-12', 14, 30, 714, 1, '2013-12-08', 158, 130, 268, 0, 1, '2011-06-24', 5, 658, 0, '2016-01-02', 24, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(69, 69, 'Spring', 2016, 'Full-Time MIS', 'Information Technology Management', 1, 0, 'Fall 2014', 1, 'Spring 2013', 'Graduate', '3.00', '2.55', 'Rolfson, Klocko and Carroll', '2013-08-05', 1, '2011-11-30', 51, 27, 468, 1, '2014-11-09', 136, 156, 317, 1, 1, '2016-07-16', 71, 374, 0, '2015-01-28', 23, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(70, 70, 'Spring', 2016, 'Full-Time MIS', 'Software Engineering Management', 1, 0, 'Fall 2013', 1, 'Fall 2010', 'Graduate', '2.72', '2.73', 'Hudson-Hickle', '2012-08-31', 0, '2013-05-05', 31, 51, 267, 1, '2013-10-02', 158, 160, 331, 1, 1, '2013-04-22', 64, 585, 1, '2016-09-10', 21, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(71, 71, 'Spring', 2020, 'Professional MIS', 'Information Technology Management', 0, 0, 'Fall 2015', 1, 'Spring 2012', 'Graduate', '2.65', '2.89', 'Bergstrom Group', '2008-08-21', 0, '2013-12-12', 32, 31, 239, 0, '2011-11-16', 134, 131, 295, 1, 1, '2015-03-24', 83, 345, 1, '2012-01-22', 34, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(72, 72, 'Fall', 2019, 'Full-Time MIS', 'Information Technology Management', 1, 0, 'Spring 2011', 0, 'Fall 2012', 'Other', '3.33', '2.75', 'Hamill, Gusikowski and Olson', '2009-06-18', 0, '2014-10-25', 29, 50, 479, 1, '2016-12-03', 132, 169, 335, 0, 1, '2012-10-14', 8, 402, 0, '2011-07-02', 56, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(73, 73, 'Spring', 2016, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 1, 0, 'Fall 2012', 0, 'Fall 2014', 'Undergraduate', '2.56', '3.82', 'Smitham Inc', '2011-12-08', 0, '2017-06-10', 47, 22, 388, 0, '2017-09-26', 149, 151, 307, 0, 1, '2011-10-11', 73, 416, 0, '2013-05-22', 58, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(74, 74, 'Spring', 2020, 'Full-Time MIS', 'Information Technology Management', 0, 0, 'Spring 2014', 0, 'Fall 2010', 'Undergraduate', '2.72', '3.28', 'Harber, Stracke and Mann', '2011-02-07', 1, '2013-05-20', 22, 27, 721, 0, '2015-12-13', 155, 154, 281, 0, 1, '2012-03-01', 94, 545, 1, '2017-06-28', 32, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(75, 75, 'Spring', 2019, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 1, 0, 'Fall 2010', 1, 'Fall 2010', 'Other', '2.57', '3.32', 'Herman, Torp and Schmidt', '2008-06-13', 1, '2015-07-09', 25, 42, 388, 0, '2013-02-07', 162, 166, 317, 1, 1, '2012-02-20', 93, 384, 0, '2012-09-03', 58, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(76, 76, 'Fall', 2018, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 1, 0, 'Fall 2012', 0, 'Fall 2011', 'Graduate', '3.11', '3.87', 'Bins, Pfannerstill and Cassin', '2010-10-30', 1, '2012-10-23', 16, 7, 248, 0, '2012-01-12', 139, 149, 320, 0, 0, '2013-01-31', 48, 595, 1, '2013-08-02', 35, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(77, 77, 'Spring', 2017, 'Professional MIS', 'Information Technology Management', 0, 0, 'Spring 2012', 1, 'Spring 2014', 'Other', '3.54', '3.78', 'Anderson, Kling and Kuphal', '2011-12-30', 0, '2016-12-26', 34, 51, 551, 0, '2016-09-03', 155, 148, 311, 1, 1, '2015-12-07', 43, 365, 1, '2016-08-25', 54, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(78, 78, 'Fall', 2019, 'Professional MIS', 'Enterprise Systems (ES) Management', 0, 1, 'Fall 2014', 0, 'Spring 2010', 'Graduate', '3.55', '2.95', 'Weimann-Champlin', '2015-05-07', 1, '2014-05-30', 19, 25, 284, 1, '2017-12-13', 167, 130, 281, 0, 0, '2013-04-09', 37, 516, 1, '2017-03-06', 34, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(79, 79, 'Spring', 2017, 'Professional MIS', 'Software Engineering Management', 1, 0, 'Fall 2014', 0, 'Fall 2014', 'Other', '2.66', '2.81', 'Johns, Treutel and Smith', '2014-07-23', 1, '2013-08-17', 7, 49, 286, 0, '2012-04-11', 147, 160, 282, 0, 0, '2014-02-25', 120, 560, 0, '2017-08-29', 51, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(80, 80, 'Spring', 2017, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Spring 2013', 0, 'Fall 2012', 'Graduate', '3.15', '3.28', 'Becker, Jenkins and Kris', '2016-06-23', 1, '2014-12-25', 28, 44, 702, 0, '2013-06-03', 152, 166, 290, 1, 0, '2017-09-05', 21, 416, 1, '2012-06-23', 44, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(81, 81, 'Summer', 2020, 'Professional MIS', 'Information Technology Management', 1, 0, 'Spring 2015', 1, 'Spring 2012', 'Graduate', '3.41', '2.66', 'Kiehn LLC', '2008-08-06', 1, '2016-12-22', 41, 46, 539, 0, '2011-01-24', 159, 137, 314, 0, 1, '2013-01-13', 38, 484, 1, '2014-07-06', 23, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(82, 82, 'Summer', 2016, 'Professional MIS', 'Information Technology Management', 0, 0, 'Fall 2012', 1, 'Spring 2015', 'Other', '3.13', '2.87', 'O\'Reilly-Dickens', '2014-01-06', 1, '2012-04-30', 13, 41, 518, 0, '2014-11-15', 153, 170, 306, 0, 1, '2015-09-01', 63, 614, 1, '2013-05-26', 58, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(83, 83, 'Fall', 2017, 'Full-Time MIS', 'Software Engineering Management', 0, 1, 'Fall 2011', 1, 'Spring 2010', 'Undergraduate', '3.49', '3.84', 'Harris-Bode', '2013-09-09', 0, '2012-12-22', 50, 43, 743, 0, '2014-11-30', 163, 155, 337, 0, 0, '2012-03-12', 80, 582, 1, '2012-10-25', 25, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(84, 84, 'Fall', 2016, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 0, 0, 'Fall 2015', 0, 'Spring 2012', 'Undergraduate', '2.74', '3.30', 'Kassulke Group', '2010-10-20', 1, '2017-05-30', 7, 9, 730, 1, '2014-02-08', 169, 167, 270, 1, 1, '2017-07-03', 47, 554, 1, '2011-06-25', 40, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(85, 85, 'Summer', 2017, 'Professional MIS', 'Information Technology Management', 1, 0, 'Fall 2014', 1, 'Spring 2014', 'Undergraduate', '2.63', '3.18', 'Herman-Ortiz', '2007-09-19', 1, '2015-12-12', 44, 27, 563, 0, '2017-07-01', 131, 134, 267, 1, 1, '2014-02-26', 88, 499, 1, '2013-11-29', 21, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(86, 86, 'Summer', 2016, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 0, 0, 'Spring 2013', 1, 'Spring 2012', 'Other', '3.10', '2.99', 'Kuhic Inc', '2013-01-22', 1, '2011-01-28', 43, 37, 765, 0, '2016-11-07', 157, 133, 267, 0, 0, '2015-12-23', 109, 535, 1, '2014-04-27', 44, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(87, 87, 'Spring', 2016, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 0, 0, 'Fall 2011', 1, 'Fall 2012', 'Graduate', '3.51', '2.67', 'Purdy, Boyle and Watsica', '2012-01-14', 1, '2011-11-29', 36, 12, 273, 0, '2016-12-18', 150, 138, 298, 0, 0, '2015-05-06', 69, 477, 0, '2012-04-13', 26, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(88, 88, 'Fall', 2018, 'Professional MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Spring 2013', 1, 'Fall 2012', 'Other', '3.68', '3.60', 'McDermott, Corkery and Williamson', '2007-11-03', 1, '2015-06-04', 10, 17, 544, 0, '2013-12-31', 160, 147, 301, 0, 0, '2013-03-23', 63, 543, 0, '2012-04-08', 53, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(89, 89, 'Fall', 2020, 'Professional MIS', 'Software Engineering Management', 1, 1, 'Spring 2014', 1, 'Spring 2013', 'Undergraduate', '3.79', '2.79', 'Crona, Ryan and Tillman', '2014-04-15', 0, '2013-10-17', 39, 18, 206, 0, '2011-03-24', 167, 145, 299, 0, 1, '2017-03-17', 81, 560, 0, '2011-05-09', 59, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(90, 90, 'Fall', 2019, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Spring 2011', 0, 'Spring 2014', 'Other', '3.34', '2.56', 'Brekke, Marks and Mills', '2007-02-14', 1, '2012-06-07', 40, 8, 608, 0, '2017-02-21', 151, 166, 293, 0, 0, '2017-07-21', 17, 576, 1, '2017-05-11', 37, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(91, 91, 'Spring', 2019, 'Professional MIS', 'Information Technology Management', 1, 0, 'Spring 2010', 0, 'Spring 2013', 'Other', '3.93', '3.82', 'Crooks-Bernier', '2007-11-01', 0, '2015-03-08', 23, 34, 588, 1, '2017-06-03', 135, 163, 309, 1, 1, '2016-05-29', 22, 562, 0, '2016-11-07', 22, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(92, 92, 'Fall', 2017, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Fall 2012', 0, 'Fall 2010', 'Undergraduate', '3.90', '3.33', 'Orn, Mraz and Simonis', '2014-09-24', 1, '2015-12-07', 51, 30, 205, 1, '2016-05-22', 167, 166, 327, 1, 1, '2015-02-24', 12, 623, 0, '2015-06-09', 22, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(93, 93, 'Summer', 2020, 'Professional MIS', 'Software Engineering Management', 1, 0, 'Fall 2010', 1, 'Fall 2015', 'Graduate', '2.98', '3.28', 'Swaniawski Inc', '2014-10-06', 0, '2013-10-03', 36, 12, 650, 0, '2013-05-01', 159, 170, 275, 1, 0, '2017-04-08', 85, 447, 1, '2012-03-17', 34, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(94, 94, 'Spring', 2017, 'Professional MIS', 'Software Engineering Management', 0, 1, 'Spring 2014', 0, 'Spring 2012', 'Undergraduate', '3.91', '3.60', 'Wehner-Schaefer', '2015-01-24', 1, '2014-04-14', 14, 45, 368, 0, '2016-04-16', 136, 145, 327, 1, 0, '2011-02-17', 56, 387, 0, '2013-07-18', 38, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(95, 95, 'Spring', 2016, 'Professional MIS', 'Information Technology Management', 1, 1, 'Spring 2012', 0, 'Spring 2012', 'Undergraduate', '3.01', '2.75', 'Nitzsche LLC', '2015-03-26', 0, '2016-08-14', 47, 23, 385, 1, '2011-03-09', 131, 138, 297, 0, 0, '2011-06-10', 93, 540, 0, '2014-05-02', 28, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(96, 96, 'Fall', 2018, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 0, 0, 'Fall 2012', 1, 'Fall 2010', 'Graduate', '3.77', '3.79', 'Pouros and Sons', '2014-02-12', 1, '2014-04-21', 30, 48, 204, 0, '2011-11-15', 146, 161, 279, 0, 1, '2017-01-05', 91, 364, 1, '2017-03-21', 41, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(97, 97, 'Spring', 2016, 'Professional MIS', 'Information Technology Management', 0, 1, 'Fall 2014', 1, 'Fall 2012', 'Graduate', '3.20', '3.43', 'Koelpin, Douglas and Quigley', '2008-12-06', 0, '2015-09-15', 39, 40, 459, 1, '2017-04-06', 165, 159, 280, 0, 1, '2015-01-31', 52, 533, 1, '2014-02-07', 39, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(98, 98, 'Fall', 2020, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Fall 2014', 0, 'Spring 2015', 'Graduate', '3.39', '2.94', 'Schumm-Maggio', '2014-07-18', 1, '2017-12-21', 36, 26, 617, 1, '2016-01-24', 150, 149, 261, 1, 1, '2017-05-21', 91, 482, 1, '2011-01-26', 35, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(99, 99, 'Summer', 2020, 'Professional MIS', 'Enterprise Systems (ES) Management', 1, 0, 'Spring 2011', 0, 'Spring 2015', 'Graduate', '3.79', '2.79', 'Goodwin, Bayer and Prosacco', '2013-01-01', 0, '2016-03-22', 48, 24, 493, 1, '2012-07-24', 139, 141, 332, 1, 0, '2017-01-04', 90, 334, 1, '2012-12-07', 27, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(100, 100, 'Summer', 2017, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Fall 2015', 0, 'Spring 2012', 'Graduate', '3.20', '2.68', 'Feil-Conroy', '2010-11-22', 1, '2012-05-03', 39, 13, 378, 0, '2013-10-06', 148, 156, 271, 1, 1, '2011-05-05', 119, 417, 1, '2014-02-07', 25, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(101, 101, 'Fall', 2019, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 1, 0, 'Spring 2011', 1, 'Spring 2011', 'Graduate', '3.32', '3.94', 'Jast, Veum and Mills', '2007-05-26', 0, '2014-07-22', 13, 13, 438, 1, '2016-11-11', 132, 134, 283, 1, 1, '2011-11-16', 108, 459, 1, '2011-07-16', 40, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(102, 102, 'Summer', 2019, 'Full-Time MIS', 'Software Engineering Management', 1, 0, 'Fall 2013', 1, 'Spring 2015', 'Undergraduate', '2.93', '2.93', 'Schaden, Connelly and Fritsch', '2016-03-11', 1, '2017-03-30', 45, 37, 778, 0, '2017-01-25', 157, 131, 264, 0, 1, '2015-11-09', 23, 554, 1, '2012-08-27', 26, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(103, 103, 'Spring', 2020, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 1, 0, 'Fall 2015', 0, 'Spring 2014', 'Other', '3.78', '3.94', 'Ward Inc', '2011-09-16', 0, '2015-07-18', 12, 21, 290, 0, '2011-08-25', 154, 147, 280, 1, 0, '2012-09-29', 91, 495, 0, '2011-05-03', 52, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(104, 104, 'Fall', 2017, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 1, 'Spring 2011', 0, 'Spring 2013', 'Other', '3.59', '3.75', 'Larkin-Mertz', '2012-06-25', 0, '2015-06-19', 17, 36, 493, 0, '2013-07-22', 143, 166, 271, 1, 1, '2017-11-06', 78, 452, 1, '2016-10-12', 50, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(105, 105, 'Summer', 2017, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Spring 2010', 1, 'Spring 2013', 'Undergraduate', '2.59', '2.95', 'Berge-Hilpert', '2009-09-04', 0, '2013-05-22', 34, 44, 256, 0, '2017-11-04', 137, 134, 307, 0, 1, '2015-07-19', 29, 604, 1, '2015-09-13', 27, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(106, 106, 'Summer', 2018, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 1, 'Spring 2014', 1, 'Spring 2012', 'Other', '3.67', '3.28', 'Schaefer Group', '2014-10-02', 0, '2013-03-16', 36, 7, 236, 0, '2014-02-13', 133, 159, 283, 1, 1, '2015-05-14', 20, 609, 1, '2014-08-09', 48, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(107, 107, 'Spring', 2017, 'Full-Time MIS', 'Software Engineering Management', 1, 1, 'Fall 2010', 1, 'Spring 2015', 'Graduate', '3.85', '2.57', 'Bode-Shanahan', '2007-05-03', 0, '2017-05-27', 47, 47, 405, 0, '2016-09-08', 144, 151, 284, 1, 1, '2012-04-05', 35, 646, 1, '2015-12-25', 29, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(108, 108, 'Summer', 2016, 'Full-Time MIS', 'Software Engineering Management', 0, 0, 'Spring 2010', 0, 'Fall 2013', 'Undergraduate', '2.68', '3.46', 'Wolf Group', '2007-09-04', 1, '2011-02-22', 46, 50, 485, 0, '2017-07-25', 158, 149, 296, 0, 1, '2013-11-07', 61, 619, 0, '2015-08-05', 52, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(109, 109, 'Fall', 2016, 'Full-Time MIS', 'Software Engineering Management', 1, 1, 'Spring 2010', 1, 'Fall 2010', 'Undergraduate', '2.89', '3.64', 'Russel Inc', '2015-11-15', 1, '2014-11-09', 8, 7, 745, 1, '2016-09-12', 138, 140, 329, 0, 1, '2013-02-10', 83, 419, 0, '2014-01-31', 35, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(110, 110, 'Fall', 2020, 'Professional MIS', 'Information Technology Management', 1, 1, 'Fall 2011', 1, 'Spring 2014', 'Undergraduate', '2.62', '3.46', 'Cormier LLC', '2010-10-14', 0, '2015-10-06', 34, 37, 774, 0, '2016-04-02', 154, 131, 321, 0, 0, '2017-11-15', 58, 342, 1, '2015-12-22', 60, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(111, 111, 'Fall', 2020, 'Full-Time MIS', 'Information Technology Management', 1, 0, 'Spring 2015', 0, 'Fall 2012', 'Graduate', '3.38', '3.74', 'Leffler, Langosh and Schoen', '2014-04-06', 0, '2014-11-22', 10, 40, 505, 0, '2011-05-08', 153, 133, 286, 1, 1, '2012-08-08', 11, 462, 1, '2015-10-08', 54, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(112, 112, 'Summer', 2018, 'Professional MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Spring 2015', 1, 'Fall 2012', 'Other', '3.15', '3.52', 'Murray, Padberg and Kemmer', '2008-07-21', 0, '2012-01-03', 39, 41, 405, 0, '2016-07-21', 154, 132, 323, 1, 1, '2014-10-26', 88, 472, 1, '2013-02-13', 41, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(113, 113, 'Summer', 2018, 'Professional MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Spring 2010', 0, 'Spring 2012', 'Undergraduate', '2.78', '2.96', 'Mills Inc', '2011-03-21', 1, '2013-09-29', 45, 8, 407, 0, '2015-12-21', 170, 164, 295, 0, 0, '2014-02-16', 13, 548, 0, '2012-11-29', 53, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(114, 114, 'Fall', 2019, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 1, 1, 'Spring 2014', 1, 'Fall 2011', 'Other', '3.18', '3.59', 'Murray-Flatley', '2013-03-13', 0, '2016-12-05', 48, 21, 476, 0, '2016-05-07', 168, 146, 300, 0, 1, '2016-09-29', 45, 527, 1, '2014-09-24', 37, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(115, 115, 'Summer', 2017, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 1, 'Spring 2015', 0, 'Spring 2015', 'Undergraduate', '2.54', '3.65', 'Balistreri-Bernier', '2007-09-09', 0, '2011-01-09', 41, 29, 442, 0, '2013-01-21', 130, 167, 277, 1, 1, '2011-10-11', 10, 351, 0, '2014-10-18', 32, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(116, 116, 'Spring', 2019, 'Professional MIS', 'Information Technology Management', 1, 1, 'Fall 2014', 0, 'Fall 2015', 'Undergraduate', '2.70', '3.99', 'Sauer, Schamberger and Bins', '2013-08-17', 1, '2014-04-14', 6, 29, 582, 0, '2013-02-23', 161, 166, 306, 0, 1, '2013-06-29', 106, 575, 1, '2012-06-01', 59, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(117, 117, 'Spring', 2019, 'Full-Time MIS', 'Information Technology Management', 0, 1, 'Fall 2012', 1, 'Fall 2013', 'Other', '2.80', '3.80', 'Swift Group', '2016-06-16', 0, '2012-02-14', 29, 41, 432, 0, '2013-08-11', 155, 147, 284, 0, 1, '2011-11-22', 10, 613, 1, '2011-09-26', 52, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(118, 118, 'Spring', 2017, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Fall 2012', 0, 'Fall 2010', 'Other', '2.63', '3.75', 'Jacobson and Sons', '2013-12-06', 1, '2013-12-01', 16, 45, 490, 0, '2012-01-24', 150, 138, 270, 0, 0, '2016-04-24', 94, 442, 1, '2011-08-03', 52, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(119, 119, 'Spring', 2018, 'Professional MIS', 'Information Technology Management', 1, 1, 'Spring 2012', 1, 'Spring 2013', 'Undergraduate', '2.75', '3.06', 'Vandervort-Green', '2015-05-28', 0, '2014-07-23', 9, 20, 214, 0, '2015-06-03', 154, 139, 267, 0, 1, '2011-09-05', 54, 545, 0, '2015-12-28', 21, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(120, 120, 'Summer', 2016, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Fall 2014', 0, 'Fall 2012', 'Graduate', '3.35', '3.36', 'Rodriguez, Bartell and Howe', '2014-08-19', 1, '2014-05-14', 41, 26, 441, 0, '2012-10-23', 147, 137, 304, 1, 0, '2016-07-18', 117, 431, 0, '2016-05-13', 37, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(121, 121, 'Fall', 2019, 'Full-Time MIS', 'Information Technology Management', 1, 1, 'Fall 2014', 1, 'Spring 2013', 'Graduate', '3.11', '2.93', 'Altenwerth, Murazik and Parisian', '2014-05-29', 0, '2012-06-17', 12, 28, 689, 0, '2012-08-30', 133, 149, 332, 0, 1, '2011-02-09', 24, 625, 0, '2017-02-26', 20, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(122, 122, 'Fall', 2020, 'Full-Time MIS', 'Software Engineering Management', 0, 0, 'Fall 2011', 1, 'Spring 2012', 'Graduate', '2.71', '2.85', 'Wehner-O\'Hara', '2009-03-13', 0, '2011-08-14', 39, 28, 742, 0, '2016-02-04', 152, 158, 316, 0, 1, '2013-09-06', 18, 581, 0, '2017-02-13', 47, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(123, 123, 'Fall', 2016, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 1, 'Spring 2012', 0, 'Spring 2010', 'Undergraduate', '3.43', '2.58', 'Corkery, Effertz and Wehner', '2013-02-23', 0, '2011-03-11', 45, 42, 355, 0, '2011-07-30', 154, 141, 334, 1, 1, '2012-01-08', 27, 536, 1, '2015-09-06', 23, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(124, 124, 'Fall', 2018, 'Professional MIS', 'Enterprise Systems (ES) Management', 0, 1, 'Spring 2013', 1, 'Spring 2010', 'Undergraduate', '3.97', '2.68', 'Stamm-Simonis', '2009-11-11', 1, '2015-11-20', 38, 22, 437, 0, '2014-11-10', 130, 167, 278, 1, 0, '2016-07-12', 31, 595, 0, '2011-04-24', 23, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(125, 125, 'Fall', 2018, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Spring 2010', 1, 'Fall 2014', 'Other', '2.72', '3.54', 'Goodwin, Mills and Connelly', '2011-08-07', 0, '2015-03-01', 47, 18, 358, 0, '2013-10-17', 137, 152, 335, 0, 1, '2012-10-22', 119, 623, 0, '2015-05-09', 39, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(126, 126, 'Spring', 2017, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Fall 2014', 0, 'Fall 2014', 'Graduate', '3.80', '3.79', 'Williamson, Bahringer and Schneider', '2011-07-09', 1, '2011-05-03', 44, 7, 417, 1, '2013-07-21', 142, 142, 327, 0, 0, '2011-09-13', 117, 567, 1, '2013-04-14', 59, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(127, 127, 'Summer', 2018, 'Professional MIS', 'Enterprise Systems (ES) Management', 1, 0, 'Fall 2013', 1, 'Spring 2015', 'Other', '3.38', '2.95', 'Bode, Nader and White', '2016-05-12', 0, '2011-03-26', 44, 22, 519, 1, '2012-09-25', 149, 146, 312, 0, 1, '2011-12-29', 11, 428, 1, '2012-01-14', 51, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(128, 128, 'Spring', 2016, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 1, 0, 'Spring 2015', 0, 'Spring 2010', 'Other', '2.62', '2.98', 'Schaden, Ankunding and Bartoletti', '2010-09-15', 1, '2017-12-24', 28, 19, 394, 0, '2012-05-04', 169, 135, 319, 0, 0, '2017-02-01', 11, 560, 1, '2014-05-08', 46, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(129, 129, 'Summer', 2017, 'Full-Time MIS', 'Information Technology Management', 1, 0, 'Fall 2013', 0, 'Fall 2010', 'Other', '2.59', '2.67', 'Denesik Inc', '2007-10-09', 0, '2015-09-04', 32, 39, 237, 1, '2013-11-03', 149, 139, 276, 1, 1, '2013-08-31', 73, 482, 0, '2014-05-16', 49, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(130, 130, 'Summer', 2017, 'Full-Time MIS', 'Information Technology Management', 1, 1, 'Spring 2015', 0, 'Fall 2013', 'Undergraduate', '3.99', '3.16', 'Moore Group', '2009-08-28', 1, '2013-07-14', 29, 30, 779, 1, '2011-12-15', 150, 147, 318, 1, 0, '2016-08-01', 30, 568, 1, '2013-05-05', 42, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(131, 131, 'Summer', 2016, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 0, 'Spring 2015', 1, 'Spring 2015', 'Undergraduate', '2.79', '2.82', 'Botsford LLC', '2008-01-21', 1, '2014-06-11', 13, 38, 580, 1, '2016-01-05', 148, 149, 303, 0, 0, '2012-12-04', 22, 395, 0, '2014-05-08', 53, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(132, 132, 'Fall', 2018, 'Professional MIS', 'Software Engineering Management', 0, 0, 'Fall 2013', 1, 'Spring 2015', 'Undergraduate', '3.63', '2.58', 'Purdy-Kiehn', '2009-02-12', 1, '2017-07-16', 18, 40, 445, 0, '2011-05-17', 156, 162, 336, 1, 1, '2016-05-26', 19, 323, 0, '2017-01-10', 28, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(133, 133, 'Summer', 2020, 'Full-Time MIS', 'Information Technology Management', 1, 0, 'Spring 2014', 1, 'Spring 2015', 'Other', '2.75', '3.81', 'Bergnaum, Cartwright and Flatley', '2012-05-31', 0, '2017-09-22', 50, 10, 436, 0, '2017-01-11', 169, 170, 337, 1, 0, '2011-11-27', 112, 630, 0, '2011-04-17', 60, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(134, 134, 'Spring', 2020, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 0, 0, 'Fall 2012', 1, 'Spring 2012', 'Graduate', '3.01', '2.73', 'Von, Gorczany and Bednar', '2010-06-08', 0, '2017-08-29', 39, 35, 456, 0, '2016-11-06', 156, 153, 337, 0, 1, '2014-09-21', 12, 350, 0, '2016-10-14', 43, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(135, 135, 'Summer', 2019, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 1, 0, 'Fall 2015', 1, 'Spring 2011', 'Graduate', '3.94', '3.00', 'Gislason, Fisher and Nikolaus', '2015-05-27', 1, '2014-12-19', 34, 39, 218, 0, '2012-02-17', 132, 154, 289, 1, 0, '2016-07-25', 21, 376, 1, '2017-11-20', 41, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(136, 136, 'Summer', 2018, 'Full-Time MIS', 'Information Technology Management', 0, 0, 'Spring 2015', 1, 'Fall 2013', 'Graduate', '2.60', '2.50', 'Koepp, Weber and Heidenreich', '2010-05-25', 1, '2014-03-26', 20, 29, 322, 1, '2017-04-01', 169, 145, 322, 0, 1, '2015-04-25', 48, 478, 0, '2011-04-02', 30, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(137, 137, 'Spring', 2019, 'Full-Time MIS', 'Information Technology Management', 0, 0, 'Fall 2014', 0, 'Fall 2013', 'Other', '3.64', '3.87', 'Padberg-Yundt', '2014-03-16', 1, '2014-07-02', 24, 37, 664, 0, '2011-06-14', 161, 130, 281, 0, 0, '2016-06-10', 101, 460, 1, '2011-08-25', 43, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(138, 138, 'Summer', 2020, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 1, 'Spring 2014', 1, 'Fall 2011', 'Other', '2.87', '3.03', 'Upton-Schuster', '2010-06-18', 1, '2011-03-18', 39, 6, 396, 0, '2016-01-31', 145, 150, 309, 0, 0, '2014-09-27', 12, 341, 0, '2017-08-06', 26, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(139, 139, 'Fall', 2019, 'Full-Time MIS', 'Information Technology Management', 1, 1, 'Fall 2015', 1, 'Spring 2014', 'Other', '3.30', '3.33', 'Stehr and Sons', '2016-08-01', 1, '2015-05-07', 11, 38, 366, 1, '2014-05-06', 135, 147, 314, 0, 0, '2014-12-10', 38, 358, 0, '2012-11-01', 32, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(140, 140, 'Fall', 2016, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 1, 0, 'Fall 2010', 1, 'Fall 2015', 'Undergraduate', '3.10', '3.39', 'Marvin-Heidenreich', '2011-10-30', 1, '2012-08-19', 48, 39, 776, 0, '2017-03-30', 150, 130, 310, 1, 0, '2017-01-04', 49, 505, 1, '2013-10-25', 47, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(141, 141, 'Summer', 2017, 'Professional MIS', 'Enterprise Systems (ES) Management', 0, 1, 'Spring 2013', 1, 'Fall 2010', 'Graduate', '2.92', '3.89', 'Wisozk-Morissette', '2011-01-19', 0, '2014-11-06', 39, 35, 380, 0, '2017-09-11', 142, 159, 270, 0, 0, '2012-11-02', 76, 573, 1, '2011-04-25', 20, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(142, 142, 'Spring', 2019, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Fall 2015', 0, 'Fall 2015', 'Other', '3.55', '3.29', 'Strosin Inc', '2013-02-22', 1, '2014-10-26', 22, 46, 313, 0, '2014-03-18', 153, 151, 266, 0, 1, '2013-08-18', 62, 396, 1, '2012-05-14', 45, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(143, 143, 'Spring', 2019, 'Professional MIS', 'Information Technology Management', 1, 0, 'Fall 2014', 0, 'Spring 2013', 'Undergraduate', '2.97', '3.04', 'Gaylord-Hayes', '2015-05-02', 1, '2011-03-08', 23, 36, 518, 0, '2014-08-28', 148, 142, 315, 0, 0, '2013-12-09', 64, 664, 1, '2015-04-25', 23, 'Undecided', NULL, NULL, '2017-03-17 04:20:02');
-INSERT INTO `application` (`applicationID`, `studentID`, `term`, `year`, `program`, `concentration`, `reqScholarship`, `previousApp`, `previousAppDate`, `previousEnrollment`, `previousEnrollmentDate`, `previousEnrollmentStatus`, `undergradGPA`, `juniorseniorGPA`, `currentEmployer`, `timeAtCurrentEmployer`, `gmat`, `gmatTestDate`, `gmatQScore`, `gmatVScore`, `gmatTScore`, `gre`, `greTestDate`, `greQScore`, `greVScore`, `greTScore`, `toeflOnline`, `toeflPaper`, `toeflTestDate`, `toeflOnlineScore`, `toeflPaperScore`, `tse`, `tseTestDate`, `tseScore`, `offerStatus`, `assistantshipStatus`, `applicantResponse`, `applicationDate`) VALUES
-(144, 144, 'Fall', 2018, 'Full-Time MIS', 'Software Engineering Management', 1, 0, 'Spring 2014', 1, 'Fall 2010', 'Other', '3.70', '3.71', 'Schroeder-Jacobi', '2008-09-30', 0, '2013-01-10', 10, 36, 220, 0, '2012-07-25', 166, 131, 302, 0, 1, '2011-09-28', 88, 368, 1, '2014-04-19', 25, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(145, 145, 'Spring', 2017, 'Professional MIS', 'Software Engineering Management', 0, 1, 'Fall 2014', 0, 'Fall 2011', 'Undergraduate', '3.31', '2.82', 'Eichmann, Prosacco and Rolfson', '2008-06-18', 0, '2011-07-12', 47, 17, 375, 0, '2011-05-05', 138, 161, 261, 1, 1, '2014-03-13', 80, 447, 1, '2015-08-13', 44, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(146, 146, 'Fall', 2016, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Spring 2013', 1, 'Spring 2010', 'Graduate', '3.59', '3.37', 'Lemke Inc', '2009-12-14', 0, '2017-08-13', 36, 29, 575, 0, '2014-04-23', 154, 151, 284, 1, 1, '2016-04-30', 86, 339, 0, '2012-01-11', 21, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(147, 147, 'Spring', 2018, 'Professional MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Spring 2013', 1, 'Spring 2010', 'Undergraduate', '2.97', '2.93', 'Torphy and Sons', '2012-08-16', 1, '2011-10-05', 44, 33, 303, 0, '2012-12-28', 150, 151, 329, 1, 0, '2015-05-02', 90, 517, 0, '2016-09-26', 50, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(148, 148, 'Fall', 2017, 'Professional MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Spring 2013', 0, 'Spring 2011', 'Undergraduate', '3.45', '3.25', 'Cummings and Sons', '2012-03-12', 1, '2017-10-17', 17, 42, 297, 0, '2012-10-01', 162, 149, 315, 0, 1, '2015-03-31', 63, 433, 1, '2012-01-02', 25, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(149, 149, 'Spring', 2018, 'Professional MIS', 'Software Engineering Management', 1, 0, 'Fall 2010', 1, 'Fall 2012', 'Other', '3.34', '2.89', 'Olson-Reichert', '2015-10-30', 1, '2014-04-22', 40, 17, 787, 0, '2016-04-14', 159, 130, 313, 0, 0, '2016-11-19', 105, 606, 0, '2014-06-09', 21, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(150, 150, 'Spring', 2016, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 1, 0, 'Spring 2012', 1, 'Fall 2010', 'Graduate', '3.07', '3.62', 'Roob Group', '2015-01-18', 1, '2011-01-08', 15, 8, 443, 1, '2011-10-18', 164, 169, 321, 0, 0, '2014-11-07', 72, 545, 1, '2011-08-30', 59, 'Undecided', NULL, NULL, '2017-03-17 04:20:02');
+INSERT INTO `application` (`applicationID`, `studentID`, `userID`, `term`, `year`, `program`, `concentration`, `reqScholarship`, `previousApp`, `previousAppDate`, `previousEnrollment`, `previousEnrollmentDate`, `previousEnrollmentStatus`, `undergradGPA`, `juniorseniorGPA`, `currentEmployer`, `timeAtCurrentEmployer`, `gmat`, `gmatTestDate`, `gmatQScore`, `gmatVScore`, `gmatTScore`, `gre`, `greTestDate`, `greQScore`, `greVScore`, `greTScore`, `toeflOnline`, `toeflPaper`, `toeflTestDate`, `toeflOnlineScore`, `toeflPaperScore`, `tse`, `tseTestDate`, `tseScore`, `offerStatus`, `assistantshipStatus`, `applicantResponse`, `applicationDate`) VALUES
+(1, 1, NULL, 'Spring', 2019, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 1, 0, 'Fall 2010', 1, 'Fall 2011', 'Undergraduate', '3.44', '2.73', 'Heller and Sons', '2009-10-26', 0, '2015-02-17', 46, 16, 307, 1, '2015-09-12', 139, 169, 282, 0, 0, '2014-04-04', 113, 488, 0, '2015-07-26', 43, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(2, 2, NULL, 'Fall', 2019, 'Professional MIS', 'Software Engineering Management', 0, 0, 'Spring 2013', 0, 'Spring 2011', 'Other', '2.81', '2.87', 'Beahan, Stark and Goyette', '2014-05-23', 1, '2013-08-09', 14, 46, 761, 1, '2014-04-12', 139, 150, 310, 0, 1, '2014-08-04', 88, 347, 1, '2016-07-03', 44, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(3, 3, NULL, 'Spring', 2020, 'Professional MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Fall 2015', 0, 'Fall 2010', 'Graduate', '3.41', '3.21', 'Koss-Boyle', '2014-06-24', 0, '2017-01-30', 36, 14, 724, 1, '2016-10-02', 140, 136, 272, 1, 1, '2012-03-23', 31, 511, 1, '2012-12-30', 29, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(4, 4, NULL, 'Spring', 2018, 'Professional MIS', 'Software Engineering Management', 0, 0, 'Fall 2013', 0, 'Fall 2013', 'Undergraduate', '3.04', '3.19', 'Hermann-Hagenes', '2011-12-30', 1, '2016-10-23', 49, 17, 405, 1, '2013-10-17', 154, 135, 273, 1, 0, '2013-02-13', 77, 374, 1, '2011-08-24', 22, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(5, 5, NULL, 'Summer', 2018, 'Professional MIS', 'Information Technology Management', 0, 1, 'Spring 2015', 0, 'Fall 2010', 'Other', '3.00', '3.36', 'Walter, Ward and Kerluke', '2013-02-17', 1, '2017-07-09', 50, 44, 264, 1, '2011-05-13', 170, 151, 294, 1, 0, '2016-05-21', 64, 496, 1, '2015-04-25', 54, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(6, 6, NULL, 'Summer', 2019, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Spring 2012', 0, 'Spring 2012', 'Graduate', '2.77', '3.39', 'Carroll-Berge', '2009-09-18', 0, '2016-08-22', 43, 38, 223, 0, '2017-11-06', 139, 135, 290, 0, 0, '2011-02-07', 116, 467, 0, '2015-06-09', 42, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(7, 7, NULL, 'Spring', 2019, 'Professional MIS', 'Software Engineering Management', 1, 0, 'Fall 2010', 1, 'Fall 2013', 'Undergraduate', '2.94', '2.62', 'Dooley-Jacobi', '2009-10-22', 1, '2014-10-03', 27, 51, 703, 1, '2017-09-22', 152, 149, 334, 0, 1, '2013-06-10', 3, 516, 1, '2017-05-09', 42, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(8, 8, NULL, 'Summer', 2019, 'Full-Time MIS', 'Software Engineering Management', 1, 0, 'Fall 2011', 1, 'Spring 2012', 'Graduate', '3.83', '3.54', 'Schmeler-Howell', '2007-05-27', 1, '2012-03-03', 43, 47, 650, 1, '2017-03-02', 137, 169, 313, 1, 0, '2013-10-07', 4, 464, 0, '2013-09-26', 32, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(9, 9, NULL, 'Fall', 2016, 'Professional MIS', 'Information Technology Management', 0, 0, 'Spring 2015', 0, 'Fall 2014', 'Other', '2.76', '2.76', 'Daniel Inc', '2013-05-20', 0, '2017-03-23', 51, 14, 261, 1, '2016-01-15', 154, 154, 294, 0, 0, '2011-06-10', 117, 490, 0, '2013-11-19', 52, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(10, 10, NULL, 'Fall', 2016, 'Full-Time MIS', 'Information Technology Management', 1, 0, 'Fall 2011', 0, 'Fall 2012', 'Graduate', '3.95', '3.41', 'Kovacek and Sons', '2009-02-22', 0, '2012-08-20', 20, 29, 539, 1, '2015-09-28', 167, 135, 310, 1, 1, '2014-12-19', 24, 387, 0, '2015-02-03', 36, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(11, 11, NULL, 'Summer', 2020, 'Full-Time MIS', 'Software Engineering Management', 0, 0, 'Fall 2015', 0, 'Spring 2015', 'Graduate', '3.42', '3.44', 'Lindgren Inc', '2008-03-12', 0, '2015-08-26', 21, 35, 788, 1, '2012-09-17', 166, 133, 327, 1, 1, '2017-08-16', 78, 604, 0, '2011-02-20', 28, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(12, 12, NULL, 'Fall', 2020, 'Full-Time MIS', 'Information Technology Management', 1, 1, 'Fall 2010', 0, 'Fall 2011', 'Graduate', '2.52', '3.96', 'Treutel, Stracke and Ruecker', '2008-02-13', 0, '2014-08-13', 26, 25, 679, 0, '2014-06-01', 170, 161, 263, 1, 0, '2011-03-15', 46, 586, 0, '2011-06-12', 48, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(13, 13, NULL, 'Fall', 2020, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Fall 2013', 1, 'Spring 2013', 'Other', '3.32', '2.87', 'Russel, Veum and Jacobs', '2009-05-26', 1, '2011-11-11', 27, 21, 359, 0, '2013-05-09', 134, 155, 273, 1, 0, '2017-06-23', 101, 486, 0, '2016-10-22', 31, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(14, 14, NULL, 'Spring', 2018, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 1, 0, 'Spring 2010', 1, 'Fall 2012', 'Undergraduate', '3.69', '2.74', 'Gerlach, Steuber and Lesch', '2012-07-19', 1, '2015-01-15', 26, 22, 474, 1, '2016-08-05', 141, 167, 331, 1, 0, '2013-05-23', 95, 348, 1, '2012-02-21', 43, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(15, 15, NULL, 'Spring', 2020, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Spring 2014', 0, 'Fall 2014', 'Undergraduate', '2.93', '3.00', 'Beer-Schowalter', '2013-02-22', 1, '2015-01-03', 27, 35, 303, 0, '2017-10-06', 153, 147, 339, 0, 1, '2014-04-23', 36, 677, 0, '2016-12-13', 24, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(16, 16, NULL, 'Fall', 2018, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Spring 2013', 0, 'Spring 2010', 'Other', '3.98', '3.39', 'Lindgren LLC', '2007-10-15', 0, '2015-08-05', 12, 17, 217, 1, '2016-11-24', 145, 165, 325, 1, 1, '2017-06-21', 8, 447, 1, '2016-05-05', 29, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(17, 17, NULL, 'Fall', 2016, 'Professional MIS', 'Software Engineering Management', 0, 1, 'Spring 2010', 1, 'Fall 2012', 'Undergraduate', '3.23', '2.66', 'Davis Inc', '2010-11-14', 0, '2016-09-30', 37, 49, 219, 0, '2016-06-18', 168, 155, 303, 1, 0, '2012-09-16', 17, 510, 1, '2015-11-17', 54, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(18, 18, NULL, 'Fall', 2020, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 1, 1, 'Fall 2013', 1, 'Spring 2014', 'Graduate', '3.79', '3.25', 'Kassulke-Haley', '2012-07-25', 0, '2012-10-01', 42, 10, 366, 0, '2017-07-19', 163, 156, 277, 1, 0, '2016-05-12', 28, 482, 0, '2017-05-02', 22, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(19, 19, NULL, 'Spring', 2017, 'Professional MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Spring 2012', 1, 'Spring 2012', 'Other', '3.90', '2.91', 'Torp Group', '2010-05-05', 0, '2012-06-08', 44, 25, 722, 1, '2013-05-06', 134, 158, 311, 0, 1, '2013-06-05', 92, 566, 0, '2013-06-07', 46, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(20, 20, NULL, 'Fall', 2016, 'Full-Time MIS', 'Information Technology Management', 1, 1, 'Spring 2011', 0, 'Fall 2012', 'Graduate', '2.56', '2.54', 'Predovic, Heidenreich and Jacobson', '2012-11-21', 0, '2017-03-25', 22, 22, 599, 1, '2013-09-08', 149, 170, 311, 1, 0, '2017-03-24', 85, 476, 0, '2016-04-09', 58, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(21, 21, NULL, 'Summer', 2020, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Fall 2012', 0, 'Fall 2011', 'Graduate', '3.44', '3.38', 'Waelchi-Lynch', '2007-12-31', 0, '2011-05-26', 33, 20, 772, 1, '2014-12-16', 149, 149, 319, 0, 0, '2014-09-21', 42, 665, 0, '2017-06-03', 38, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(22, 22, NULL, 'Spring', 2020, 'Full-Time MIS', 'Information Technology Management', 0, 0, 'Spring 2015', 1, 'Fall 2011', 'Other', '3.69', '2.73', 'Dooley-Jacobs', '2008-02-09', 0, '2014-07-11', 23, 45, 776, 1, '2016-04-15', 139, 147, 292, 1, 0, '2013-06-12', 113, 394, 0, '2016-10-20', 32, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(23, 23, NULL, 'Spring', 2016, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 0, 0, 'Spring 2013', 0, 'Spring 2014', 'Other', '3.69', '2.82', 'Kuhn, Dare and McDermott', '2013-01-31', 1, '2017-03-30', 33, 46, 225, 0, '2014-10-12', 130, 158, 293, 1, 1, '2016-07-14', 93, 418, 1, '2013-02-15', 53, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(24, 24, NULL, 'Fall', 2019, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 0, 'Spring 2012', 1, 'Fall 2014', 'Undergraduate', '3.94', '3.95', 'Durgan, Greenholt and Bartell', '2007-03-09', 0, '2012-11-10', 8, 6, 669, 0, '2012-05-03', 143, 151, 260, 0, 1, '2012-12-14', 105, 443, 1, '2011-09-05', 23, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(25, 25, NULL, 'Fall', 2018, 'Professional MIS', 'Software Engineering Management', 1, 1, 'Spring 2015', 0, 'Spring 2015', 'Graduate', '2.90', '3.64', 'Sporer, Hilll and Lehner', '2008-05-29', 1, '2017-03-06', 43, 42, 703, 1, '2017-07-31', 161, 160, 318, 1, 0, '2015-03-27', 40, 638, 1, '2014-06-25', 57, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(26, 26, NULL, 'Fall', 2019, 'Full-Time MIS', 'Software Engineering Management', 1, 1, 'Fall 2014', 1, 'Spring 2014', 'Other', '3.25', '2.85', 'Wiegand-Cassin', '2014-05-22', 0, '2012-08-04', 30, 49, 669, 1, '2013-01-20', 135, 143, 301, 0, 0, '2013-09-13', 72, 462, 1, '2015-07-16', 34, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(27, 27, NULL, 'Summer', 2016, 'Professional MIS', 'Software Engineering Management', 1, 0, 'Spring 2015', 0, 'Fall 2012', 'Graduate', '3.10', '3.42', 'Hoeger, Bogisich and Hahn', '2010-12-06', 0, '2016-11-13', 14, 11, 417, 1, '2017-09-24', 157, 144, 278, 0, 1, '2016-07-02', 105, 659, 0, '2015-01-24', 55, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(28, 28, NULL, 'Spring', 2019, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 1, 1, 'Fall 2012', 1, 'Spring 2013', 'Undergraduate', '3.25', '3.38', 'Dietrich-Predovic', '2014-12-10', 1, '2013-05-11', 12, 20, 309, 0, '2016-10-23', 143, 133, 296, 1, 0, '2017-03-17', 43, 318, 0, '2011-07-29', 46, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(29, 29, NULL, 'Spring', 2020, 'Full-Time MIS', 'Information Technology Management', 1, 1, 'Fall 2015', 1, 'Spring 2014', 'Other', '3.68', '2.63', 'Blick-Parker', '2012-05-17', 0, '2013-11-04', 51, 19, 787, 1, '2015-05-25', 153, 133, 283, 1, 1, '2016-09-02', 102, 559, 1, '2013-04-18', 21, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(30, 30, NULL, 'Fall', 2017, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 1, 1, 'Spring 2015', 1, 'Spring 2010', 'Graduate', '3.68', '3.00', 'Armstrong and Sons', '2010-02-18', 1, '2013-11-20', 19, 42, 591, 1, '2013-11-24', 146, 164, 276, 1, 1, '2016-08-29', 11, 426, 0, '2015-02-28', 37, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(31, 31, NULL, 'Spring', 2020, 'Full-Time MIS', 'Information Technology Management', 1, 0, 'Spring 2010', 1, 'Fall 2014', 'Undergraduate', '3.80', '2.59', 'Wyman, Spinka and Hermiston', '2008-10-25', 1, '2017-01-25', 17, 21, 378, 0, '2013-11-04', 168, 169, 276, 0, 0, '2013-06-19', 108, 587, 0, '2017-04-17', 35, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(32, 32, NULL, 'Spring', 2017, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 0, 0, 'Fall 2014', 0, 'Fall 2015', 'Other', '3.61', '3.63', 'Haley, Kessler and Gutkowski', '2015-11-01', 0, '2012-06-05', 23, 51, 431, 0, '2016-03-26', 144, 146, 262, 0, 1, '2017-05-23', 68, 433, 0, '2013-04-11', 58, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(33, 33, NULL, 'Fall', 2017, 'Professional MIS', 'Information Technology Management', 0, 0, 'Spring 2011', 0, 'Fall 2011', 'Other', '2.56', '2.59', 'VonRueden, Schmeler and Quigley', '2010-10-08', 1, '2017-12-04', 13, 38, 727, 0, '2014-03-27', 147, 161, 275, 1, 1, '2012-11-02', 30, 671, 0, '2016-10-09', 42, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(34, 34, NULL, 'Spring', 2016, 'Professional MIS', 'Information Technology Management', 0, 0, 'Spring 2013', 0, 'Spring 2013', 'Undergraduate', '3.99', '3.18', 'Sporer Inc', '2010-03-17', 1, '2017-03-10', 9, 20, 780, 1, '2016-12-11', 131, 154, 313, 1, 1, '2013-08-08', 4, 412, 1, '2016-07-03', 54, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(35, 35, NULL, 'Fall', 2020, 'Full-Time MIS', 'Information Technology Management', 1, 0, 'Fall 2014', 0, 'Fall 2010', 'Other', '2.76', '2.86', 'Orn LLC', '2014-05-14', 1, '2017-04-24', 16, 32, 733, 0, '2015-02-10', 139, 163, 315, 0, 1, '2012-07-07', 112, 520, 1, '2012-08-04', 40, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(36, 36, NULL, 'Fall', 2017, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Fall 2013', 1, 'Spring 2012', 'Graduate', '2.53', '3.17', 'Hoeger LLC', '2007-03-24', 1, '2013-06-09', 12, 47, 640, 1, '2014-10-30', 132, 170, 262, 0, 1, '2013-06-22', 36, 519, 0, '2017-07-15', 31, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(37, 37, NULL, 'Spring', 2018, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Spring 2015', 1, 'Spring 2015', 'Undergraduate', '2.64', '3.02', 'Wehner Inc', '2016-04-23', 1, '2015-09-28', 21, 40, 749, 1, '2017-04-30', 136, 146, 310, 1, 1, '2011-01-14', 12, 472, 1, '2016-09-01', 28, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(38, 38, NULL, 'Fall', 2018, 'Full-Time MIS', 'Software Engineering Management', 0, 1, 'Fall 2012', 0, 'Spring 2015', 'Other', '3.82', '2.58', 'Littel LLC', '2011-04-22', 1, '2016-07-16', 10, 41, 273, 0, '2014-01-29', 170, 136, 272, 0, 0, '2014-07-02', 92, 353, 0, '2012-12-01', 53, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(39, 39, NULL, 'Summer', 2018, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 1, 0, 'Spring 2015', 1, 'Spring 2012', 'Undergraduate', '2.70', '3.75', 'Moen, Ernser and Crist', '2008-07-09', 0, '2012-11-08', 16, 8, 577, 0, '2011-02-14', 152, 161, 276, 0, 1, '2013-08-08', 72, 561, 1, '2012-06-01', 53, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(40, 40, NULL, 'Fall', 2017, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 1, 0, 'Spring 2010', 1, 'Spring 2011', 'Other', '2.81', '3.40', 'Carter LLC', '2009-06-26', 1, '2015-04-15', 41, 47, 386, 1, '2015-02-28', 148, 148, 319, 0, 0, '2011-12-24', 16, 677, 1, '2015-08-04', 42, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(41, 41, NULL, 'Summer', 2018, 'Professional MIS', 'Information Technology Management', 1, 0, 'Fall 2013', 0, 'Fall 2013', 'Other', '3.17', '3.67', 'Will-Oberbrunner', '2010-04-27', 1, '2011-01-17', 24, 20, 239, 1, '2017-03-20', 130, 159, 275, 1, 0, '2011-04-09', 37, 501, 1, '2013-11-26', 40, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(42, 42, NULL, 'Fall', 2020, 'Full-Time MIS', 'Information Technology Management', 0, 1, 'Fall 2013', 1, 'Spring 2010', 'Graduate', '3.63', '3.49', 'Predovic-Mraz', '2014-02-20', 0, '2016-10-11', 43, 30, 254, 0, '2017-09-21', 161, 141, 268, 1, 0, '2012-01-14', 76, 612, 0, '2013-10-04', 38, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(43, 43, NULL, 'Fall', 2020, 'Professional MIS', 'Software Engineering Management', 0, 0, 'Fall 2012', 0, 'Fall 2015', 'Undergraduate', '3.58', '2.74', 'Wiegand, Hintz and Jaskolski', '2012-01-24', 0, '2011-09-25', 27, 29, 763, 1, '2013-03-29', 163, 139, 269, 0, 1, '2017-06-07', 25, 334, 0, '2012-07-15', 30, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(44, 44, NULL, 'Summer', 2020, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 1, 1, 'Fall 2015', 1, 'Spring 2015', 'Undergraduate', '3.94', '3.90', 'Schmitt-Welch', '2014-08-02', 0, '2014-06-09', 18, 40, 649, 0, '2016-01-22', 168, 168, 318, 0, 0, '2015-01-23', 76, 379, 1, '2017-12-17', 29, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(45, 45, NULL, 'Summer', 2017, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Spring 2014', 1, 'Fall 2014', 'Undergraduate', '2.72', '3.43', 'Beahan-Wunsch', '2008-06-26', 0, '2017-04-09', 44, 26, 296, 1, '2013-06-19', 167, 138, 287, 0, 1, '2013-10-04', 57, 502, 0, '2012-03-14', 31, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(46, 46, NULL, 'Summer', 2017, 'Professional MIS', 'Information Technology Management', 0, 1, 'Spring 2011', 0, 'Spring 2010', 'Graduate', '3.93', '3.76', 'Kreiger-Zemlak', '2008-10-21', 0, '2015-02-05', 35, 15, 544, 1, '2011-03-18', 163, 165, 335, 1, 0, '2014-03-12', 88, 423, 0, '2014-08-10', 41, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(47, 47, NULL, 'Fall', 2020, 'Professional MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Fall 2010', 1, 'Fall 2013', 'Graduate', '3.71', '3.60', 'Grimes, Satterfield and Hoeger', '2011-02-15', 0, '2014-07-30', 48, 9, 638, 0, '2015-07-22', 163, 168, 335, 1, 1, '2016-01-26', 117, 545, 1, '2017-03-13', 32, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(48, 48, NULL, 'Fall', 2017, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Spring 2012', 1, 'Spring 2012', 'Other', '3.02', '2.72', 'Bernhard Group', '2015-07-12', 0, '2011-09-07', 24, 42, 721, 1, '2015-12-02', 139, 135, 268, 1, 1, '2011-02-27', 17, 532, 0, '2013-04-30', 43, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(49, 49, NULL, 'Summer', 2016, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Fall 2012', 1, 'Fall 2011', 'Undergraduate', '3.32', '3.84', 'Huels-Stark', '2012-12-16', 1, '2016-10-12', 18, 36, 661, 1, '2011-05-27', 160, 166, 282, 0, 1, '2015-10-29', 69, 625, 0, '2014-10-08', 29, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(50, 50, NULL, 'Spring', 2017, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 1, 0, 'Spring 2010', 1, 'Fall 2012', 'Undergraduate', '3.27', '2.61', 'Kris Group', '2009-04-06', 1, '2011-09-03', 14, 28, 503, 0, '2011-09-09', 142, 166, 276, 1, 1, '2011-07-22', 7, 312, 1, '2012-10-10', 46, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(51, 51, NULL, 'Fall', 2017, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Fall 2011', 1, 'Spring 2013', 'Graduate', '2.81', '3.52', 'Jaskolski-Beer', '2014-04-14', 0, '2016-05-14', 32, 50, 443, 1, '2014-09-10', 169, 151, 312, 1, 1, '2013-07-26', 19, 608, 0, '2013-01-02', 54, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(52, 52, NULL, 'Summer', 2018, 'Full-Time MIS', 'Software Engineering Management', 0, 0, 'Fall 2013', 1, 'Fall 2015', 'Other', '2.73', '3.50', 'Bartell Inc', '2009-06-27', 0, '2014-06-28', 36, 47, 694, 1, '2015-05-17', 169, 150, 313, 1, 1, '2012-05-18', 112, 437, 0, '2015-09-17', 43, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(53, 53, NULL, 'Summer', 2018, 'Professional MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Spring 2015', 0, 'Spring 2013', 'Undergraduate', '2.84', '3.49', 'Ruecker LLC', '2007-04-13', 1, '2017-02-18', 10, 9, 551, 0, '2016-09-12', 162, 148, 271, 0, 1, '2012-09-11', 21, 426, 1, '2011-04-26', 44, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(54, 54, NULL, 'Summer', 2019, 'Professional MIS', 'Information Technology Management', 1, 1, 'Spring 2012', 1, 'Spring 2014', 'Graduate', '3.71', '3.93', 'McKenzie, Collins and Casper', '2016-03-29', 0, '2012-07-04', 24, 14, 665, 0, '2011-05-05', 148, 159, 276, 0, 1, '2014-04-13', 91, 596, 1, '2016-10-20', 34, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(55, 55, NULL, 'Fall', 2017, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 1, 1, 'Fall 2011', 0, 'Spring 2012', 'Undergraduate', '3.34', '3.62', 'Kreiger, Jerde and Batz', '2008-01-31', 1, '2016-05-03', 10, 13, 453, 0, '2011-08-25', 160, 133, 282, 1, 1, '2011-03-23', 96, 482, 0, '2016-04-12', 31, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(56, 56, NULL, 'Summer', 2017, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 0, 'Spring 2010', 1, 'Spring 2014', 'Graduate', '3.28', '3.77', 'Sanford-Halvorson', '2016-01-24', 0, '2013-12-09', 48, 29, 556, 1, '2015-08-03', 155, 137, 298, 0, 1, '2011-04-22', 9, 379, 1, '2012-06-26', 24, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(57, 57, NULL, 'Spring', 2020, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Fall 2013', 0, 'Fall 2011', 'Other', '3.51', '3.32', 'Stroman-Nader', '2012-10-17', 1, '2013-07-28', 36, 36, 792, 1, '2014-06-19', 170, 165, 261, 1, 1, '2015-06-21', 46, 554, 1, '2017-06-03', 53, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(58, 58, NULL, 'Summer', 2017, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 1, 'Spring 2010', 1, 'Spring 2014', 'Undergraduate', '3.28', '2.58', 'Gutkowski-Goodwin', '2013-04-09', 1, '2015-11-04', 17, 50, 241, 1, '2011-05-06', 158, 149, 267, 0, 1, '2015-06-04', 95, 438, 0, '2014-02-14', 29, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(59, 59, NULL, 'Fall', 2019, 'Professional MIS', 'Enterprise Systems (ES) Management', 0, 1, 'Fall 2014', 0, 'Fall 2015', 'Graduate', '3.46', '2.69', 'Hilpert, Bogan and Will', '2008-08-08', 0, '2017-10-05', 31, 30, 451, 0, '2012-08-11', 161, 170, 292, 1, 1, '2017-03-09', 78, 503, 1, '2015-03-30', 32, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(60, 60, NULL, 'Fall', 2017, 'Professional MIS', 'Information Technology Management', 1, 0, 'Fall 2013', 0, 'Spring 2013', 'Graduate', '3.63', '2.96', 'Keeling and Sons', '2013-08-11', 0, '2014-02-13', 46, 9, 703, 0, '2017-01-26', 168, 156, 295, 1, 1, '2017-09-12', 53, 528, 1, '2015-03-02', 52, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(61, 61, NULL, 'Spring', 2018, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Spring 2015', 0, 'Fall 2011', 'Undergraduate', '3.17', '3.15', 'Gerlach, Davis and Fritsch', '2008-08-01', 0, '2016-11-20', 22, 26, 249, 0, '2011-10-25', 169, 151, 284, 1, 0, '2014-04-21', 94, 367, 0, '2011-01-22', 38, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(62, 62, NULL, 'Spring', 2019, 'Professional MIS', 'Software Engineering Management', 1, 1, 'Spring 2011', 0, 'Spring 2010', 'Undergraduate', '2.83', '3.90', 'Christiansen, Ernser and Roberts', '2009-09-14', 1, '2015-09-10', 9, 10, 478, 1, '2014-07-31', 159, 150, 313, 1, 1, '2016-07-25', 94, 543, 0, '2017-06-14', 21, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(63, 63, NULL, 'Fall', 2020, 'Full-Time MIS', 'Information Technology Management', 0, 1, 'Fall 2010', 0, 'Spring 2013', 'Graduate', '3.92', '3.79', 'Raynor LLC', '2013-01-17', 0, '2011-11-01', 19, 8, 371, 1, '2013-03-13', 141, 157, 288, 1, 1, '2017-07-29', 72, 339, 1, '2015-04-05', 45, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(64, 64, NULL, 'Spring', 2018, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 1, 0, 'Spring 2012', 0, 'Spring 2013', 'Undergraduate', '3.97', '2.81', 'Kling, Boyer and Wyman', '2013-04-11', 1, '2013-09-11', 13, 33, 542, 1, '2014-05-13', 154, 134, 330, 1, 1, '2011-02-21', 61, 415, 1, '2011-04-19', 53, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(65, 65, NULL, 'Summer', 2017, 'Full-Time MIS', 'Information Technology Management', 0, 0, 'Spring 2010', 1, 'Fall 2011', 'Graduate', '3.94', '3.69', 'Pouros LLC', '2009-12-23', 1, '2013-10-24', 10, 50, 333, 0, '2013-03-21', 153, 150, 303, 1, 0, '2016-12-10', 59, 443, 0, '2016-08-29', 58, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(66, 66, NULL, 'Spring', 2020, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 0, 'Spring 2011', 0, 'Spring 2014', 'Undergraduate', '3.78', '3.23', 'Gleichner-Ebert', '2014-05-21', 1, '2012-02-11', 21, 16, 207, 0, '2014-04-16', 143, 140, 323, 0, 0, '2013-01-15', 76, 345, 0, '2012-09-01', 35, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(67, 67, NULL, 'Summer', 2016, 'Professional MIS', 'Information Technology Management', 1, 0, 'Spring 2010', 0, 'Spring 2014', 'Graduate', '2.57', '3.95', 'O''Keefe, Mante and Moen', '2014-02-17', 0, '2013-04-10', 38, 47, 608, 1, '2011-05-11', 146, 156, 338, 0, 1, '2015-11-16', 110, 652, 0, '2013-05-25', 31, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(68, 68, NULL, 'Spring', 2019, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 1, 1, 'Spring 2015', 1, 'Fall 2013', 'Graduate', '2.83', '2.88', 'Lynch-MacGyver', '2012-09-12', 0, '2017-10-12', 14, 30, 714, 1, '2013-12-08', 158, 130, 268, 0, 1, '2011-06-24', 5, 658, 0, '2016-01-02', 24, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(69, 69, NULL, 'Spring', 2016, 'Full-Time MIS', 'Information Technology Management', 1, 0, 'Fall 2014', 1, 'Spring 2013', 'Graduate', '3.00', '2.55', 'Rolfson, Klocko and Carroll', '2013-08-05', 1, '2011-11-30', 51, 27, 468, 1, '2014-11-09', 136, 156, 317, 1, 1, '2016-07-16', 71, 374, 0, '2015-01-28', 23, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(70, 70, NULL, 'Spring', 2016, 'Full-Time MIS', 'Software Engineering Management', 1, 0, 'Fall 2013', 1, 'Fall 2010', 'Graduate', '2.72', '2.73', 'Hudson-Hickle', '2012-08-31', 0, '2013-05-05', 31, 51, 267, 1, '2013-10-02', 158, 160, 331, 1, 1, '2013-04-22', 64, 585, 1, '2016-09-10', 21, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(71, 71, NULL, 'Spring', 2020, 'Professional MIS', 'Information Technology Management', 0, 0, 'Fall 2015', 1, 'Spring 2012', 'Graduate', '2.65', '2.89', 'Bergstrom Group', '2008-08-21', 0, '2013-12-12', 32, 31, 239, 0, '2011-11-16', 134, 131, 295, 1, 1, '2015-03-24', 83, 345, 1, '2012-01-22', 34, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(72, 72, NULL, 'Fall', 2019, 'Full-Time MIS', 'Information Technology Management', 1, 0, 'Spring 2011', 0, 'Fall 2012', 'Other', '3.33', '2.75', 'Hamill, Gusikowski and Olson', '2009-06-18', 0, '2014-10-25', 29, 50, 479, 1, '2016-12-03', 132, 169, 335, 0, 1, '2012-10-14', 8, 402, 0, '2011-07-02', 56, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(73, 73, NULL, 'Spring', 2016, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 1, 0, 'Fall 2012', 0, 'Fall 2014', 'Undergraduate', '2.56', '3.82', 'Smitham Inc', '2011-12-08', 0, '2017-06-10', 47, 22, 388, 0, '2017-09-26', 149, 151, 307, 0, 1, '2011-10-11', 73, 416, 0, '2013-05-22', 58, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(74, 74, NULL, 'Spring', 2020, 'Full-Time MIS', 'Information Technology Management', 0, 0, 'Spring 2014', 0, 'Fall 2010', 'Undergraduate', '2.72', '3.28', 'Harber, Stracke and Mann', '2011-02-07', 1, '2013-05-20', 22, 27, 721, 0, '2015-12-13', 155, 154, 281, 0, 1, '2012-03-01', 94, 545, 1, '2017-06-28', 32, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(75, 75, NULL, 'Spring', 2019, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 1, 0, 'Fall 2010', 1, 'Fall 2010', 'Other', '2.57', '3.32', 'Herman, Torp and Schmidt', '2008-06-13', 1, '2015-07-09', 25, 42, 388, 0, '2013-02-07', 162, 166, 317, 1, 1, '2012-02-20', 93, 384, 0, '2012-09-03', 58, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(76, 76, NULL, 'Fall', 2018, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 1, 0, 'Fall 2012', 0, 'Fall 2011', 'Graduate', '3.11', '3.87', 'Bins, Pfannerstill and Cassin', '2010-10-30', 1, '2012-10-23', 16, 7, 248, 0, '2012-01-12', 139, 149, 320, 0, 0, '2013-01-31', 48, 595, 1, '2013-08-02', 35, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(77, 77, NULL, 'Spring', 2017, 'Professional MIS', 'Information Technology Management', 0, 0, 'Spring 2012', 1, 'Spring 2014', 'Other', '3.54', '3.78', 'Anderson, Kling and Kuphal', '2011-12-30', 0, '2016-12-26', 34, 51, 551, 0, '2016-09-03', 155, 148, 311, 1, 1, '2015-12-07', 43, 365, 1, '2016-08-25', 54, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(78, 78, NULL, 'Fall', 2019, 'Professional MIS', 'Enterprise Systems (ES) Management', 0, 1, 'Fall 2014', 0, 'Spring 2010', 'Graduate', '3.55', '2.95', 'Weimann-Champlin', '2015-05-07', 1, '2014-05-30', 19, 25, 284, 1, '2017-12-13', 167, 130, 281, 0, 0, '2013-04-09', 37, 516, 1, '2017-03-06', 34, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(79, 79, NULL, 'Spring', 2017, 'Professional MIS', 'Software Engineering Management', 1, 0, 'Fall 2014', 0, 'Fall 2014', 'Other', '2.66', '2.81', 'Johns, Treutel and Smith', '2014-07-23', 1, '2013-08-17', 7, 49, 286, 0, '2012-04-11', 147, 160, 282, 0, 0, '2014-02-25', 120, 560, 0, '2017-08-29', 51, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(80, 80, NULL, 'Spring', 2017, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Spring 2013', 0, 'Fall 2012', 'Graduate', '3.15', '3.28', 'Becker, Jenkins and Kris', '2016-06-23', 1, '2014-12-25', 28, 44, 702, 0, '2013-06-03', 152, 166, 290, 1, 0, '2017-09-05', 21, 416, 1, '2012-06-23', 44, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(81, 81, NULL, 'Summer', 2020, 'Professional MIS', 'Information Technology Management', 1, 0, 'Spring 2015', 1, 'Spring 2012', 'Graduate', '3.41', '2.66', 'Kiehn LLC', '2008-08-06', 1, '2016-12-22', 41, 46, 539, 0, '2011-01-24', 159, 137, 314, 0, 1, '2013-01-13', 38, 484, 1, '2014-07-06', 23, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(82, 82, NULL, 'Summer', 2016, 'Professional MIS', 'Information Technology Management', 0, 0, 'Fall 2012', 1, 'Spring 2015', 'Other', '3.13', '2.87', 'O''Reilly-Dickens', '2014-01-06', 1, '2012-04-30', 13, 41, 518, 0, '2014-11-15', 153, 170, 306, 0, 1, '2015-09-01', 63, 614, 1, '2013-05-26', 58, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(83, 83, NULL, 'Fall', 2017, 'Full-Time MIS', 'Software Engineering Management', 0, 1, 'Fall 2011', 1, 'Spring 2010', 'Undergraduate', '3.49', '3.84', 'Harris-Bode', '2013-09-09', 0, '2012-12-22', 50, 43, 743, 0, '2014-11-30', 163, 155, 337, 0, 0, '2012-03-12', 80, 582, 1, '2012-10-25', 25, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(84, 84, NULL, 'Fall', 2016, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 0, 0, 'Fall 2015', 0, 'Spring 2012', 'Undergraduate', '2.74', '3.30', 'Kassulke Group', '2010-10-20', 1, '2017-05-30', 7, 9, 730, 1, '2014-02-08', 169, 167, 270, 1, 1, '2017-07-03', 47, 554, 1, '2011-06-25', 40, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(85, 85, NULL, 'Summer', 2017, 'Professional MIS', 'Information Technology Management', 1, 0, 'Fall 2014', 1, 'Spring 2014', 'Undergraduate', '2.63', '3.18', 'Herman-Ortiz', '2007-09-19', 1, '2015-12-12', 44, 27, 563, 0, '2017-07-01', 131, 134, 267, 1, 1, '2014-02-26', 88, 499, 1, '2013-11-29', 21, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(86, 86, NULL, 'Summer', 2016, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 0, 0, 'Spring 2013', 1, 'Spring 2012', 'Other', '3.10', '2.99', 'Kuhic Inc', '2013-01-22', 1, '2011-01-28', 43, 37, 765, 0, '2016-11-07', 157, 133, 267, 0, 0, '2015-12-23', 109, 535, 1, '2014-04-27', 44, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(87, 87, NULL, 'Spring', 2016, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 0, 0, 'Fall 2011', 1, 'Fall 2012', 'Graduate', '3.51', '2.67', 'Purdy, Boyle and Watsica', '2012-01-14', 1, '2011-11-29', 36, 12, 273, 0, '2016-12-18', 150, 138, 298, 0, 0, '2015-05-06', 69, 477, 0, '2012-04-13', 26, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(88, 88, NULL, 'Fall', 2018, 'Professional MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Spring 2013', 1, 'Fall 2012', 'Other', '3.68', '3.60', 'McDermott, Corkery and Williamson', '2007-11-03', 1, '2015-06-04', 10, 17, 544, 0, '2013-12-31', 160, 147, 301, 0, 0, '2013-03-23', 63, 543, 0, '2012-04-08', 53, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(89, 89, NULL, 'Fall', 2020, 'Professional MIS', 'Software Engineering Management', 1, 1, 'Spring 2014', 1, 'Spring 2013', 'Undergraduate', '3.79', '2.79', 'Crona, Ryan and Tillman', '2014-04-15', 0, '2013-10-17', 39, 18, 206, 0, '2011-03-24', 167, 145, 299, 0, 1, '2017-03-17', 81, 560, 0, '2011-05-09', 59, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(90, 90, NULL, 'Fall', 2019, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Spring 2011', 0, 'Spring 2014', 'Other', '3.34', '2.56', 'Brekke, Marks and Mills', '2007-02-14', 1, '2012-06-07', 40, 8, 608, 0, '2017-02-21', 151, 166, 293, 0, 0, '2017-07-21', 17, 576, 1, '2017-05-11', 37, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(91, 91, NULL, 'Spring', 2019, 'Professional MIS', 'Information Technology Management', 1, 0, 'Spring 2010', 0, 'Spring 2013', 'Other', '3.93', '3.82', 'Crooks-Bernier', '2007-11-01', 0, '2015-03-08', 23, 34, 588, 1, '2017-06-03', 135, 163, 309, 1, 1, '2016-05-29', 22, 562, 0, '2016-11-07', 22, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(92, 92, NULL, 'Fall', 2017, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Fall 2012', 0, 'Fall 2010', 'Undergraduate', '3.90', '3.33', 'Orn, Mraz and Simonis', '2014-09-24', 1, '2015-12-07', 51, 30, 205, 1, '2016-05-22', 167, 166, 327, 1, 1, '2015-02-24', 12, 623, 0, '2015-06-09', 22, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(93, 93, NULL, 'Summer', 2020, 'Professional MIS', 'Software Engineering Management', 1, 0, 'Fall 2010', 1, 'Fall 2015', 'Graduate', '2.98', '3.28', 'Swaniawski Inc', '2014-10-06', 0, '2013-10-03', 36, 12, 650, 0, '2013-05-01', 159, 170, 275, 1, 0, '2017-04-08', 85, 447, 1, '2012-03-17', 34, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(94, 94, NULL, 'Spring', 2017, 'Professional MIS', 'Software Engineering Management', 0, 1, 'Spring 2014', 0, 'Spring 2012', 'Undergraduate', '3.91', '3.60', 'Wehner-Schaefer', '2015-01-24', 1, '2014-04-14', 14, 45, 368, 0, '2016-04-16', 136, 145, 327, 1, 0, '2011-02-17', 56, 387, 0, '2013-07-18', 38, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(95, 95, NULL, 'Spring', 2016, 'Professional MIS', 'Information Technology Management', 1, 1, 'Spring 2012', 0, 'Spring 2012', 'Undergraduate', '3.01', '2.75', 'Nitzsche LLC', '2015-03-26', 0, '2016-08-14', 47, 23, 385, 1, '2011-03-09', 131, 138, 297, 0, 0, '2011-06-10', 93, 540, 0, '2014-05-02', 28, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(96, 96, NULL, 'Fall', 2018, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 0, 0, 'Fall 2012', 1, 'Fall 2010', 'Graduate', '3.77', '3.79', 'Pouros and Sons', '2014-02-12', 1, '2014-04-21', 30, 48, 204, 0, '2011-11-15', 146, 161, 279, 0, 1, '2017-01-05', 91, 364, 1, '2017-03-21', 41, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(97, 97, NULL, 'Spring', 2016, 'Professional MIS', 'Information Technology Management', 0, 1, 'Fall 2014', 1, 'Fall 2012', 'Graduate', '3.20', '3.43', 'Koelpin, Douglas and Quigley', '2008-12-06', 0, '2015-09-15', 39, 40, 459, 1, '2017-04-06', 165, 159, 280, 0, 1, '2015-01-31', 52, 533, 1, '2014-02-07', 39, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(98, 98, NULL, 'Fall', 2020, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Fall 2014', 0, 'Spring 2015', 'Graduate', '3.39', '2.94', 'Schumm-Maggio', '2014-07-18', 1, '2017-12-21', 36, 26, 617, 1, '2016-01-24', 150, 149, 261, 1, 1, '2017-05-21', 91, 482, 1, '2011-01-26', 35, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(99, 99, NULL, 'Summer', 2020, 'Professional MIS', 'Enterprise Systems (ES) Management', 1, 0, 'Spring 2011', 0, 'Spring 2015', 'Graduate', '3.79', '2.79', 'Goodwin, Bayer and Prosacco', '2013-01-01', 0, '2016-03-22', 48, 24, 493, 1, '2012-07-24', 139, 141, 332, 1, 0, '2017-01-04', 90, 334, 1, '2012-12-07', 27, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(100, 100, NULL, 'Summer', 2017, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Fall 2015', 0, 'Spring 2012', 'Graduate', '3.20', '2.68', 'Feil-Conroy', '2010-11-22', 1, '2012-05-03', 39, 13, 378, 0, '2013-10-06', 148, 156, 271, 1, 1, '2011-05-05', 119, 417, 1, '2014-02-07', 25, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(101, 101, NULL, 'Fall', 2019, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 1, 0, 'Spring 2011', 1, 'Spring 2011', 'Graduate', '3.32', '3.94', 'Jast, Veum and Mills', '2007-05-26', 0, '2014-07-22', 13, 13, 438, 1, '2016-11-11', 132, 134, 283, 1, 1, '2011-11-16', 108, 459, 1, '2011-07-16', 40, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(102, 102, NULL, 'Summer', 2019, 'Full-Time MIS', 'Software Engineering Management', 1, 0, 'Fall 2013', 1, 'Spring 2015', 'Undergraduate', '2.93', '2.93', 'Schaden, Connelly and Fritsch', '2016-03-11', 1, '2017-03-30', 45, 37, 778, 0, '2017-01-25', 157, 131, 264, 0, 1, '2015-11-09', 23, 554, 1, '2012-08-27', 26, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(103, 103, NULL, 'Spring', 2020, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 1, 0, 'Fall 2015', 0, 'Spring 2014', 'Other', '3.78', '3.94', 'Ward Inc', '2011-09-16', 0, '2015-07-18', 12, 21, 290, 0, '2011-08-25', 154, 147, 280, 1, 0, '2012-09-29', 91, 495, 0, '2011-05-03', 52, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(104, 104, NULL, 'Fall', 2017, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 1, 'Spring 2011', 0, 'Spring 2013', 'Other', '3.59', '3.75', 'Larkin-Mertz', '2012-06-25', 0, '2015-06-19', 17, 36, 493, 0, '2013-07-22', 143, 166, 271, 1, 1, '2017-11-06', 78, 452, 1, '2016-10-12', 50, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(105, 105, NULL, 'Summer', 2017, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Spring 2010', 1, 'Spring 2013', 'Undergraduate', '2.59', '2.95', 'Berge-Hilpert', '2009-09-04', 0, '2013-05-22', 34, 44, 256, 0, '2017-11-04', 137, 134, 307, 0, 1, '2015-07-19', 29, 604, 1, '2015-09-13', 27, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(106, 106, NULL, 'Summer', 2018, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 1, 'Spring 2014', 1, 'Spring 2012', 'Other', '3.67', '3.28', 'Schaefer Group', '2014-10-02', 0, '2013-03-16', 36, 7, 236, 0, '2014-02-13', 133, 159, 283, 1, 1, '2015-05-14', 20, 609, 1, '2014-08-09', 48, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(107, 107, NULL, 'Spring', 2017, 'Full-Time MIS', 'Software Engineering Management', 1, 1, 'Fall 2010', 1, 'Spring 2015', 'Graduate', '3.85', '2.57', 'Bode-Shanahan', '2007-05-03', 0, '2017-05-27', 47, 47, 405, 0, '2016-09-08', 144, 151, 284, 1, 1, '2012-04-05', 35, 646, 1, '2015-12-25', 29, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(108, 108, NULL, 'Summer', 2016, 'Full-Time MIS', 'Software Engineering Management', 0, 0, 'Spring 2010', 0, 'Fall 2013', 'Undergraduate', '2.68', '3.46', 'Wolf Group', '2007-09-04', 1, '2011-02-22', 46, 50, 485, 0, '2017-07-25', 158, 149, 296, 0, 1, '2013-11-07', 61, 619, 0, '2015-08-05', 52, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(109, 109, NULL, 'Fall', 2016, 'Full-Time MIS', 'Software Engineering Management', 1, 1, 'Spring 2010', 1, 'Fall 2010', 'Undergraduate', '2.89', '3.64', 'Russel Inc', '2015-11-15', 1, '2014-11-09', 8, 7, 745, 1, '2016-09-12', 138, 140, 329, 0, 1, '2013-02-10', 83, 419, 0, '2014-01-31', 35, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(110, 110, NULL, 'Fall', 2020, 'Professional MIS', 'Information Technology Management', 1, 1, 'Fall 2011', 1, 'Spring 2014', 'Undergraduate', '2.62', '3.46', 'Cormier LLC', '2010-10-14', 0, '2015-10-06', 34, 37, 774, 0, '2016-04-02', 154, 131, 321, 0, 0, '2017-11-15', 58, 342, 1, '2015-12-22', 60, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(111, 111, NULL, 'Fall', 2020, 'Full-Time MIS', 'Information Technology Management', 1, 0, 'Spring 2015', 0, 'Fall 2012', 'Graduate', '3.38', '3.74', 'Leffler, Langosh and Schoen', '2014-04-06', 0, '2014-11-22', 10, 40, 505, 0, '2011-05-08', 153, 133, 286, 1, 1, '2012-08-08', 11, 462, 1, '2015-10-08', 54, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(112, 112, NULL, 'Summer', 2018, 'Professional MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Spring 2015', 1, 'Fall 2012', 'Other', '3.15', '3.52', 'Murray, Padberg and Kemmer', '2008-07-21', 0, '2012-01-03', 39, 41, 405, 0, '2016-07-21', 154, 132, 323, 1, 1, '2014-10-26', 88, 472, 1, '2013-02-13', 41, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(113, 113, NULL, 'Summer', 2018, 'Professional MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Spring 2010', 0, 'Spring 2012', 'Undergraduate', '2.78', '2.96', 'Mills Inc', '2011-03-21', 1, '2013-09-29', 45, 8, 407, 0, '2015-12-21', 170, 164, 295, 0, 0, '2014-02-16', 13, 548, 0, '2012-11-29', 53, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(114, 114, NULL, 'Fall', 2019, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 1, 1, 'Spring 2014', 1, 'Fall 2011', 'Other', '3.18', '3.59', 'Murray-Flatley', '2013-03-13', 0, '2016-12-05', 48, 21, 476, 0, '2016-05-07', 168, 146, 300, 0, 1, '2016-09-29', 45, 527, 1, '2014-09-24', 37, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(115, 115, NULL, 'Summer', 2017, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 1, 'Spring 2015', 0, 'Spring 2015', 'Undergraduate', '2.54', '3.65', 'Balistreri-Bernier', '2007-09-09', 0, '2011-01-09', 41, 29, 442, 0, '2013-01-21', 130, 167, 277, 1, 1, '2011-10-11', 10, 351, 0, '2014-10-18', 32, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(116, 116, NULL, 'Spring', 2019, 'Professional MIS', 'Information Technology Management', 1, 1, 'Fall 2014', 0, 'Fall 2015', 'Undergraduate', '2.70', '3.99', 'Sauer, Schamberger and Bins', '2013-08-17', 1, '2014-04-14', 6, 29, 582, 0, '2013-02-23', 161, 166, 306, 0, 1, '2013-06-29', 106, 575, 1, '2012-06-01', 59, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(117, 117, NULL, 'Spring', 2019, 'Full-Time MIS', 'Information Technology Management', 0, 1, 'Fall 2012', 1, 'Fall 2013', 'Other', '2.80', '3.80', 'Swift Group', '2016-06-16', 0, '2012-02-14', 29, 41, 432, 0, '2013-08-11', 155, 147, 284, 0, 1, '2011-11-22', 10, 613, 1, '2011-09-26', 52, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(118, 118, NULL, 'Spring', 2017, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Fall 2012', 0, 'Fall 2010', 'Other', '2.63', '3.75', 'Jacobson and Sons', '2013-12-06', 1, '2013-12-01', 16, 45, 490, 0, '2012-01-24', 150, 138, 270, 0, 0, '2016-04-24', 94, 442, 1, '2011-08-03', 52, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(119, 119, NULL, 'Spring', 2018, 'Professional MIS', 'Information Technology Management', 1, 1, 'Spring 2012', 1, 'Spring 2013', 'Undergraduate', '2.75', '3.06', 'Vandervort-Green', '2015-05-28', 0, '2014-07-23', 9, 20, 214, 0, '2015-06-03', 154, 139, 267, 0, 1, '2011-09-05', 54, 545, 0, '2015-12-28', 21, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(120, 120, NULL, 'Summer', 2016, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Fall 2014', 0, 'Fall 2012', 'Graduate', '3.35', '3.36', 'Rodriguez, Bartell and Howe', '2014-08-19', 1, '2014-05-14', 41, 26, 441, 0, '2012-10-23', 147, 137, 304, 1, 0, '2016-07-18', 117, 431, 0, '2016-05-13', 37, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(121, 121, NULL, 'Fall', 2019, 'Full-Time MIS', 'Information Technology Management', 1, 1, 'Fall 2014', 1, 'Spring 2013', 'Graduate', '3.11', '2.93', 'Altenwerth, Murazik and Parisian', '2014-05-29', 0, '2012-06-17', 12, 28, 689, 0, '2012-08-30', 133, 149, 332, 0, 1, '2011-02-09', 24, 625, 0, '2017-02-26', 20, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(122, 122, NULL, 'Fall', 2020, 'Full-Time MIS', 'Software Engineering Management', 0, 0, 'Fall 2011', 1, 'Spring 2012', 'Graduate', '2.71', '2.85', 'Wehner-O''Hara', '2009-03-13', 0, '2011-08-14', 39, 28, 742, 0, '2016-02-04', 152, 158, 316, 0, 1, '2013-09-06', 18, 581, 0, '2017-02-13', 47, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(123, 123, NULL, 'Fall', 2016, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 1, 'Spring 2012', 0, 'Spring 2010', 'Undergraduate', '3.43', '2.58', 'Corkery, Effertz and Wehner', '2013-02-23', 0, '2011-03-11', 45, 42, 355, 0, '2011-07-30', 154, 141, 334, 1, 1, '2012-01-08', 27, 536, 1, '2015-09-06', 23, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(124, 124, NULL, 'Fall', 2018, 'Professional MIS', 'Enterprise Systems (ES) Management', 0, 1, 'Spring 2013', 1, 'Spring 2010', 'Undergraduate', '3.97', '2.68', 'Stamm-Simonis', '2009-11-11', 1, '2015-11-20', 38, 22, 437, 0, '2014-11-10', 130, 167, 278, 1, 0, '2016-07-12', 31, 595, 0, '2011-04-24', 23, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(125, 125, NULL, 'Fall', 2018, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Spring 2010', 1, 'Fall 2014', 'Other', '2.72', '3.54', 'Goodwin, Mills and Connelly', '2011-08-07', 0, '2015-03-01', 47, 18, 358, 0, '2013-10-17', 137, 152, 335, 0, 1, '2012-10-22', 119, 623, 0, '2015-05-09', 39, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(126, 126, NULL, 'Spring', 2017, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Fall 2014', 0, 'Fall 2014', 'Graduate', '3.80', '3.79', 'Williamson, Bahringer and Schneider', '2011-07-09', 1, '2011-05-03', 44, 7, 417, 1, '2013-07-21', 142, 142, 327, 0, 0, '2011-09-13', 117, 567, 1, '2013-04-14', 59, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(127, 127, NULL, 'Summer', 2018, 'Professional MIS', 'Enterprise Systems (ES) Management', 1, 0, 'Fall 2013', 1, 'Spring 2015', 'Other', '3.38', '2.95', 'Bode, Nader and White', '2016-05-12', 0, '2011-03-26', 44, 22, 519, 1, '2012-09-25', 149, 146, 312, 0, 1, '2011-12-29', 11, 428, 1, '2012-01-14', 51, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(128, 128, NULL, 'Spring', 2016, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 1, 0, 'Spring 2015', 0, 'Spring 2010', 'Other', '2.62', '2.98', 'Schaden, Ankunding and Bartoletti', '2010-09-15', 1, '2017-12-24', 28, 19, 394, 0, '2012-05-04', 169, 135, 319, 0, 0, '2017-02-01', 11, 560, 1, '2014-05-08', 46, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(129, 129, NULL, 'Summer', 2017, 'Full-Time MIS', 'Information Technology Management', 1, 0, 'Fall 2013', 0, 'Fall 2010', 'Other', '2.59', '2.67', 'Denesik Inc', '2007-10-09', 0, '2015-09-04', 32, 39, 237, 1, '2013-11-03', 149, 139, 276, 1, 1, '2013-08-31', 73, 482, 0, '2014-05-16', 49, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(130, 130, NULL, 'Summer', 2017, 'Full-Time MIS', 'Information Technology Management', 1, 1, 'Spring 2015', 0, 'Fall 2013', 'Undergraduate', '3.99', '3.16', 'Moore Group', '2009-08-28', 1, '2013-07-14', 29, 30, 779, 1, '2011-12-15', 150, 147, 318, 1, 0, '2016-08-01', 30, 568, 1, '2013-05-05', 42, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(131, 131, NULL, 'Summer', 2016, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 0, 'Spring 2015', 1, 'Spring 2015', 'Undergraduate', '2.79', '2.82', 'Botsford LLC', '2008-01-21', 1, '2014-06-11', 13, 38, 580, 1, '2016-01-05', 148, 149, 303, 0, 0, '2012-12-04', 22, 395, 0, '2014-05-08', 53, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(132, 132, NULL, 'Fall', 2018, 'Professional MIS', 'Software Engineering Management', 0, 0, 'Fall 2013', 1, 'Spring 2015', 'Undergraduate', '3.63', '2.58', 'Purdy-Kiehn', '2009-02-12', 1, '2017-07-16', 18, 40, 445, 0, '2011-05-17', 156, 162, 336, 1, 1, '2016-05-26', 19, 323, 0, '2017-01-10', 28, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(133, 133, NULL, 'Summer', 2020, 'Full-Time MIS', 'Information Technology Management', 1, 0, 'Spring 2014', 1, 'Spring 2015', 'Other', '2.75', '3.81', 'Bergnaum, Cartwright and Flatley', '2012-05-31', 0, '2017-09-22', 50, 10, 436, 0, '2017-01-11', 169, 170, 337, 1, 0, '2011-11-27', 112, 630, 0, '2011-04-17', 60, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(134, 134, NULL, 'Spring', 2020, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 0, 0, 'Fall 2012', 1, 'Spring 2012', 'Graduate', '3.01', '2.73', 'Von, Gorczany and Bednar', '2010-06-08', 0, '2017-08-29', 39, 35, 456, 0, '2016-11-06', 156, 153, 337, 0, 1, '2014-09-21', 12, 350, 0, '2016-10-14', 43, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(135, 135, NULL, 'Summer', 2019, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 1, 0, 'Fall 2015', 1, 'Spring 2011', 'Graduate', '3.94', '3.00', 'Gislason, Fisher and Nikolaus', '2015-05-27', 1, '2014-12-19', 34, 39, 218, 0, '2012-02-17', 132, 154, 289, 1, 0, '2016-07-25', 21, 376, 1, '2017-11-20', 41, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(136, 136, NULL, 'Summer', 2018, 'Full-Time MIS', 'Information Technology Management', 0, 0, 'Spring 2015', 1, 'Fall 2013', 'Graduate', '2.60', '2.50', 'Koepp, Weber and Heidenreich', '2010-05-25', 1, '2014-03-26', 20, 29, 322, 1, '2017-04-01', 169, 145, 322, 0, 1, '2015-04-25', 48, 478, 0, '2011-04-02', 30, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(137, 137, NULL, 'Spring', 2019, 'Full-Time MIS', 'Information Technology Management', 0, 0, 'Fall 2014', 0, 'Fall 2013', 'Other', '3.64', '3.87', 'Padberg-Yundt', '2014-03-16', 1, '2014-07-02', 24, 37, 664, 0, '2011-06-14', 161, 130, 281, 0, 0, '2016-06-10', 101, 460, 1, '2011-08-25', 43, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(138, 138, NULL, 'Summer', 2020, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 1, 'Spring 2014', 1, 'Fall 2011', 'Other', '2.87', '3.03', 'Upton-Schuster', '2010-06-18', 1, '2011-03-18', 39, 6, 396, 0, '2016-01-31', 145, 150, 309, 0, 0, '2014-09-27', 12, 341, 0, '2017-08-06', 26, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(139, 139, NULL, 'Fall', 2019, 'Full-Time MIS', 'Information Technology Management', 1, 1, 'Fall 2015', 1, 'Spring 2014', 'Other', '3.30', '3.33', 'Stehr and Sons', '2016-08-01', 1, '2015-05-07', 11, 38, 366, 1, '2014-05-06', 135, 147, 314, 0, 0, '2014-12-10', 38, 358, 0, '2012-11-01', 32, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(140, 140, NULL, 'Fall', 2016, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 1, 0, 'Fall 2010', 1, 'Fall 2015', 'Undergraduate', '3.10', '3.39', 'Marvin-Heidenreich', '2011-10-30', 1, '2012-08-19', 48, 39, 776, 0, '2017-03-30', 150, 130, 310, 1, 0, '2017-01-04', 49, 505, 1, '2013-10-25', 47, 'Undecided', NULL, NULL, '2017-03-17 04:20:02');
+INSERT INTO `application` (`applicationID`, `studentID`, `userID`, `term`, `year`, `program`, `concentration`, `reqScholarship`, `previousApp`, `previousAppDate`, `previousEnrollment`, `previousEnrollmentDate`, `previousEnrollmentStatus`, `undergradGPA`, `juniorseniorGPA`, `currentEmployer`, `timeAtCurrentEmployer`, `gmat`, `gmatTestDate`, `gmatQScore`, `gmatVScore`, `gmatTScore`, `gre`, `greTestDate`, `greQScore`, `greVScore`, `greTScore`, `toeflOnline`, `toeflPaper`, `toeflTestDate`, `toeflOnlineScore`, `toeflPaperScore`, `tse`, `tseTestDate`, `tseScore`, `offerStatus`, `assistantshipStatus`, `applicantResponse`, `applicationDate`) VALUES
+(141, 141, NULL, 'Summer', 2017, 'Professional MIS', 'Enterprise Systems (ES) Management', 0, 1, 'Spring 2013', 1, 'Fall 2010', 'Graduate', '2.92', '3.89', 'Wisozk-Morissette', '2011-01-19', 0, '2014-11-06', 39, 35, 380, 0, '2017-09-11', 142, 159, 270, 0, 0, '2012-11-02', 76, 573, 1, '2011-04-25', 20, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(142, 142, NULL, 'Spring', 2019, 'Professional MIS', 'Enterprise Resource Planning (ERP) Management', 0, 1, 'Fall 2015', 0, 'Fall 2015', 'Other', '3.55', '3.29', 'Strosin Inc', '2013-02-22', 1, '2014-10-26', 22, 46, 313, 0, '2014-03-18', 153, 151, 266, 0, 1, '2013-08-18', 62, 396, 1, '2012-05-14', 45, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(143, 143, NULL, 'Spring', 2019, 'Professional MIS', 'Information Technology Management', 1, 0, 'Fall 2014', 0, 'Spring 2013', 'Undergraduate', '2.97', '3.04', 'Gaylord-Hayes', '2015-05-02', 1, '2011-03-08', 23, 36, 518, 0, '2014-08-28', 148, 142, 315, 0, 0, '2013-12-09', 64, 664, 1, '2015-04-25', 23, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(144, 144, NULL, 'Fall', 2018, 'Full-Time MIS', 'Software Engineering Management', 1, 0, 'Spring 2014', 1, 'Fall 2010', 'Other', '3.70', '3.71', 'Schroeder-Jacobi', '2008-09-30', 0, '2013-01-10', 10, 36, 220, 0, '2012-07-25', 166, 131, 302, 0, 1, '2011-09-28', 88, 368, 1, '2014-04-19', 25, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(145, 145, NULL, 'Spring', 2017, 'Professional MIS', 'Software Engineering Management', 0, 1, 'Fall 2014', 0, 'Fall 2011', 'Undergraduate', '3.31', '2.82', 'Eichmann, Prosacco and Rolfson', '2008-06-18', 0, '2011-07-12', 47, 17, 375, 0, '2011-05-05', 138, 161, 261, 1, 1, '2014-03-13', 80, 447, 1, '2015-08-13', 44, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(146, 146, NULL, 'Fall', 2016, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Spring 2013', 1, 'Spring 2010', 'Graduate', '3.59', '3.37', 'Lemke Inc', '2009-12-14', 0, '2017-08-13', 36, 29, 575, 0, '2014-04-23', 154, 151, 284, 1, 1, '2016-04-30', 86, 339, 0, '2012-01-11', 21, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(147, 147, NULL, 'Spring', 2018, 'Professional MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Spring 2013', 1, 'Spring 2010', 'Undergraduate', '2.97', '2.93', 'Torphy and Sons', '2012-08-16', 1, '2011-10-05', 44, 33, 303, 0, '2012-12-28', 150, 151, 329, 1, 0, '2015-05-02', 90, 517, 0, '2016-09-26', 50, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(148, 148, NULL, 'Fall', 2017, 'Professional MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Spring 2013', 0, 'Spring 2011', 'Undergraduate', '3.45', '3.25', 'Cummings and Sons', '2012-03-12', 1, '2017-10-17', 17, 42, 297, 0, '2012-10-01', 162, 149, 315, 0, 1, '2015-03-31', 63, 433, 1, '2012-01-02', 25, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(149, 149, NULL, 'Spring', 2018, 'Professional MIS', 'Software Engineering Management', 1, 0, 'Fall 2010', 1, 'Fall 2012', 'Other', '3.34', '2.89', 'Olson-Reichert', '2015-10-30', 1, '2014-04-22', 40, 17, 787, 0, '2016-04-14', 159, 130, 313, 0, 0, '2016-11-19', 105, 606, 0, '2014-06-09', 21, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(150, 150, NULL, 'Spring', 2016, 'Full-Time MIS', 'Enterprise Resource Planning (ERP) Management', 1, 0, 'Spring 2012', 1, 'Fall 2010', 'Graduate', '3.07', '3.62', 'Roob Group', '2015-01-18', 1, '2011-01-08', 15, 8, 443, 1, '2011-10-18', 164, 169, 321, 0, 0, '2014-11-07', 72, 545, 1, '2011-08-30', 59, 'Undecided', NULL, NULL, '2017-03-17 04:20:02');
 
 -- --------------------------------------------------------
 
@@ -417,12 +425,15 @@ INSERT INTO `application` (`applicationID`, `studentID`, `term`, `year`, `progra
 -- Table structure for table `attachment`
 --
 
-CREATE TABLE `attachment` (
-  `attachmentID` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `attachment` (
+  `attachmentID` int(11) NOT NULL AUTO_INCREMENT,
   `applicationID` int(11) NOT NULL,
   `documentType` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `filename` char(32) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `filename` char(32) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`attachmentID`),
+  UNIQUE KEY `filename` (`filename`),
+  KEY `applicationID` (`applicationID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -430,8 +441,8 @@ CREATE TABLE `attachment` (
 -- Table structure for table `class`
 --
 
-CREATE TABLE `class` (
-  `classID` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `class` (
+  `classID` int(11) NOT NULL AUTO_INCREMENT,
   `section` smallint(6) NOT NULL DEFAULT '1',
   `day` varchar(7) COLLATE utf8_unicode_ci NOT NULL,
   `startTime` time NOT NULL,
@@ -441,8 +452,11 @@ CREATE TABLE `class` (
   `endDate` date NOT NULL,
   `instructionMode` char(2) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'P',
   `status` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Open',
-  `courseID` varchar(10) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `courseID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`classID`),
+  KEY `roomID` (`roomID`),
+  KEY `courseID` (`courseID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=42 ;
 
 --
 -- Dumping data for table `class`
@@ -497,11 +511,13 @@ INSERT INTO `class` (`classID`, `section`, `day`, `startTime`, `endTime`, `roomI
 -- Table structure for table `class_faculty`
 --
 
-CREATE TABLE `class_faculty` (
+CREATE TABLE IF NOT EXISTS `class_faculty` (
   `classID` int(11) NOT NULL,
   `facultyID` int(11) NOT NULL,
   `term` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `year` year(4) NOT NULL
+  `year` year(4) NOT NULL,
+  PRIMARY KEY (`classID`,`facultyID`),
+  KEY `facultyID` (`facultyID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -537,8 +553,8 @@ INSERT INTO `class_faculty` (`classID`, `facultyID`, `term`, `year`) VALUES
 -- Table structure for table `college`
 --
 
-CREATE TABLE `college` (
-  `collegeID` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `college` (
+  `collegeID` int(11) NOT NULL AUTO_INCREMENT,
   `applicationID` int(11) NOT NULL,
   `collegeName` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `dateStarted` date NOT NULL,
@@ -547,164 +563,166 @@ CREATE TABLE `college` (
   `hoursEarned` smallint(6) NOT NULL,
   `hoursEnrolled` smallint(6) NOT NULL,
   `degree` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `major` varchar(50) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `major` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`collegeID`),
+  KEY `applicationID` (`applicationID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=151 ;
 
 --
 -- Dumping data for table `college`
 --
 
 INSERT INTO `college` (`collegeID`, `applicationID`, `collegeName`, `dateStarted`, `dateEnded`, `gpa`, `hoursEarned`, `hoursEnrolled`, `degree`, `major`) VALUES
-(1, 1, 'Memphis College of Art', '2014-12-13', '2015-03-26', '2.82', 111, 2, 'Bachelor\'s Degree', 'Economics'),
-(2, 2, 'Rasmussen College, North Dakota Campuses', '2012-08-10', '2016-05-06', '2.07', 135, 16, 'Bachelor\'s Degree', 'Accounting'),
-(3, 3, 'The Southern Christian University', '2010-04-08', '2016-10-03', '2.90', 112, 6, 'Master\'s Degree', 'Accounting'),
-(4, 4, 'Bergen University College', '2011-03-04', '2016-12-26', '2.66', 112, 0, 'Associate\'s Degree', 'Supply Chain Management'),
-(5, 5, 'Aarhus School of Business', '2012-04-03', '2015-06-07', '3.58', 124, 8, 'Associate\'s Degree', 'Economics'),
-(6, 6, 'Western University', '2011-04-11', '2015-02-20', '3.45', 116, 4, 'Master\'s Degree', 'Marketing'),
-(7, 7, 'Donetsk National University', '2013-10-23', '2015-09-08', '2.47', 121, 2, 'Master\'s Degree', 'Information Systems'),
-(8, 8, 'Baltimore Hebrew University', '2012-02-01', '2015-10-22', '3.59', 90, 6, 'Associate\'s Degree', 'Information Systems'),
-(9, 9, 'Antioch University Seattle', '2012-09-16', '2015-11-24', '3.13', 101, 16, 'Master\'s Degree', 'Business Administration'),
-(10, 10, 'Capital University', '2012-08-05', '2015-10-04', '3.75', 95, 16, 'Bachelor\'s Degree', 'Information Systems'),
-(11, 11, 'Imam Khomeini International University', '2012-09-02', '2015-08-15', '3.81', 140, 7, 'Associate\'s Degree', 'Business Administration'),
-(12, 12, 'Crichton College', '2013-03-20', '2016-07-14', '2.20', 117, 14, 'Associate\'s Degree', 'Supply Chain Management'),
-(13, 13, 'University of Petroleum (East China)', '2014-01-28', '2016-07-19', '3.53', 121, 18, 'Master\'s Degree', 'Economics'),
-(14, 14, 'St Clements University - Higher Education School', '2014-04-01', '2016-01-28', '2.41', 70, 17, 'Bachelor\'s Degree', 'Supply Chain Management'),
-(15, 15, 'University of Pittsburgh at Greensburg', '2010-03-25', '2016-10-23', '3.74', 100, 1, 'Associate\'s Degree', 'Business Administration'),
-(16, 16, 'Université Catholique de Bukavu', '2013-06-14', '2016-03-14', '2.65', 122, 8, 'Associate\'s Degree', 'Marketing'),
-(17, 17, 'Kanazawa Gakuin University', '2014-10-04', '2015-10-31', '2.40', 95, 0, 'Bachelor\'s Degree', 'Information Systems'),
-(18, 18, 'Chittagong University of Engineering and Technolog', '2013-12-23', '2016-11-04', '3.31', 63, 5, 'Master\'s Degree', 'Information Systems'),
-(19, 19, 'Ecole Supérieure de Commerce et des Affaires', '2014-10-26', '2016-08-29', '3.00', 112, 3, 'Master\'s Degree', 'Business Administration'),
-(20, 20, 'Mount St. Mary\'s College California', '2013-07-14', '2015-05-15', '3.04', 118, 8, 'Associate\'s Degree', 'Supply Chain Management'),
-(21, 21, 'Sanford-Brown Institute', '2013-07-09', '2016-08-31', '3.19', 134, 3, 'Master\'s Degree', 'Marketing'),
-(22, 22, 'Université Kofi Annan', '2012-10-02', '2016-11-13', '2.74', 78, 4, 'Bachelor\'s Degree', 'Supply Chain Management'),
-(23, 23, 'Universidad Catolica de La Santísima Concepción', '2011-12-03', '2016-05-12', '3.33', 135, 14, 'Master\'s Degree', 'Finance'),
-(24, 24, 'University of Texas at El Paso', '2011-04-19', '2015-02-15', '2.64', 66, 10, 'Bachelor\'s Degree', 'Business Administration'),
-(25, 25, 'University of Ontario Institute of Technology', '2010-07-05', '2016-02-17', '2.35', 150, 11, 'Master\'s Degree', 'Information Systems'),
-(26, 26, 'American Business & Technology University', '2014-01-29', '2016-04-21', '2.68', 60, 11, 'Bachelor\'s Degree', 'Information Systems'),
-(27, 27, 'European Open University', '2012-09-26', '2015-05-15', '3.47', 142, 3, 'Associate\'s Degree', 'Economics'),
-(28, 28, 'Reformed Theological Academy of Debrecen', '2011-03-11', '2016-11-09', '3.46', 67, 8, 'Master\'s Degree', 'Economics'),
-(29, 29, 'La Salle University', '2014-03-02', '2016-08-14', '3.17', 78, 17, 'Master\'s Degree', 'Information Systems'),
-(30, 30, 'Urbana University', '2012-02-21', '2016-10-07', '3.87', 98, 0, 'Associate\'s Degree', 'Business Administration'),
-(31, 31, 'Cornell University', '2012-05-16', '2016-03-22', '2.70', 74, 11, 'Master\'s Degree', 'Finance'),
-(32, 32, 'Southern Illinois University at Carbondale', '2011-01-18', '2015-11-13', '2.05', 115, 6, 'Associate\'s Degree', 'Supply Chain Management'),
-(33, 33, 'Yerevan Haibusak University', '2014-04-19', '2015-06-21', '2.70', 144, 8, 'Bachelor\'s Degree', 'Information Systems'),
-(34, 34, 'Umaru Musa Yar\'Adua University ', '2013-02-06', '2016-05-18', '3.99', 92, 6, 'Master\'s Degree', 'Business Administration'),
-(35, 35, 'Semera University', '2011-04-26', '2016-05-12', '2.59', 87, 17, 'Associate\'s Degree', 'Marketing'),
-(36, 36, 'New Jersey City University', '2013-12-09', '2015-11-22', '2.61', 135, 12, 'Associate\'s Degree', 'Accounting'),
-(37, 37, 'Asa University Bangladesh', '2014-04-13', '2016-01-05', '2.36', 76, 9, 'Associate\'s Degree', 'Accounting'),
-(38, 38, 'Franklin W. Olin College of Engineering', '2012-04-01', '2016-08-25', '3.72', 76, 7, 'Master\'s Degree', 'Supply Chain Management'),
-(39, 39, 'Kilis 7 Aralık University', '2011-02-03', '2015-08-17', '2.44', 115, 1, 'Bachelor\'s Degree', 'Economics'),
-(40, 40, 'Fine Arts Academy \"Jan Matejko\" in Cracow', '2014-12-22', '2015-02-03', '2.13', 99, 17, 'Associate\'s Degree', 'Supply Chain Management'),
-(41, 41, 'Denver Technical College', '2014-01-19', '2015-10-12', '2.49', 69, 12, 'Associate\'s Degree', 'Economics'),
-(42, 42, 'Medical College of Ohio', '2013-01-02', '2016-05-30', '3.55', 124, 4, 'Master\'s Degree', 'Information Systems'),
-(43, 43, 'Azerbaijan National Conservatorie', '2014-09-25', '2015-04-26', '2.03', 100, 17, 'Bachelor\'s Degree', 'Marketing'),
-(44, 44, 'University of Northern Virginia, Prague Campus', '2014-09-16', '2015-07-08', '2.90', 146, 7, 'Bachelor\'s Degree', 'Supply Chain Management'),
-(45, 45, 'Universidad Interamericana de Educacion a Distanci', '2011-05-15', '2015-06-17', '2.76', 74, 3, 'Master\'s Degree', 'Marketing'),
-(46, 46, 'Fachhochschule Burgenland', '2012-10-18', '2016-10-31', '2.42', 128, 18, 'Bachelor\'s Degree', 'Marketing'),
-(47, 47, 'St. Andrews Presbyterian College', '2011-08-23', '2016-02-03', '2.44', 61, 18, 'Master\'s Degree', 'Supply Chain Management'),
-(48, 48, 'St.Kliment Ohridski University', '2011-06-27', '2016-01-14', '2.69', 128, 10, 'Bachelor\'s Degree', 'Supply Chain Management'),
-(49, 49, 'Pabna University of Science and Technology', '2010-12-30', '2016-09-23', '3.06', 129, 5, 'Master\'s Degree', 'Finance'),
-(50, 50, 'Hochschule für Technik und Wirtschaft des Saarland', '2010-03-14', '2016-08-04', '2.12', 80, 4, 'Bachelor\'s Degree', 'Supply Chain Management'),
-(51, 51, 'Universidade Cidade de São Paulo', '2011-01-05', '2015-05-16', '3.56', 93, 7, 'Bachelor\'s Degree', 'Accounting'),
-(52, 52, 'Texas A&M University - Commerce', '2014-10-24', '2015-03-21', '2.82', 134, 13, 'Master\'s Degree', 'Information Systems'),
-(53, 53, 'University \"Titu Maiorescu\"', '2014-07-28', '2015-05-03', '2.96', 108, 4, 'Associate\'s Degree', 'Information Systems'),
-(54, 54, 'National American University, Roseville', '2010-12-17', '2015-05-24', '2.53', 85, 9, 'Associate\'s Degree', 'Business Administration'),
-(55, 55, 'Kongju National University', '2010-05-17', '2016-02-23', '2.05', 138, 11, 'Bachelor\'s Degree', 'Marketing'),
-(56, 56, 'Canterbury Christ Church University', '2011-07-05', '2015-07-10', '3.56', 87, 11, 'Master\'s Degree', 'Supply Chain Management'),
-(57, 57, 'University of Maryland University College', '2014-05-13', '2016-07-16', '2.23', 116, 3, 'Bachelor\'s Degree', 'Economics'),
-(58, 58, 'Kebbi State University of Science and Technology', '2014-07-25', '2016-01-28', '2.38', 123, 9, 'Associate\'s Degree', 'Information Systems'),
-(59, 59, 'Odessa National Maritime Academy', '2010-07-02', '2015-11-30', '2.13', 134, 16, 'Master\'s Degree', 'Marketing'),
-(60, 60, 'Iwate Prefectural University', '2012-11-08', '2015-07-16', '3.11', 99, 1, 'Bachelor\'s Degree', 'Accounting'),
-(61, 61, 'Technological University (Mawlamyaing)', '2013-01-19', '2015-05-25', '2.02', 85, 18, 'Master\'s Degree', 'Information Systems'),
-(62, 62, 'Islamic Azad University, Parand', '2010-03-20', '2016-11-23', '2.42', 144, 3, 'Master\'s Degree', 'Marketing'),
-(63, 63, 'Ecole Supérieure de Commerce de Bordeaux', '2012-02-16', '2015-11-29', '3.41', 86, 4, 'Master\'s Degree', 'Business Administration'),
-(64, 64, 'Southern Connecticut State University', '2010-09-18', '2015-04-30', '3.96', 81, 17, 'Associate\'s Degree', 'Business Administration'),
-(65, 65, 'Sultan Qaboos University', '2014-10-30', '2015-08-03', '2.79', 99, 11, 'Bachelor\'s Degree', 'Accounting'),
-(66, 66, 'Central University College', '2014-12-16', '2016-09-29', '2.22', 141, 0, 'Associate\'s Degree', 'Finance'),
-(67, 67, 'Washington State University', '2010-06-18', '2015-04-28', '2.44', 68, 5, 'Associate\'s Degree', 'Economics'),
-(68, 68, 'Pädagogische Hochschule Karlsruhe', '2014-04-13', '2016-06-10', '3.02', 88, 14, 'Master\'s Degree', 'Supply Chain Management'),
-(69, 69, 'University of Rajasthan', '2010-08-28', '2016-01-04', '3.91', 149, 12, 'Associate\'s Degree', 'Finance'),
-(70, 70, 'Kyungpook National University', '2012-08-31', '2016-09-22', '2.13', 60, 15, 'Associate\'s Degree', 'Information Systems'),
-(71, 71, 'Barton College', '2011-11-10', '2015-10-08', '2.32', 134, 1, 'Master\'s Degree', 'Business Administration'),
-(72, 72, 'University of Regina', '2014-10-28', '2016-05-16', '2.26', 146, 8, 'Associate\'s Degree', 'Marketing'),
-(73, 73, 'Centro Universitario Villanueva', '2013-04-24', '2016-11-11', '2.24', 108, 3, 'Associate\'s Degree', 'Accounting'),
-(74, 74, 'Capitol University', '2011-03-15', '2016-07-07', '3.29', 89, 2, 'Bachelor\'s Degree', 'Business Administration'),
-(75, 75, 'Nagpur University', '2014-11-10', '2016-04-05', '2.90', 69, 4, 'Bachelor\'s Degree', 'Accounting'),
-(76, 76, 'University of Calabar', '2013-03-16', '2015-01-07', '3.32', 84, 5, 'Master\'s Degree', 'Information Systems'),
-(77, 77, 'Samara State Technical University', '2014-07-29', '2016-09-02', '2.69', 149, 3, 'Associate\'s Degree', 'Finance'),
-(78, 78, 'DCT International Hotel & Business Management Scho', '2012-05-11', '2015-12-14', '2.19', 85, 8, 'Master\'s Degree', 'Marketing'),
-(79, 79, 'La Sierra University', '2011-07-06', '2015-08-29', '3.50', 100, 15, 'Bachelor\'s Degree', 'Information Systems'),
-(80, 80, 'Pusan National University', '2013-10-11', '2016-12-29', '2.77', 62, 0, 'Bachelor\'s Degree', 'Business Administration'),
-(81, 81, 'Hesser College', '2011-07-23', '2015-02-27', '2.83', 112, 7, 'Master\'s Degree', 'Business Administration'),
-(82, 82, 'State University of New York at Stony Brook', '2014-03-31', '2016-07-05', '3.59', 95, 5, 'Associate\'s Degree', 'Finance'),
-(83, 83, 'Japan College of Social Work', '2010-10-08', '2016-05-31', '3.82', 144, 11, 'Master\'s Degree', 'Economics'),
-(84, 84, 'Australian Correspondence Schools', '2011-07-22', '2015-05-14', '3.91', 108, 17, 'Associate\'s Degree', 'Information Systems'),
-(85, 85, 'Cedarville College', '2012-03-01', '2016-09-29', '2.70', 106, 18, 'Bachelor\'s Degree', 'Supply Chain Management'),
-(86, 86, 'Ural State Forestry Technical Academy', '2014-11-01', '2016-02-14', '3.16', 118, 12, 'Associate\'s Degree', 'Accounting'),
-(87, 87, 'Minamikyushu University', '2010-06-11', '2016-02-14', '3.65', 141, 11, 'Bachelor\'s Degree', 'Economics'),
-(88, 88, 'Université Robert Schuman (Strasbourg III)', '2010-08-15', '2015-03-30', '3.99', 115, 14, 'Master\'s Degree', 'Supply Chain Management'),
-(89, 89, 'National Technical University (Kiev Politechnical ', '2013-10-08', '2015-06-29', '3.56', 125, 10, 'Bachelor\'s Degree', 'Supply Chain Management'),
-(90, 90, 'Universidad El Bosque', '2014-05-11', '2016-05-31', '3.92', 144, 10, 'Associate\'s Degree', 'Marketing'),
-(91, 91, 'Chuo Gakuin University', '2012-01-06', '2015-01-06', '3.03', 121, 5, 'Bachelor\'s Degree', 'Information Systems'),
-(92, 92, 'Katharine Gibbs School', '2010-11-09', '2015-08-15', '2.43', 106, 1, 'Master\'s Degree', 'Information Systems'),
-(93, 93, 'Police Academy of Latvia', '2013-03-14', '2015-04-29', '3.60', 144, 7, 'Bachelor\'s Degree', 'Accounting'),
-(94, 94, 'London Metropolitan University', '2014-01-12', '2015-08-13', '2.02', 132, 0, 'Bachelor\'s Degree', 'Finance'),
-(95, 95, 'Westsächsische Hochschule Zwickau (FH)', '2011-08-06', '2016-03-19', '2.06', 71, 11, 'Bachelor\'s Degree', 'Finance'),
-(96, 96, 'Rivers State University of Science and Technology', '2012-10-09', '2015-05-18', '3.68', 77, 16, 'Bachelor\'s Degree', 'Business Administration'),
-(97, 97, 'Maryam Institute of Higher Education', '2014-09-29', '2015-01-06', '3.40', 99, 18, 'Master\'s Degree', 'Economics'),
-(98, 98, 'Higher School o Business in Tarnow', '2011-07-31', '2016-04-16', '2.76', 124, 12, 'Associate\'s Degree', 'Marketing'),
-(99, 99, 'Université Mohammed V - Agdal', '2011-01-24', '2015-12-11', '3.55', 123, 7, 'Bachelor\'s Degree', 'Accounting'),
-(100, 100, 'Reformed Bible College', '2011-08-22', '2016-04-14', '3.07', 128, 16, 'Associate\'s Degree', 'Business Administration'),
-(101, 101, 'École des Hautes Études Commerciales', '2010-10-02', '2016-01-16', '2.39', 123, 3, 'Master\'s Degree', 'Supply Chain Management'),
-(102, 102, 'Shikoku University', '2010-10-31', '2016-05-12', '2.30', 149, 4, 'Master\'s Degree', 'Accounting'),
-(103, 103, 'University of Elbasan \"Aleksander Xhuvani\"', '2010-12-12', '2016-08-03', '3.40', 103, 2, 'Bachelor\'s Degree', 'Supply Chain Management'),
-(104, 104, 'University of California, Merced', '2010-07-17', '2015-05-19', '3.49', 97, 6, 'Master\'s Degree', 'Finance'),
-(105, 105, 'Shibaura Institute of Technology', '2014-12-05', '2016-09-27', '2.66', 133, 12, 'Bachelor\'s Degree', 'Supply Chain Management'),
-(106, 106, 'Annamalai University', '2012-07-02', '2015-02-28', '2.32', 71, 7, 'Associate\'s Degree', 'Business Administration'),
-(107, 107, 'Doshisha University', '2013-02-27', '2015-04-08', '2.41', 110, 7, 'Master\'s Degree', 'Information Systems'),
-(108, 108, 'University Institute of Architecture Venice', '2013-01-06', '2016-09-04', '3.08', 122, 13, 'Master\'s Degree', 'Business Administration'),
-(109, 109, 'Universitas Gunadarma', '2010-05-13', '2016-08-13', '3.71', 134, 11, 'Bachelor\'s Degree', 'Marketing'),
-(110, 110, 'South Dakota School of Mines and Technology', '2013-08-19', '2016-06-25', '3.97', 150, 2, 'Bachelor\'s Degree', 'Business Administration'),
-(111, 111, 'Universidad Adventista de Chile', '2013-08-21', '2015-02-15', '2.85', 134, 1, 'Associate\'s Degree', 'Accounting'),
-(112, 112, 'Universitas Dian Nuswantoro', '2010-09-17', '2015-09-20', '2.59', 67, 12, 'Master\'s Degree', 'Information Systems'),
-(113, 113, 'Technological University (Hmawbi)', '2013-02-27', '2016-10-13', '2.58', 83, 13, 'Master\'s Degree', 'Information Systems'),
-(114, 114, 'International Business University of Beijing', '2012-07-21', '2015-03-06', '2.78', 65, 18, 'Bachelor\'s Degree', 'Economics'),
-(115, 115, 'Atlanta Christian College', '2010-08-26', '2016-04-27', '2.69', 68, 13, 'Bachelor\'s Degree', 'Marketing'),
-(116, 116, 'Upper Nile University', '2012-03-08', '2015-01-22', '3.40', 103, 7, 'Associate\'s Degree', 'Finance'),
-(117, 117, 'College of Technology at Dammam', '2014-06-07', '2015-09-06', '3.24', 147, 3, 'Associate\'s Degree', 'Finance'),
-(118, 118, 'California State University, Monterey Bay', '2011-01-16', '2016-05-22', '2.66', 136, 13, 'Bachelor\'s Degree', 'Information Systems'),
-(119, 119, 'Kumamoto University', '2012-12-20', '2016-05-08', '3.68', 73, 11, 'Bachelor\'s Degree', 'Marketing'),
-(120, 120, 'University of Pardubice', '2013-08-08', '2015-09-12', '3.18', 146, 11, 'Master\'s Degree', 'Marketing'),
-(121, 121, 'University of Medicine and Dentistry of New Jersey', '2012-02-04', '2016-11-21', '3.52', 65, 7, 'Master\'s Degree', 'Marketing'),
-(122, 122, 'Universität für Musik und darstellende Kunst Graz', '2010-10-11', '2015-06-26', '3.08', 70, 15, 'Master\'s Degree', 'Business Administration'),
-(123, 123, 'Universidad de Lambayeque', '2014-08-27', '2015-10-28', '2.18', 147, 1, 'Bachelor\'s Degree', 'Information Systems'),
-(124, 124, 'Semyung University', '2013-11-08', '2015-01-19', '2.46', 119, 16, 'Bachelor\'s Degree', 'Accounting'),
-(125, 125, 'Yunnan University', '2014-12-05', '2015-02-27', '3.20', 136, 12, 'Associate\'s Degree', 'Accounting'),
-(126, 126, 'Bamiyan University', '2013-06-26', '2015-03-01', '3.57', 97, 13, 'Master\'s Degree', 'Supply Chain Management'),
-(127, 127, 'Universiti Pendidikan Sultan Idris', '2013-01-03', '2016-09-23', '2.46', 93, 14, 'Master\'s Degree', 'Finance'),
-(128, 128, 'Thomas More College of Liberal Arts', '2011-09-17', '2015-07-04', '3.61', 85, 18, 'Associate\'s Degree', 'Economics'),
-(129, 129, 'California State University, Bakersfield', '2013-11-16', '2015-03-17', '3.37', 137, 14, 'Associate\'s Degree', 'Marketing'),
-(130, 130, 'State University of New York College of Technology', '2010-10-26', '2015-04-28', '2.83', 125, 7, 'Associate\'s Degree', 'Information Systems'),
-(131, 131, 'Namik Kemal University', '2010-04-02', '2015-12-08', '3.36', 112, 16, 'Associate\'s Degree', 'Information Systems'),
-(132, 132, 'Hochschule Bremen', '2014-03-12', '2016-10-18', '2.98', 106, 8, 'Bachelor\'s Degree', 'Supply Chain Management'),
-(133, 133, 'Pangasinan State University', '2011-07-18', '2016-01-12', '2.47', 128, 15, 'Associate\'s Degree', 'Finance'),
-(134, 134, 'Miami University of Ohio - Hamilton', '2010-03-02', '2016-12-04', '3.52', 69, 6, 'Associate\'s Degree', 'Business Administration'),
-(135, 135, 'Komar University of Science and Technology', '2012-11-17', '2015-11-05', '3.46', 117, 14, 'Associate\'s Degree', 'Business Administration'),
-(136, 136, 'Austin Community College', '2013-10-31', '2015-04-03', '2.28', 134, 2, 'Master\'s Degree', 'Business Administration'),
-(137, 137, 'Universidad del Turismo', '2013-03-04', '2016-03-01', '2.75', 102, 4, 'Associate\'s Degree', 'Business Administration'),
-(138, 138, 'Baker College of Owosso', '2011-08-26', '2016-04-29', '2.29', 63, 13, 'Master\'s Degree', 'Economics'),
-(139, 139, 'Universidad Nacional de Formosa', '2011-04-07', '2015-12-13', '3.30', 134, 16, 'Master\'s Degree', 'Marketing'),
-(140, 140, 'Mazandaran University of Medical Science', '2014-12-03', '2016-04-08', '2.78', 69, 14, 'Master\'s Degree', 'Accounting'),
-(141, 141, 'Universität Ulm', '2011-09-29', '2015-09-23', '2.16', 96, 5, 'Associate\'s Degree', 'Business Administration'),
-(142, 142, 'Toyota Technological Institute', '2013-01-20', '2015-04-27', '2.80', 101, 9, 'Associate\'s Degree', 'Marketing'),
-(143, 143, 'Maritime University in Szczecin', '2013-01-03', '2016-03-08', '3.63', 91, 4, 'Associate\'s Degree', 'Business Administration'),
-(144, 144, 'Ho Chi Minh City University of Medicine and Pharma', '2011-09-25', '2015-05-30', '2.11', 136, 11, 'Associate\'s Degree', 'Economics'),
-(145, 145, 'Beni Suef University', '2012-11-07', '2015-10-31', '3.13', 138, 7, 'Associate\'s Degree', 'Business Administration'),
-(146, 146, 'Universidad Católica de Córdoba', '2011-07-27', '2015-03-11', '3.26', 147, 0, 'Bachelor\'s Degree', 'Economics'),
-(147, 147, 'Universitas Bunda Mulia Jakarta', '2010-08-03', '2015-07-01', '3.58', 112, 16, 'Associate\'s Degree', 'Information Systems'),
-(148, 148, 'Jawaharlal Nehru Centre for Advanced  Scientific R', '2014-08-24', '2015-09-11', '3.97', 124, 8, 'Bachelor\'s Degree', 'Economics'),
-(149, 149, 'Ivanovo State Academy of Medicine', '2012-03-21', '2016-07-10', '2.01', 88, 13, 'Master\'s Degree', 'Business Administration'),
-(150, 150, 'Universidad de Navarra', '2014-08-30', '2015-08-21', '3.47', 102, 13, 'Bachelor\'s Degree', 'Information Systems');
+(1, 1, 'Memphis College of Art', '2014-12-13', '2015-03-26', '2.82', 111, 2, 'Bachelor''s Degree', 'Economics'),
+(2, 2, 'Rasmussen College, North Dakota Campuses', '2012-08-10', '2016-05-06', '2.07', 135, 16, 'Bachelor''s Degree', 'Accounting'),
+(3, 3, 'The Southern Christian University', '2010-04-08', '2016-10-03', '2.90', 112, 6, 'Master''s Degree', 'Accounting'),
+(4, 4, 'Bergen University College', '2011-03-04', '2016-12-26', '2.66', 112, 0, 'Associate''s Degree', 'Supply Chain Management'),
+(5, 5, 'Aarhus School of Business', '2012-04-03', '2015-06-07', '3.58', 124, 8, 'Associate''s Degree', 'Economics'),
+(6, 6, 'Western University', '2011-04-11', '2015-02-20', '3.45', 116, 4, 'Master''s Degree', 'Marketing'),
+(7, 7, 'Donetsk National University', '2013-10-23', '2015-09-08', '2.47', 121, 2, 'Master''s Degree', 'Information Systems'),
+(8, 8, 'Baltimore Hebrew University', '2012-02-01', '2015-10-22', '3.59', 90, 6, 'Associate''s Degree', 'Information Systems'),
+(9, 9, 'Antioch University Seattle', '2012-09-16', '2015-11-24', '3.13', 101, 16, 'Master''s Degree', 'Business Administration'),
+(10, 10, 'Capital University', '2012-08-05', '2015-10-04', '3.75', 95, 16, 'Bachelor''s Degree', 'Information Systems'),
+(11, 11, 'Imam Khomeini International University', '2012-09-02', '2015-08-15', '3.81', 140, 7, 'Associate''s Degree', 'Business Administration'),
+(12, 12, 'Crichton College', '2013-03-20', '2016-07-14', '2.20', 117, 14, 'Associate''s Degree', 'Supply Chain Management'),
+(13, 13, 'University of Petroleum (East China)', '2014-01-28', '2016-07-19', '3.53', 121, 18, 'Master''s Degree', 'Economics'),
+(14, 14, 'St Clements University - Higher Education School', '2014-04-01', '2016-01-28', '2.41', 70, 17, 'Bachelor''s Degree', 'Supply Chain Management'),
+(15, 15, 'University of Pittsburgh at Greensburg', '2010-03-25', '2016-10-23', '3.74', 100, 1, 'Associate''s Degree', 'Business Administration'),
+(16, 16, 'Université Catholique de Bukavu', '2013-06-14', '2016-03-14', '2.65', 122, 8, 'Associate''s Degree', 'Marketing'),
+(17, 17, 'Kanazawa Gakuin University', '2014-10-04', '2015-10-31', '2.40', 95, 0, 'Bachelor''s Degree', 'Information Systems'),
+(18, 18, 'Chittagong University of Engineering and Technolog', '2013-12-23', '2016-11-04', '3.31', 63, 5, 'Master''s Degree', 'Information Systems'),
+(19, 19, 'Ecole Supérieure de Commerce et des Affaires', '2014-10-26', '2016-08-29', '3.00', 112, 3, 'Master''s Degree', 'Business Administration'),
+(20, 20, 'Mount St. Mary''s College California', '2013-07-14', '2015-05-15', '3.04', 118, 8, 'Associate''s Degree', 'Supply Chain Management'),
+(21, 21, 'Sanford-Brown Institute', '2013-07-09', '2016-08-31', '3.19', 134, 3, 'Master''s Degree', 'Marketing'),
+(22, 22, 'Université Kofi Annan', '2012-10-02', '2016-11-13', '2.74', 78, 4, 'Bachelor''s Degree', 'Supply Chain Management'),
+(23, 23, 'Universidad Catolica de La Santísima Concepción', '2011-12-03', '2016-05-12', '3.33', 135, 14, 'Master''s Degree', 'Finance'),
+(24, 24, 'University of Texas at El Paso', '2011-04-19', '2015-02-15', '2.64', 66, 10, 'Bachelor''s Degree', 'Business Administration'),
+(25, 25, 'University of Ontario Institute of Technology', '2010-07-05', '2016-02-17', '2.35', 150, 11, 'Master''s Degree', 'Information Systems'),
+(26, 26, 'American Business & Technology University', '2014-01-29', '2016-04-21', '2.68', 60, 11, 'Bachelor''s Degree', 'Information Systems'),
+(27, 27, 'European Open University', '2012-09-26', '2015-05-15', '3.47', 142, 3, 'Associate''s Degree', 'Economics'),
+(28, 28, 'Reformed Theological Academy of Debrecen', '2011-03-11', '2016-11-09', '3.46', 67, 8, 'Master''s Degree', 'Economics'),
+(29, 29, 'La Salle University', '2014-03-02', '2016-08-14', '3.17', 78, 17, 'Master''s Degree', 'Information Systems'),
+(30, 30, 'Urbana University', '2012-02-21', '2016-10-07', '3.87', 98, 0, 'Associate''s Degree', 'Business Administration'),
+(31, 31, 'Cornell University', '2012-05-16', '2016-03-22', '2.70', 74, 11, 'Master''s Degree', 'Finance'),
+(32, 32, 'Southern Illinois University at Carbondale', '2011-01-18', '2015-11-13', '2.05', 115, 6, 'Associate''s Degree', 'Supply Chain Management'),
+(33, 33, 'Yerevan Haibusak University', '2014-04-19', '2015-06-21', '2.70', 144, 8, 'Bachelor''s Degree', 'Information Systems'),
+(34, 34, 'Umaru Musa Yar''Adua University ', '2013-02-06', '2016-05-18', '3.99', 92, 6, 'Master''s Degree', 'Business Administration'),
+(35, 35, 'Semera University', '2011-04-26', '2016-05-12', '2.59', 87, 17, 'Associate''s Degree', 'Marketing'),
+(36, 36, 'New Jersey City University', '2013-12-09', '2015-11-22', '2.61', 135, 12, 'Associate''s Degree', 'Accounting'),
+(37, 37, 'Asa University Bangladesh', '2014-04-13', '2016-01-05', '2.36', 76, 9, 'Associate''s Degree', 'Accounting'),
+(38, 38, 'Franklin W. Olin College of Engineering', '2012-04-01', '2016-08-25', '3.72', 76, 7, 'Master''s Degree', 'Supply Chain Management'),
+(39, 39, 'Kilis 7 Aralık University', '2011-02-03', '2015-08-17', '2.44', 115, 1, 'Bachelor''s Degree', 'Economics'),
+(40, 40, 'Fine Arts Academy "Jan Matejko" in Cracow', '2014-12-22', '2015-02-03', '2.13', 99, 17, 'Associate''s Degree', 'Supply Chain Management'),
+(41, 41, 'Denver Technical College', '2014-01-19', '2015-10-12', '2.49', 69, 12, 'Associate''s Degree', 'Economics'),
+(42, 42, 'Medical College of Ohio', '2013-01-02', '2016-05-30', '3.55', 124, 4, 'Master''s Degree', 'Information Systems'),
+(43, 43, 'Azerbaijan National Conservatorie', '2014-09-25', '2015-04-26', '2.03', 100, 17, 'Bachelor''s Degree', 'Marketing'),
+(44, 44, 'University of Northern Virginia, Prague Campus', '2014-09-16', '2015-07-08', '2.90', 146, 7, 'Bachelor''s Degree', 'Supply Chain Management'),
+(45, 45, 'Universidad Interamericana de Educacion a Distanci', '2011-05-15', '2015-06-17', '2.76', 74, 3, 'Master''s Degree', 'Marketing'),
+(46, 46, 'Fachhochschule Burgenland', '2012-10-18', '2016-10-31', '2.42', 128, 18, 'Bachelor''s Degree', 'Marketing'),
+(47, 47, 'St. Andrews Presbyterian College', '2011-08-23', '2016-02-03', '2.44', 61, 18, 'Master''s Degree', 'Supply Chain Management'),
+(48, 48, 'St.Kliment Ohridski University', '2011-06-27', '2016-01-14', '2.69', 128, 10, 'Bachelor''s Degree', 'Supply Chain Management'),
+(49, 49, 'Pabna University of Science and Technology', '2010-12-30', '2016-09-23', '3.06', 129, 5, 'Master''s Degree', 'Finance'),
+(50, 50, 'Hochschule für Technik und Wirtschaft des Saarland', '2010-03-14', '2016-08-04', '2.12', 80, 4, 'Bachelor''s Degree', 'Supply Chain Management'),
+(51, 51, 'Universidade Cidade de São Paulo', '2011-01-05', '2015-05-16', '3.56', 93, 7, 'Bachelor''s Degree', 'Accounting'),
+(52, 52, 'Texas A&M University - Commerce', '2014-10-24', '2015-03-21', '2.82', 134, 13, 'Master''s Degree', 'Information Systems'),
+(53, 53, 'University "Titu Maiorescu"', '2014-07-28', '2015-05-03', '2.96', 108, 4, 'Associate''s Degree', 'Information Systems'),
+(54, 54, 'National American University, Roseville', '2010-12-17', '2015-05-24', '2.53', 85, 9, 'Associate''s Degree', 'Business Administration'),
+(55, 55, 'Kongju National University', '2010-05-17', '2016-02-23', '2.05', 138, 11, 'Bachelor''s Degree', 'Marketing'),
+(56, 56, 'Canterbury Christ Church University', '2011-07-05', '2015-07-10', '3.56', 87, 11, 'Master''s Degree', 'Supply Chain Management'),
+(57, 57, 'University of Maryland University College', '2014-05-13', '2016-07-16', '2.23', 116, 3, 'Bachelor''s Degree', 'Economics'),
+(58, 58, 'Kebbi State University of Science and Technology', '2014-07-25', '2016-01-28', '2.38', 123, 9, 'Associate''s Degree', 'Information Systems'),
+(59, 59, 'Odessa National Maritime Academy', '2010-07-02', '2015-11-30', '2.13', 134, 16, 'Master''s Degree', 'Marketing'),
+(60, 60, 'Iwate Prefectural University', '2012-11-08', '2015-07-16', '3.11', 99, 1, 'Bachelor''s Degree', 'Accounting'),
+(61, 61, 'Technological University (Mawlamyaing)', '2013-01-19', '2015-05-25', '2.02', 85, 18, 'Master''s Degree', 'Information Systems'),
+(62, 62, 'Islamic Azad University, Parand', '2010-03-20', '2016-11-23', '2.42', 144, 3, 'Master''s Degree', 'Marketing'),
+(63, 63, 'Ecole Supérieure de Commerce de Bordeaux', '2012-02-16', '2015-11-29', '3.41', 86, 4, 'Master''s Degree', 'Business Administration'),
+(64, 64, 'Southern Connecticut State University', '2010-09-18', '2015-04-30', '3.96', 81, 17, 'Associate''s Degree', 'Business Administration'),
+(65, 65, 'Sultan Qaboos University', '2014-10-30', '2015-08-03', '2.79', 99, 11, 'Bachelor''s Degree', 'Accounting'),
+(66, 66, 'Central University College', '2014-12-16', '2016-09-29', '2.22', 141, 0, 'Associate''s Degree', 'Finance'),
+(67, 67, 'Washington State University', '2010-06-18', '2015-04-28', '2.44', 68, 5, 'Associate''s Degree', 'Economics'),
+(68, 68, 'Pädagogische Hochschule Karlsruhe', '2014-04-13', '2016-06-10', '3.02', 88, 14, 'Master''s Degree', 'Supply Chain Management'),
+(69, 69, 'University of Rajasthan', '2010-08-28', '2016-01-04', '3.91', 149, 12, 'Associate''s Degree', 'Finance'),
+(70, 70, 'Kyungpook National University', '2012-08-31', '2016-09-22', '2.13', 60, 15, 'Associate''s Degree', 'Information Systems'),
+(71, 71, 'Barton College', '2011-11-10', '2015-10-08', '2.32', 134, 1, 'Master''s Degree', 'Business Administration'),
+(72, 72, 'University of Regina', '2014-10-28', '2016-05-16', '2.26', 146, 8, 'Associate''s Degree', 'Marketing'),
+(73, 73, 'Centro Universitario Villanueva', '2013-04-24', '2016-11-11', '2.24', 108, 3, 'Associate''s Degree', 'Accounting'),
+(74, 74, 'Capitol University', '2011-03-15', '2016-07-07', '3.29', 89, 2, 'Bachelor''s Degree', 'Business Administration'),
+(75, 75, 'Nagpur University', '2014-11-10', '2016-04-05', '2.90', 69, 4, 'Bachelor''s Degree', 'Accounting'),
+(76, 76, 'University of Calabar', '2013-03-16', '2015-01-07', '3.32', 84, 5, 'Master''s Degree', 'Information Systems'),
+(77, 77, 'Samara State Technical University', '2014-07-29', '2016-09-02', '2.69', 149, 3, 'Associate''s Degree', 'Finance'),
+(78, 78, 'DCT International Hotel & Business Management Scho', '2012-05-11', '2015-12-14', '2.19', 85, 8, 'Master''s Degree', 'Marketing'),
+(79, 79, 'La Sierra University', '2011-07-06', '2015-08-29', '3.50', 100, 15, 'Bachelor''s Degree', 'Information Systems'),
+(80, 80, 'Pusan National University', '2013-10-11', '2016-12-29', '2.77', 62, 0, 'Bachelor''s Degree', 'Business Administration'),
+(81, 81, 'Hesser College', '2011-07-23', '2015-02-27', '2.83', 112, 7, 'Master''s Degree', 'Business Administration'),
+(82, 82, 'State University of New York at Stony Brook', '2014-03-31', '2016-07-05', '3.59', 95, 5, 'Associate''s Degree', 'Finance'),
+(83, 83, 'Japan College of Social Work', '2010-10-08', '2016-05-31', '3.82', 144, 11, 'Master''s Degree', 'Economics'),
+(84, 84, 'Australian Correspondence Schools', '2011-07-22', '2015-05-14', '3.91', 108, 17, 'Associate''s Degree', 'Information Systems'),
+(85, 85, 'Cedarville College', '2012-03-01', '2016-09-29', '2.70', 106, 18, 'Bachelor''s Degree', 'Supply Chain Management'),
+(86, 86, 'Ural State Forestry Technical Academy', '2014-11-01', '2016-02-14', '3.16', 118, 12, 'Associate''s Degree', 'Accounting'),
+(87, 87, 'Minamikyushu University', '2010-06-11', '2016-02-14', '3.65', 141, 11, 'Bachelor''s Degree', 'Economics'),
+(88, 88, 'Université Robert Schuman (Strasbourg III)', '2010-08-15', '2015-03-30', '3.99', 115, 14, 'Master''s Degree', 'Supply Chain Management'),
+(89, 89, 'National Technical University (Kiev Politechnical ', '2013-10-08', '2015-06-29', '3.56', 125, 10, 'Bachelor''s Degree', 'Supply Chain Management'),
+(90, 90, 'Universidad El Bosque', '2014-05-11', '2016-05-31', '3.92', 144, 10, 'Associate''s Degree', 'Marketing'),
+(91, 91, 'Chuo Gakuin University', '2012-01-06', '2015-01-06', '3.03', 121, 5, 'Bachelor''s Degree', 'Information Systems'),
+(92, 92, 'Katharine Gibbs School', '2010-11-09', '2015-08-15', '2.43', 106, 1, 'Master''s Degree', 'Information Systems'),
+(93, 93, 'Police Academy of Latvia', '2013-03-14', '2015-04-29', '3.60', 144, 7, 'Bachelor''s Degree', 'Accounting'),
+(94, 94, 'London Metropolitan University', '2014-01-12', '2015-08-13', '2.02', 132, 0, 'Bachelor''s Degree', 'Finance'),
+(95, 95, 'Westsächsische Hochschule Zwickau (FH)', '2011-08-06', '2016-03-19', '2.06', 71, 11, 'Bachelor''s Degree', 'Finance'),
+(96, 96, 'Rivers State University of Science and Technology', '2012-10-09', '2015-05-18', '3.68', 77, 16, 'Bachelor''s Degree', 'Business Administration'),
+(97, 97, 'Maryam Institute of Higher Education', '2014-09-29', '2015-01-06', '3.40', 99, 18, 'Master''s Degree', 'Economics'),
+(98, 98, 'Higher School o Business in Tarnow', '2011-07-31', '2016-04-16', '2.76', 124, 12, 'Associate''s Degree', 'Marketing'),
+(99, 99, 'Université Mohammed V - Agdal', '2011-01-24', '2015-12-11', '3.55', 123, 7, 'Bachelor''s Degree', 'Accounting'),
+(100, 100, 'Reformed Bible College', '2011-08-22', '2016-04-14', '3.07', 128, 16, 'Associate''s Degree', 'Business Administration'),
+(101, 101, 'École des Hautes Études Commerciales', '2010-10-02', '2016-01-16', '2.39', 123, 3, 'Master''s Degree', 'Supply Chain Management'),
+(102, 102, 'Shikoku University', '2010-10-31', '2016-05-12', '2.30', 149, 4, 'Master''s Degree', 'Accounting'),
+(103, 103, 'University of Elbasan "Aleksander Xhuvani"', '2010-12-12', '2016-08-03', '3.40', 103, 2, 'Bachelor''s Degree', 'Supply Chain Management'),
+(104, 104, 'University of California, Merced', '2010-07-17', '2015-05-19', '3.49', 97, 6, 'Master''s Degree', 'Finance'),
+(105, 105, 'Shibaura Institute of Technology', '2014-12-05', '2016-09-27', '2.66', 133, 12, 'Bachelor''s Degree', 'Supply Chain Management'),
+(106, 106, 'Annamalai University', '2012-07-02', '2015-02-28', '2.32', 71, 7, 'Associate''s Degree', 'Business Administration'),
+(107, 107, 'Doshisha University', '2013-02-27', '2015-04-08', '2.41', 110, 7, 'Master''s Degree', 'Information Systems'),
+(108, 108, 'University Institute of Architecture Venice', '2013-01-06', '2016-09-04', '3.08', 122, 13, 'Master''s Degree', 'Business Administration'),
+(109, 109, 'Universitas Gunadarma', '2010-05-13', '2016-08-13', '3.71', 134, 11, 'Bachelor''s Degree', 'Marketing'),
+(110, 110, 'South Dakota School of Mines and Technology', '2013-08-19', '2016-06-25', '3.97', 150, 2, 'Bachelor''s Degree', 'Business Administration'),
+(111, 111, 'Universidad Adventista de Chile', '2013-08-21', '2015-02-15', '2.85', 134, 1, 'Associate''s Degree', 'Accounting'),
+(112, 112, 'Universitas Dian Nuswantoro', '2010-09-17', '2015-09-20', '2.59', 67, 12, 'Master''s Degree', 'Information Systems'),
+(113, 113, 'Technological University (Hmawbi)', '2013-02-27', '2016-10-13', '2.58', 83, 13, 'Master''s Degree', 'Information Systems'),
+(114, 114, 'International Business University of Beijing', '2012-07-21', '2015-03-06', '2.78', 65, 18, 'Bachelor''s Degree', 'Economics'),
+(115, 115, 'Atlanta Christian College', '2010-08-26', '2016-04-27', '2.69', 68, 13, 'Bachelor''s Degree', 'Marketing'),
+(116, 116, 'Upper Nile University', '2012-03-08', '2015-01-22', '3.40', 103, 7, 'Associate''s Degree', 'Finance'),
+(117, 117, 'College of Technology at Dammam', '2014-06-07', '2015-09-06', '3.24', 147, 3, 'Associate''s Degree', 'Finance'),
+(118, 118, 'California State University, Monterey Bay', '2011-01-16', '2016-05-22', '2.66', 136, 13, 'Bachelor''s Degree', 'Information Systems'),
+(119, 119, 'Kumamoto University', '2012-12-20', '2016-05-08', '3.68', 73, 11, 'Bachelor''s Degree', 'Marketing'),
+(120, 120, 'University of Pardubice', '2013-08-08', '2015-09-12', '3.18', 146, 11, 'Master''s Degree', 'Marketing'),
+(121, 121, 'University of Medicine and Dentistry of New Jersey', '2012-02-04', '2016-11-21', '3.52', 65, 7, 'Master''s Degree', 'Marketing'),
+(122, 122, 'Universität für Musik und darstellende Kunst Graz', '2010-10-11', '2015-06-26', '3.08', 70, 15, 'Master''s Degree', 'Business Administration'),
+(123, 123, 'Universidad de Lambayeque', '2014-08-27', '2015-10-28', '2.18', 147, 1, 'Bachelor''s Degree', 'Information Systems'),
+(124, 124, 'Semyung University', '2013-11-08', '2015-01-19', '2.46', 119, 16, 'Bachelor''s Degree', 'Accounting'),
+(125, 125, 'Yunnan University', '2014-12-05', '2015-02-27', '3.20', 136, 12, 'Associate''s Degree', 'Accounting'),
+(126, 126, 'Bamiyan University', '2013-06-26', '2015-03-01', '3.57', 97, 13, 'Master''s Degree', 'Supply Chain Management'),
+(127, 127, 'Universiti Pendidikan Sultan Idris', '2013-01-03', '2016-09-23', '2.46', 93, 14, 'Master''s Degree', 'Finance'),
+(128, 128, 'Thomas More College of Liberal Arts', '2011-09-17', '2015-07-04', '3.61', 85, 18, 'Associate''s Degree', 'Economics'),
+(129, 129, 'California State University, Bakersfield', '2013-11-16', '2015-03-17', '3.37', 137, 14, 'Associate''s Degree', 'Marketing'),
+(130, 130, 'State University of New York College of Technology', '2010-10-26', '2015-04-28', '2.83', 125, 7, 'Associate''s Degree', 'Information Systems'),
+(131, 131, 'Namik Kemal University', '2010-04-02', '2015-12-08', '3.36', 112, 16, 'Associate''s Degree', 'Information Systems'),
+(132, 132, 'Hochschule Bremen', '2014-03-12', '2016-10-18', '2.98', 106, 8, 'Bachelor''s Degree', 'Supply Chain Management'),
+(133, 133, 'Pangasinan State University', '2011-07-18', '2016-01-12', '2.47', 128, 15, 'Associate''s Degree', 'Finance'),
+(134, 134, 'Miami University of Ohio - Hamilton', '2010-03-02', '2016-12-04', '3.52', 69, 6, 'Associate''s Degree', 'Business Administration'),
+(135, 135, 'Komar University of Science and Technology', '2012-11-17', '2015-11-05', '3.46', 117, 14, 'Associate''s Degree', 'Business Administration'),
+(136, 136, 'Austin Community College', '2013-10-31', '2015-04-03', '2.28', 134, 2, 'Master''s Degree', 'Business Administration'),
+(137, 137, 'Universidad del Turismo', '2013-03-04', '2016-03-01', '2.75', 102, 4, 'Associate''s Degree', 'Business Administration'),
+(138, 138, 'Baker College of Owosso', '2011-08-26', '2016-04-29', '2.29', 63, 13, 'Master''s Degree', 'Economics'),
+(139, 139, 'Universidad Nacional de Formosa', '2011-04-07', '2015-12-13', '3.30', 134, 16, 'Master''s Degree', 'Marketing'),
+(140, 140, 'Mazandaran University of Medical Science', '2014-12-03', '2016-04-08', '2.78', 69, 14, 'Master''s Degree', 'Accounting'),
+(141, 141, 'Universität Ulm', '2011-09-29', '2015-09-23', '2.16', 96, 5, 'Associate''s Degree', 'Business Administration'),
+(142, 142, 'Toyota Technological Institute', '2013-01-20', '2015-04-27', '2.80', 101, 9, 'Associate''s Degree', 'Marketing'),
+(143, 143, 'Maritime University in Szczecin', '2013-01-03', '2016-03-08', '3.63', 91, 4, 'Associate''s Degree', 'Business Administration'),
+(144, 144, 'Ho Chi Minh City University of Medicine and Pharma', '2011-09-25', '2015-05-30', '2.11', 136, 11, 'Associate''s Degree', 'Economics'),
+(145, 145, 'Beni Suef University', '2012-11-07', '2015-10-31', '3.13', 138, 7, 'Associate''s Degree', 'Business Administration'),
+(146, 146, 'Universidad Católica de Córdoba', '2011-07-27', '2015-03-11', '3.26', 147, 0, 'Bachelor''s Degree', 'Economics'),
+(147, 147, 'Universitas Bunda Mulia Jakarta', '2010-08-03', '2015-07-01', '3.58', 112, 16, 'Associate''s Degree', 'Information Systems'),
+(148, 148, 'Jawaharlal Nehru Centre for Advanced  Scientific R', '2014-08-24', '2015-09-11', '3.97', 124, 8, 'Bachelor''s Degree', 'Economics'),
+(149, 149, 'Ivanovo State Academy of Medicine', '2012-03-21', '2016-07-10', '2.01', 88, 13, 'Master''s Degree', 'Business Administration'),
+(150, 150, 'Universidad de Navarra', '2014-08-30', '2015-08-21', '3.47', 102, 13, 'Bachelor''s Degree', 'Information Systems');
 
 -- --------------------------------------------------------
 
@@ -712,9 +730,10 @@ INSERT INTO `college` (`collegeID`, `applicationID`, `collegeName`, `dateStarted
 -- Table structure for table `country`
 --
 
-CREATE TABLE `country` (
+CREATE TABLE IF NOT EXISTS `country` (
   `countryID` char(2) COLLATE utf8_unicode_ci NOT NULL,
-  `country` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `country` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`countryID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -974,12 +993,13 @@ INSERT INTO `country` (`countryID`, `country`) VALUES
 -- Table structure for table `course`
 --
 
-CREATE TABLE `course` (
+CREATE TABLE IF NOT EXISTS `course` (
   `courseID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci,
   `hours` smallint(6) NOT NULL,
-  `offered` varchar(25) COLLATE utf8_unicode_ci NOT NULL
+  `offered` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`courseID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -1000,8 +1020,8 @@ INSERT INTO `course` (`courseID`, `name`, `description`, `hours`, `offered`) VAL
 ('ISYS 5363', 'Business Analytics', 'This course in managerial business analytics provides future managers with the key concepts of decision modeling and information technology management concepts. Students will learn to utilize real time operational business data, as well as quickly process and effectively leverage information. In addition, students will exercise strategic IT deployment skills for supply chain and marketing processes as well as develop strong decision modeling abilities.', 3, 'Spring'),
 ('ISYS 5403', 'Quantitative Methods and Decision Making', 'Utilization of information, quantitative techniques, and computer application in decision making and problem solving for managers. This course is cross-listed with SCMT 5133.', 3, 'Irregular'),
 ('ISYS 5423', 'Seminar in Systems Development', 'Advanced study of structured systems development. Emphasis on strategies and techniques of structured analysis and structured design for producing logical systems specifications and for deriving physical systems designs. Coverage of methodologies for dealing with complexity in the development of information systems. Prerequisite: ISYS 3293 (or equivalent).', 3, 'Fall'),
-('ISYS 5433', 'Enterprise Systems', 'Enterprise Systems comprises the entire class of information technology and systems that support the mission of the company including decision support and business processes. This managerial enterprise systems course focuses on strategic issues of information technology. Students study the various elements and integration of an organization\'s business processes; as a result, students gain an understanding and working knowledge of systems used to support these business processes and their use in decision making. In addition, students will study concepts and develop skills needed to utilize decision-centric business intelligence and knowledge management applications.', 3, 'Spring'),
-('ISYS 5453', 'Introduction to Enterprise Servers', 'The focus of this course is to expose students to working with large scale mainframe computer systems. Mainframe computers are the heart of large company\'s transaction processing systems. This course provides the opportunity for students to gain valuable insight into computing in a mainframe operating environment.', 3, 'Fall'),
+('ISYS 5433', 'Enterprise Systems', 'Enterprise Systems comprises the entire class of information technology and systems that support the mission of the company including decision support and business processes. This managerial enterprise systems course focuses on strategic issues of information technology. Students study the various elements and integration of an organization''s business processes; as a result, students gain an understanding and working knowledge of systems used to support these business processes and their use in decision making. In addition, students will study concepts and develop skills needed to utilize decision-centric business intelligence and knowledge management applications.', 3, 'Spring'),
+('ISYS 5453', 'Introduction to Enterprise Servers', 'The focus of this course is to expose students to working with large scale mainframe computer systems. Mainframe computers are the heart of large company''s transaction processing systems. This course provides the opportunity for students to gain valuable insight into computing in a mainframe operating environment.', 3, 'Fall'),
 ('ISYS 5463', 'Enterprise Transaction Systems', 'Being able to accurately capture and store business transactions is an important processing function in many businesses. For many large companies with high volume processing, the tools of choice for transaction processing are CICS/Cobol/DB2. This course provides students with the necessary understanding and skills to work in this type environment. Pre- or Corequisite:ISYS 5453 (or equivalent) or MIS Director approval.', 3, 'Spring'),
 ('ISYS 5503', 'Decision Support and Analytics', 'Analysis of the highest level of information support for the manager-user. A study of systems providing analytics-based information derived from databases within and/or external to the organization and used to support management in the decision making. Application of tools in business analytics, problem solving, and decision making.', 3, 'Spring'),
 ('ISYS 5603', 'Analytics and Visualization', 'This course focuses on how to discern and tell your story visually using data based on traditional graphical data representation as well as the latest data and information technologies. Coverage includes both visualization theory and hands-on exercises using appropriate computing tools. The course will also include visualization of predictive, clustering, and association models. The opportunities and challenges of Big Data visualization will be explored. Prerequisite: ISYS 5503 or MBAD 513V and departmental consent.', 3, 'Fall'),
@@ -1021,41 +1041,44 @@ INSERT INTO `course` (`courseID`, `name`, `description`, `hours`, `offered`) VAL
 -- Table structure for table `faculty`
 --
 
-CREATE TABLE `faculty` (
-  `facultyID` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `faculty` (
+  `facultyID` int(11) NOT NULL AUTO_INCREMENT,
+  `userID` int(11) NOT NULL,
   `firstName` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `lastName` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `department` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `phone` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `roomID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `roomID` int(11) NOT NULL,
+  PRIMARY KEY (`facultyID`),
+  KEY `roomID` (`roomID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `faculty`
 --
 
-INSERT INTO `faculty` (`facultyID`, `firstName`, `lastName`, `title`, `department`, `email`, `phone`, `roomID`) VALUES
-(1, 'Cash', 'Acrey', 'Clinical Assistant Professor', 'ISYS', 'jacrey@uark.edu', '479-575-1223', 1),
-(2, 'Brittany', 'Bright', 'faculty', 'ISYS', 'bbright@uark.edu', '479-575-6121', 2),
-(3, 'Susan', 'Bristow', 'Clinical Assistant Professor', 'ISYS', 'sbristow@uark.edu', '479-575-4057', 3),
-(4, 'Paul', 'Cronan', 'Professor', 'ISYS', 'tcronan@uark.edu', '479-575-6130', 4),
-(5, 'David', 'Douglas', 'University Professor', 'ISYS', 'ddouglas@uark.edu', '479-575-6114', 5),
-(6, 'Joseph', 'Ehrhardt', 'faculty', 'ISYS', 'jehrhardt@uark.edu', '479-575-1546', 6),
-(7, 'Ron', 'Freeze', 'Clinical Associate Professor', 'ISYS', 'rfreeze@uark.edu', '479-575-4564', 7),
-(8, 'Hartmut', 'Hoehle', 'Assistant Professor', 'ISYS', 'hhoehle@uark.edu', '479-575-5654', 8),
-(9, 'Phillip', 'Kindy', 'faculty', 'ISYS', 'pkindy@uark.edu', '479-575-6563', 9),
-(10, 'Xiao', 'Ma', 'Assistant Professor', 'ISYS', 'xma@uark.edu', '479-575-1379', 10),
-(11, 'Andrew', 'Mackey', 'faculty', 'ISYS', 'amackey@uark.edu', '479-575-7854', 11),
-(12, 'Suresh', 'Malladi', 'Assistant Professor', 'ISYS', 'smalladi@uark.edu', '479-575-7985', 12),
-(13, 'Beverly', 'McDaniel', 'faculty', 'ISYS', 'bmcdaniel@uark.edu', '479-575-4554', 13),
-(14, 'Jeff', 'Mullins', 'Executive in Residence', 'ISYS', 'jmullins@uark.edu', '479-575-4113', 14),
-(15, 'Rajiv', 'Sabherwal', 'Professor', 'ISYS', 'rsabherwal@uark.edu', '479-575-7879', 15),
-(16, 'Christina', 'Serrano', 'Assistant Professor', 'ISYS', 'cserrano@uark.edu', '479-575-9423', 16),
-(17, 'Pankaj', 'Setia', 'Associate Professor', 'ISYS', 'psetia@uark.edu', '479-575-6454', 17),
-(18, 'Tracy', 'Sykes', 'Associate Professor', 'ISYS', 'tsykes@uark.edu', '479-575-7776', 18),
-(19, 'Adriana', 'Wilhelm', 'faculty', 'ISYS', 'awilhelm@uark.edu', '479-575-9882', 20);
+INSERT INTO `faculty` (`facultyID`, `userID`, `firstName`, `lastName`, `title`, `department`, `email`, `phone`, `roomID`) VALUES
+(1, 0, 'Cash', 'Acrey', 'Clinical Assistant Professor', 'ISYS', 'jacrey@uark.edu', '479-575-1223', 1),
+(2, 0, 'Brittany', 'Bright', 'faculty', 'ISYS', 'bbright@uark.edu', '479-575-6121', 2),
+(3, 0, 'Susan', 'Bristow', 'Clinical Assistant Professor', 'ISYS', 'sbristow@uark.edu', '479-575-4057', 3),
+(4, 0, 'Paul', 'Cronan', 'Professor', 'ISYS', 'tcronan@uark.edu', '479-575-6130', 4),
+(5, 0, 'David', 'Douglas', 'University Professor', 'ISYS', 'ddouglas@uark.edu', '479-575-6114', 5),
+(6, 0, 'Joseph', 'Ehrhardt', 'faculty', 'ISYS', 'jehrhardt@uark.edu', '479-575-1546', 6),
+(7, 0, 'Ron', 'Freeze', 'Clinical Associate Professor', 'ISYS', 'rfreeze@uark.edu', '479-575-4564', 7),
+(8, 0, 'Hartmut', 'Hoehle', 'Assistant Professor', 'ISYS', 'hhoehle@uark.edu', '479-575-5654', 8),
+(9, 0, 'Phillip', 'Kindy', 'faculty', 'ISYS', 'pkindy@uark.edu', '479-575-6563', 9),
+(10, 0, 'Xiao', 'Ma', 'Assistant Professor', 'ISYS', 'xma@uark.edu', '479-575-1379', 10),
+(11, 0, 'Andrew', 'Mackey', 'faculty', 'ISYS', 'amackey@uark.edu', '479-575-7854', 11),
+(12, 0, 'Suresh', 'Malladi', 'Assistant Professor', 'ISYS', 'smalladi@uark.edu', '479-575-7985', 12),
+(13, 0, 'Beverly', 'McDaniel', 'faculty', 'ISYS', 'bmcdaniel@uark.edu', '479-575-4554', 13),
+(14, 0, 'Jeff', 'Mullins', 'Executive in Residence', 'ISYS', 'jmullins@uark.edu', '479-575-4113', 14),
+(15, 0, 'Rajiv', 'Sabherwal', 'Professor', 'ISYS', 'rsabherwal@uark.edu', '479-575-7879', 15),
+(16, 0, 'Christina', 'Serrano', 'Assistant Professor', 'ISYS', 'cserrano@uark.edu', '479-575-9423', 16),
+(17, 0, 'Pankaj', 'Setia', 'Associate Professor', 'ISYS', 'psetia@uark.edu', '479-575-6454', 17),
+(18, 0, 'Tracy', 'Sykes', 'Associate Professor', 'ISYS', 'tsykes@uark.edu', '479-575-7776', 18),
+(19, 0, 'Adriana', 'Wilhelm', 'faculty', 'ISYS', 'awilhelm@uark.edu', '479-575-9882', 20);
 
 -- --------------------------------------------------------
 
@@ -1063,10 +1086,12 @@ INSERT INTO `faculty` (`facultyID`, `firstName`, `lastName`, `title`, `departmen
 -- Table structure for table `faculty_request`
 --
 
-CREATE TABLE `faculty_request` (
+CREATE TABLE IF NOT EXISTS `faculty_request` (
   `requestID` int(11) NOT NULL,
   `facultyID` int(11) NOT NULL,
-  `requestDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `requestDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`requestID`,`facultyID`),
+  KEY `facultyID` (`facultyID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -1105,11 +1130,13 @@ INSERT INTO `faculty_request` (`requestID`, `facultyID`, `requestDate`) VALUES
 -- Table structure for table `interview_file`
 --
 
-CREATE TABLE `interview_file` (
-  `fileID` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `interview_file` (
+  `fileID` int(11) NOT NULL AUTO_INCREMENT,
   `fileName` char(32) COLLATE utf8_unicode_ci NOT NULL,
-  `applicationID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `applicationID` int(11) NOT NULL,
+  PRIMARY KEY (`fileID`),
+  KEY `applicationID` (`applicationID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1117,8 +1144,8 @@ CREATE TABLE `interview_file` (
 -- Table structure for table `request`
 --
 
-CREATE TABLE `request` (
-  `requestID` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `request` (
+  `requestID` int(11) NOT NULL AUTO_INCREMENT,
   `reason` text COLLATE utf8_unicode_ci NOT NULL,
   `hours` tinyint(4) NOT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL,
@@ -1138,8 +1165,10 @@ CREATE TABLE `request` (
   `multipleGAs` tinyint(1) NOT NULL DEFAULT '0',
   `multipleGAsNumber` tinyint(4) DEFAULT '1',
   `requested_studentID` int(11) DEFAULT NULL,
-  `comments` text COLLATE utf8_unicode_ci
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `comments` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`requestID`),
+  KEY `requested_studentID` (`requested_studentID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=31 ;
 
 --
 -- Dumping data for table `request`
@@ -1183,11 +1212,12 @@ INSERT INTO `request` (`requestID`, `reason`, `hours`, `description`, `internet`
 -- Table structure for table `room`
 --
 
-CREATE TABLE `room` (
-  `roomID` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `room` (
+  `roomID` int(11) NOT NULL AUTO_INCREMENT,
   `building` char(4) COLLATE utf8_unicode_ci NOT NULL,
-  `roomNumber` char(4) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `roomNumber` char(4) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`roomID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=49 ;
 
 --
 -- Dumping data for table `room`
@@ -1249,9 +1279,10 @@ INSERT INTO `room` (`roomID`, `building`, `roomNumber`) VALUES
 -- Table structure for table `state`
 --
 
-CREATE TABLE `state` (
+CREATE TABLE IF NOT EXISTS `state` (
   `stateID` char(2) COLLATE utf8_unicode_ci NOT NULL,
-  `state` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `state` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`stateID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -1328,8 +1359,8 @@ INSERT INTO `state` (`stateID`, `state`) VALUES
 -- Table structure for table `student`
 --
 
-CREATE TABLE `student` (
-  `studentID` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `student` (
+  `studentID` int(11) NOT NULL AUTO_INCREMENT,
   `firstName` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `middleName` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `lastName` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
@@ -1343,8 +1374,10 @@ CREATE TABLE `student` (
   `countryOfBirth` char(2) COLLATE utf8_unicode_ci NOT NULL,
   `ethnicity` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `gender` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `citizenship` varchar(25) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `citizenship` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`studentID`),
+  KEY `countryOfBirth` (`countryOfBirth`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=151 ;
 
 --
 -- Dumping data for table `student`
@@ -1508,10 +1541,12 @@ INSERT INTO `student` (`studentID`, `firstName`, `middleName`, `lastName`, `pref
 -- Table structure for table `student_address`
 --
 
-CREATE TABLE `student_address` (
+CREATE TABLE IF NOT EXISTS `student_address` (
   `studentID` int(11) NOT NULL,
   `addressID` int(11) NOT NULL,
-  `type` varchar(10) COLLATE utf8_unicode_ci NOT NULL
+  `type` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`studentID`,`addressID`,`type`),
+  KEY `addressID` (`addressID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -1826,12 +1861,14 @@ INSERT INTO `student_address` (`studentID`, `addressID`, `type`) VALUES
 -- Table structure for table `student_class`
 --
 
-CREATE TABLE `student_class` (
+CREATE TABLE IF NOT EXISTS `student_class` (
   `studentID` int(11) NOT NULL,
   `classID` int(11) NOT NULL,
   `grade` decimal(2,1) DEFAULT NULL,
   `term` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `year` year(4) NOT NULL
+  `year` year(4) NOT NULL,
+  PRIMARY KEY (`studentID`,`classID`),
+  KEY `classID` (`classID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -2246,8 +2283,8 @@ INSERT INTO `student_class` (`studentID`, `classID`, `grade`, `term`, `year`) VA
 -- Table structure for table `user`
 --
 
-CREATE TABLE `user` (
-  `userID` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `user` (
+  `userID` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `username` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
@@ -2256,17 +2293,35 @@ CREATE TABLE `user` (
   `supervisorRole` tinyint(1) NOT NULL DEFAULT '0',
   `committeeRole` tinyint(1) NOT NULL DEFAULT '0',
   `advisorRole` tinyint(1) NOT NULL DEFAULT '0',
-  `gaRole` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `gaRole` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`userID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`userID`, `name`, `email`, `username`, `password`, `adminRole`, `supervisorRole`, `committeeRole`, `advisorRole`, `gaRole`) VALUES
-(1, 'Administrator', 'admin@uark.edu', 'admin', '$2y$10$/NJamPGCJctYmrDIm/0.sO6cbfv5hp1ud1nBmqHw8ghtCa8R65VTu', 1, 1, 1, 1, 1),
+(1, 'Administrator', 'admin@uark.edu', 'admin', '$2y$10$/NJamPGCJctYmrDIm/0.sO6cbfv5hp1ud1nBmqHw8ghtCa8R65VTu', 1, 0, 0, 0, 0),
 (2, 'Jeff Mullins', 'jmullins@uark.edu', 'jmullins', '$2y$10$RRCjo9gOQiNOUUMVYTxaAOAJDSdCOY5hw5YlRc4QBghOW/uzXerkm', 1, 1, 1, 1, 1),
-(3, 'Paul Cronan', 'pcronan@uark.edu', 'pcronan', '$2y$10$Ousgk54Ob3iGkUSzqfCMsOD4nTk5vGJRNbG3A3MDG38C/QW1LG35G', 1, 1, 1, 1, 1);
+(3, 'Paul Cronan', 'pcronan@uark.edu', 'pcronan', '$2y$10$Ousgk54Ob3iGkUSzqfCMsOD4nTk5vGJRNbG3A3MDG38C/QW1LG35G', 1, 1, 1, 1, 1),
+(4, 'Cash Acrey', 'cacrey@uark.edu', 'cacrey', '$2y$10$OgxHrCzN0SG355rP5hoF6enwJB8HE8iLmdDEK3sHpauosQw0MVexi', 0, 0, 0, 0, 0),
+(5, 'Brittany Bright', 'bbright@uark.edu', 'bbright', '$2y$10$r.xfcOiGv6mw8okZHdjqKucHrhfBvnnXgoe/UFeH5VhXMgeTwJZwi', 0, 0, 0, 0, 0),
+(6, 'Susan Bristow', 'sbristow@uark.edu', 'sbristow', '$2y$10$GAj3OIqZ4xY1IeeNz.VdludvmeNLadVV0inEpdIZLkAXxMA3/2D7O', 0, 0, 0, 0, 0),
+(8, 'David Douglas', 'ddouglas@uark.edu', 'ddouglas', '$2y$10$NeVOQc/mdR9VC6cy.D/u0.92nXl0jUc08zR9BtROWwBJa6T2JjcpS', 0, 0, 0, 0, 0),
+(9, 'Joseph Ehrhardt', 'jehrhardt@uark.edu', 'jehrhardt.', '$2y$10$fkvjU1X9Cn9eBuEHJ2wag.fsZIPE9YobbMKD.UVoAvvTec.ulUNVq', 0, 0, 0, 0, 0),
+(10, 'Ron Freeze', 'rfreeze@uark.edu', 'rfreeze', '$2y$10$/xgiBRcKX.AXzSMCERCPcOv4BNm6zlMi10F.C.ax8cjuJJKm33lDO', 0, 0, 0, 0, 0),
+(11, 'Hartmut Hoehle', 'hhoehle@uark.edu', 'hhoehle', '$2y$10$9WKC0IMu2/72zlm.ZX1P.eeQ5TnVBtaaO/OVRdvEfXzSxBUgXJU3G', 0, 0, 0, 0, 0),
+(12, 'Phillip Kindy', 'pkindy@uark.edu', 'pkindy', '$2y$10$QafmXU7KT/QeXZXrFvziturr36yKfDYM.tbF8AYip8qKJQAg770Ii', 0, 0, 0, 0, 0),
+(13, 'Xiao Ma', 'xma@uark.edu', 'xma', '$2y$10$YRncca9RK/VsJmNR9gydnO6V1JQHhnYmt30HCxrmiSbF3AALAVD..', 0, 0, 0, 0, 0),
+(14, 'Andrew Mackey', 'amackey@uark.edu', 'amackey', '$2y$10$Ms3.ps7Yr5XKbeczuZ3u/urVjg/uV3lBLXH4RUGBp1pzJnJVsxnx.', 0, 0, 0, 0, 0),
+(15, 'Suresh Malladi', 'smalladi@uark.edu', 'smalladi', '$2y$10$s/De.jlbYzHsqyIUE2m3uOGbLVcEKQ8noCKf.7gQWvZnTl6ytEBDC', 0, 0, 0, 0, 0),
+(16, 'Beverly McDaniel', 'bmcdaniel@uark.edu', 'bmcdaniel', '$2y$10$KOlw6bbcqCXMaf1MPRLsdON7AP0zmFrXNzfZ4HJ7veRrfl3bvTURa', 0, 0, 0, 0, 0),
+(17, 'Rarjiv Sabherwal', 'rsabherwal@uark.edu', 'rsabherwal', '$2y$10$6W8KgB6XhIoNDtqir24P7eS2gwGSGt/4tPELPI3LkahLEkYUERQbm', 0, 0, 0, 0, 0),
+(18, 'Christina Serrano', 'cserrano@uark.edu', 'cserrano', '$2y$10$IjT3TtiZZQXBL3xVktbV5.BEJLNnGT/mrqqXm8dkqNr8zWqkWNzgC', 0, 0, 0, 0, 0),
+(19, 'Pankaj Setia', 'psetia@uark.edu', 'psetia', '$2y$10$DuQtf.BiqyJeVcxToVpc8un/q3ZPp.Yyd5W04GBMCAIR1Bot0X3uy', 0, 0, 0, 0, 0),
+(20, 'Adriana Wilhelm', 'awilhelm@uark.edu', 'awilhelm', '$2y$10$XA/DJRyfbiG/sFrLsCGVk.FMd0ZYM5B21c548BPLhLJ8NpJivlhcK', 0, 0, 0, 0, 0),
+(21, 'Tracy Sykes', 'tsykes@uark.edu', 'tsykes', '$2y$10$4wJ9ynttptwiVs.S6uqUT.20YZDEyA3lax6uZKXibnl96iZ3mGnNi', 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2274,220 +2329,16 @@ INSERT INTO `user` (`userID`, `name`, `email`, `username`, `password`, `adminRol
 -- Table structure for table `user_comment`
 --
 
-CREATE TABLE `user_comment` (
-  `commentID` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `user_comment` (
+  `commentID` int(11) NOT NULL AUTO_INCREMENT,
   `userID` int(11) NOT NULL,
   `applicationID` int(11) NOT NULL,
-  `commentText` text COLLATE utf8_unicode_ci
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `commentText` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`commentID`),
+  KEY `applicationID` (`applicationID`),
+  KEY `userID` (`userID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `address`
---
-ALTER TABLE `address`
-  ADD PRIMARY KEY (`addressID`),
-  ADD KEY `stateID` (`stateID`),
-  ADD KEY `countryID` (`countryID`);
-
---
--- Indexes for table `advising`
---
-ALTER TABLE `advising`
-  ADD PRIMARY KEY (`studentID`,`classID`),
-  ADD KEY `classID` (`classID`);
-
---
--- Indexes for table `application`
---
-ALTER TABLE `application`
-  ADD PRIMARY KEY (`applicationID`),
-  ADD KEY `studentID` (`studentID`);
-
---
--- Indexes for table `attachment`
---
-ALTER TABLE `attachment`
-  ADD PRIMARY KEY (`attachmentID`),
-  ADD UNIQUE KEY `filename` (`filename`),
-  ADD KEY `applicationID` (`applicationID`);
-
---
--- Indexes for table `class`
---
-ALTER TABLE `class`
-  ADD PRIMARY KEY (`classID`),
-  ADD KEY `roomID` (`roomID`),
-  ADD KEY `courseID` (`courseID`);
-
---
--- Indexes for table `class_faculty`
---
-ALTER TABLE `class_faculty`
-  ADD PRIMARY KEY (`classID`,`facultyID`),
-  ADD KEY `facultyID` (`facultyID`);
-
---
--- Indexes for table `college`
---
-ALTER TABLE `college`
-  ADD PRIMARY KEY (`collegeID`),
-  ADD KEY `applicationID` (`applicationID`);
-
---
--- Indexes for table `country`
---
-ALTER TABLE `country`
-  ADD PRIMARY KEY (`countryID`);
-
---
--- Indexes for table `course`
---
-ALTER TABLE `course`
-  ADD PRIMARY KEY (`courseID`);
-
---
--- Indexes for table `faculty`
---
-ALTER TABLE `faculty`
-  ADD PRIMARY KEY (`facultyID`),
-  ADD KEY `roomID` (`roomID`);
-
---
--- Indexes for table `faculty_request`
---
-ALTER TABLE `faculty_request`
-  ADD PRIMARY KEY (`requestID`,`facultyID`),
-  ADD KEY `facultyID` (`facultyID`);
-
---
--- Indexes for table `interview_file`
---
-ALTER TABLE `interview_file`
-  ADD PRIMARY KEY (`fileID`),
-  ADD KEY `applicationID` (`applicationID`);
-
---
--- Indexes for table `request`
---
-ALTER TABLE `request`
-  ADD PRIMARY KEY (`requestID`),
-  ADD KEY `requested_studentID` (`requested_studentID`);
-
---
--- Indexes for table `room`
---
-ALTER TABLE `room`
-  ADD PRIMARY KEY (`roomID`);
-
---
--- Indexes for table `state`
---
-ALTER TABLE `state`
-  ADD PRIMARY KEY (`stateID`);
-
---
--- Indexes for table `student`
---
-ALTER TABLE `student`
-  ADD PRIMARY KEY (`studentID`),
-  ADD KEY `countryOfBirth` (`countryOfBirth`);
-
---
--- Indexes for table `student_address`
---
-ALTER TABLE `student_address`
-  ADD PRIMARY KEY (`studentID`,`addressID`,`type`),
-  ADD KEY `addressID` (`addressID`);
-
---
--- Indexes for table `student_class`
---
-ALTER TABLE `student_class`
-  ADD PRIMARY KEY (`studentID`,`classID`),
-  ADD KEY `classID` (`classID`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`userID`);
-
---
--- Indexes for table `user_comment`
---
-ALTER TABLE `user_comment`
-  ADD PRIMARY KEY (`commentID`),
-  ADD KEY `applicationID` (`applicationID`),
-  ADD KEY `userID` (`userID`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `address`
---
-ALTER TABLE `address`
-  MODIFY `addressID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
---
--- AUTO_INCREMENT for table `application`
---
-ALTER TABLE `application`
-  MODIFY `applicationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
---
--- AUTO_INCREMENT for table `attachment`
---
-ALTER TABLE `attachment`
-  MODIFY `attachmentID` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `class`
---
-ALTER TABLE `class`
-  MODIFY `classID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
---
--- AUTO_INCREMENT for table `college`
---
-ALTER TABLE `college`
-  MODIFY `collegeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
---
--- AUTO_INCREMENT for table `faculty`
---
-ALTER TABLE `faculty`
-  MODIFY `facultyID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
---
--- AUTO_INCREMENT for table `interview_file`
---
-ALTER TABLE `interview_file`
-  MODIFY `fileID` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `request`
---
-ALTER TABLE `request`
-  MODIFY `requestID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
---
--- AUTO_INCREMENT for table `room`
---
-ALTER TABLE `room`
-  MODIFY `roomID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
---
--- AUTO_INCREMENT for table `student`
---
-ALTER TABLE `student`
-  MODIFY `studentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `user_comment`
---
-ALTER TABLE `user_comment`
-  MODIFY `commentID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
