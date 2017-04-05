@@ -2,7 +2,7 @@
 	session_start();
 	error_reporting(E_ALL);
     if (!isset($_POST['loginUsername']) && !isset($_POST['loginPassword']))
-        header("Location: invalidpermission.php?e=Committee Member"); 	
+        header("Location: index.php"); 	
 	ini_set('display_errors', 1);
     include 'php/functions.php';	
 	if(isset($_POST)){
