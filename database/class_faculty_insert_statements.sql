@@ -17,5 +17,5 @@ INSERT INTO `class_faculty` VALUES (16, 18, 'Fall', '2017');
 INSERT INTO `class_faculty` VALUES (17, 18, 'Fall', '2017');
 INSERT INTO `class_faculty` VALUES (18, 6, 'Fall', '2017');
 INSERT INTO `class_faculty` VALUES (19, 6, 'Fall', '2017');
-INSERT INTO `class_faculty` VALUES (20, 1, 'Fall', '2017');
-INSERT INTO `class_faculty` VALUES (21, 1, 'Fall', '2017');
+INSERT INTO `class_faculty` VALUES (20, 8, 'Fall', '2017');
+INSERT INTO `class_faculty` VALUES (21, 8, 'Fall', '2017');

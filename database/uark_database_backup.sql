@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 05, 2017 at 07:18 PM
+-- Generation Time: Apr 05, 2017 at 09:44 PM
 -- Server version: 5.5.54
 -- PHP Version: 5.6.29
 
@@ -544,8 +544,8 @@ INSERT INTO `class_faculty` (`classID`, `facultyID`, `term`, `year`) VALUES
 (17, 18, 'Fall', 2017),
 (18, 6, 'Fall', 2017),
 (19, 6, 'Fall', 2017),
-(20, 1, 'Fall', 2017),
-(21, 1, 'Fall', 2017);
+(20, 8, 'Fall', 2017),
+(21, 8, 'Fall', 2017);
 
 -- --------------------------------------------------------
 
@@ -1060,69 +1060,25 @@ CREATE TABLE IF NOT EXISTS `faculty` (
 --
 
 INSERT INTO `faculty` (`facultyID`, `userID`, `firstName`, `lastName`, `title`, `department`, `email`, `phone`, `roomID`) VALUES
-(1, 0, 'Cash', 'Acrey', 'Clinical Assistant Professor', 'ISYS', 'jacrey@uark.edu', '479-575-1223', 1),
-(2, 0, 'Brittany', 'Bright', 'faculty', 'ISYS', 'bbright@uark.edu', '479-575-6121', 2),
-(3, 0, 'Susan', 'Bristow', 'Clinical Assistant Professor', 'ISYS', 'sbristow@uark.edu', '479-575-4057', 3),
-(4, 0, 'Paul', 'Cronan', 'Professor', 'ISYS', 'tcronan@uark.edu', '479-575-6130', 4),
-(5, 0, 'David', 'Douglas', 'University Professor', 'ISYS', 'ddouglas@uark.edu', '479-575-6114', 5),
-(6, 0, 'Joseph', 'Ehrhardt', 'faculty', 'ISYS', 'jehrhardt@uark.edu', '479-575-1546', 6),
-(7, 0, 'Ron', 'Freeze', 'Clinical Associate Professor', 'ISYS', 'rfreeze@uark.edu', '479-575-4564', 7),
-(8, 0, 'Hartmut', 'Hoehle', 'Assistant Professor', 'ISYS', 'hhoehle@uark.edu', '479-575-5654', 8),
-(9, 0, 'Phillip', 'Kindy', 'faculty', 'ISYS', 'pkindy@uark.edu', '479-575-6563', 9),
-(10, 0, 'Xiao', 'Ma', 'Assistant Professor', 'ISYS', 'xma@uark.edu', '479-575-1379', 10),
-(11, 0, 'Andrew', 'Mackey', 'faculty', 'ISYS', 'amackey@uark.edu', '479-575-7854', 11),
-(12, 0, 'Suresh', 'Malladi', 'Assistant Professor', 'ISYS', 'smalladi@uark.edu', '479-575-7985', 12),
-(13, 0, 'Beverly', 'McDaniel', 'faculty', 'ISYS', 'bmcdaniel@uark.edu', '479-575-4554', 13),
-(14, 0, 'Jeff', 'Mullins', 'Executive in Residence', 'ISYS', 'jmullins@uark.edu', '479-575-4113', 14),
-(15, 0, 'Rajiv', 'Sabherwal', 'Professor', 'ISYS', 'rsabherwal@uark.edu', '479-575-7879', 15),
-(16, 0, 'Christina', 'Serrano', 'Assistant Professor', 'ISYS', 'cserrano@uark.edu', '479-575-9423', 16),
-(17, 0, 'Pankaj', 'Setia', 'Associate Professor', 'ISYS', 'psetia@uark.edu', '479-575-6454', 17),
-(18, 0, 'Tracy', 'Sykes', 'Associate Professor', 'ISYS', 'tsykes@uark.edu', '479-575-7776', 18),
-(19, 0, 'Adriana', 'Wilhelm', 'faculty', 'ISYS', 'awilhelm@uark.edu', '479-575-9882', 20);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `faculty_request`
---
-
-CREATE TABLE IF NOT EXISTS `faculty_request` (
-  `requestID` int(11) NOT NULL,
-  `facultyID` int(11) NOT NULL,
-  `requestDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`requestID`,`facultyID`),
-  KEY `facultyID` (`facultyID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `faculty_request`
---
-
-INSERT INTO `faculty_request` (`requestID`, `facultyID`, `requestDate`) VALUES
-(1, 1, '2017-04-05 01:05:00'),
-(2, 2, '2017-04-05 01:05:00'),
-(3, 3, '2017-04-05 01:05:00'),
-(4, 4, '2017-04-05 01:05:00'),
-(5, 5, '2017-04-05 01:05:00'),
-(6, 6, '2017-04-05 01:05:00'),
-(7, 7, '2017-04-05 01:05:00'),
-(8, 8, '2017-04-05 01:05:00'),
-(9, 9, '2017-04-05 01:05:00'),
-(10, 10, '2017-04-05 01:05:00'),
-(11, 11, '2017-04-05 01:05:00'),
-(12, 12, '2017-04-05 01:05:00'),
-(13, 13, '2017-04-05 01:05:00'),
-(14, 14, '2017-04-05 01:05:00'),
-(15, 15, '2017-04-05 01:05:00'),
-(16, 16, '2017-04-05 01:05:00'),
-(17, 17, '2017-04-05 01:05:00'),
-(18, 18, '2017-04-05 01:05:00'),
-(19, 19, '2017-04-05 01:05:00'),
-(20, 1, '2017-04-05 01:05:00'),
-(21, 2, '2017-04-05 01:05:00'),
-(22, 3, '2017-04-05 01:05:00'),
-(23, 4, '2017-04-05 01:05:00'),
-(24, 5, '2017-04-05 01:05:00');
+(2, 2, 'Jeff', 'Mullins', 'Executive in Residence', 'ISYS', 'jmullins@uark.edu', '479-575-4113', 14),
+(3, 3, 'Paul', 'Cronan', 'Professor', 'ISYS', 'tcronan@uark.edu', '479-575-6130', 4),
+(4, 4, 'Cash', 'Acrey', 'Clinical Assistant Professor', 'ISYS', 'jacrey@uark.edu', '479-575-1223', 1),
+(5, 5, 'Brittany', 'Bright', 'faculty', 'ISYS', 'bbright@uark.edu', '479-575-6121', 2),
+(6, 6, 'Susan', 'Bristow', 'Clinical Assistant Professor', 'ISYS', 'sbristow@uark.edu', '479-575-4057', 3),
+(7, 7, 'David', 'Douglas', 'University Professor', 'ISYS', 'ddouglas@uark.edu', '479-575-6114', 5),
+(8, 8, 'Joseph', 'Ehrhardt', 'faculty', 'ISYS', 'jehrhardt@uark.edu', '479-575-1546', 6),
+(9, 9, 'Ron', 'Freeze', 'Clinical Associate Professor', 'ISYS', 'rfreeze@uark.edu', '479-575-4564', 7),
+(10, 10, 'Hartmut', 'Hoehle', 'Assistant Professor', 'ISYS', 'hhoehle@uark.edu', '479-575-5654', 8),
+(11, 11, 'Phillip', 'Kindy', 'faculty', 'ISYS', 'pkindy@uark.edu', '479-575-6563', 9),
+(12, 12, 'Xiao', 'Ma', 'Assistant Professor', 'ISYS', 'xma@uark.edu', '479-575-1379', 10),
+(13, 13, 'Andrew', 'Mackey', 'faculty', 'ISYS', 'amackey@uark.edu', '479-575-7854', 11),
+(14, 14, 'Suresh', 'Malladi', 'Assistant Professor', 'ISYS', 'smalladi@uark.edu', '479-575-7985', 12),
+(15, 15, 'Beverly', 'McDaniel', 'faculty', 'ISYS', 'bmcdaniel@uark.edu', '479-575-4554', 13),
+(16, 16, 'Rajiv', 'Sabherwal', 'Professor', 'ISYS', 'rsabherwal@uark.edu', '479-575-7879', 15),
+(17, 17, 'Christina', 'Serrano', 'Assistant Professor', 'ISYS', 'cserrano@uark.edu', '479-575-9423', 16),
+(18, 18, 'Pankaj', 'Setia', 'Associate Professor', 'ISYS', 'psetia@uark.edu', '479-575-6454', 17),
+(19, 19, 'Adriana', 'Wilhelm', 'faculty', 'ISYS', 'awilhelm@uark.edu', '479-575-9882', 20),
+(20, 20, 'Tracy', 'Sykes', 'Associate Professor', 'ISYS', 'tsykes@uark.edu', '479-575-7776', 18);
 
 -- --------------------------------------------------------
 
@@ -1146,14 +1102,15 @@ CREATE TABLE IF NOT EXISTS `interview_file` (
 
 CREATE TABLE IF NOT EXISTS `request` (
   `requestID` int(11) NOT NULL AUTO_INCREMENT,
+  `facultyID` int(11) NOT NULL,
   `reason` text COLLATE utf8_unicode_ci NOT NULL,
   `hours` tinyint(4) NOT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `internet` tinyint(4) NOT NULL,
+  `research` tinyint(4) NOT NULL,
   `wordProcessing` tinyint(4) NOT NULL,
-  `spreadsheets` tinyint(4) NOT NULL,
+  `dataAnalysis` tinyint(4) NOT NULL,
   `programming` tinyint(4) NOT NULL,
-  `database` tinyint(4) NOT NULL,
+  `databaseSkill` tinyint(4) NOT NULL,
   `sap` tinyint(4) NOT NULL,
   `statisticalPackages` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `programmingLanguages` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -1167,44 +1124,9 @@ CREATE TABLE IF NOT EXISTS `request` (
   `requested_studentID` int(11) DEFAULT NULL,
   `comments` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`requestID`),
-  KEY `requested_studentID` (`requested_studentID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=31 ;
-
---
--- Dumping data for table `request`
---
-
-INSERT INTO `request` (`requestID`, `reason`, `hours`, `description`, `internet`, `wordProcessing`, `spreadsheets`, `programming`, `database`, `sap`, `statisticalPackages`, `programmingLanguages`, `writing`, `editing`, `english`, `grading`, `otherSkills`, `multipleGAs`, `multipleGAsNumber`, `requested_studentID`, `comments`) VALUES
-(1, 'I need a GA to conduct research.', 30, 'Their duty as GA is to do their duties.', 1, 2, 0, 3, 3, 0, 'Teradata', 'Python', 0, 2, 0, 1, NULL, 0, 3, 1, NULL),
-(2, 'I need a GA to help out in the classroom.', 30, 'Their duty as GA is to do their duties.', 2, 1, 2, 2, 0, 1, NULL, NULL, 2, 1, 1, 1, NULL, 1, 1, NULL, NULL),
-(3, 'I need a GA to help out in the classroom.', 30, 'Their duty as GA is to do their duties.', 1, 3, 3, 0, 2, 0, NULL, NULL, 0, 0, 1, 1, NULL, 1, 1, NULL, NULL),
-(4, 'I need a GA to help out in the classroom.', 30, 'Their duty as GA is to do their duties.', 0, 1, 1, 3, 1, 1, 'R', NULL, 1, 3, 1, 2, NULL, 1, 1, NULL, NULL),
-(5, 'I need a GA to conduct research.', 20, 'Their duty as GA is to do their duties.', 0, 0, 0, 3, 0, 0, NULL, NULL, 2, 3, 0, 2, NULL, 1, 2, NULL, NULL),
-(6, 'I need a GA to grade papers.', 20, 'Their duty as GA is to do their duties.', 0, 1, 0, 1, 2, 3, 'R', NULL, 3, 2, 1, 2, NULL, 1, 3, NULL, NULL),
-(7, 'I need a GA to grade papers.', 10, 'Their duty as GA is to do their duties.', 1, 0, 2, 1, 3, 3, 'SAS', NULL, 3, 0, 2, 1, NULL, 0, 2, NULL, NULL),
-(8, 'I need a GA to help out in the classroom.', 30, 'Their duty as GA is to do their duties.', 1, 1, 3, 1, 2, 3, 'R', NULL, 3, 3, 2, 1, NULL, 0, 3, NULL, NULL),
-(9, 'I need a GA to conduct research.', 30, 'Their duty as GA is to do their duties.', 1, 3, 2, 0, 3, 3, NULL, NULL, 3, 1, 0, 3, NULL, 1, 2, NULL, NULL),
-(10, 'I need a GA to grade papers.', 30, 'Their duty as GA is to do their duties.', 0, 3, 0, 3, 2, 1, 'Stata', 'SQL', 0, 0, 2, 1, NULL, 0, 3, 15, NULL),
-(11, 'I need a GA to conduct research.', 10, 'Their duty as GA is to do their duties.', 1, 0, 3, 3, 1, 2, 'Stata', 'Python', 0, 0, 1, 2, NULL, 1, 1, 16, NULL),
-(12, 'I need a GA to conduct research.', 10, 'Their duty as GA is to do their duties.', 2, 3, 2, 3, 0, 3, NULL, NULL, 2, 1, 1, 3, NULL, 1, 1, NULL, NULL),
-(13, 'I need a GA to help out in the classroom.', 20, 'Their duty as GA is to do their duties.', 0, 2, 0, 3, 1, 3, 'SAS', 'Java', 1, 2, 2, 1, NULL, 0, 1, 9, NULL),
-(14, 'I need a GA to help out in the classroom.', 10, 'Their duty as GA is to do their duties.', 0, 3, 3, 1, 3, 3, 'SPSS', NULL, 2, 1, 3, 0, NULL, 0, 2, NULL, NULL),
-(15, 'I need a GA to help out in the classroom.', 20, 'Their duty as GA is to do their duties.', 0, 1, 1, 3, 1, 1, 'SPSS', 'Java', 2, 3, 0, 1, NULL, 1, 3, 26, NULL),
-(16, 'I need a GA to conduct research.', 10, 'Their duty as GA is to do their duties.', 3, 3, 0, 3, 0, 3, 'Stata', 'Java', 3, 1, 3, 0, NULL, 0, 3, 5, NULL),
-(17, 'I need a GA to conduct research.', 10, 'Their duty as GA is to do their duties.', 0, 1, 3, 0, 1, 2, 'Teradata', NULL, 1, 1, 2, 3, NULL, 1, 3, NULL, NULL),
-(18, 'I need a GA to grade papers.', 20, 'Their duty as GA is to do their duties.', 1, 2, 0, 0, 3, 0, NULL, NULL, 2, 2, 0, 0, NULL, 1, 1, NULL, NULL),
-(19, 'I need a GA to help out in the classroom.', 30, 'Their duty as GA is to do their duties.', 0, 3, 2, 2, 1, 0, NULL, NULL, 1, 2, 3, 0, NULL, 0, 1, NULL, NULL),
-(20, 'I need a GA to conduct research.', 30, 'Their duty as GA is to do their duties.', 2, 3, 2, 2, 0, 1, 'Stata', NULL, 1, 0, 1, 1, NULL, 1, 2, NULL, NULL),
-(21, 'I need a GA to grade papers.', 20, 'Their duty as GA is to do their duties.', 2, 1, 1, 3, 1, 3, 'R', NULL, 1, 3, 1, 1, NULL, 1, 2, NULL, NULL),
-(22, 'I need a GA to conduct research.', 20, 'Their duty as GA is to do their duties.', 1, 2, 1, 0, 1, 3, NULL, NULL, 3, 2, 2, 2, NULL, 0, 2, NULL, NULL),
-(23, 'I need a GA to help out in the classroom.', 10, 'Their duty as GA is to do their duties.', 3, 1, 3, 3, 2, 2, 'R', NULL, 0, 2, 2, 3, NULL, 0, 1, NULL, NULL),
-(24, 'I need a GA to help out in the classroom.', 30, 'Their duty as GA is to do their duties.', 0, 3, 1, 3, 2, 3, 'Teradata', NULL, 3, 2, 2, 1, NULL, 0, 3, NULL, NULL),
-(25, 'I need a GA to conduct research.', 30, 'Their duty as GA is to do their duties.', 3, 3, 2, 2, 3, 3, NULL, NULL, 3, 2, 2, 3, NULL, 1, 2, NULL, NULL),
-(26, 'I need a GA to conduct research.', 20, 'Their duty as GA is to do their duties.', 3, 2, 2, 2, 1, 1, 'Stata', NULL, 0, 2, 1, 3, NULL, 0, 3, NULL, NULL),
-(27, 'I need a GA to conduct research.', 10, 'Their duty as GA is to do their duties.', 3, 0, 1, 3, 0, 0, 'SAS', 'C#', 3, 1, 3, 2, NULL, 0, 1, 28, NULL),
-(28, 'I need a GA to conduct research.', 30, 'Their duty as GA is to do their duties.', 3, 0, 0, 1, 3, 0, NULL, NULL, 2, 3, 2, 0, NULL, 1, 3, NULL, NULL),
-(29, 'I need a GA to grade papers.', 30, 'Their duty as GA is to do their duties.', 1, 2, 0, 3, 1, 3, NULL, NULL, 1, 1, 3, 3, NULL, 0, 1, NULL, NULL),
-(30, 'I need a GA to help out in the classroom.', 30, 'Their duty as GA is to do their duties.', 1, 2, 2, 3, 2, 3, NULL, 'Python', 2, 2, 0, 3, NULL, 1, 1, 2, NULL);
+  KEY `requested_studentID` (`requested_studentID`),
+  KEY `facultyID` (`facultyID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -2295,7 +2217,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `advisorRole` tinyint(1) NOT NULL DEFAULT '0',
   `gaRole` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
 
 --
 -- Dumping data for table `user`
@@ -2303,25 +2225,25 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`userID`, `name`, `email`, `username`, `password`, `adminRole`, `supervisorRole`, `committeeRole`, `advisorRole`, `gaRole`) VALUES
 (1, 'Administrator', 'admin@uark.edu', 'admin', '$2y$10$/NJamPGCJctYmrDIm/0.sO6cbfv5hp1ud1nBmqHw8ghtCa8R65VTu', 1, 0, 0, 0, 0),
-(2, 'Jeff Mullins', 'jmullins@uark.edu', 'jmullins', '$2y$10$RRCjo9gOQiNOUUMVYTxaAOAJDSdCOY5hw5YlRc4QBghOW/uzXerkm', 1, 1, 1, 1, 1),
-(3, 'Paul Cronan', 'pcronan@uark.edu', 'pcronan', '$2y$10$Ousgk54Ob3iGkUSzqfCMsOD4nTk5vGJRNbG3A3MDG38C/QW1LG35G', 1, 1, 1, 1, 1),
-(4, 'Cash Acrey', 'cacrey@uark.edu', 'cacrey', '$2y$10$OgxHrCzN0SG355rP5hoF6enwJB8HE8iLmdDEK3sHpauosQw0MVexi', 0, 0, 0, 0, 0),
-(5, 'Brittany Bright', 'bbright@uark.edu', 'bbright', '$2y$10$r.xfcOiGv6mw8okZHdjqKucHrhfBvnnXgoe/UFeH5VhXMgeTwJZwi', 0, 0, 0, 0, 0),
-(6, 'Susan Bristow', 'sbristow@uark.edu', 'sbristow', '$2y$10$GAj3OIqZ4xY1IeeNz.VdludvmeNLadVV0inEpdIZLkAXxMA3/2D7O', 0, 0, 0, 0, 0),
-(8, 'David Douglas', 'ddouglas@uark.edu', 'ddouglas', '$2y$10$NeVOQc/mdR9VC6cy.D/u0.92nXl0jUc08zR9BtROWwBJa6T2JjcpS', 0, 0, 0, 0, 0),
-(9, 'Joseph Ehrhardt', 'jehrhardt@uark.edu', 'jehrhardt.', '$2y$10$fkvjU1X9Cn9eBuEHJ2wag.fsZIPE9YobbMKD.UVoAvvTec.ulUNVq', 0, 0, 0, 0, 0),
-(10, 'Ron Freeze', 'rfreeze@uark.edu', 'rfreeze', '$2y$10$/xgiBRcKX.AXzSMCERCPcOv4BNm6zlMi10F.C.ax8cjuJJKm33lDO', 0, 0, 0, 0, 0),
-(11, 'Hartmut Hoehle', 'hhoehle@uark.edu', 'hhoehle', '$2y$10$9WKC0IMu2/72zlm.ZX1P.eeQ5TnVBtaaO/OVRdvEfXzSxBUgXJU3G', 0, 0, 0, 0, 0),
-(12, 'Phillip Kindy', 'pkindy@uark.edu', 'pkindy', '$2y$10$QafmXU7KT/QeXZXrFvziturr36yKfDYM.tbF8AYip8qKJQAg770Ii', 0, 0, 0, 0, 0),
-(13, 'Xiao Ma', 'xma@uark.edu', 'xma', '$2y$10$YRncca9RK/VsJmNR9gydnO6V1JQHhnYmt30HCxrmiSbF3AALAVD..', 0, 0, 0, 0, 0),
-(14, 'Andrew Mackey', 'amackey@uark.edu', 'amackey', '$2y$10$Ms3.ps7Yr5XKbeczuZ3u/urVjg/uV3lBLXH4RUGBp1pzJnJVsxnx.', 0, 0, 0, 0, 0),
-(15, 'Suresh Malladi', 'smalladi@uark.edu', 'smalladi', '$2y$10$s/De.jlbYzHsqyIUE2m3uOGbLVcEKQ8noCKf.7gQWvZnTl6ytEBDC', 0, 0, 0, 0, 0),
-(16, 'Beverly McDaniel', 'bmcdaniel@uark.edu', 'bmcdaniel', '$2y$10$KOlw6bbcqCXMaf1MPRLsdON7AP0zmFrXNzfZ4HJ7veRrfl3bvTURa', 0, 0, 0, 0, 0),
-(17, 'Rarjiv Sabherwal', 'rsabherwal@uark.edu', 'rsabherwal', '$2y$10$6W8KgB6XhIoNDtqir24P7eS2gwGSGt/4tPELPI3LkahLEkYUERQbm', 0, 0, 0, 0, 0),
-(18, 'Christina Serrano', 'cserrano@uark.edu', 'cserrano', '$2y$10$IjT3TtiZZQXBL3xVktbV5.BEJLNnGT/mrqqXm8dkqNr8zWqkWNzgC', 0, 0, 0, 0, 0),
-(19, 'Pankaj Setia', 'psetia@uark.edu', 'psetia', '$2y$10$DuQtf.BiqyJeVcxToVpc8un/q3ZPp.Yyd5W04GBMCAIR1Bot0X3uy', 0, 0, 0, 0, 0),
-(20, 'Adriana Wilhelm', 'awilhelm@uark.edu', 'awilhelm', '$2y$10$XA/DJRyfbiG/sFrLsCGVk.FMd0ZYM5B21c548BPLhLJ8NpJivlhcK', 0, 0, 0, 0, 0),
-(21, 'Tracy Sykes', 'tsykes@uark.edu', 'tsykes', '$2y$10$4wJ9ynttptwiVs.S6uqUT.20YZDEyA3lax6uZKXibnl96iZ3mGnNi', 0, 0, 0, 0, 0);
+(2, 'Jeff Mullins', 'jmullins@uark.edu', 'jmullins', '$2y$10$RRCjo9gOQiNOUUMVYTxaAOAJDSdCOY5hw5YlRc4QBghOW/uzXerkm', 1, 1, 1, 1, 0),
+(3, 'Paul Cronan', 'pcronan@uark.edu', 'pcronan', '$2y$10$Ousgk54Ob3iGkUSzqfCMsOD4nTk5vGJRNbG3A3MDG38C/QW1LG35G', 1, 1, 1, 1, 0),
+(4, 'Cash Acrey', 'cacrey@uark.edu', 'cacrey', '$2y$10$OgxHrCzN0SG355rP5hoF6enwJB8HE8iLmdDEK3sHpauosQw0MVexi', 0, 1, 0, 0, 0),
+(5, 'Brittany Bright', 'bbright@uark.edu', 'bbright', '$2y$10$r.xfcOiGv6mw8okZHdjqKucHrhfBvnnXgoe/UFeH5VhXMgeTwJZwi', 0, 1, 0, 0, 0),
+(6, 'Susan Bristow', 'sbristow@uark.edu', 'sbristow', '$2y$10$GAj3OIqZ4xY1IeeNz.VdludvmeNLadVV0inEpdIZLkAXxMA3/2D7O', 0, 1, 1, 0, 0),
+(7, 'David Douglas', 'ddouglas@uark.edu', 'ddouglas', '$2y$10$NeVOQc/mdR9VC6cy.D/u0.92nXl0jUc08zR9BtROWwBJa6T2JjcpS', 0, 1, 0, 0, 0),
+(8, 'Joseph Ehrhardt', 'jehrhardt@uark.edu', 'jehrhardt.', '$2y$10$fkvjU1X9Cn9eBuEHJ2wag.fsZIPE9YobbMKD.UVoAvvTec.ulUNVq', 0, 1, 0, 0, 0),
+(9, 'Ron Freeze', 'rfreeze@uark.edu', 'rfreeze', '$2y$10$/xgiBRcKX.AXzSMCERCPcOv4BNm6zlMi10F.C.ax8cjuJJKm33lDO', 0, 1, 1, 0, 0),
+(10, 'Hartmut Hoehle', 'hhoehle@uark.edu', 'hhoehle', '$2y$10$9WKC0IMu2/72zlm.ZX1P.eeQ5TnVBtaaO/OVRdvEfXzSxBUgXJU3G', 0, 1, 0, 0, 0),
+(11, 'Phillip Kindy', 'pkindy@uark.edu', 'pkindy', '$2y$10$QafmXU7KT/QeXZXrFvziturr36yKfDYM.tbF8AYip8qKJQAg770Ii', 0, 1, 0, 0, 0),
+(12, 'Xiao Ma', 'xma@uark.edu', 'xma', '$2y$10$YRncca9RK/VsJmNR9gydnO6V1JQHhnYmt30HCxrmiSbF3AALAVD..', 0, 1, 0, 0, 0),
+(13, 'Andrew Mackey', 'amackey@uark.edu', 'amackey', '$2y$10$Ms3.ps7Yr5XKbeczuZ3u/urVjg/uV3lBLXH4RUGBp1pzJnJVsxnx.', 0, 1, 1, 0, 0),
+(14, 'Suresh Malladi', 'smalladi@uark.edu', 'smalladi', '$2y$10$s/De.jlbYzHsqyIUE2m3uOGbLVcEKQ8noCKf.7gQWvZnTl6ytEBDC', 0, 1, 0, 0, 0),
+(15, 'Beverly McDaniel', 'bmcdaniel@uark.edu', 'bmcdaniel', '$2y$10$KOlw6bbcqCXMaf1MPRLsdON7AP0zmFrXNzfZ4HJ7veRrfl3bvTURa', 0, 1, 0, 0, 0),
+(16, 'Rarjiv Sabherwal', 'rsabherwal@uark.edu', 'rsabherwal', '$2y$10$6W8KgB6XhIoNDtqir24P7eS2gwGSGt/4tPELPI3LkahLEkYUERQbm', 0, 1, 0, 0, 0),
+(17, 'Christina Serrano', 'cserrano@uark.edu', 'cserrano', '$2y$10$IjT3TtiZZQXBL3xVktbV5.BEJLNnGT/mrqqXm8dkqNr8zWqkWNzgC', 0, 1, 1, 0, 0),
+(18, 'Pankaj Setia', 'psetia@uark.edu', 'psetia', '$2y$10$DuQtf.BiqyJeVcxToVpc8un/q3ZPp.Yyd5W04GBMCAIR1Bot0X3uy', 0, 1, 0, 0, 0),
+(19, 'Adriana Wilhelm', 'awilhelm@uark.edu', 'awilhelm', '$2y$10$XA/DJRyfbiG/sFrLsCGVk.FMd0ZYM5B21c548BPLhLJ8NpJivlhcK', 0, 1, 0, 0, 0),
+(20, 'Tracy Sykes', 'tsykes@uark.edu', 'tsykes', '$2y$10$4wJ9ynttptwiVs.S6uqUT.20YZDEyA3lax6uZKXibnl96iZ3mGnNi', 0, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2396,13 +2318,6 @@ ALTER TABLE `faculty`
   ADD CONSTRAINT `faculty_ibfk_1` FOREIGN KEY (`roomID`) REFERENCES `room` (`roomID`);
 
 --
--- Constraints for table `faculty_request`
---
-ALTER TABLE `faculty_request`
-  ADD CONSTRAINT `faculty_request_ibfk_1` FOREIGN KEY (`requestID`) REFERENCES `request` (`requestID`),
-  ADD CONSTRAINT `faculty_request_ibfk_2` FOREIGN KEY (`facultyID`) REFERENCES `faculty` (`facultyID`);
-
---
 -- Constraints for table `interview_file`
 --
 ALTER TABLE `interview_file`
@@ -2412,7 +2327,8 @@ ALTER TABLE `interview_file`
 -- Constraints for table `request`
 --
 ALTER TABLE `request`
-  ADD CONSTRAINT `request_ibfk_1` FOREIGN KEY (`requested_studentID`) REFERENCES `student` (`studentID`);
+  ADD CONSTRAINT `request_ibfk_1` FOREIGN KEY (`requested_studentID`) REFERENCES `student` (`studentID`),
+  ADD CONSTRAINT `request_ibfk_2` FOREIGN KEY (`facultyID`) REFERENCES `faculty` (`facultyID`);
 
 --
 -- Constraints for table `student`
