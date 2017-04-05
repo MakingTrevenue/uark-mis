@@ -33,8 +33,7 @@
 				include 'header.php'; ?>
 				<h1 class="text-center text-danger">
 					You need 
-					<b> <?php echo $_GET['e']; ?> </b>
-					permissions to access this page.
+					<b> Incorrect Login </b>
 				</h1>
 				<?php
 			}
