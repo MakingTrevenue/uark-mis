@@ -7,10 +7,10 @@ try {
 
 	$conn=createPDO();
 
-	$stmt = $conn->prepare("INSERT INTO evaluation (duties, match, quality, qualityComments, timeliness, timelinessComments, amount, amountComments, overall, overallComments, reassigned, reassignedComments) VALUES (:duties, :match, :quality, :qualityComments, :timeliness, :timelinessComments, :amount, :amountComments, :overall, :overallComments, :reassigned, :reassignedComments)");
+	$stmt = $conn->prepare("INSERT INTO evaluation (duties, skillMatch, quality, qualityComments, timeliness, timelinessComments, amount, amountComments, overall, overallComments, reassigned, reassignedComments) VALUES (:duties, :skillMatch, :quality, :qualityComments, :timeliness, :timelinessComments, :amount, :amountComments, :overall, :overallComments, :reassigned, :reassignedComments)");
 
 	$stmt->bindParam(':duties', $_POST['duties']);
-	$stmt->bindParam(':match', $_POST['match']);
+	$stmt->bindParam(':skillMatch', $_POST['skillMatch']);
 	$stmt->bindParam(':quality', $_POST['quality']);
 	$stmt->bindParam(':qualityComments', $_POST['qualityComments']);
 	$stmt->bindParam(':timeliness', $_POST['timeliness']);

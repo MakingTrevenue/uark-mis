@@ -83,10 +83,10 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="match">Please describe how the GA's background and skills matched the assigned duties.</label>
+                            <label for="skillMatch">Please describe how the GA's background and skills matched the assigned duties.</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-comment"></i></span>
-                                <textarea class="form-control custom-control" rows="3" name="match" id="match"></textarea>
+                                <textarea class="form-control custom-control" rows="3" name="skillMatch" id="skillMatch"></textarea>
                             </div>
                         </div>
 

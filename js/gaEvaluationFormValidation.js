@@ -36,7 +36,7 @@ $("#gaEvaluationForm").validate({
             required: true
         },
 
-        match: {
+        skillMatch: {
             required: true
         },
 
@@ -86,7 +86,7 @@ $("#gaEvaluationForm").validate({
             required: "Please describe the GA duties performed."
         },
 
-        match: {
+        skillMatch: {
             required: "Please describe the GA background and skills match."
         },
 

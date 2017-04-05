@@ -265,7 +265,7 @@ CREATE TABLE `evaluation` (
   `facultyID` INT(11) DEFAULT NULL,
   `studentID` INT(11) DEFAULT NULL,
   `duties` TEXT NOT NULL,
-  `match` TEXT NOT NULL,
+  `skillMatch` TEXT NOT NULL,
   `quality` TINYINT NOT NULL,
   `qualityComments` TEXT NOT NULL,
   `timeliness` TINYINT NOT NULL,
