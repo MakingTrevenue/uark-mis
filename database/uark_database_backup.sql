@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 05, 2017 at 09:44 PM
+-- Generation Time: Apr 05, 2017 at 10:50 PM
 -- Server version: 5.5.54
 -- PHP Version: 5.6.29
 
@@ -269,7 +269,7 @@ CREATE TABLE IF NOT EXISTS `application` (
 INSERT INTO `application` (`applicationID`, `studentID`, `userID`, `term`, `year`, `program`, `concentration`, `reqScholarship`, `previousApp`, `previousAppDate`, `previousEnrollment`, `previousEnrollmentDate`, `previousEnrollmentStatus`, `undergradGPA`, `juniorseniorGPA`, `currentEmployer`, `timeAtCurrentEmployer`, `gmat`, `gmatTestDate`, `gmatQScore`, `gmatVScore`, `gmatTScore`, `gre`, `greTestDate`, `greQScore`, `greVScore`, `greTScore`, `toeflOnline`, `toeflPaper`, `toeflTestDate`, `toeflOnlineScore`, `toeflPaperScore`, `tse`, `tseTestDate`, `tseScore`, `offerStatus`, `assistantshipStatus`, `applicantResponse`, `applicationDate`) VALUES
 (1, 1, NULL, 'Spring', 2019, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 1, 0, 'Fall 2010', 1, 'Fall 2011', 'Undergraduate', '3.44', '2.73', 'Heller and Sons', '2009-10-26', 0, '2015-02-17', 46, 16, 307, 1, '2015-09-12', 139, 169, 282, 0, 0, '2014-04-04', 113, 488, 0, '2015-07-26', 43, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
 (2, 2, NULL, 'Fall', 2019, 'Professional MIS', 'Software Engineering Management', 0, 0, 'Spring 2013', 0, 'Spring 2011', 'Other', '2.81', '2.87', 'Beahan, Stark and Goyette', '2014-05-23', 1, '2013-08-09', 14, 46, 761, 1, '2014-04-12', 139, 150, 310, 0, 1, '2014-08-04', 88, 347, 1, '2016-07-03', 44, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
-(3, 3, NULL, 'Spring', 2020, 'Professional MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Fall 2015', 0, 'Fall 2010', 'Graduate', '3.41', '3.21', 'Koss-Boyle', '2014-06-24', 0, '2017-01-30', 36, 14, 724, 1, '2016-10-02', 140, 136, 272, 1, 1, '2012-03-23', 31, 511, 1, '2012-12-30', 29, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
+(3, 3, NULL, 'Spring', 2020, 'Professional MIS', 'Enterprise Systems (ES) Management', 1, 1, 'Fall 2015', 0, 'Fall 2010', 'Graduate', '3.41', '3.21', 'Koss-Boyle', '2014-06-24', 0, '2017-01-30', 36, 14, 724, 1, '2016-10-02', 140, 136, 272, 1, 1, '2012-03-23', 31, 511, 1, '2012-12-30', 29, 'Accepted', 'Silver', 'Decision Pending', '2017-03-17 04:20:02'),
 (4, 4, NULL, 'Spring', 2018, 'Professional MIS', 'Software Engineering Management', 0, 0, 'Fall 2013', 0, 'Fall 2013', 'Undergraduate', '3.04', '3.19', 'Hermann-Hagenes', '2011-12-30', 1, '2016-10-23', 49, 17, 405, 1, '2013-10-17', 154, 135, 273, 1, 0, '2013-02-13', 77, 374, 1, '2011-08-24', 22, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
 (5, 5, NULL, 'Summer', 2018, 'Professional MIS', 'Information Technology Management', 0, 1, 'Spring 2015', 0, 'Fall 2010', 'Other', '3.00', '3.36', 'Walter, Ward and Kerluke', '2013-02-17', 1, '2017-07-09', 50, 44, 264, 1, '2011-05-13', 170, 151, 294, 1, 0, '2016-05-21', 64, 496, 1, '2015-04-25', 54, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
 (6, 6, NULL, 'Summer', 2019, 'Full-Time MIS', 'Enterprise Systems (ES) Management', 0, 0, 'Spring 2012', 0, 'Spring 2012', 'Graduate', '2.77', '3.39', 'Carroll-Berge', '2009-09-18', 0, '2016-08-22', 43, 38, 223, 0, '2017-11-06', 139, 135, 290, 0, 0, '2011-02-07', 116, 467, 0, '2015-06-09', 42, 'Undecided', NULL, NULL, '2017-03-17 04:20:02'),
@@ -1034,6 +1034,33 @@ INSERT INTO `course` (`courseID`, `name`, `description`, `hours`, `offered`) VAL
 ('ISYS 5933', 'Global Technology and Analytics Seminar', 'This course is designed to provide an updated, comprehensive, and rigorous treatment of emerging global topics. Includes, but is not limited to, global study experiences, business insights, and foundational perspectives; examines significant issues from global perspectives. Prerequisite: Graduate standing and MIS Director approval.', 3, 'Summer'),
 ('ISYS 5943', 'Management of Information Technology Seminar', 'Presented in a way that allows you to play an active role in the design, use, and management of information technology. Using IT to transform the organization, as competitive strategy, and creating new relationship with other firms is included. Prerequisite: ISYS 5423 and ISYS 5833.', 3, 'Spring'),
 ('ISYS 599V', 'Practicum Seminar', 'This course is designed to introduce and engage the student in the practice, application, and problem solving in the business environment. Hands-on application of a business problem. Students will gain experience working on, making decisions about, and developing solutions for business applications. Topics include but not limited to analytics, data, and information technology.Prerequisite: Graduate standing and MIS Director approval. May be repeated for up to 6 hours of degree credit.', 6, 'Fall, Spring, Summer');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `evaluation`
+--
+
+CREATE TABLE IF NOT EXISTS `evaluation` (
+  `evaluationID` int(11) NOT NULL AUTO_INCREMENT,
+  `facultyID` int(11) DEFAULT NULL,
+  `studentID` int(11) DEFAULT NULL,
+  `duties` text COLLATE utf8_unicode_ci NOT NULL,
+  `skillMatch` text COLLATE utf8_unicode_ci NOT NULL,
+  `quality` tinyint(4) NOT NULL,
+  `qualityComments` text COLLATE utf8_unicode_ci NOT NULL,
+  `timeliness` tinyint(4) NOT NULL,
+  `timelinessComments` text COLLATE utf8_unicode_ci NOT NULL,
+  `amount` tinyint(4) NOT NULL,
+  `amountComments` text COLLATE utf8_unicode_ci NOT NULL,
+  `overall` tinyint(4) NOT NULL,
+  `overallComments` text COLLATE utf8_unicode_ci NOT NULL,
+  `reassigned` tinyint(4) NOT NULL,
+  `reassignedComments` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`evaluationID`),
+  KEY `facultyID` (`facultyID`),
+  KEY `studentID` (`studentID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -2259,7 +2286,14 @@ CREATE TABLE IF NOT EXISTS `user_comment` (
   PRIMARY KEY (`commentID`),
   KEY `applicationID` (`applicationID`),
   KEY `userID` (`userID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `user_comment`
+--
+
+INSERT INTO `user_comment` (`commentID`, `userID`, `applicationID`, `commentText`) VALUES
+(1, 1, 3, 'She sucks');
 
 --
 -- Constraints for dumped tables
@@ -2310,6 +2344,13 @@ ALTER TABLE `class_faculty`
 --
 ALTER TABLE `college`
   ADD CONSTRAINT `college_ibfk_1` FOREIGN KEY (`applicationID`) REFERENCES `application` (`applicationID`);
+
+--
+-- Constraints for table `evaluation`
+--
+ALTER TABLE `evaluation`
+  ADD CONSTRAINT `evaluation_ibfk_1` FOREIGN KEY (`facultyID`) REFERENCES `faculty` (`facultyID`),
+  ADD CONSTRAINT `evaluation_ibfk_2` FOREIGN KEY (`studentID`) REFERENCES `student` (`studentID`);
 
 --
 -- Constraints for table `faculty`
