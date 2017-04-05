@@ -249,10 +249,10 @@
                         </div>
 
                         <div class="form-group">                
-                            <label>Would you like to request multiple GAs with the same skills and required duties?
+                            <label>Would you like to request multiple GAs with the same skills and required duties?&nbsp;
                                 <label class="checkbox-inline"><input name="multipleGAs" type="checkbox" value="multipleGAs">Yes</label>
                             </label>
-                            <p class="help-block">If you would like to request another GA with a different skill set, you will need to submit another GA request form.</p>
+                            <p class="help-block">Note: If you would like to request another GA with a different skill set or different duties, you will need to submit another GA request form.</p>
                         </div>
 
                         <div class="multipleGAs box">
@@ -261,7 +261,7 @@
                                     <span class="input-group-addon">How many?</span>
                                     <input type="number" class="form-control" name="multipleGAsNumber" value="2">
                                 </div>
-                            </div><br>
+                            </div>
                         </div>
                         
                     </div>
