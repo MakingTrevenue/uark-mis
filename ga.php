@@ -18,13 +18,44 @@
             <div class="panel panel-default">
 
                 <div class="panel-heading">
-                    <h2 class="panel-title">Faculty Information & Graduate Assistant Request</h2>
+                    <h2 class="panel-title">Graduate Assistant Request</h2>
                 </div>
 
                 <div class="panel-body">
 
-                    <!-- Faculty Information Left Column -->
+                    <!-- GA Duties Left Column -->
                     <div class="col-md-6 col-sm-6">
+
+                        <div class="form-group">
+                            <label for="reason">Please describe how a GA would be helpful to you in your professional endeavors (e.g. teaching, research, service, etc.).</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-comment"></i></span>
+                                <textarea class="form-control custom-control" rows="3" name="reason" id="reason"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="hours">On average, how many hours of work is needed each week?</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                <input type="number" pattern="\d*" class="form-control" name="hours"  id="hours" placeholder="20">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Please provide a brief job description (e.g. duties to be performed).</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-comment"></i></span>
+                                <textarea class="form-control custom-control" rows="3" name="description" id="description"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- GA Specific Request Right Column -->
+                    <div class="col-md-6 col-sm-6">
+
+                        <h4 class="text-center"><b>Request a Specific GA (optional)</b></h4>
 
                         <div class="form-group">
                             <label for="firstName">First Name</label>
@@ -43,67 +74,16 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="department">Department</label>
+                            <label for="gaComments">Comments:</label>
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-institution"></i></span>
-                                <select name="department" id="department" class="selectpicker show-tick form-control" data-live-search="true">
-                                    <option>ACCT</option>
-                                    <option>ECON</option>
-                                    <option>FINN</option>
-                                    <option selected="selected">ISYS</option>
-                                    <option>MGMT</option>
-                                    <option>MKTG</option>
-                                    <option>SCMT</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                <input type="email" class="form-control" name="email"  id="email" placeholder="example@domain.com">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                <input type="tel" class="form-control" name="phone" id="phone" placeholder="(800) 555-1234">
+                                <span class="input-group-addon"><i class="fa fa-comment-o"></i></span>
+                                <textarea class="form-control custom-control" rows="4" name="gaComments" id="gaComments"></textarea>
                             </div>
                         </div>
 
                     </div>
 
-                    <!-- GA Duties Right Column -->
-                    <div class="col-md-6 col-sm-6">
 
-                        <div class="form-group">
-                            <label for="reason">Please describe how a GA would be helpful to you in your professional endeavors (e.g. teaching, research, service, etc.).</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-comment"></i></span>
-                                <textarea class="form-control custom-control" rows="4" name="reason" id="reason"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="hours">On average, how many hours of work is needed each week?</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
-                                <input type="number" pattern="\d*" class="form-control" name="hours"  id="hours" placeholder="20">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="description">Please provide a brief job description (e.g. duties to be performed).</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-comment"></i></span>
-                                <textarea class="form-control custom-control" rows="5" name="description" id="description"></textarea>
-                            </div>
-                        </div>
-
-                    </div>
 
                 </div>
 
@@ -269,8 +249,8 @@
                         </div>
 
                         <div class="form-group">                
-                            <label>Would you like to request multiple GAs with the same skills and required duties?&nbsp;&nbsp;
-                                <label class="checkbox-inline"><input name="multipleGAs" id="multipleGAs" type="checkbox" value="multipleGAs">Yes</label>
+                            <label>Would you like to request multiple GAs with the same skills and required duties?
+                                <label class="checkbox-inline"><input name="multipleGAs" type="checkbox" value="multipleGAs">Yes</label>
                             </label>
                             <p class="help-block">If you would like to request another GA with a different skill set, you will need to submit another GA request form.</p>
                         </div>
@@ -279,7 +259,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">How many?</span>
-                                    <input type="number" class="form-control" name="multipleGAsNumber" value="multipleGAsNumber" placeholder="2">
+                                    <input type="number" class="form-control" name="multipleGAsNumber" value="2">
                                 </div>
                             </div><br>
                         </div>
@@ -294,61 +274,6 @@
 
     </div>
 
-    <!-- Specific Request -->
-    <div class="row">        
-
-        <div class="col-md-12 col-sm-12">
-
-            <div class="panel panel-default">
-
-                <div class="panel-heading">
-                    <h2 class="panel-title">Request a Specific GA (optional)</h2>
-                </div>
-
-                <div class="panel-body">
-
-                    <!-- Admission Request Left Column-->
-                    <div class="col-md-6 col-sm-6">
-
-                        <div class="form-group">
-                            <label for="firstName">First Name</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" class="form-control" name="firstName" id="firstName" placeholder="John">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="lastName">Last Name</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Doe">
-                            </div>
-                        </div>                                             
-
-                    </div>
-
-                    <!-- Admission Request Right Column -->
-                    <div class="col-md-6 col-sm-6">
-
-                        <div class="form-group">
-                            <label for="gaComments">Comments:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-comment-o"></i></span>
-                                <textarea class="form-control custom-control" rows="5" name="gaComments" id="gaComments"></textarea>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-        
-    </div>
-
     <div class="col-md-2 col-sm-4 col-md-offset-5 col-sm-offset-4 text-center">   
         <input type="submit" class="btn btn-success btn-lg" id="submitButton" value="Submit Request"><br>
     </div>
@@ -356,6 +281,15 @@
     </form>
     
 </div>
+
+<script>
+    $(document).ready(function(){
+        $('input[type="checkbox"]').click(function(){
+            var inputValue = $(this).attr("value");
+            $("." + inputValue).toggle();
+       });
+    })
+</script>
 
 <?php
     include 'footer.php';
