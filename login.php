@@ -32,8 +32,7 @@
             else{
 				include 'header.php'; ?>
 				<h1 class="text-center text-danger">
-					You need 
-					<b> Incorrect Login </b>
+					<b> You have entered incorrect login credentials. Please try again. </b>
 				</h1>
 				<?php
 			}
