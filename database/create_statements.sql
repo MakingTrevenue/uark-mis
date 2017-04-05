@@ -6,6 +6,11 @@ CREATE TABLE `user` (
   `email` VARCHAR(100) NOT NULL,
   `username` VARCHAR(15) NOT NULL,
   `password` VARCHAR(60) NOT NULL,
+  `adminRole` BOOLEAN NOT NULL DEFAULT 0,
+  `supervisorRole` BOOLEAN NOT NULL DEFAULT 0,
+  `committeeRole` BOOLEAN NOT NULL DEFAULT 0,
+  `advisorRole` BOOLEAN NOT NULL DEFAULT 0,
+  `gaRole` BOOLEAN NOT NULL DEFAULT 0,
   PRIMARY KEY (`userID`)
 );
 
@@ -21,17 +26,6 @@ CREATE TABLE `state` (
   PRIMARY KEY (`stateID`)
 );
 
-CREATE TABLE `zip_code` (
-  `zipCode` VARCHAR(5) NOT NULL,
-  `latitude` VARCHAR(12) DEFAULT NULL,
-  `longitude` VARCHAR(13) DEFAULT NULL,
-  `city` VARCHAR(40) DEFAULT NULL,
-  `stateID` CHAR(2) NOT NULL,
-  `county` VARCHAR(40) DEFAULT NULL,
-  PRIMARY KEY (`zipCode`),
-  FOREIGN KEY (`stateID`) REFERENCES `state`(`stateID`)
-);
-
 CREATE TABLE `address` (
   `addressID` INT(11) NOT NULL AUTO_INCREMENT,
   `street1` VARCHAR(50) NOT NULL,
@@ -42,7 +36,6 @@ CREATE TABLE `address` (
   `countryID` CHAR(2) NOT NULL,
   PRIMARY KEY (`addressID`),
   FOREIGN KEY (`stateID`) REFERENCES `state`(`stateID`),
-  FOREIGN KEY (`zipCode`) REFERENCES `zip_code`(`zipCode`),
   FOREIGN KEY (`countryID`) REFERENCES `country`(`countryID`)
 );
 
@@ -218,6 +211,14 @@ CREATE TABLE `user_comment` (
   FOREIGN KEY (`applicationID`) REFERENCES `application`(`applicationID`),
   FOREIGN KEY (`userID`) REFERENCES `user`(`userID`)
 );
+
+CREATE TABLE `interview_file` (
+  `fileID` INT(11) AUTO_INCREMENT,
+  `fileName` CHAR(32) NOT NULL,
+  `applicationID` INT(11) NOT NULL,
+  FOREIGN KEY (`applicationID`) REFERENCES `application`(`applicationID`),
+  PRIMARY KEY (`fileID`)
+)
 
 CREATE TABLE `advising` (
   `studentID` INT(11) NOT NULL,
