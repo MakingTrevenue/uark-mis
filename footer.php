@@ -1,5 +1,4 @@
-	<!-- Custom Scripts -->    
-    <script type="text/javascript" src="./js/applicationFormValidation.js"></script>
+	<!-- Custom Scripts -->
     <script type="text/javascript" src="./js/scripts.js"></script>
 
 </body>

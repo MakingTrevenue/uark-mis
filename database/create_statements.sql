@@ -259,3 +259,24 @@ CREATE TABLE `request` (
   FOREIGN KEY (`requested_studentID`) REFERENCES `student`(`studentID`),
   FOREIGN KEY (`facultyID`) REFERENCES `faculty`(`facultyID`)
 );
+
+CREATE TABLE `evaluation` (
+  `evaluationID` INT(11) NOT NULL AUTO_INCREMENT,
+  `facultyID` INT(11) DEFAULT NULL,
+  `studentID` INT(11) DEFAULT NULL,
+  `duties` TEXT NOT NULL,
+  `match` TEXT NOT NULL,
+  `quality` TINYINT NOT NULL,
+  `qualityComments` TEXT NOT NULL,
+  `timeliness` TINYINT NOT NULL,
+  `timelinessComments` TEXT NOT NULL,
+  `amount` TINYINT NOT NULL,
+  `amountComments` TEXT NOT NULL,
+  `overall` TINYINT NOT NULL,
+  `overallComments` TEXT NOT NULL,
+  `reassigned` TINYINT NOT NULL,
+  `reassignedComments` TEXT NOT NULL,
+  PRIMARY KEY (`evaluationID`),
+  FOREIGN KEY (`facultyID`) REFERENCES `faculty`(`facultyID`),
+  FOREIGN KEY (`studentID`) REFERENCES `student`(`studentID`)
+);

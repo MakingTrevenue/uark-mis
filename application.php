@@ -860,6 +860,8 @@
     
 </div>
 
+<script type="text/javascript" src="./js/applicationFormValidation.js"></script>
+
 <?php
     include 'footer.php';
 ?>
