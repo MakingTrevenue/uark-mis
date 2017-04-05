@@ -289,7 +289,10 @@
             $("." + inputValue).toggle();
        });
     })
+
 </script>
+
+<script type="text/javascript" src="./js/gaRequestFormValidation.js"></script>
 
 <?php
     include 'footer.php';
