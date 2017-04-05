@@ -127,7 +127,7 @@
                             <tbody>
                                 <tr>
                                     <td><label>Internet <i class="fa fa-info-circle" rel="tooltip" title="skills include..."></i></label></td>
-                                    <td class="text-center"><input type="radio" id="internet0" name="internet" value=0></td>
+                                    <td class="text-center"><input type="radio" id="research0" name="internet" value=0></td>
                                     <td class="text-center"><input type="radio" id="internet1" name="internet" value=1></td>
                                     <td class="text-center"><input type="radio" id="internet2" name="internet" value=2></td>
                                     <td class="text-center"><input type="radio" id="internet3" name="internet" value=3></td>
@@ -141,7 +141,7 @@
                                 </tr>
                                 <tr>
                                     <td><label>Spreadsheets <i class="fa fa-info-circle" rel="tooltip" title="skills include..."></i></label></td>
-                                    <td class="text-center"><input type="radio" id="spreadsheets0" name="spreadsheets" value=0></td>
+                                    <td class="text-center"><input type="radio" id="dataAnalysis0" name="spreadsheets" value=0></td>
                                     <td class="text-center"><input type="radio" id="spreadsheets1" name="spreadsheets" value=1></td>
                                     <td class="text-center"><input type="radio" id="spreadsheets2" name="spreadsheets" value=2></td>
                                     <td class="text-center"><input type="radio" id="spreadsheets3" name="spreadsheets" value=3></td>
