@@ -97,7 +97,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="programmingLanguages">Desired Programming Languages (optional)</label>
+                            <label for="programmingLanguages">Programming Languages (optional)</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-code"></i></span>
                                 <input type="text" class="form-control" name="programmingLanguages" id="programmingLanguages" placeholder="Java, Python, C#, SQL, Visual Basic, etc.">
@@ -158,26 +158,10 @@
                         </table>
 
                         <div class="form-group">
-                            <label for="otherSkills">Please list any other desired skills not menioned (optional).</label>
+                            <label for="otherSkills">Please list any other miscellaneous skills you have.</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-comment"></i></span>
                                 <textarea class="form-control custom-control" rows="2" name="otherSkills" id="otherSkills"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group">                
-                            <label>Would you like to request multiple GAs with the same skills and required duties?&nbsp;
-                                <label class="checkbox-inline"><input name="multipleGAs" type="checkbox" value="multipleGAs">Yes</label>
-                            </label>
-                            <p class="help-block">Note: If you would like to request another GA with a different skill set or different duties, you will need to submit another GA request form.</p>
-                        </div>
-
-                        <div class="multipleGAs box">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-addon">How many?</span>
-                                    <input type="number" class="form-control" name="multipleGAsNumber" value="2">
-                                </div>
                             </div>
                         </div>
                         
@@ -192,7 +176,7 @@
     </div>
 
     <div class="col-md-2 col-sm-4 col-md-offset-5 col-sm-offset-4 text-center">   
-        <input type="submit" class="btn btn-success btn-lg" id="submitButton" value="Submit Request"><br>
+        <input type="submit" class="btn btn-success btn-lg" id="submitButton" value="Submit Skills"><br>
     </div>
 
     </form>
