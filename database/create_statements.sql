@@ -298,3 +298,18 @@ CREATE TABLE `evaluation` (
   FOREIGN KEY (`facultyID`) REFERENCES `faculty`(`facultyID`),
   FOREIGN KEY (`studentID`) REFERENCES `student`(`studentID`)
 );
+
+CREATE TABLE `task` (
+  `taskID` INT(11) NOT NULL AUTO_INCREMENT,
+  `facultyID` INT(11) DEFAULT NULL,
+  `studentID` INT(11) DEFAULT NULL,
+  `type` VARCHAR(25) NOT NULL,
+  `priority` VARCHAR(10) NOT NULL DEFAULT 'Medium',
+  `status` VARCHAR(25) NOT NULL DEFAULT 'Not Started',
+  `dueDate` DATE NOT NULL,
+  `timeEstimate` TINYINT NOT NULL DEFAULT 1,
+  `instructions` TEXT DEFAULT NULL,
+  PRIMARY KEY (`taskID`),
+  FOREIGN KEY (`facultyID`) REFERENCES `faculty`(`facultyID`),
+  FOREIGN KEY (`studentID`) REFERENCES `student`(`studentID`)
+);
