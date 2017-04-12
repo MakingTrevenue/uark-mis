@@ -7,6 +7,15 @@ try {
 
 	$conn=createPDO();
 
+	$stmt = $conn->prepare("SELECT facultyID FROM faculty WHERE userID= :userID");
+
+	$stmt->bindParam(':userID',$_SESSION['userID']);
+	echo $_SESSION['userID'] . "<br>";
+	$stmt->execute();
+
+	$check = $stmt->fetch(PDO::FETCH_ASSOC);
+	$facultyID=$check['facultyID'];
+	
 	$stmt = $conn->prepare("INSERT INTO task (facultyID, studentID, type, priority, status, dueDate, timeEstimate, instructions) VALUES (:facultyID, :studentID, :type, :priority, :status, :dueDate, :timeEstimate, :instructions)");
 
 	$stmt->bindParam(':facultyID', $_POST['facultyID']);
