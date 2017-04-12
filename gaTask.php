@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if (!isset($_SESSION['gaRole']) && !isset($_SESSION['adminRole']))
+    if (!isset($_SESSION['supervisorRole']) && !isset($_SESSION['adminRole']))
         header('Location: invalidpermission.php?e=Graduate Assistant'); 
     include 'header.php';
 ?>
