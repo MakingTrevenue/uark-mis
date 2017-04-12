@@ -278,6 +278,26 @@ CREATE TABLE `request` (
   FOREIGN KEY (`facultyID`) REFERENCES `faculty`(`facultyID`)
 );
 
+CREATE TABLE `skill` (
+  `requestID` INT(11) NOT NULL AUTO_INCREMENT,
+  `studentID` INT(11) DEFAULT NULL,
+  `research` TINYINT NOT NULL,
+  `wordProcessing` TINYINT NOT NULL,
+  `dataAnalysis` TINYINT NOT NULL,
+  `programming` TINYINT NOT NULL,
+  `databaseSkill` TINYINT NOT NULL,
+  `sap` TINYINT NOT NULL,
+  `statisticalPackages` VARCHAR(255) DEFAULT NULL,
+  `programmingLanguages` VARCHAR(255) DEFAULT NULL,
+  `writing` TINYINT NOT NULL,
+  `editing` TINYINT NOT NULL,
+  `english` TINYINT NOT NULL,
+  `grading` TINYINT NOT NULL,
+  `otherSkills` TEXT DEFAULT NULL,
+  PRIMARY KEY (`requestID`),
+  FOREIGN KEY (`studentID`) REFERENCES `student`(`studentID`)
+);
+
 CREATE TABLE `evaluation` (
   `evaluationID` INT(11) NOT NULL AUTO_INCREMENT,
   `facultyID` INT(11) DEFAULT NULL,
