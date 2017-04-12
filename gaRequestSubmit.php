@@ -50,6 +50,5 @@ try {
 	exit();
 }
 
-//header('Location: gaRequestSuccess.php');
-echo "it worked";
+header('Location: gaRequestSuccess.php');
 ?>
