@@ -16,13 +16,12 @@ try {
 	$check = $stmt->fetch(PDO::FETCH_ASSOC);
 	$facultyID=$check['facultyID'];
 
-	$stmt = $conn->prepare("INSERT INTO task (facultyID, studentID, type, priority, status, dueDate, timeEstimate, instructions) VALUES (:facultyID, :studentID, :type, :priority, :status, :dueDate, :timeEstimate, :instructions)");
+	$stmt = $conn->prepare("INSERT INTO task (facultyID, studentID, type, priority, dueDate, timeEstimate, instructions) VALUES (:facultyID, :studentID, :type, :priority, :dueDate, :timeEstimate, :instructions)");
 
 	$stmt->bindParam(':facultyID', $_POST['facultyID']);
 	$stmt->bindParam(':studentID', $_POST['studentID']);
 	$stmt->bindParam(':type', $_POST['type']);
 	$stmt->bindParam(':priority', $_POST['priority']);
-	$stmt->bindParam(':status', $_POST['status']);
 	$stmt->bindParam(':dueDate', $_POST['dueDate']);
 	$stmt->bindParam(':timeEstimate', $_POST['timeEstimate']);
 	$stmt->bindParam(':instructions', $_POST['instructions']);
