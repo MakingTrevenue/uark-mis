@@ -19,7 +19,7 @@ try {
 
 	$stmt = $conn->prepare("INSERT INTO task (facultyID, studentID, title, type, priority, dueDate, timeEstimate, instructions) VALUES (:facultyID, :studentID, :title, :type, :priority, :dueDate, :timeEstimate, :instructions)");
 
-	$stmt->bindParam(':facultyID', $_POST['facultyID']);
+	$stmt->bindParam(':facultyID', $facultyID);
 	$stmt->bindParam(':studentID', $_POST['studentID']);
 	$stmt->bindParam(':title', $_POST['title']);
 	$stmt->bindParam(':type', $_POST['type']);
