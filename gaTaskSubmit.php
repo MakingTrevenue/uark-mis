@@ -15,7 +15,7 @@ try {
 
 	$check = $stmt->fetch(PDO::FETCH_ASSOC);
 	$facultyID=$check['facultyID'];
-	
+
 	$stmt = $conn->prepare("INSERT INTO task (facultyID, studentID, type, priority, status, dueDate, timeEstimate, instructions) VALUES (:facultyID, :studentID, :type, :priority, :status, :dueDate, :timeEstimate, :instructions)");
 
 	$stmt->bindParam(':facultyID', $_POST['facultyID']);
@@ -27,13 +27,13 @@ try {
 	$stmt->bindParam(':timeEstimate', $_POST['timeEstimate']);
 	$stmt->bindParam(':instructions', $_POST['instructions']);
 	$stmt->execute();
-
+	header('Location: gaTaskSuccess.php');
 } catch(Exception $e) {
 	$stmt->debugDumpParams();
 	echo "Error: " . $e->getMessage();
 	echo "<br> Stack trace: " . $e->getTraceAsString();
 }
 
-header('Location: gaTaskSuccess.php');
+
 
 ?>
