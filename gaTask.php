@@ -27,6 +27,22 @@
                     <div class="col-md-6 col-sm-6">
 
                         <div class="form-group">
+                            <label for="title">Title</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-info"></i></span>
+                                <input type="text" class="form-control" name="title"  id="title" placeholder="Grade Exam 3">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="instructions">Please describe the instructions for this specific task.</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-comment"></i></span>
+                                <textarea class="form-control custom-control" rows="3" name="instructions" id="instructions"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="type">Type</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-tag"></i></span>
@@ -38,6 +54,11 @@
                                 </select>
                             </div>
                         </div>
+
+                    </div>
+
+                    <!-- -->
+                    <div class="col-md-6 col-sm-6">
 
                         <div class="form-group">
                             <label for="priority">Priority</label>
@@ -63,20 +84,7 @@
                             <label for="dueDate">Due Date</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                <input type="date" class="form-control" name="dueDate" id="dueDate" placeholder="">
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- -->
-                    <div class="col-md-6 col-sm-6">
-
-                        <div class="form-group">
-                            <label for="instructions">Please describe the instructions for this specific task.</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-comment"></i></span>
-                                <textarea class="form-control custom-control" rows="3" name="instructions" id="instructions"></textarea>
+                                <input type="date" class="form-control" name="dueDate" id="dueDate" placeholder="01/01/2017">
                             </div>
                         </div>
 

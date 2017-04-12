@@ -303,6 +303,7 @@ CREATE TABLE `task` (
   `taskID` INT(11) NOT NULL AUTO_INCREMENT,
   `facultyID` INT(11) DEFAULT NULL,
   `studentID` INT(11) DEFAULT NULL,
+  `title` VARCHAR(100) NOT NULL,
   `type` VARCHAR(25) NOT NULL,
   `priority` VARCHAR(10) NOT NULL DEFAULT 'Medium',
   `status` VARCHAR(25) NOT NULL DEFAULT 'Not Started',
