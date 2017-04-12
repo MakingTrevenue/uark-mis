@@ -1,20 +1,34 @@
 <?php
     include 'php/functions.php';
-error_reporting(E_ALL & ~E_WARNING);
-ini_set('display_errors', 1);
+	error_reporting(E_ALL & ~E_WARNING);
+	ini_set('display_errors', 1);
+	session_start();
+	print_r($_POST);
 
 try {
 
 	$conn=createPDO();
 
-	$stmt = $conn->prepare("INSERT INTO request (reason, hours, description, internet, wordProcessing, spreadsheets, programming, databaseSkill, sap, statisticalPackages,  programmingLanguages,  writing,  editing,  english, grading, otherSkills, multipleGAs, multipleGAsNumber, comments) VALUES  (:reason, :hours, :description, :internet, :wordProcessing, :spreadsheets, :programming, :database, :sap, :statisticalPackages, :programmingLanguages, :writing, :editing, :english, :grading, :otherSkills, :multipleGAs, :multipleGAsNumber, :comments)");
+	$stmt = $conn->prepare("SELECT facultyID FROM faculty WHERE userID= :userID");
 
+	$stmt->bindParam(':userID',$_SESSION['userID']);
+	echo $_SESSION['userID'] . "<br>";
+	$stmt->execute();
+
+	$check = $stmt->fetch(PDO::FETCH_ASSOC);
+	$facultyID=$check['facultyID'];
+
+
+	//
+	$stmt = $conn->prepare("INSERT INTO request (facultyID,  reason,  hours,  description,  research,  wordProcessing,  dataAnalysis,  programming,  databaseSkill,  sap,  statisticalPackages,  programmingLanguages,  writing,  editing,  english,  grading,  otherSkills,  multipleGAs,  multipleGAsNumber,  comments) VALUES  
+											   (:facultyID, :reason, :hours, :description, :research, :wordProcessing, :dataAnalysis, :programming, :databaseSkill, :sap, :statisticalPackages, :programmingLanguages, :writing, :editing, :english, :grading, :otherSkills, :multipleGAs, :multipleGAsNumber, :comments)");
+	$stmt->bindParam(':facultyID', $facultyID);
 	$stmt->bindParam(':reason', $_POST['reason']);
 	$stmt->bindParam(':hours', $_POST['hours']);
 	$stmt->bindParam(':description', $_POST['description']);
-	$stmt->bindParam(':internet', $_POST['internet']);
+	$stmt->bindParam(':research', $_POST['research']);
 	$stmt->bindParam(':wordProcessing', $_POST['wordProcessing']);
-	$stmt->bindParam(':spreadsheets', $_POST['spreadsheets']);
+	$stmt->bindParam(':dataAnalysis', $_POST['dataAnalysis']);
 	$stmt->bindParam(':programming', $_POST['programming']);
 	$stmt->bindParam(':databaseSkill', $_POST['databaseSkill']);
 	$stmt->bindParam(':sap', $_POST['sap']);
@@ -31,11 +45,11 @@ try {
 	$stmt->execute();
 
 } catch(Exception $e) {
-	$stmt->debugDumpParams();
 	echo "Error: " . $e->getMessage();
 	echo "<br> Stack trace: " . $e->getTraceAsString();
+	exit();
 }
 
-header('Location: gaRequestSuccess.php');
-
+//header('Location: gaRequestSuccess.php');
+echo "it worked";
 ?>
