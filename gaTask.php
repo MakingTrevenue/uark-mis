@@ -29,7 +29,7 @@
                         <div class="form-group">
                             <label for="type">Type</label>
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
+                                <span class="input-group-addon"><i class="fa fa-tag"></i></span>
                                 <select name="type" id="type" class="selectpicker show-tick form-control" data-live-search="true">
                                     <option>Research</option>
                                     <option>Teaching</option>
@@ -42,7 +42,7 @@
                         <div class="form-group">
                             <label for="priority">Priority</label>
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
+                                <span class="input-group-addon"><i class="fa fa-exclamation-circle"></i></span>
                                 <select name="priority" id="priority" class="selectpicker show-tick form-control" data-live-search="true">
                                     <option>Low</option>
                                     <option>Medium</option>
@@ -91,7 +91,7 @@
     </div>
 
     <div class="col-md-2 col-sm-4 col-md-offset-5 col-sm-offset-4 text-center">   
-        <input type="submit" class="btn btn-success btn-lg" id="submitButton" value="Submit Evaluation"><br>
+        <input type="submit" class="btn btn-success btn-lg" id="submitButton" value="Submit Task"><br>
     </div>
 
     </form>
