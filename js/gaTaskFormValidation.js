@@ -32,6 +32,10 @@ $("#gaTaskForm").validate({
 
     rules: {
 
+        title: {
+            required: true
+        },
+
         timeEstimate: {
             required: true
         },
@@ -47,6 +51,11 @@ $("#gaTaskForm").validate({
     },
 
     messages: {
+       
+       title: {
+            required: "Please enter a title."
+       }
+
        timeEstimate: {
             required: "Please estimate (in hours) how long the task will take to complete."
         },
