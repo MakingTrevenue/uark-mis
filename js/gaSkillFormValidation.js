@@ -48,7 +48,7 @@ $("#gaSkillForm").validate({
             required: true
         },
 
-        databaseSkills: {
+        databaseSkill: {
             required: true
         },
 
@@ -89,6 +89,7 @@ $("#gaSkillForm").validate({
     },
 
     messages: {
+       
        reason: {
             required: "Please describe how a GA will be helpful to you."
         },
@@ -109,7 +110,7 @@ $("#gaSkillForm").validate({
             required: "Required."
         },
 
-        databaseSkills: {
+        databaseSkill: {
             required: "Required."
         },
 

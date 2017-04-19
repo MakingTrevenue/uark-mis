@@ -54,7 +54,7 @@ $("#gaTaskForm").validate({
        
        title: {
             required: "Please enter a title."
-       }
+       },
 
        timeEstimate: {
             required: "Please estimate (in hours) how long the task will take to complete."

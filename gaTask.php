@@ -30,7 +30,7 @@
                             <label for="title">Title</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-info"></i></span>
-                                <input type="text" class="form-control" name="title"  id="title" placeholder="Grade Exam 3">
+                                <input type="text" class="form-control" name="title"  id="title" placeholder="">
                             </div>
                         </div>
 
@@ -84,7 +84,7 @@
                             <label for="dueDate">Due Date</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                <input type="date" class="form-control" name="dueDate" id="dueDate" placeholder="01/01/2017">
+                                <input type="date" class="form-control" name="dueDate" id="dueDate" placeholder="">
                             </div>
                         </div>
 
