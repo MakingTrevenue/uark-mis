@@ -158,6 +158,10 @@ $("#gaRequestForm").validate({
             required: "Required."
         },
 
+        sap: {
+            required: "Required."
+        },
+
         writing: {
             required: "Required."
         },
