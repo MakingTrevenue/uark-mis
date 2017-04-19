@@ -126,7 +126,7 @@
             $stmt->execute(); 
             $i=0;
             while ($row = $stmt->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT)) {
-                echo "<input name='".$row->requestID."' id='i".$i."' value=''  type='text'>";
+                echo "<input name='".$row->requestID."' id='i".$i."' value=''  type='hidden'>";
                 $i++;
             }
             ?>
