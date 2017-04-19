@@ -20,8 +20,10 @@ try {
 
 
 	//
-	$stmt = $conn->prepare("INSERT INTO skill (studentID, research,  wordProcessing,  dataAnalysis,  programming,  databaseSkill,  sap,  statisticalPackages,  programmingLanguages,  writing,  editing,  english,  grading,  otherSkills) VALUES  
-											   (:studentID, :research, :wordProcessing, :dataAnalysis, :programming, :databaseSkill, :sap, :statisticalPackages, :programmingLanguages, :writing, :editing, :english, :grading, :otherSkills)");
+	$stmt = $conn->prepare("UPDATE skill research=:research, wordProcessing=:wordProcessing, dataAnalysis=:dataAnalysis, programming=:programming,
+										 databaseSkill=:databaseSkill, sap=:sap, statisticalPackage=:statisticalPackage, programmingLangugages=:programmingLanguages,
+										 writing=:writing, editing=:editing, english=:engligh, grading=:grading, otherSkills=:otherSkills WHERE studentID=:studentID");
+
 	$stmt->bindParam(':studentID', $studentID);
 	$stmt->bindParam(':research', $_POST['research']);
 	$stmt->bindParam(':wordProcessing', $_POST['wordProcessing']);
