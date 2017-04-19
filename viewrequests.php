@@ -24,7 +24,7 @@
   .wrapper { width: 100%; float: left;}
   .formclass { float: left; border-style: groove;} 
   .request { margin: auto; width: 33.3%; min-width: 175px;height: 100px; border-style: groove; background-color: #F9F9F9; float: left}
-  .student { margin: auto; width: 25%;   min-width: 175px;height: 75px; border-style: groove; background-color: #F9F9F9; float: left}  
+  .student { margin: auto; width: 25%;   min-width: 175px;height: 200px; border-style: groove; background-color: #F9F9F9; float: left}  
   .dropped { background-color: #EEBBBB;}
   </style>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -41,7 +41,7 @@
     ?>
 
   function updateInput(inputid,studentid){
-	document.getElementById(pairs[inputid]).value=document.getElementById(studentid).innerHTML;
+	document.getElementById(pairs[inputid]).value= document.getElementById(studentid).id;
   }
   function clearInput(id){
 	document.getElementById(pairs[id]).value="";
@@ -78,65 +78,55 @@
 <div class="wrapper">
 	<div id="requests">
         <?php
-        $stmt->execute(); 
-        $i=0;       
-        while ($row = $stmt->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT)) {
-            echo "
-            <div id='r".$i."' class='request panel panel-default'>
-                <div class='panel-heading'>
-		            <h2 class='panel-title'>".$row->firstName . " " . $row->lastName."</h2>
-                </div>"
-                . "<br>Department: " . $row->department
-                . "<br>Hours: " . $row->hours."
-	        </div>";
-            $i++;
-        }
+            $stmt = $conn->prepare("SELECT * FROM request JOIN faculty ON faculty.facultyID = request.facultyID;");          
+            $stmt->execute(); 
+            $i=0;       
+            while ($row = $stmt->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT)) {
+                echo "
+                <div id='r".$i."' class='request panel panel-default'>
+                    <div class='panel-heading'>
+                        <h2 class='panel-title'>".$row->firstName . " " . $row->lastName."</h2>
+                    </div>"
+                    . "<br>Department: " . $row->department
+                    . "<br>Hours: " . $row->hours."
+                </div>";
+                $i++;
+            }
         ?>
 	</div>
 	 
 	<div id="students">
-	  <div id="s0" class='student panel panel-default'>
-        <div class='panel-heading' style='background-color: #FFBCCF; color: #000000'>student 1</div>
-        content
-      </div>
-	  <div id="s1" class='student panel panel-default'>
-        <div class='panel-heading' style='background-color: #FFBCCF; color: #000000'>student 2</div>
-         content
-      </div>
-	  <div id="s2" class='student panel panel-default'>
-        <div class='panel-heading' style='background-color: #FFBCCF; color: #000000'>student 3</div>      
-         content
-      </div> 
-	  <div id="s3" class='student panel panel-default'>
-        <div class='panel-heading' style='background-color: #FFBCCF; color: #000000'>student 4</div>
-         content
-      </div>
-	  <div id="s4" class='student panel panel-default'>
-        <div class='panel-heading' style='background-color: #FFBCCF; color: #000000'>student 5</div>
-         content
-      </div>
-	  <div id="s5" class='student panel panel-default'>
-        <div class='panel-heading' style='background-color: #FFBCCF; color: #000000'>student 6</div>
-         content
-      </div>
-	  <div id="s6" class='student panel panel-default'>
-        <div class='panel-heading' style='background-color: #FFBCCF; color: #000000'>student 7</div>
-         content
-      </div>
-	  <div id="s7" class='student panel panel-default'>
-        <div class='panel-heading' style='background-color: #FFBCCF; color: #000000'>student 8</div>
-         content
-      </div>             
+        <?php
+            $stmt = $conn->prepare("SELECT * FROM student LIMIT 9;");          
+            $stmt->execute(); 
+            $i=0;       
+            while ($row = $stmt->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT)) {
+                $stmt2 = $conn->prepare("SELECT * FROM skill WHERE studentID=$row->studentID;");          
+                $stmt2->execute();
+                $row2 = $stmt2->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT);
+                echo "
+                <div id='" . $row->studentID ."' class='student panel panel-default'>
+                    <div class='panel-heading'>
+                        <h2 class='panel-title'>".$row->firstName . " " . $row->lastName."</h2>
+                    </div>"
+                    . "<br>Research: " . $row2->research
+                    . "<br>Word Processing: " . $row2->wordProcessing
+                . "</div>";
+                $i++;
+            }
+        ?>
+	          
 	</div>
 	<br>
 	
     <div class='wrapper'>
         <form id="garequestform">
             <?php
+            $stmt = $conn->prepare("SELECT * FROM request JOIN faculty ON faculty.facultyID = request.facultyID;");
             $stmt->execute(); 
             $i=0;
             while ($row = $stmt->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT)) {
-                echo "<input id='i".$i."' value=''  type='hidden'>";
+                echo "<input name='".$row->requestID."' id='i".$i."' value=''  type='text'>";
                 $i++;
             }
             ?>
@@ -148,7 +138,5 @@
     
 </div>
 
-
- 
 </body>
 </html>
