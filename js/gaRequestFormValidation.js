@@ -61,7 +61,7 @@ $("#gaRequestForm").validate({
             required: false
         },
 
-        internet: {
+        research: {
             required: true
         },
 
@@ -69,7 +69,7 @@ $("#gaRequestForm").validate({
             required: true
         },
 
-        spreadsheets: {
+        dataAnalysis: {
             required: true
         },
 
@@ -77,7 +77,7 @@ $("#gaRequestForm").validate({
             required: true
         },
 
-        database: {
+        databaseSkill: {
             required: true
         },
 
@@ -154,7 +154,7 @@ $("#gaRequestForm").validate({
             required: "Required."
         },
 
-        databaseSkills: {
+        databaseSkill: {
             required: "Required."
         },
 
