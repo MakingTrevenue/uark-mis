@@ -279,22 +279,22 @@ CREATE TABLE `request` (
 );
 
 CREATE TABLE `skill` (
-  `requestID` INT(11) NOT NULL AUTO_INCREMENT,
+  `skillID` INT(11) NOT NULL AUTO_INCREMENT,
   `studentID` INT(11) DEFAULT NULL,
-  `research` TINYINT NOT NULL,
-  `wordProcessing` TINYINT NOT NULL,
-  `dataAnalysis` TINYINT NOT NULL,
-  `programming` TINYINT NOT NULL,
-  `databaseSkill` TINYINT NOT NULL,
-  `sap` TINYINT NOT NULL,
+  `research` TINYINT NOT NULL DEFAULT 0,
+  `wordProcessing` TINYINT NOT NULL DEFAULT 0,
+  `dataAnalysis` TINYINT NOT NULL DEFAULT 0,
+  `programming` TINYINT NOT NULL DEFAULT 0,
+  `databaseSkill` TINYINT NOT NULL DEFAULT 0,
+  `sap` TINYINT NOT NULL DEFAULT 0,
   `statisticalPackages` VARCHAR(255) DEFAULT NULL,
   `programmingLanguages` VARCHAR(255) DEFAULT NULL,
-  `writing` TINYINT NOT NULL,
-  `editing` TINYINT NOT NULL,
-  `english` TINYINT NOT NULL,
-  `grading` TINYINT NOT NULL,
+  `writing` TINYINT NOT NULL DEFAULT 0,
+  `editing` TINYINT NOT NULL DEFAULT 0,
+  `english` TINYINT NOT NULL DEFAULT 0,
+  `grading` TINYINT NOT NULL DEFAULT 0,
   `otherSkills` TEXT DEFAULT NULL,
-  PRIMARY KEY (`requestID`),
+  PRIMARY KEY (`skillID`),
   FOREIGN KEY (`studentID`) REFERENCES `student`(`studentID`)
 );
 
