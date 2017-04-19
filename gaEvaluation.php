@@ -180,7 +180,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="reassignedComments">Explain why or why not.</label>
+                            <label for="reassignedComments">Explain why.</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-comment"></i></span>
                                 <textarea class="form-control custom-control" rows="3" name="reassignedComments" id="reassignedComments"></textarea>

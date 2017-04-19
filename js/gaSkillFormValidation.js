@@ -92,6 +92,42 @@ $("#gaSkillForm").validate({
        reason: {
             required: "Please describe how a GA will be helpful to you."
         },
+
+        research: {
+            required: "Required."
+        },
+
+        wordProcessing: {
+            required: "Required."
+        },
+
+        dataAnalysis: {
+            required: "Required."
+        },
+
+        programming: {
+            required: "Required."
+        },
+
+        databaseSkills: {
+            required: "Required."
+        },
+
+        writing: {
+            required: "Required."
+        },
+
+        editing: {
+            required: "Required."
+        },
+
+        english: {
+            required: "Required."
+        },
+
+        grading: {
+            required: "Required."
+        },
     }
 
 });

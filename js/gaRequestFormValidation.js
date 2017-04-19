@@ -137,6 +137,43 @@ $("#gaRequestForm").validate({
         description: {
             required: "Please provide a brief job description."
         },
+
+        research: {
+            required: "Required."
+        },
+
+        wordProcessing: {
+            required: "Required."
+        },
+
+        dataAnalysis: {
+            required: "Required."
+        },
+
+        programming: {
+            required: "Required."
+        },
+
+        databaseSkills: {
+            required: "Required."
+        },
+
+        writing: {
+            required: "Required."
+        },
+
+        editing: {
+            required: "Required."
+        },
+
+        english: {
+            required: "Required."
+        },
+
+        grading: {
+            required: "Required."
+        },
+        
     }
 
 });

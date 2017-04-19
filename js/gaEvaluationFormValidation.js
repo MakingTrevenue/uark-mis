@@ -110,6 +110,22 @@ $("#gaEvaluationForm").validate({
             required: "Please explain why you do or do not want to be reassigned this GA."
         },
 
+        quality: {
+            required: "Required."
+        },
+
+        timeliness: {
+            required: "Required."
+        },
+
+        amount: {
+            required: "Required."
+        },
+
+        overall: {
+            required: "Required."
+        },
+
     }
 
 });
