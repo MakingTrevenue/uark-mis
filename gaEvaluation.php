@@ -3,6 +3,7 @@
     if (!isset($_SESSION['supervisorRole']) && !isset($_SESSION['adminRole']))
         header('Location: invalidpermission.php?e=Supervisor'); 
     include 'header.php';
+    include 'php/functions.php';
 
     $conn=createPDO();
     $stmt = $conn->prepare("SELECT facultyID FROM faculty WHERE userid=:userid");
@@ -11,16 +12,72 @@
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     $facultyid=$result['facultyID'];  
 
-    //Find GA Assignment
-
+    $stmt = $conn->prepare("SELECT * FROM ga_assignment JOIN student ON student.studentID = ga_assignment.studentID WHERE facultyID=:facultyID");
+    $stmt->bindParam(':facultyID',$facultyid);
+    $stmt->execute();
 ?>
+<script>
+    pairs={};
 
+    function updateID(){
+        console.log(pairs);
+        var x=document.getElementById('concentration').value;
+        document.getElementById('studentID').value=pairs[x];
+
+    }
+</script>
 <!-- Page Content Container -->
 <div class="container-fluid">
     
     <form id="gaEvaluationForm" action="/gaEvaluationSubmit.php" method="post" enctype="multipart/form-data">
         
     <!-- -->
+    <div class="row">
+
+        <div class="col-md-12 col-sm-12">
+
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    <h2 class="panel-title">GA Info</h2>
+                </div>
+
+                <div class="panel-body">
+
+                    <Student>
+                    <div class="col-md-6 col-sm-6">
+
+                        <div class="form-group">
+                            <label for="concentration"Select GA:</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
+                                <select onchange="updateID()" name="concentration" id="concentration" class="selectpicker show-tick form-control" data-live-search="true">
+                                        <?php
+                                        $i=0;
+                                        while($row=$stmt->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT)){
+                                            if($i==0)
+                                                $x=$row->studentID;
+                                            $inner=$row->preferredName." (id= ".$row->studentID.")";
+                                            echo "<option name=".$row->studentID.">".$inner."</option>";
+                                            echo "<script> pairs['".$inner."']=".$row->studentID."</script>";
+                                            $i++;
+                                        }
+                                        ?>
+                                </select>
+                                <input name="studentID" id="studentID" type="hidden" value=<?php echo $x ?>>
+                                <input name="facultyID" id="facultyID" type="hidden" value=<?php echo $facultyid ?>>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>       
+
+    </div>    
     <div class="row">
 
         <div class="col-md-12 col-sm-12">

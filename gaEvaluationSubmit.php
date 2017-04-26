@@ -6,8 +6,10 @@
 try {
 	$conn=createPDO();
 
-	$stmt = $conn->prepare("INSERT INTO evaluation (duties, skillMatch, quality, qualityComments, timeliness, timelinessComments, amount, amountComments, overall, overallComments, reassigned, reassignedComments) VALUES (:duties, :skillMatch, :quality, :qualityComments, :timeliness, :timelinessComments, :amount, :amountComments, :overall, :overallComments, :reassigned, :reassignedComments)");
-
+	$stmt = $conn->prepare("INSERT INTO evaluation (facultyID,  studentID,  duties,  skillMatch,  quality,  qualityComments,  timeliness,  timelinessComments,  amount,  amountComments,  overall,  overallComments,  reassigned,  reassignedComments) 
+										   VALUES (:facultyID, :studentID, :duties, :skillMatch, :quality, :qualityComments, :timeliness, :timelinessComments, :amount, :amountComments, :overall, :overallComments, :reassigned, :reassignedComments)");
+	$stmt->bindParam(':facultyID', $_POST['facultyID']);
+	$stmt->bindParam(':studentID', $_POST['studentID']);
 	$stmt->bindParam(':duties', $_POST['duties']);
 	$stmt->bindParam(':skillMatch', $_POST['skillMatch']);
 	$stmt->bindParam(':quality', $_POST['quality']);
