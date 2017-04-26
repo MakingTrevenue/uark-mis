@@ -1,6 +1,10 @@
 <?php
+    session_start();
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
+    if (!isset($_SESSION['adminRole'])){
+        header('Location: invalidpermission.php?e=Admin');     
+    }
     include 'header.php';
     include 'php/functions.php';
     try{
@@ -34,8 +38,9 @@
   pairs={};
     <?php
     $i=0;
+    
     while ($row = $stmt->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT)) {
-        echo "pairs['r".$i."']='i".$i."';";
+        echo "pairs['r".$row->requestID."']='i".$row->requestID."';";
         $i++;
     }
     ?>
@@ -78,12 +83,12 @@
 <div class="wrapper">
 	<div id="requests">
         <?php
-            $stmt = $conn->prepare("SELECT * FROM request JOIN faculty ON faculty.facultyID = request.facultyID;");          
+            $stmt = $conn->prepare("SELECT * FROM request JOIN faculty ON faculty.facultyID = request.facultyID WHERE filled!=1;");          
             $stmt->execute(); 
             $i=0;       
             while ($row = $stmt->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT)) {
                 echo "
-                <div id='r".$i."' class='request panel panel-default'>
+                <div id='r".$row->requestID."' class='request panel panel-default'>
                     <div class='panel-heading'>
                         <h2 class='panel-title'>".$row->firstName . " " . $row->lastName."</h2>
                     </div>"
@@ -120,13 +125,13 @@
 	<br>
 	
     <div class='wrapper'>
-        <form id="garequestform">
+        <form id="garequestform" action="/assign.php" method="post">
             <?php
             $stmt = $conn->prepare("SELECT * FROM request JOIN faculty ON faculty.facultyID = request.facultyID;");
             $stmt->execute(); 
             $i=0;
             while ($row = $stmt->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT)) {
-                echo "<input name='".$row->requestID."' id='i".$i."' value=''  type='hidden'>";
+                echo "<input name='".$row->requestID."' id='i".$row->requestID."' value=''  type='hidden'>";
                 $i++;
             }
             ?>

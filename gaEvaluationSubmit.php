@@ -4,7 +4,6 @@
 	ini_set('display_errors', 1);
 
 try {
-
 	$conn=createPDO();
 
 	$stmt = $conn->prepare("INSERT INTO evaluation (duties, skillMatch, quality, qualityComments, timeliness, timelinessComments, amount, amountComments, overall, overallComments, reassigned, reassignedComments) VALUES (:duties, :skillMatch, :quality, :qualityComments, :timeliness, :timelinessComments, :amount, :amountComments, :overall, :overallComments, :reassigned, :reassignedComments)");

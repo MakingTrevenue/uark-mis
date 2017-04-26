@@ -3,6 +3,16 @@
     if (!isset($_SESSION['supervisorRole']) && !isset($_SESSION['adminRole']))
         header('Location: invalidpermission.php?e=Supervisor'); 
     include 'header.php';
+
+    $conn=createPDO();
+    $stmt = $conn->prepare("SELECT facultyID FROM faculty WHERE userid=:userid");
+    $stmt->bindParam(':userid', $_SESSION["userID"]);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $facultyid=$result['facultyID'];  
+
+    //Find GA Assignment
+
 ?>
 
 <!-- Page Content Container -->
