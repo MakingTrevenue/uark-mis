@@ -67,9 +67,23 @@
                 <li><a href="./application.php">Application</a></li>
 				<li><a href="./applicants.php">Applicants</a></li>
                 <li><a href="./advising.php">Advising</a></li>
-                <li><a href="./gaRequest.php">GA Request</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">GA Requests <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="./gaRequest.php">Submit Request</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="./viewRequests.php">View Requests</a></li>
+                    </ul>
+                </li> 
                 <li><a href="./gaSkill.php">GA Skill</a></li>
-                <li><a href="./gaEvaluation.php">GA Evaluation</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">GA Evaluations <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="./gaEvaluation.php">Submit Evaluation</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="./viewEvaluations.php">View Evaluations</a></li>
+                    </ul>
+                </li>               
                 <li><a href="./gaTask.php">GA Task</a></li>
             </ul>
             <!-- Navigation Bar Modals -->
