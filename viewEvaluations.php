@@ -36,7 +36,7 @@
                 <td>" . $row->amount . "</td>
             </tr>";
 ?>
-    <div class="modal fade" id="evalModal<?php echo $i;?>" role="dialog">
+    <div class="modal" id="evalModal<?php echo $i;?>" role="dialog">
         <div class="modal-dialog">
         
         <!-- Modal content-->
