@@ -63,7 +63,7 @@
                     </div>
                                         
                     <div id="stats">
-                        <div id="SatisfactionQuality" style="width:50%; float: right;">
+                        <div id="SatisfactionQuality" style="width:50%; float: left;">
                             <h3>Overall Satisfaction: <?php echo $row->overall;?>/4</h3>    
                             <?php echo $row->overallComments;?>
 
@@ -71,13 +71,14 @@
                             <?php echo $row->qualityComments;?>
                         </div>
 
-                        <div id="TimelinessAmount" style="width:50%; float: right;">
+                        <div id="TimelinessAmount" style="width:50%; float: left;">
                             <h3>Timeliness of Work: <?php echo $row->timeliness;?>/4</h3>  
                             <?php echo $row->timelinessComments;?>
 
                             <h3>Amount of Work: <?php echo $row->amount;?>/4</h3>     
                             <?php echo $row->amountComments;?> 
                         </div>
+                        &nbsp;
                     </div>
 
                     <div>
