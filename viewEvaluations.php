@@ -50,37 +50,51 @@
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h2 class="modal-title"><?php echo $row->firstName . " " . $row->lastName; ?></h2>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h2 class="modal-title"><?php echo $row->firstName . " " . $row->lastName; ?></h2>
             </div>
             <div class="modal-body">
-                <p>
-                    <h3>Duties:</h3>
-                    <?php echo $row->duties;?>
-                    <h3>How background and skills matched duties:</h3> <br>
-                    <?php echo $row->skillMatch;?>
+                <div>
+                    <div id="DutiesMatch">
+                        <h3>Duties:</h3>
+                        <?php echo $row->duties;?>
+                        <h3>How background and skills matched duties:</h3>
+                        <?php echo $row->skillMatch;?>
+                    </div>
+                                        
+                    <div id="stats">
+                        <div id="SatisfactionQuality" style="width:50%; float: right;">
+                            <h3>Overall Satisfaction: <?php echo $row->overall;?>/4</h3>    
+                            <?php echo $row->overallComments;?>
 
-                    <h3>Overall Satisfaction: <?php echo $row->overall;?>/4</h3> <br>     
-                    <?php echo $row->overallComments;?> <br>
+                            <h3>Quality of Work: <?php echo $row->quality;?>/4</h3>     
+                            <?php echo $row->qualityComments;?>
+                        </div>
 
-                    <h3>Quality of Work: <?php echo $row->quality;?>/4</h3> <br>     
-                    <?php echo $row->qualityComments;?> <br>
+                        <div id="TimelinessAmount" style="width:50%; float: right;">
+                            <h3>Timeliness of Work: <?php echo $row->timeliness;?>/4</h3>  
+                            <?php echo $row->timelinessComments;?>
 
-                    <h3>Timeliness of Work: <?php echo $row->timeliness;?>/4</h3> <br>     
-                    <?php echo $row->timelinessComments;?> <br>
+                            <h3>Amount of Work: <?php echo $row->amount;?>/4</h3>     
+                            <?php echo $row->amountComments;?> 
+                        </div>
+                    </div>
 
-                    <h3>Amount of Work: <?php echo $row->amount;?>/4</h3> <br>     
-                    <?php echo $row->amountComments;?> <br>                                                                              
-                </p>
+                    <div>
+                        <h3>Do you wish to be reassigned this GA next term? <?php echo $row->reassigned == 1 ? "Yes" : "No";?></h3>     
+                        <?php echo $row->reassignedComments;?>                                                                  
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-        
         </div>
     </div>
 <?php
     }
     echo "</table>";
 ?>
+</body>
+</html>
