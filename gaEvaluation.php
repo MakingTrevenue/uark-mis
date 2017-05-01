@@ -64,7 +64,7 @@
                                         }
                                         ?>
                                 </select>
-                                <input name="studentID" id="studentID" type="hidden" value=<?php echo $x ?>>
+                                <input name="studentID" id="studentID" type="hidden" value=<?php if(!empty($x))echo $x ?>>
                                 <input name="facultyID" id="facultyID" type="hidden" value=<?php echo $facultyid ?>>
                             </div>
                         </div>
