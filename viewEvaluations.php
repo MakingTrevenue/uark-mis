@@ -35,7 +35,7 @@
     while ($row = $stmt->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT)) {
         $i++;
         $onclick = '$("#evalModal'.$i.'").modal()';
-        echo "<tr href='#' data-toggle='modal' data-target='#evalModal".$i."' onclick='".$onclick."'>
+        echo "<tr href='#'  onclick='".$onclick."'>
                 <td>" . $row->studentID . "</td>
                 <td>" . $row->firstName . " " . $row->lastName . "</td>
                 <td>" . $row->overall . "</td>                
