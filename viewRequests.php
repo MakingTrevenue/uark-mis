@@ -27,7 +27,7 @@
   #students { width: 50%; display:inline-block; float: left;} 
   .wrapper { width: 100%; float: left;}
   .formclass { float: left; border-style: groove;} 
-  .request { margin: auto; width: 33.3%; min-width: 175px;height: 100px; border-style: groove; background-color: #F9F9F9; float: left}
+  .request { margin: auto; width: 33.3%; min-width: 175px;height: 150px; border-style: groove; background-color: #F9F9F9; float: left}
   .student { margin: auto; width: 25%;   min-width: 175px;height: 200px; border-style: groove; background-color: #F9F9F9; float: left}  
   .dropped { background-color: #EEBBBB;}
   </style>
@@ -51,9 +51,21 @@
   function clearInput(id){
 	document.getElementById(pairs[id]).value="";
   }
+  function clearButton(e){
+    clearInput(e.id);
+    $(e).droppable('option', 'accept', '.student');
+    $(e).removeClass("dropped");
+    $(e).find("b").text("");
+  }
 
   $( function() {
     $( ".student" ).draggable({	
+        helper: function(e) {
+            var original = $(e.target).hasClass("ui-draggable") ? $(e.target) :  $(e.target).closest(".ui-draggable");
+            return original.clone().css({
+                width: original.width()
+            });                
+        },
         revert : function(event, ui) {
             $(this).data("uiDraggable").originalPosition = {
                 top : 0,
@@ -66,14 +78,15 @@
       drop: function( event, ui ) {
 		updateInput(this.id,ui.draggable.attr("id"));
 		$(this).droppable('option', 'accept', ui.draggable);		
-        $( this )
-          .addClass( "dropped" );		 
+        $(this)
+          .addClass( "dropped" );
+        $(this).find("b").text("Added: " + ui.draggable.find("h2").text());
       },
-	  out: function( event, ui ) {;
+	  out: function( event, ui ) {
 		clearInput(this.id);
 		$(this).droppable('option', 'accept', '.student');
-		$( this )
-          .removeClass( "dropped" )
+		$(this).removeClass("dropped");
+        $(this).find("b").text("");
 	  }	  
     });
   } );
@@ -87,13 +100,16 @@
             $stmt->execute(); 
             $i=0;       
             while ($row = $stmt->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT)) {
+                $rid='r'.$row->requestID;
                 echo "
                 <div id='r".$row->requestID."' class='request panel panel-default'>
                     <div class='panel-heading'>
                         <h2 class='panel-title'>".$row->firstName . " " . $row->lastName."</h2>
                     </div>"
                     . "<br>Department: " . $row->department
-                    . "<br>Hours: " . $row->hours."
+                    . "<br>Hours: " . $row->hours."<br>
+                    <b></b><br>
+                    <button onclick='clearButton(".$rid.")'>Clear</button>
                 </div>";
                 $i++;
             }
