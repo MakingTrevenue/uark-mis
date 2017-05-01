@@ -1,8 +1,8 @@
 <?php
-    include "php/functions.php";
+    include "functions.php";
     ini_set('max_execution_time', 180);
 
-    $conn=createPDO();
+    $conn=createPDOWithLocation('../../private/credentials.ini');
 
     $select = $conn->prepare("SELECT * FROM student WHERE userID IS NULL");
     $select->execute();
