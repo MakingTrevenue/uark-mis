@@ -11,6 +11,12 @@
     $stmt->execute(); 
 
 ?>
+    <style>
+        .clickable {
+            cursor:pointer;
+        }
+    </style>
+    
     <table id="applicantTable" class="tablesorter">
     <thead>
       <tr>
