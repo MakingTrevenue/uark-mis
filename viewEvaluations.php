@@ -16,7 +16,8 @@
             cursor:pointer;
         }
     </style>
-    
+    <script src="/js/jquery.ui.touch-punch.min.js"></script>
+
     <table id="applicantTable" class="tablesorter">
     <thead>
       <tr>
