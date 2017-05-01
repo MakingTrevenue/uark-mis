@@ -129,7 +129,7 @@
                 $row2 = $stmt2->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT);
                 echo "
                 <div id='" . $row->studentID ."' class='student panel panel-default'>
-                    <div class='panel-heading'>
+                    <div class='panel-heading' style='background-color: #FF9E9E; color: #000000'>
                         <h2 class='panel-title'>".$row->firstName . " " . $row->lastName."</h2>
                     </div>"
                     . "<br>Research: " . $row2->research
