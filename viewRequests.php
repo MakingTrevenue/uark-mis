@@ -82,12 +82,14 @@
           .addClass( "dropped" );
         $(this).find("b").text("Added: " + ui.draggable.find("h2").text());
       },
+      /* handled by Clear button now
 	  out: function( event, ui ) {
 		clearInput(this.id);
 		$(this).droppable('option', 'accept', '.student');
 		$(this).removeClass("dropped");
         $(this).find("b").text("");
-	  }	  
+	  }	
+      */  
     });
   } );
   </script>
