@@ -12,7 +12,7 @@
         $stmt = $conn->prepare("SELECT * FROM request JOIN faculty ON faculty.facultyID = request.facultyID;");
         $stmt->execute();    
     }catch(Exception $e){
-    echo $e; 
+        echo $e; 
     }
 
 ?>
