@@ -38,7 +38,7 @@
                             <label for="instructions">Please describe the instructions for this specific task.</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-comment"></i></span>
-                                <textarea class="form-control custom-control" rows="3" name="instructions" id="instructions"></textarea>
+                                <textarea class="form-control custom-control" rows="4" name="instructions" id="instructions"></textarea>
                             </div>
                         </div>
 

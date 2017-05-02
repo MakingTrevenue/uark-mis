@@ -44,13 +44,12 @@
 
                 <div class="panel-body">
 
-                    <Student>
                     <div class="col-md-6 col-sm-6">
 
                         <div class="form-group">
-                            <label for="concentration"Select GA:</label>
+                            <label for="concentration">Select GA</label>
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                 <select onchange="updateID()" name="concentration" id="concentration" class="selectpicker show-tick form-control" data-live-search="true">
                                         <?php
                                         $i=0;
