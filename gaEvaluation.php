@@ -6,6 +6,11 @@
     include 'php/functions.php';
 
     $conn=createPDO();
+    $stmt = $conn->prepare("SELECT facultyID FROM faculty WHERE userid=:userid");
+    $stmt->bindParam(':userid', $_SESSION["userID"]);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $facultyid=$result['facultyID'];  
 
     $stmt = $conn->prepare("SELECT * FROM ga_assignment JOIN student ON student.studentID = ga_assignment.studentID WHERE facultyID=:facultyID");
     $stmt->bindParam(':facultyID',$facultyid);
