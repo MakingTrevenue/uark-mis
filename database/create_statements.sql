@@ -329,6 +329,7 @@ CREATE TABLE `task` (
   `status` VARCHAR(25) NOT NULL DEFAULT 'Not Started',
   `dueDate` DATE NOT NULL,
   `timeEstimate` TINYINT NOT NULL DEFAULT 1,
+  `timeTaken` TINYINT DEFAULT NULL,
   `instructions` TEXT DEFAULT NULL,
   PRIMARY KEY (`taskID`),
   FOREIGN KEY (`facultyID`) REFERENCES `faculty`(`facultyID`),

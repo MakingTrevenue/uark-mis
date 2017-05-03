@@ -47,10 +47,10 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-tag"></i></span>
                                 <select name="type" id="type" class="selectpicker show-tick form-control" data-live-search="true">
-                                    <option>Research</option>
-                                    <option>Teaching</option>
-                                    <option>Service</option>
                                     <option>Administrative</option>
+                                    <option>Research</option>
+                                    <option>Service</option>
+                                    <option>Teaching</option>
                                 </select>
                             </div>
                         </div>

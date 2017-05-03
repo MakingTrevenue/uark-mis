@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (!isset($_SESSION['gaRole']) && !isset($_SESSION['adminRole']))
-        header("Location: invalidpermission.php?e=gaRole"); 
+        header("Location: invalidpermission.php?e=Graduate Assistant"); 
     include 'header.php';
     include 'php/functions.php';
 ?>
