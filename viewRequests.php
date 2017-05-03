@@ -27,7 +27,7 @@
   #students { width: 50%; display:inline-block; float: left;} 
   .wrapper { width: 100%; float: left;}
   .formclass { float: left; border-style: groove;} 
-  .request { margin: auto; width: 33.3%; min-width: 175px;height: 150px; border-style: groove; background-color: #F9F9F9; float: left}
+  .request { margin: auto; width: 33.3%; min-width: 175px;height: 225px; border-style: groove; background-color: #F9F9F9; float: left}
   .student { margin: auto; width: 25%;   min-width: 175px;height: 200px; border-style: groove; background-color: #F9F9F9; float: left}  
   .dropped { background-color: #EEBBBB;}
   </style>
