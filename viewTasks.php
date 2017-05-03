@@ -122,68 +122,28 @@
                 </div>
 
                 <div class="panel-body">
-                  
-                    <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3 text-center">
-                        <input type="submit"" id="" class="btn btn-success" submit="Update Status" value="Submit Status Update">
-                    </div>
 
-                </div>
-            </div>
-        </div>
+                    <h4>
+                        <b>Time Estimate: </b> <?php echo $check['timeEstimate'] . " hour(s)"; ?>
+                    </h4>
 
-    <!-- Comments -->
-    <form id="commentForm" action="/insertcomment.php" method='post' enctype="multipart/form-data">
-    <div class="row">
-        <div class="col-md-12 col-sm-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h2 class="panel-title">Comments</h2>
-                </div>
-                <div class="panel-body">
-
-                    <div>
-                        <?php
-
-                            $stmt = $conn->prepare("SELECT * FROM user_comment JOIN user ON user.userID = user_comment.userID WHERE user_comment.taskID=:taskID");      
-                            if(!empty($_GET['taskID']))
-                                $taskID=$_GET['taskID'];
-                            else
-                                $taskID=$_POST['taskID'];
-                            $stmt->bindValue(':taskID', $taskID);
-                            
-                            $stmt->execute();
-                            while ($comment = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                echo "<strong>" . $comment['name'] . ": </strong>" . $comment['commentText'] . "<br>";
-                            }
-
-                        ?>
-
-                    </div>   
-
-                    <div class="form-group"><br>
-                        <label for="comments">Add Your Comments</label>
+                    <div class="form-group">
+                    <h4>
+                        <b>Time Taken: </b>
+                    </h4>
                         <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-comment-o"></i></span>
-                            <input type="text" class="form-control" name="comment" id="comment" placeholder="">
-                            <input type="hidden" name="username" value="<?php echo $_SESSION['userID'];?>">
-                            <?php 
-                            if(isset($_GET['taskID']))
-                                $taskID=$_GET['taskID'];
-                            else
-                                $taskID=$_POST['taskID'];
-                            ?>
-                            <input type="hidden" name="taskID" value="<?php echo $taskID;?>"> 
+                            <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                            <input type="number" pattern="\d*" class="form-control" name="timeTaken"  id="timeTaken" placeholder="3">
                         </div>
                     </div>
 
-                    <div class="col-md-2 col-sm-4 col-md-offset-5 col-sm-offset-4 text-center">
-                        <input type="submit" class="btn btn-success btn-md" id="submitComment" value="Submit Comment">
+                    <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3 text-center">
+                        <input type="submit"" id="" class="btn btn-success" submit="Update Time" value="Submit Time Update">
                     </div>
+
                 </div>
             </div>
         </div>
-    </div>
-    </form>
 
 </div>
 
@@ -214,7 +174,7 @@
     <?php 
         while ($row = $stmt->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT)) {
             echo "<tr>
-                    <td> <a href='./viewTasks.php?taskID=" . $row->taskID . "'></a></td>
+                    <td>" . $row->taskID . "</td>
                     <td>" . $row->priority . "</td>
                     <td>" . $row->title . "</td>
                     <td>" . $row->status . "</td>
