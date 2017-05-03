@@ -4,12 +4,10 @@
         header('Location: invalidpermission.php?e=Supervisor'); 
     include 'header.php';
     include 'php/functions.php';
-
     $conn=createPDO();
     $stmt = $conn->prepare("SELECT * FROM evaluation JOIN student ON evaluation.studentID = student.studentID");
     $stmt->bindParam(':userid', $_SESSION["userID"]);
     $stmt->execute(); 
-
 ?>
     <style>
         .clickable {
