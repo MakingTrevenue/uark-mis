@@ -1,16 +1,44 @@
 <?php
     session_start();
-    if (!isset($_SESSION['gaRole']) && !isset($_SESSION['adminRole']))
+    if (!isset($_SESSION['gaRole']) && !isset($_SESSION['adminRole']) && !isset($_SESSION['supervisorRole']))
         header("Location: invalidpermission.php?e=Graduate Assistant"); 
     include 'header.php';
     include 'php/functions.php';
 ?>
 
 <?php
+    $conn=createPDO();
+    //admin show both facID and studentID, no filter
+    $columns=[['taskID','Task ID'],['facultyID','Professor'],['studentID','Student'],['priority','Priority'],['title','Title'],['status','Status'],['timeEstimate','Hours'],['dueDate','Due Date'],['type','Type']];
+    $where = "true";
+
+    //ga only show facID, filter to your student ID
+    if(isset($_SESSION['gaRole'])){
+        $stmt = $conn->prepare("SELECT studentID FROM student WHERE userid=:userid");
+        $stmt->bindParam(':userid', $_SESSION["userID"]);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $studentid=$result['studentID'];        
+        $columns=[['taskID','Task ID'],['facultyID','Professor'],['priority','Priority'],['title','Title'],['status','Status'],['timeEstimate','Hours'],['dueDate','Due Date'],['type','Type']];
+
+        $where="studentID=".$studentid;
+    }else 
+    //supervisor only show studentID, filter to your fac ID
+    if(isset($_SESSION['supervisorRole'])){
+        $stmt = $conn->prepare("SELECT facultyID FROM faculty WHERE userid=:userid");
+        $stmt->bindParam(':userid', $_SESSION["userID"]);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $facultyid=$result['facultyID'];
+
+        $columns=[['taskID','Task ID'],['studentID','Student'],['priority','Priority'],['title','Title'],['status','Status'],['timeEstimate','Hours'],['dueDate','Due Date'],['type','Type']];
+
+        $where="facultyID=".$facultyid;
+    }
+
     // Update statement for updating task statuses.
     if((!empty($_POST['taskID']) && !empty($_POST['status']) )){
         try{
-            $conn=createPDO();
             $stmt = $conn->prepare("UPDATE task SET status=:status WHERE taskID=:taskID");
             $stmt->bindParam(':status', $_POST['status']);
             $stmt->bindParam(':taskID', $_POST['taskID']);
@@ -26,7 +54,7 @@
     if(!empty($_GET['taskID']) || (!empty($_POST['taskID']) && !empty($_POST['status']) )){
         try{
             $conn=createPDO();
-            $stmt = $conn->prepare("SELECT * FROM task JOIN student on student.studentID = task.studentID WHERE task.studentID=:taskID");
+            $stmt = $conn->prepare("SELECT * FROM task JOIN student on student.studentID = task.studentID WHERE taskID=:taskID");
             
             if(!empty($_GET['taskID']))
                 $taskID=$_GET['taskID'];
@@ -149,8 +177,7 @@
 
     <?php
     }else{
-        $conn=createPDO();
-        $stmt = $conn->prepare("SELECT * FROM task");
+        $stmt = $conn->prepare("SELECT * FROM task WHERE " . $where);
         $stmt->execute();
     ?>
 
@@ -160,28 +187,24 @@
     <table id="taskTable" class="tablesorter">
     <thead>
       <tr>
-        <th>Task ID</th>
-        <th>Priority</th>
-        <th>Title</th>
-        <th>Status</th>
-        <th>Hours</th>
-        <th>Due Date</th>
-        <th>Type</th>
+
+    <?php
+        foreach($columns as $c){
+            echo "<th>" . $c[1] . "</th>";
+        }        
+    ?>
       </tr>
     </thead>
     <tbody>
 
     <?php 
         while ($row = $stmt->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT)) {
-            echo "<tr>
-                    <td> <a href='/viewTasks.php?taskID=" . $row->taskID . "'>" . $row->taskID . "</a></td>
-                    <td>" . $row->priority . "</td>
-                    <td>" . $row->title . "</td>
-                    <td>" . $row->status . "</td>
-                    <td>" . $row->timeEstimate . "</td>
-                    <td>" . $row->dueDate . "</td>
-                    <td>" . $row->type . "</td>
-                </tr>";
+            $loc="'/viewTasks.php?taskID=".$row->taskID."'";
+            echo '<tr onclick="window.location='.$loc.'">';
+            foreach($columns as $c){
+                echo "<td>" . $row->$c[0] . "</td>";
+            }
+            echo "</tr>";
         }
     }   
     ?>
