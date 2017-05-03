@@ -109,12 +109,12 @@
                         <h2 class='panel-title'>".$row->firstName . " " . $row->lastName."</h2>
                     </div>"
                     . "<br>Hours: " . $row->hours
-                    . "<br>Research: " . $row2->research
-                    . "<br>Word Processing: " . $row2->wordProcessing
-                    . "<br>Data Analysis: " . $row2->dataAnalysis
-                    . "<br>Programming: " . $row2->programming
-                    . "<br>Database: " . $row2->databaseSkill
-                    . "<br>SAP: " . $row2->sap . "                 
+                    . "<br>Research: " . $row->research
+                    . "<br>Word Processing: " . $row->wordProcessing
+                    . "<br>Data Analysis: " . $row->dataAnalysis
+                    . "<br>Programming: " . $row->programming
+                    . "<br>Database: " . $row->databaseSkill
+                    . "<br>SAP: " . $row->sap . "                 
                     <b></b><br>
                     <button onclick='clearButton(".$rid.")'>Clear</button>
                 </div>";
