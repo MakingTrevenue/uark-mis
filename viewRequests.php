@@ -134,6 +134,10 @@
                     </div>"
                     . "<br>Research: " . $row2->research
                     . "<br>Word Processing: " . $row2->wordProcessing
+                    . "<br>Data Analysis: " . $row2->dataAnalysis
+                    . "<br>Programming: " . $row2->programming
+                    . "<br>Database: " . $row2->databaseSkill
+                    . "<br>SAP: " . $row2->sap
                 . "</div>";
                 $i++;
             }
