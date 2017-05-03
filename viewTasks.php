@@ -174,7 +174,7 @@
     <?php 
         while ($row = $stmt->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT)) {
             echo "<tr>
-                    <td>" . $row->taskID . "</td>
+                    <td> <a href='/viewTasks.php?taskID=" . $row->taskID . "'>" . $row->taskID . "</a></td>
                     <td>" . $row->priority . "</td>
                     <td>" . $row->title . "</td>
                     <td>" . $row->status . "</td>
