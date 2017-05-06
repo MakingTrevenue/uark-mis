@@ -1,9 +1,7 @@
 <?php
 	session_start();
-	error_reporting(E_ALL);
     if (!isset($_POST['loginUsername']) && !isset($_POST['loginPassword']))
-        header("Location: index.php"); 	
-	ini_set('display_errors', 1);
+        exit();	
     include 'php/functions.php';	
 	if(isset($_POST)){
 		try {
@@ -29,18 +27,12 @@
 					$_SESSION["committeeRole"]=$row['committeeRole'];
 				if($row['adminRole'])
 					$_SESSION["adminRole"]=$row['adminRole'];																										
-				header('Location: index.php');
-			}
-            else{
-				include 'header.php'; ?>
-				<h1 class="text-center text-danger">
-					<b> You have entered incorrect login credentials. Please try again. </b>
-				</h1>
-				<?php
+				echo json_encode($row['name']);
+			}else{
+				echo json_encode("incorrectcredentials");
 			}
 		}
 		catch(Exception $e){
-			echo "Error: " . $e->getMessage();
 		}
 		finally{
 			$conn = null;

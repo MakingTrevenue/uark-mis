@@ -94,7 +94,7 @@
                 </li>
             </ul>
             <!-- Navigation Bar Modals -->
-            <ul class="nav navbar-nav navbar-right">
+            <ul id="sulilo" class="nav navbar-nav navbar-right">
                 <?php if(isset($_GET['logout']) || !isset($_SESSION['userID'])){ ?>
                     <li id="signupButton"><a href="#signUpModal" data-toggle="modal"><span class="fa fa-user-plus"></span>&nbsp; Sign Up</a></li>
                     <li id="loginButton"><a href="#loginModal" data-toggle="modal"><span class="fa fa-sign-in"></span>&nbsp; Login</a></li>
@@ -122,7 +122,7 @@
 </nav>
 
 <!-- Login Modal -->
-<form id="loginsignup" action="/login.php" method="post" enctype="multipart/form-data">
+<form id="loginaccount" action="/login.php" method="post" enctype="multipart/form-data" onsubmit="return false">
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -134,7 +134,7 @@
                 </button>
                 <h3 class="modal-title text-info text-center" id="loginModalHeaderLabel">Login</h3>
             </div>
-
+            <div id="badlogin" style="color: red;"></div>
             <!-- Login Modal Body -->
             <div class="modal-body">
                 <div class="input-group">
@@ -149,7 +149,7 @@
 
             <!-- Login Modal Footer -->
             <div class="modal-footer">
-                <input type="submit" value="Login" class="btn btn-primary btn-block"><br>
+                <input type="submit" value="Login" class="btn btn-primary btn-block" onclick="login()"><br>
                 <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Close</button>
             </div>
 
@@ -206,3 +206,27 @@
     </div>
 </div>
 </form>
+<script>
+    function login() {
+        $.ajax({
+            url:"/login.php",
+            method: "POST",
+            data: $("#loginaccount").serialize(), //Convert the search input into POST format
+            success: function(rawData){
+                var parsed=JSON.parse(rawData);
+                if(!parsed || parsed=="incorrectcredentials"){
+                    $("#badlogin").text("Incorrect Username/Password combo");
+                }else{
+                    var d = $("#sulilo");
+                    d.empty();
+                    var sulilo = $("<li id='logoutButton'><a href='./logout.php'><span class='fa fa-sign-out'></span>&nbsp; Logout " + parsed + "</a></li>");
+                    d.append(sulilo);                    
+                    $('#loginModal').modal('hide');
+                }
+                
+            }
+        });
+        return true;
+    }
+
+</script>
